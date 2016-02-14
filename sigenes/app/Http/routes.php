@@ -49,3 +49,18 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('users', 'UserController@getAllData');
+    Route::resource('users', 'UserController',
+        ['only' => ['index', 'create', 'edit']]);
+
+});
+
+Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
+
+    Route::get('users', 'UserController@getAllData');
+    Route::resource('users', 'UserController',
+        ['only' => ['store', 'update', 'destroy', 'show']]);
+
+});

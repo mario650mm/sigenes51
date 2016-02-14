@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="Enes">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +11,9 @@
 
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -50,8 +53,15 @@
 
 @yield('content')
 
-<!-- Scripts -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{{ asset('bower_components/angular/angular.js') }}"></script>
+<script src="{{ asset('js/script/lib/angular-resource.js') }}"></script>
+<script src="{{ asset('js/script/lib/angular-route.min.js') }}"></script>
+<script src="{{ asset('js/script/lib/ui-bootstrap-112.min.js') }}"></script>
+<script src="{{ asset('js/script/lib/angular-animate.min.js') }}"></script>
+<script src="{{ asset('js/script/app.js') }}"></script>
+<script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
+<script src="{{ asset('js/script/services/users/users.factories.js') }}"></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 @yield('scripts')
