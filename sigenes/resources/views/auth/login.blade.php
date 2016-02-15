@@ -9,7 +9,7 @@
                         <img src="{{ asset(env('LOGO_ENES')) }}"/>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                             {!! csrf_field() !!}
                             <div class="form-group{{ $errors->has('rfc') ? ' has-error' : '' }}">
                                 <label class="col-md-4 control-label">RFC</label>

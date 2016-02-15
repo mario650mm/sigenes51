@@ -39,12 +39,20 @@
                     <div class="item">
                         <img src="{{ asset(env('LOGO_ENES')) }}" class="img-responsive">
                     </div>
-                    @include('layouts.generals.menu.partials.employee')
+                    @if(Auth::user()->type == 'employee')
+                        @include('layouts.generals.menu.partials.employee')
+                    @endif
+                    @if(Auth::user()->type == 'student')
+                        @include('layouts.generals.menu.partials.student')
+                    @endif
+                    @if(Auth::user()->type == 'admin')
+                        @include('layouts.generals.menu.partials.admin')
+                    @endif
                     <div class="ui dropdown item">
                         {{ Auth::user()->name }}<span class="caret"></span>
                         <div class="menu">
                             <div class="item">
-                                <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
+                                <a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>
                             </div>
                         </div>
                     </div>

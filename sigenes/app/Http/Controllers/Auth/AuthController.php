@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -22,6 +24,8 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
+    protected $username = "rfc";
 
     /**
      * Create a new authentication controller instance.
@@ -44,6 +48,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'rfc' => 'required|rfc|max:13|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -59,9 +64,9 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'rfc' => $data['rfc'],
             'password' => bcrypt($data['password']),
         ]);
     }
-
 
 }
