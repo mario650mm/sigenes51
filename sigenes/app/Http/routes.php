@@ -11,14 +11,9 @@
 |
 */
 
-Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as'   => 'home'
-]);
-Route::get('home', [
-    'uses' => 'HomeController@index',
-    'as'   => 'home'
-]);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 // Authentication routes...
