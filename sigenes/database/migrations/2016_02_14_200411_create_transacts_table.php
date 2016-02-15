@@ -17,8 +17,8 @@ class CreateTransactsTable extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('status_id');
             $table->integer('transact_type_id')->unsigned();
-            $table->binary('record');
-            $table->binary('credential');
+            $table->boolean('record');
+            $table->boolean('credential');
             $table->date('date');
             $table->string('folio', 10);
             $table->timestamps();
