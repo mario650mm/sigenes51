@@ -57,6 +57,7 @@ class UserController extends Controller
         $rules = [
             'name'      => 'required',
             'email'     => 'required|email',
+            'rfc'     => 'required',
             'password'  => 'required'
         ];
 
@@ -107,9 +108,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $user = User::find($id);
+        $user = User::find($request->input('id'));
         $user->update($request->all());
         return ['updated' => true];
     }

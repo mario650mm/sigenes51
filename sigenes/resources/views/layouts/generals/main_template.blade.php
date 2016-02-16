@@ -3,8 +3,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 @include('layouts.generals.headers')
 <script src="{{ asset('css/semantic/dist/semantic.min.js') }}"></script>
-
+<style>
+    .modal-backdrop {
+        z-index: 250;
+    }
+</style>
 <body>
+    {!! csrf_field() !!}
     @if (! Auth::guest())
 
         <div class="col-lg-2 col-md-2 col-sm-2" style="padding-right: 0px; margin-right: 0px;">

@@ -50,16 +50,16 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('users', 'UserController@getAllData');
     Route::resource('users', 'UserController',
         ['only' => ['index', 'create', 'edit']]);
 
 });
 
-Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
+    Route::post('users', 'UserController@store');
+    Route::put('users', 'UserController@update');
+    Route::delete('users/{id}', 'UserController@destroy');
     Route::get('users', 'UserController@getAllData');
-    Route::resource('users', 'UserController',
-        ['only' => ['store', 'update', 'destroy', 'show']]);
 
 });
