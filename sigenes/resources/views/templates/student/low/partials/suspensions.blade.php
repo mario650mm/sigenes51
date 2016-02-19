@@ -8,8 +8,9 @@
                 <div class="form-group">
                     <label for="inputEmail" class="col-xs-1 control-label">Periodo: </label>
                     <div class="col-xs-6">
-                        <select class="form-control" >
-                            <option data-ng-repeat="periodo in periodos" > @{{ periodo.tipo }} </option>
+                        <select class="form-control" ng-model="period_ids">
+                            <option value="-1" > Seleccione periodo... </option>
+                            <option data-ng-repeat="period in periods" value="@{{ period.id }}" > @{{ period.title }} </option>
                         </select>
                     </div>
                 </div>
@@ -23,7 +24,7 @@
                 <div class="form-group">
                     <label for="inputEmail" class="col-xs-1 control-label">Dia: </label>
                     <div class="col-xs-6">
-                        <input type="text" class="form-control" id="fecha" data-ng-model="dia" placeholder="Fecha de inicio de suspención">
+                        <input type="text" class="form-control" id="fecha" data-ng-model="suspen.date_init" placeholder="Fecha de inicio de suspención" readonly>
                     </div>
                 </div>
             </div>
@@ -36,7 +37,7 @@
                 <div class="form-group">
                     <label for="inputEmail" class="col-xs-1 control-label">Motivos: </label>
                     <div class="col-xs-6">
-                        <textarea class="form-control" rows="5" data-ng-model="motivos" placeholder="Ingrse el motivo de su supención"></textarea>
+                        <textarea class="form-control" rows="5" data-ng-model="reason" placeholder="Ingrse el motivo de su supención"></textarea>
                     </div>
                 </div>
             </div>
