@@ -1,26 +1,28 @@
-<div class="col-lg-12 col-md-12 col-ms-12 col-xs-12">
-    <div>
-        <h1>
-            @yield('title')
-        </h1>
-        <div class="row" style="margin-left: 3px">
-            <div class="col-lg-4 pull-left">
-                <div class="row">
-                    <div class="pull-right">
-                        @yield('button_delete')
-                    </div>
-                    <div class="pull-left">
-                        @yield('buttons')
+@yield('angular_controller')
+    <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12">
+        <div>
+            <h1>
+                @yield('title')
+            </h1>
+            <div class="row" style="margin-left: 3px">
+                <div class="col-lg-4 pull-left">
+                    <div class="row">
+                        <div class="pull-right">
+                            @yield('button_delete')
+                        </div>
+                        <div class="pull-left">
+                            @yield('buttons')
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-8 pull-right">
-                @yield('filters')
+                <div class="col-lg-8 pull-right">
+                    @yield('filters')
+                </div>
             </div>
         </div>
+        <br/>
+        <div class="col-lg-12">
+            @yield('body_page')
+        </div>
     </div>
-    <br/>
-    <div class="col-lg-12">
-        @yield('body_page')
-    </div>
-</div>
+@yield('end_angular_controller')

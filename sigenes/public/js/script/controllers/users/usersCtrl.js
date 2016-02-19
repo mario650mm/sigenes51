@@ -41,7 +41,7 @@ angular.module('Enes')
         $scope.deleteUser = function(user){
             userFactory.delete(user)
                 .success(function(data){
-                    console.log(data);
+                    $('#delete').modal('hide');
                 })
                 .error(function(error){
                     console.log(error);
@@ -57,5 +57,10 @@ angular.module('Enes')
         $scope.showUser = function(user){
             $scope.user = user;
             $('#show').modal('show');
+        }
+
+        $scope.deleteUserModal = function(user){
+            $scope.user = user;
+            $('#delete').modal('show');
         }
 });

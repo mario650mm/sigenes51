@@ -13,16 +13,16 @@
     @if (! Auth::guest())
 
         <div class="col-lg-2 col-md-2 col-sm-2">
-                @include('layouts.generals.menu.verticalmenu')
+            @include('layouts.generals.menu.verticalmenu')
         </div>
         <div class="col-lg-10 col-md-10 col-sm-10">
             <div class="row">
                 @include('layouts.generals.menu.general_menu')
             </div>
             <div class="row">
-                    @include('layouts.generals.errors')
-                    @include('layouts.generals.sessionMessage')
-                    @include('layouts.generals.content_template')
+                @include('layouts.generals.errors')
+                @include('layouts.generals.sessionMessage')
+                @include('layouts.generals.content_template')
             </div>
         </div>
     @endif

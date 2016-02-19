@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function getAllData()
     {
-        return User::all()->take(10);
+        return User::all();
     }
 
     /**
