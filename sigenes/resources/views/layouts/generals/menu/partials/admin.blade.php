@@ -1,30 +1,6 @@
 <div class="item">
-    <div class="header">ADMIN</div>
+    <div class="header"><i class="fa fa-users"></i> {{ trans('users.title') }}</div>
     <div class="menu">
-        <a class="item">Enterprise</a>
-        <a class="item">Consumer</a>
-    </div>
-</div>
-<div class="item">
-    <div class="header">CMS Solutions</div>
-    <div class="menu">
-        <a class="item">Rails</a>
-        <a class="item">Python</a>
-        <a class="item">PHP</a>
-        <a class="item">PHP</a>
-    </div>
-</div>
-<div class="item">
-    <div class="header">Hosting</div>
-    <div class="menu">
-        <a class="item">Shared</a>
-        <a class="item">Dedicated</a>
-    </div>
-</div>
-<div class="item">
-    <div class="header">Support</div>
-    <div class="menu">
-        <a class="item">E-mail Support</a>
-        <a class="item">FAQs</a>
+        <a class="item" href="{{ route('users.index') }}">{{ trans('users.title') }}</a>
     </div>
 </div>

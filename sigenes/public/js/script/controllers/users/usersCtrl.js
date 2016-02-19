@@ -18,12 +18,6 @@ angular.module('Enes')
                 console.log(error);
             });
 
-        $scope.showUser = function(user){
-            $scope.user = user;
-            $('.ui.modal')
-                .modal('show')
-            ;
-        }
          $scope.save = function(user){
             userFactory.save(user)
                 .success(function(data){
@@ -37,7 +31,7 @@ angular.module('Enes')
         $scope.editUser = function(user){
             userFactory.update(user)
                 .success(function(data){
-                    console.log(data);
+                    $('#edit').modal('hide');
                 })
                 .error(function(error){
                     console.log(error);
@@ -57,8 +51,11 @@ angular.module('Enes')
         $scope.editUserModal = function(user){
             $scope.user = user;
             $scope.edit = true;
-            $('#useredit')
-                .modal('show')
-            ;
+            $('#edit').modal('show');
         }
-    });
+
+        $scope.showUser = function(user){
+            $scope.user = user;
+            $('#show').modal('show');
+        }
+});

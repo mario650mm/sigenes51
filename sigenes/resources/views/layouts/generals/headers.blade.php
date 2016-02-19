@@ -21,8 +21,6 @@
     @yield('extra_css')
     <style>
         html, body {
-            max-width: 100%;
-            overflow-x: hidden;
             background-image: url("/resources/images/fondologo.png");
             background-repeat: no-repeat;
             background-position: center;
