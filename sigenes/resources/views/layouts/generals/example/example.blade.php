@@ -7,6 +7,14 @@
     {{trans('occupations.edit_occupation')}}
 @endsection
 
+@section('angular_controller')
+    <div data-ng-controller="UsersController as users">
+@endsection
+
+@section('end_angular_controller')
+    </div>
+@endsection
+
 @section('filters')
     @include('backend.admins.occupations.partials.filters')
 @endsection
@@ -16,7 +24,6 @@
 @endsection
 
 @section('buttons')
-    {!! Form::model($occupation, ['route'=>['occupation.update',$occupation->id],'method'=>'PUT','files'=>true]) !!}
     <button type="submit" onclick="return confirm('Estás seguro de actualizar está ocupación?')" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>&nbsp;{{trans('general.save')}}</button>
     <a class="btn btn-danger btn-sm" href="{{route('occupation.index')}}"><i class="fa fa-times"></i>&nbsp;{{trans('general.cancel')}}</a>
     <a class="btn btn-success btn-sm" href="{{route('occupation.create')}}"><i class="fa fa-cogs"></i>&nbsp;{{trans('general.create')}}</a>
@@ -24,5 +31,4 @@
 
 @section('body_page')
     @include('backend.admins.occupations.partials.inputs')
-    {!! Form::close() !!}
 @endsection

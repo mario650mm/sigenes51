@@ -1,9 +1,9 @@
-<div class="row">
-    <div class="">
+@yield('angular_controller')
+    <div class="col-lg-12 col-md-12 col-ms-12 col-xs-12">
         <div>
-            <h3>
+            <h1>
                 @yield('title')
-            </h3>
+            </h1>
             <div class="row" style="margin-left: 3px">
                 <div class="col-lg-4 pull-left">
                     <div class="row">
@@ -21,8 +21,8 @@
             </div>
         </div>
         <br/>
-        <div>
+        <div class="col-lg-12">
             @yield('body_page')
         </div>
     </div>
-</div>
+@yield('end_angular_controller')
