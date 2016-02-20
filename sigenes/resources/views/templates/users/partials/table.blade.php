@@ -5,7 +5,7 @@
         <th>RFC</th>
         <th width="10%">Controllers</th>
     </tr>
-    <tr data-ng-repeat="user in users">
+    <tr data-ng-repeat="user in users | filter : test">
         <td>@{{ user.name }}</td>
         <td>@{{ user.email }}</td>
         <td>@{{ user.rfc }}</td>

@@ -13,6 +13,7 @@
 @endsection
 
 @section('filters')
+    <input type="text" ng-model="test" class="form-control">
 @endsection
 
 @section('button_delete')

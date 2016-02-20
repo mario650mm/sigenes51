@@ -5,7 +5,7 @@
                 @yield('title')
             </h1>
             <div class="row" style="margin-left: 3px">
-                <div class="col-lg-4 pull-left">
+                <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4 pull-left">
                     <div class="row">
                         <div class="pull-right">
                             @yield('button_delete')
@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 pull-right">
+                <div class="col-lg-8 col-xs-8 col-md-8 col-sm-8 pull-right">
                     @yield('filters')
                 </div>
             </div>
