@@ -13,7 +13,11 @@
 @endsection
 
 @section('filters')
-    <input type="text" ng-model="test" class="form-control">
+    <nit-advanced-searchbox
+            ng-model="searchParams"
+            parameters="availableSearchParams"
+            placeholder="Search...">
+    </nit-advanced-searchbox>
 @endsection
 
 @section('button_delete')
