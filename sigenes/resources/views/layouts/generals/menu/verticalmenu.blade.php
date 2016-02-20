@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12 hidden-print hidden-xs" style="padding: 0px; margin: 0px;">
-        <div class="ui vertical menu" style="width: 100%; min-height:800px !important;">
+        <div class="ui vertical menu" style="width: 100%; min-height:800px !important; font-size: 15px">
             <div class="item">
                 <a href="/home">
                     <img src="{{ asset(env('LOGO_ENES')) }}" class="img-responsive">
