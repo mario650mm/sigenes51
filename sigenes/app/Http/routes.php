@@ -62,4 +62,9 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
     Route::delete('users/{id}', 'UserController@destroy');
     Route::get('users', 'UserController@getAllData');
 
+    Route::post('teachers', 'TeacherController@store');
+    Route::put('teachers', 'TeacherController@update');
+    Route::delete('teachers/{id}', 'TeacherController@destroy');
+    Route::get('teachers', 'TeacherController@getAllData');
+
 });
