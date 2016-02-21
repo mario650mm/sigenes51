@@ -30,6 +30,13 @@
 @section('body_page')
         <div class="row">
             @include('templates.users.partials.table')
+            <div class="text-center">
+                <dir-pagination-controls
+                        max-size="15"
+                        direction-links="true"
+                        boundary-links="true" >
+                </dir-pagination-controls>
+            </div>
         </div>
         @include('templates.users.partials.show')
         @include('templates.users.partials.edit')
