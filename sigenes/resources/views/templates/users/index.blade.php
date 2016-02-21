@@ -13,6 +13,11 @@
 @endsection
 
 @section('filters')
+    <nit-advanced-searchbox
+            ng-model="searchParams"
+            parameters="availableSearchParams"
+            placeholder="Search...">
+    </nit-advanced-searchbox>
 @endsection
 
 @section('button_delete')
