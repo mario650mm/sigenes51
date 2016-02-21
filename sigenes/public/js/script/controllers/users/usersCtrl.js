@@ -10,14 +10,16 @@
 angular.module('Enes')
     .controller('UsersController', function ($scope, userFactory) {
         $scope.user = {};
+        $scope.users = [];
 
         // Fileds for search in user model
         $scope.availableSearchParams = [
             { key: "name", name: "Name", placeholder: "Name..." },
             { key: "email", name: "E-Mail", placeholder: "E-Mail..." },
             { key: "rfc", name: "RFC", placeholder: "RFC..." },
-            { key: "type",name: "Estudiantes", placeholder: "Estudiantes", restrictToSuggestedValues: true, }
+            { key: "type", name: "Type", placeholder: "Type...",restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
+
 
         userFactory.getAllUsers()
             .success(function(data){
