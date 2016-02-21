@@ -1,11 +1,19 @@
 <table class="table table-hover">
     <tr>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>RFC</th>
+        <th ng-click="sort('name')">Nombre
+            <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th ng-click="sort('email')">
+            Correo
+            <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
+        <th ng-click="sort('rfc')">
+            RFC
+            <span class="glyphicon sort-icon" ng-show="sortKey=='rfc'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </th>
         <th width="10%">Controllers</th>
     </tr>
-    <tr data-ng-repeat="user in users | filter:searchInput">
+    <tr data-dir-paginate="user in users | orderBy:sortKey:reverse | filter:searchInput |itemsPerPage:15">
         <td>@{{ user.name }}</td>
         <td>@{{ user.email }}</td>
         <td>@{{ user.rfc }}</td>

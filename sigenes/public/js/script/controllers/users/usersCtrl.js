@@ -20,7 +20,6 @@ angular.module('Enes')
             { key: "type", name: "Type", placeholder: "Type...",restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
 
-
         userFactory.getAllUsers()
             .success(function(data){
                 $scope.users=data;
