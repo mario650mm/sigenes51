@@ -14,7 +14,7 @@
 
 @section('filters')
     <nit-advanced-searchbox
-            ng-model="searchParams"
+            ng-model="searchInput"
             parameters="availableSearchParams"
             placeholder="Search...">
     </nit-advanced-searchbox>
