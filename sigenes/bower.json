@@ -17,6 +17,7 @@
   "dependencies": {
     "angular": "1.5.0-rc.2",
     "angularUtils-pagination": "angular-utils-pagination#^0.10.0",
-    "angular-advanced-searchbox": "^2.1.0"
+    "angular-advanced-searchbox": "^2.1.0",
+    "angular-ui-notification": "^0.1.0"
   }
 }
