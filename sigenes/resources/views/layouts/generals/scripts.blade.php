@@ -9,3 +9,5 @@
 <script src="{{ asset('js/script/app.js') }}"></script>
 <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
 <script src="{{ asset('js/script/services/users/users.factories.js') }}"></script>
+<script src="{{ asset('js/script/controllers/teachers/teachersCtrl.js') }}"></script>
+<script src="{{ asset('js/script/services/teachers/teachers.factories.js') }}"></script>
