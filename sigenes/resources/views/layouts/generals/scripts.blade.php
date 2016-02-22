@@ -10,5 +10,17 @@
 <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 <script src="{{ asset('js/script/app.js') }}"></script>
 <script src="{{ asset('js/script/controllers/main/mainController.js') }}"></script>
-<script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
-<script src="{{ asset('js/script/services/users/users.factories.js') }}"></script>
+
+
+@if(Auth::user()->type == 'employee')
+@endif
+@if(Auth::user()->type == 'student')
+	<script src="{{ asset('js/script/services/low/suspension.factories.js') }}"></script>
+	<script src="{{ asset('js/script/controllers/low/suspensionCtrl.js') }}"></script>
+	<script src="{{ asset('js/script/services/schoolrecord/schoolrecord.factories.js') }}"></script>
+	<script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordCtrl.js') }}"></script>
+@endif
+@if(Auth::user()->type == 'admin')
+	<script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
+	<script src="{{ asset('js/script/services/users/users.factories.js') }}"></script>
+@endif

@@ -13,4 +13,12 @@ class Student extends Model
     protected $table='students';
 
     protected $fillable=[];
+
+    public function Suspension(){
+    	return $this->hasMany('App\Suspension');
+    }
+
+    public function Partner(){
+    	return $this->belongsTo('App\Partner');
+    }
 }

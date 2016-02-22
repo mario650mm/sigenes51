@@ -18,6 +18,38 @@ class CreateTransactTypesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        $now = date('Y-m-d H:i:s');
+        \DB::table('transact_types')->insert([
+            [
+                'name' => 'Constancia de inscripción',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Costancia de creditos y promedio',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Constancia de inscripción con foto',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Constancia de historia academica',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Constancia para beca',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Constancia de terminos de estudios',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Reposición Credencial',
+                'created_at' => $now
+            ],
+        ]);
     }
 
     /**

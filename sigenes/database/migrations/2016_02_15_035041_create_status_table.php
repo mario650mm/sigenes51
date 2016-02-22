@@ -18,6 +18,26 @@ class CreateStatusTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        $now = date('Y-m-d H:i:s');
+        \DB::table('status')->insert([
+            [
+                'name' => 'Borrador',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Tramitado',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Terminado',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Cancelado',
+                'created_at' => $now
+            ],
+        ]);
     }
 
     /**

@@ -12,5 +12,18 @@ class Partner extends Model
 
     protected $table='partners';
 
-    protected $fillable=[];
+    protected $fillable=['name', 'firstlastname', 'secondlastname', 'telephone', 'celphone'];
+
+
+
+    public function Student(){
+        return $this->hasOne('App\Student');
+    }
+
+    public function User(){
+        return $this->belongsTo('App\User');
+    }
+
+
+
 }
