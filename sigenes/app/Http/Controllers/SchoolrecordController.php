@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Suspension;
+use Illuminate\Http\Request;
+use App\Schoolrecord;
+use App\SchoolrecordType;
 use App\Partner;
-use App\Period;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Mockery\CountValidator\Exception;
 
-class SuspensionController extends Controller
+class SchoolrecordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +22,7 @@ class SuspensionController extends Controller
      */
     public function index()
     {
-        return view('templates.admin.low.consultSuspension');
+        //
     }
 
     /**
@@ -31,38 +30,22 @@ class SuspensionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAllData()
-    {
-        return Suspension::all();
+    public function getRecordType(){
+        //dd('hola controlador php');
+        return SchoolrecordType::all();
     }
-
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAllDataPeriod()
-    {
-        return Period::all();
-    }
+    public function getStudent(){
 
-    public function getStudentData($id){
-       
         $user = User::find(Auth::user()->id);
         $user->Partner->Student;
         return  $user->Partner;
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getAllDataPart()
-    {
-        return Partner::all();
-    }
+    }    
 
     /**
      * Show the form for creating a new resource.
@@ -71,8 +54,7 @@ class SuspensionController extends Controller
      */
     public function create()
     {
-        //dd('hola');
-        return view('templates.student.low.createSuspensions');
+        return view('templates.student.schoolrecords.createRequestRecord');
     }
 
     /**
@@ -88,23 +70,23 @@ class SuspensionController extends Controller
         }
 
         $rules = [  
-            'student_id'    =>  'required',
-            'period_id'     =>  'required',
-            'status_id'     =>  'required',
-            'reason'        =>  'required',
-            'date_init'     =>  'required'
+            'student_id'        =>  'required',
+            'folio'             =>  'required',
+            'status_id'         =>  'required',
+            'transact_type_id'  =>  'required',
+            'date'              =>  'required'
         ];
 
         try{
-            $validator = Validator::make($request->all(), $rules);
+            /*$validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return [
                     'created' => false,
                     'errors'  => $validator->errors()->all()
                 ];
-            }
+            }*/
 
-            Suspension::create($request->all());
+            Schoolrecord::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
@@ -120,21 +102,7 @@ class SuspensionController extends Controller
      */
     public function show($id)
     {
-        //return Suspension::findOrFail($id);
-        return Suspension::where('student_id', '=', $id)->firstOrFail();
-    }
-
-
-    public function showAll(){
-        $result = \DB::table('suspensions')
-            ->select(['partners.name', 'partners.firstlastname', 'partners.secondlastname', 'partners.email1', 
-                'partners.telephone', 'partners.celphone', 'students.id as student', 'students.account_number'])
-            ->where('suspensions.status_id', '=', $id)
-            ->leftJoin('students', 'partners.id', '=', 'students.partner_id')
-            ->get();
-
-        return $result;
-        //return Suspension::hasManyThrough('App\Period','App\Student','App\Partner','period_id', 'student_id', 'partner_id');
+        //
     }
 
     /**
@@ -145,7 +113,7 @@ class SuspensionController extends Controller
      */
     public function edit($id)
     {
-        return view('templates.users.edit');
+        //
     }
 
     /**
@@ -155,10 +123,10 @@ class SuspensionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $suspension = Suspension::find($request->input('id'));
-        $suspension->update($request->all());
+        $schoolrecords = Schoolrecord::find($request->input('id'));
+        $schoolrecords->update($request->all());
         return ['updated' => true];
     }
 
@@ -170,7 +138,7 @@ class SuspensionController extends Controller
      */
     public function destroy($id)
     {
-        Suspension::destroy($id);
+        Schoolrecord::destroy($id);
         return ['deleted' => true];
     }
 }

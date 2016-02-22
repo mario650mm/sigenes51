@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-lg-10 col-lg-offset-1">
         <div class="panel panel-danger" >
             <div class="panel-heading" >
                 <span class="glyphicon glyphicon-chevron-down" data-ng-click="change()"></span>

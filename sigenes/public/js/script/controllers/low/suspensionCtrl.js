@@ -1,8 +1,11 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name EnesAuth.controller:registerAspirantController
+ * @ngdoc Controller
+ * @name Enes.controller:registerAspirantController
+ * @param suspensionFactory
+ * @param $scope
+ * @requires suspensionFactory
  * @description
  * # DeleteuserCtrl
  * Controller of the principalApp
@@ -67,17 +70,15 @@ angular.module('Enes')
         var ver = function(intpa){
             suspensionFactory.getAllSusPartn(intpa)
             .success(function(data){
-                angular.forEach(data, function(value, key){
-                    $scope.userSusp.nombre = value.name + ' ' + value.firstlastname 
-                        + ' ' + value.secondlastname;
-                    $scope.userSusp.account_number = value.account_number;
-                    $scope.userSusp.celphone = value.celphone;
-                    $scope.userSusp.student = value.student;
-                    $scope.userSusp.telephone = value.telephone;
-                    $scope.userSusp.email = value.email1;
-                    $scope.validate = value.student;
-                    
-                });
+                console.log(data);
+                $scope.userSusp.nombre = data.name + ' ' + data.firstlastname 
+                        + ' ' + data.secondlastname;
+                $scope.userSusp.account_number = data.student.account_number;
+                $scope.userSusp.celphone = data.celphone;
+                $scope.userSusp.student = data.student.id;
+                $scope.userSusp.telephone = data.telephone;
+                $scope.userSusp.email = data.email1;
+                $scope.validate = data.student.id;
                 getValidator($scope.validate);
                  
             })

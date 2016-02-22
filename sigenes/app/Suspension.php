@@ -39,4 +39,8 @@ class Suspension extends Model
      * @var array
      */
     protected $hidden = [];
+
+    public function Student(){
+        return $this->belongsTo('App\Student');
+    }
 }

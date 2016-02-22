@@ -21,6 +21,7 @@ class CreateTransactsTable extends Migration
             $table->boolean('credential');
             $table->date('date');
             $table->string('folio', 10);
+            $table->binary('evidence');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('student_id')->references('id')
