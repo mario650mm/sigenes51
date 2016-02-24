@@ -48,6 +48,10 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password', 'remember_token'];
 
 
+    public function is($type){
+        return $this->type === $type;
+    }
+
      public function Partner(){
         return $this->hasOne('App\Partner');
     }
