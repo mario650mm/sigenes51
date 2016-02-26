@@ -8,7 +8,7 @@
  * Controller of the principalApp
  */
 angular.module('Enes')
-    .controller('UsersController', function ($scope, userFactory) {
+    .controller('UsersController', function ($scope, userFactory, Notification) {
         $scope.user = {};
         $scope.users = [];
 
@@ -31,10 +31,13 @@ angular.module('Enes')
          $scope.save = function(user){
             userFactory.save(user)
                 .success(function(data){
-                    console.log(data);
+                    Notification.success({message: 'Usuario '+ user.name +' creado correctamente.', delay: 5000});
                 })
                 .error(function(error){
-                    console.log(error);
+                    Notification.error(
+                        {message: '<b>Error</b> <s>notificación</s>',
+                         title: '<u>Error al crear el usuario</u>',
+                         delay: 5000});
                 })
          }
 
@@ -42,9 +45,13 @@ angular.module('Enes')
             userFactory.update(user)
                 .success(function(data){
                     $('#edit').modal('hide');
+                    Notification.success({message: 'Usuario '+ user.name +' actualizado correctamente.', delay: 5000});
                 })
                 .error(function(error){
-                    console.log(error);
+                    Notification.error(
+                        {message: '<b>Error</b> <s>notificación</s>',
+                            title: '<u>Error al actualizar el usuario</u>',
+                            delay: 5000});
                 })
         }
 
@@ -52,9 +59,13 @@ angular.module('Enes')
             userFactory.delete(user)
                 .success(function(data){
                     $('#delete').modal('hide');
+                    Notification.success({message: 'Usuario '+ user.name +' eliminado correctamente.', delay: 5000});
                 })
                 .error(function(error){
-                    console.log(error);
+                    Notification.error(
+                        {message: '<b>Error</b> <s>notificación</s>',
+                            title: '<u>Error al eliminar el usuario</u>',
+                            delay: 5000});
                 })
         }
 

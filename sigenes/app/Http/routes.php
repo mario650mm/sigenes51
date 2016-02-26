@@ -49,13 +49,16 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::group(['middleware' => 'auth'], function () {
+
+/*
+ *  Routes of user model
+ */
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('users', 'UserController',
         ['only' => ['index', 'create', 'edit']]);
 
 });
-
-Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function () {
 
     Route::post('users', 'UserController@store');
     Route::put('users', 'UserController@update');
@@ -63,6 +66,10 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
     Route::get('users', 'UserController@getAllData');
 
 });
+/*
+ * End Routes of user model
+ */
+
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
