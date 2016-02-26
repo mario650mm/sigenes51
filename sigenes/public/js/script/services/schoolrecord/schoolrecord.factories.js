@@ -9,17 +9,17 @@ angular.module('Enes')
                 return $http.get(HOST + 'api/v1/recordsStudent')
             },
             getAllData : function(){
-                return $http.get(HOST+'api/v1/suspen')
+                return $http.get(HOST+'api/v1/allrecords')
             },
             save : function(record){
                 console.log(record);
                 return $http.post(HOST+'api/v1/records', record)
             },
             update : function(record){
-                return $http.put(HOST+'api/v1/suspen', record)
+                return $http.put(HOST+'api/v1/records', record)
             },
             delete : function(record){
-                return $http.delete(HOST+'api/v1/suspen/' + record.id)
+                return $http.delete(HOST+'api/v1/records/' + record.id)
             }
         }
     });

@@ -127,14 +127,29 @@ class SuspensionController extends Controller
 
     public function showAll(){
         $result = \DB::table('suspensions')
-            ->select(['partners.name', 'partners.firstlastname', 'partners.secondlastname', 'partners.email1', 
-                'partners.telephone', 'partners.celphone', 'students.id as student', 'students.account_number'])
-            ->where('suspensions.status_id', '=', $id)
-            ->leftJoin('students', 'partners.id', '=', 'students.partner_id')
+            ->select([
+                "suspensions.id", "suspensions.student_id as student", 
+                "students.account_number", "periods.month_init", 
+                "periods.month_end", "periods.year",
+                "status.name as estatus", "suspensions.reason", 
+                "suspensions.date_init", "suspensions.period_id", 
+                "partners.name", "partners.firstlastname", 
+                "partners.secondlastname"
+                ])
+            ->leftJoin("students", "suspensions.student_id", "=", "students.id")
+            ->leftJoin("periods", "periods.id", "=", "suspensions.period_id")
+            ->leftJoin("status", "status.id", "=", "suspensions.status_id")
+            ->leftJoin("partners", "partners.id", "=", "students.partner_id")
+            ->where("suspensions.status_id", "<>", 1)
             ->get();
 
+            foreach ($result as $value) {
+                $value->fullname = $value->name . ' ' . $value->firstlastname . ' ' . $value->secondlastname;
+                $value->name_period = $value->month_init . ' - ' . $value->month_end . ' '. $value->year;
+            }
+
         return $result;
-        //return Suspension::hasManyThrough('App\Period','App\Student','App\Partner','period_id', 'student_id', 'partner_id');
+        
     }
 
     /**
@@ -157,6 +172,7 @@ class SuspensionController extends Controller
      */
     public function update(Request $request)
     {
+       // dd($request);
         $suspension = Suspension::find($request->input('id'));
         $suspension->update($request->all());
         return ['updated' => true];
