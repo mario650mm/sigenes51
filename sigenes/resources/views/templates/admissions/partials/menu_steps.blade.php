@@ -15,7 +15,7 @@
         <i class="student icon" data-ng-class="{blue: step == 3}"></i>
         <div class="content">
             <div class="title">{{ trans('admissions.school_graduation') }}</div>
-            <div class="description">{{ trans('admissions.enter_school_graduation') }}n</div>
+            <div class="description">{{ trans('admissions.enter_school_graduation') }}</div>
         </div>
     </a>
     <a class="step" data-ng-class="{active: step == 4}">

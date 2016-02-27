@@ -18,11 +18,11 @@ class CreatePartnersTable extends Migration
             $table->string('firstlastname', 25);
             $table->string('secondlastname', 25);
             $table->string('curp', 18);
-            $table->timestamp('birthdate');
-            $table->enum('sex', ['Maculino', 'Femenino']);
+            $table->date('birthdate');
+            $table->enum('sex', ['Masculino', 'Femenino']);
             $table->string('email1', 60);
             $table->string('email2', 45);
-            $table->enum('nationality', ['M', 'E']);
+            $table->enum('nationality', ['Mexicana', 'Extranjero']);
             $table->string('telephone', 25);
             $table->string('celphone', 25);
             $table->enum('maritalstatus',
@@ -42,8 +42,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'AAAA800313HCMLNS09',
                 'birthdate' => '1980-03-13',
                 'sex' => 'Masculino',
-                'nationality' => 'M',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 1,
                 'created_at' => $now
             ],
@@ -54,8 +54,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'DIRE800313HCMLNS09',
                 'birthdate' => '1970-02-11',
                 'sex' => 'Masculino',
-                'nationality' => 'M',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 2,
                 'created_at' => $now
             ],
@@ -66,8 +66,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'COOR800313MCMLNS09',
                 'birthdate' => '1965-03-13',
                 'sex' => 'Femenino',
-                'nationality' => 'M',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 3,
                 'created_at' => $now
             ],
@@ -78,8 +78,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'CTRL800313HCMLNS09',
                 'birthdate' => '1970-03-13',
                 'sex' => 'Masculino',
-                'nationality' => 'M',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 4,
                 'created_at' => $now
             ],
@@ -90,8 +90,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'ADMIN800313FCMLNS09',
                 'birthdate' => '1980-02-09',
                 'sex' => 'Femenino',
-                'nationality' => 'F',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 5,
                 'created_at' => $now
             ],
@@ -102,8 +102,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'ADMIN800313MCMLNS10',
                 'birthdate' => '1955-02-09',
                 'sex' => 'Masculino',
-                'nationality' => 'F',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 6,
                 'created_at' => $now
             ],
@@ -114,8 +114,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'ADMIN800313MCMLNS11',
                 'birthdate' => '1975-03-09',
                 'sex' => 'Masculino',
-                'nationality' => 'F',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 7,
                 'created_at' => $now
             ],
@@ -126,8 +126,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'ALUMO800313MCMLNS10',
                 'birthdate' => '1987-02-09',
                 'sex' => 'Masculino',
-                'nationality' => 'F',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 8,
                 'created_at' => $now
             ],
@@ -138,8 +138,8 @@ class CreatePartnersTable extends Migration
                 'curp' => 'ALUMO800313MCMLNS10',
                 'birthdate' => '1990-02-09',
                 'sex' => 'Masculino',
-                'nationality' => 'F',
-                'maritalstatus' => 'Casado',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Soltero',
                 'user_id' => 9,
                 'created_at' => $now
             ],

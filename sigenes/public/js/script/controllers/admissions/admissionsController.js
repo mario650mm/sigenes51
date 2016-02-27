@@ -3,7 +3,7 @@
  */
 angular.module('EnesAuth')
     .controller('AdmissionController', function ($scope) {
-        $scope.step=1;
+        $scope.step=2;
 
         $scope.next = function(){
             $scope.step +=1;
@@ -12,5 +12,12 @@ angular.module('EnesAuth')
         $scope.back = function(){
             $scope.step -=1;
         }
+
+        $scope.submitForm = function(isValid) {
+            if (isValid) {
+                next();
+            }
+        };
+
 
     });
