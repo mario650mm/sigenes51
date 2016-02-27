@@ -188,7 +188,7 @@
 <script src="{{ asset('js/script/lib/ui-bootstrap-112.min.js') }}"></script>
 <script src="{{ asset('js/script/lib/angular-animate.min.js') }}"></script>
 <script src="{{ asset('js/script/app_auth.js') }}"></script>
-<script src="{{ asset('js/script/controllers/auth/registerCtrl.js') }}"></script>
+<script src="{{ asset('js/script/controllers/admissions/admissionsController.js') }}"></script>
 </body>
 
 </html>

@@ -20,55 +20,11 @@ Route::get('home', [
     'as'   => 'home'
 ]);
 
-// Authentication routes...
-Route::get('auth/login', [
-    'uses' => 'Auth\AuthController@getLogin',
-    'as'   => 'login'
-]);
-Route::post('auth/login', 'Auth\AuthController@postLogin');
+require __DIR__ . '/routes/auth.php';
+require __DIR__ . '/routes/admissions.php';
+require __DIR__ . '/routes/users.php';
 
 
-Route::get('auth/logout', [
-    'uses' => 'Auth\AuthController@getLogout',
-    'as'   => 'logout'
-]);
-
-// Registration routes...
-Route::get('auth/register', [
-    'uses' => 'Auth\AuthController@getRegister',
-    'as'   => 'register'
-]);
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
-// Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
-
-// Password reset routes...
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-
-/*
- *  Routes of user model
- */
-Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::resource('users', 'UserController',
-        ['only' => ['index', 'create', 'edit']]);
-
-});
-Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function () {
-
-    Route::post('users', 'UserController@store');
-    Route::put('users', 'UserController@update');
-    Route::delete('users/{id}', 'UserController@destroy');
-    Route::get('users', 'UserController@getAllData');
-
-});
-/*
- * End Routes of user model
- */
 
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
