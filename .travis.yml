@@ -19,9 +19,9 @@ before_script:
   - composer install --no-interaction
   - bower install
   - php artisan migrate
-  - php artisan migrate:refresh --seed
   - chmod 777 script.sh
   - sh script.sh
+  - php artisan migrate --seed
 
 script:
   - vendor/bin/phpunit

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" data-ng-app="Enes">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+@section('extra_css')
+    <link href="{{ asset('css/enes.css') }}" rel="stylesheet">
+@endsection
 @include('layouts.generals.headers')
 <script src="{{ asset('css/semantic/dist/semantic.min.js') }}"></script>
 <style>
