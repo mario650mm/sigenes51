@@ -1,8 +1,5 @@
 <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
     <form name="ainf" ng-submit="submitForm(ainf.$valid)" novalidate>
-                <div class="col-lg-12">
-            <h1 class="pull-left"><i class="building icon"></i>{{ trans('admissions.address') }}</h1>
-        </div>
         <div class="col-lg-12">
             <div class="form-group col-lg-4" ng-class="{ 'has-error' : ainf.street.$invalid && !ainf.street.$pristine , 'has-success':ainf.street.$valid }">
                 <label>{{ trans('admissions.street') }}</label>

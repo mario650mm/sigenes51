@@ -244,12 +244,12 @@ angular.module('EnesAuth')
             }
         }
     })
-    .directive('nssValidate', function() {
+    .directive('anioValidate', function() {
         return {
             restrice: 'A',
             require: 'ngModel',
             link: function(scope, element, attrs, ngModel) {
-                var numberregex =  /^[0-9]{11}$/;
+                var numberregex =  /^(([1][9][0-9][0-9])|([2][0-9][0-9][0-9]))$/;
                 ngModel.$parsers.unshift(function(viewValue){
                     if(numberregex.test(viewValue)) {
                         ngModel.$setValidity('numbercheck', true);

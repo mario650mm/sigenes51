@@ -1,9 +1,6 @@
 <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
     <form name="pinf" ng-submit="submitForm(pinf.$valid)" novalidate>
         <div class="col-lg-12">
-            <h1 class="pull-left"><i class="user icon"></i>{{ trans('admissions.personal_information') }}</h1>
-        </div>
-        <div class="col-lg-12">
             <div class="form-group col-lg-4" ng-class="{ 'has-error' : pinf.name.$invalid && !pinf.name.$pristine , 'has-success':pinf.name.$valid }">
                 <label>{{ trans('admissions.name') }}</label>
                 <input type="text" name="name" class="form-control" ng-model="applicant.name" required>
