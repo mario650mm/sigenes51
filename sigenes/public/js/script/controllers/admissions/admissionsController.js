@@ -48,7 +48,8 @@ angular.module('EnesAuth')
         }
 
         $scope.saveApplicant = function(applicant){
-            admissionFactory.saveApplicant(applicant)
+            console.log(applicant);
+            /*admissionFactory.saveApplicant(applicant)
                 .success(function(data){
                     Notification.success({
                         message: 'Registro '+ applicant.name +' creado correctamente.',
@@ -59,7 +60,7 @@ angular.module('EnesAuth')
                         {message: '<b>Error!</b> Problemas de conexión',
                             title: '<b>Error</b>',
                             delay: 5000});
-                });
+                });*/
         }
 
         $scope.next = function(){
@@ -73,6 +74,12 @@ angular.module('EnesAuth')
         $scope.submitForm = function(isValid) {
             if (isValid) {
             }
+        };
+
+        $scope.onLoad = function (e, reader, file, fileList, fileOjects, fileObj) {
+            Notification.success({
+                message: 'Archivo adjuntado correctamente.',
+                delay: 5000});
         };
 
     });

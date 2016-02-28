@@ -106,4 +106,7 @@ return [
     'account_number'=> 'Account Number',
     'address'=> 'Address Information',
     'enter_personal_address'=> 'Enter Address Information',
+    'official_identification' => 'Official Identification',
+    'birth_certificate' => 'Birth Certificate',
+    'high_school_certificate' => 'High School Certificate',
 ];
