@@ -13,27 +13,30 @@ return [
     |
     */
 
-    'title'     => 'Suspensions',
-    'day'       =>  'Day',
+    'title' => 'School records',
     'name'      =>  'Name',
     'account'   =>  'Account',
     'phone'     =>  'Phone',
     'career'    =>  'Career',
     'cell'      =>  'Cell phone',
     'email'     =>  'Email',
-    'period'    =>  'Period',
-    'reason'    =>  'Reasons',
     'note'      =>  'Notes',
     'apply'     =>  'Apply for',
     'print'     =>  'Print',
+    'item'      =>  'Records and replacement of credentials',
+    'body_note' =>  'In this section you can only start the process that you choose; to give contimunidad necessary that you go to school services with proved necessary documents listed on the website of the enes as the procedure that you have chosen.',
+    'folio'     =>  'Folio',
+    'record'    =>  'Record',
+    'credential'=>  'Replacement of credential',
+    'typerecord'=>  'Type of record',
     'status'    =>  'Status',
-    'control'   =>  'Controllers',
+    'controller'=>  'Controller',
     'date'      =>  'Date',
+    'tramint'   =>  'Tramint',
     'header'    =>  'Validations',
     'library'   =>  'Library',
     'clinic'    =>  'Clinic',
     'lab'       =>  'Lab',
-    'social'    =>  'Social services',
-    'body_note' =>  'In this section you can only start the ruling of suspension; to give contimunidad necessary that you go to school services with the document you generate, and no debt due stamps departments.',
+    'social'    =>  'Social services'
 
 ];

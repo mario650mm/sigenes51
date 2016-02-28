@@ -22,7 +22,7 @@ class SchoolrecordController extends Controller
      */
     public function index()
     {
-        //
+        return view('templates.admin.school_records.viewRecords');
     }
 
     /**
@@ -31,7 +31,7 @@ class SchoolrecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getRecordType(){
-        //dd('hola controlador php');
+       
         return SchoolrecordType::all();
     }
 
@@ -78,13 +78,13 @@ class SchoolrecordController extends Controller
         ];
 
         try{
-            /*$validator = Validator::make($request->all(), $rules);
+            $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return [
                     'created' => false,
                     'errors'  => $validator->errors()->all()
                 ];
-            }*/
+            }
 
             Schoolrecord::create($request->all());
             return ['created' => true];
@@ -100,9 +100,44 @@ class SchoolrecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $result = \DB::table('transact_students')
+            ->select([
+                "transact_students.id", 
+                "transact_students.student_id as student", 
+                "transact_students.transact_type_id",
+                "transact_students.record",
+                "transact_students.credential",
+                "transact_students.date", 
+                "transact_students.folio", 
+                "students.account_number", 
+                "transact_types.name as transact",
+                "status.name as estatus", 
+                "partners.name", 
+                "partners.firstlastname", 
+                "partners.secondlastname"
+                ])
+            ->leftJoin("students", "transact_students.student_id", "=", "students.id")
+            ->leftJoin("transact_types", "transact_types.id", "=", "transact_students.transact_type_id")
+            ->leftJoin("status", "status.id", "=", "transact_students.status_id")
+            ->leftJoin("partners", "partners.id", "=", "students.partner_id")
+            ->where("transact_students.status_id", "<>", 1)
+            ->get();
+
+            foreach ($result as $value) {
+                # code...
+                $value->fullname = $value->name . ' ' . $value->firstlastname . ' ' . $value->secondlastname;
+                if($value->record == 1){
+                    $value->tramint = "Constancía";
+                }else{
+                    if($value->credential == 1)
+                        $value->tramint = "Reposición";
+                }
+                //dd($value);
+            }
+
+        return $result;
     }
 
     /**
@@ -123,8 +158,9 @@ class SchoolrecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        //dd($request);
         $schoolrecords = Schoolrecord::find($request->input('id'));
         $schoolrecords->update($request->all());
         return ['updated' => true];
@@ -136,9 +172,15 @@ class SchoolrecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Schoolrecord::destroy($id);
-        return ['deleted' => true];
+        try{
+            $schoolrecords = Schoolrecord::find($request->input('id'));
+            $schoolrecords->update($request->all());
+            Schoolrecord::destroy($request->input('id'));
+            return ['deleted' => true];
+        }catch(Exception $e){
+            return ['deleted' => false];
+        }
     }
 }

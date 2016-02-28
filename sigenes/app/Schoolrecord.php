@@ -24,5 +24,6 @@ class Schoolrecord extends Model
     protected $table = 'transact_students';
 
 
-    protected $fillable=['record', 'credential', 'folio', 'transact_type_id', 'date', 'student_id','status_id'];
+    protected $fillable=['record', 'credential', 'folio', 'transact_type_id', 
+    'date', 'student_id','status_id', 'evidence', 'lab', 'clinic', 'social_services', 'library'];
 }

@@ -98,11 +98,11 @@
 
         	$scope.applyRecord.date = getDateRecord();
         	$scope.applyRecord.student_id = $scope.student.student;
-        	console.log($scope.applyRecord.student_id);
+        	console.log($scope.applyRecord);
         	$scope.applyRecord.status_id = 2;
 
 
-        	if($scope.applyRecord.credential == 2 && $scope.applyRecord.record == 0){
+        	if($scope.applyRecord.credential == 2 && ($scope.applyRecord.record == 0 || typeof($scope.applyRecord.record) == 'undefined')){
         		$scope.applyRecord.transact_type_id = 7;
         	}
 

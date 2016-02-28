@@ -1,29 +1,43 @@
 @extends('layouts.generals.main_template')
 
+@section('page_title')
+    Validations
+@endsection
+
+@section('title')
+    {{trans('low.title')}}
+@endsection
+
+@section('angular_controller')
+    <div data-ng-controller="suspensionAdminCtrl">
+@endsection
+
+@section('filters')
+    <nit-advanced-searchbox
+            ng-model="searchInput"
+            parameters="availableSearchParams"
+            placeholder="Search...">
+    </nit-advanced-searchbox>
+@endsection
+
 @section('body_page')
-
-    <div class="container-fluid" data-ng-controller="SuspensionAdminCtrl">
-        @include('templates.admin.low.partials.filter')
-        <br>
+    <div class="row">
+        <div ng-init="showData()"></div>   
         @include('templates.admin.low.partials.dataTable')
-
-
-        <script type="text/ng-template" id="myModalContent.html">
-            <div class="modal-header">
-            @include('templates.admin.low.partials.inputs')
-            </div>
-            <div class="modal-body container-fluid">
-                @include('templates.admin.low.partials.suspensionInfo')
-                <br>
-                @include('templates.admin.low.partials.validator')
-            </div>
-        </script>
+        <div class="text-center">
+            <dir-pagination-controls 
+            max-size="15" 
+            direction-links="true" 
+            boundary-links="true" >
+            </dir-pagination-controls>
+        </div>
     </div>
+    @include('templates.admin.low.partials.validator')
+    @include('templates.admin.low.partials.deletesuspension')
+    </div>  
 
+@endsection
 
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
+@section('end_angular_controller')
+    </div>
 @endsection

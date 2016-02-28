@@ -31,10 +31,11 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
     Route::post('suspen', 'SuspensionController@store');
     Route::put('suspen', 'SuspensionController@update');
-    Route::delete('suspen/{id}', 'SuspensionController@destroy');
+    Route::put('suspendelete', 'SuspensionController@destroy');
     Route::get('suspen', 'SuspensionController@getAllData');
     Route::get('suspartn/{id}', 'SuspensionController@getStudentData');
     Route::get('suspen/{id}', 'SuspensionController@show');
+    Route::get('suspenall', 'SuspensionController@showAll');
     Route::get('susperiod', 'SuspensionController@getAllDataPeriod');
 
 });
@@ -42,6 +43,9 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('student/low', 'SuspensionController@create');
     Route::resource('student/records', 'SchoolrecordController@create');
+    Route::resource('admin/records', 'SchoolrecordController@index');
+    Route::resource('admin/low', 'SuspensionController@index');
+
 
 });
 
@@ -49,10 +53,10 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
     Route::post('records', 'SchoolrecordController@store');
     Route::put('records', 'SchoolrecordController@update');
-    Route::delete('records/{id}', 'SchoolrecordController@destroy');
+    Route::put('recorddelete', 'SchoolrecordController@destroy');
     Route::get('records', 'SchoolrecordController@getAllData');
     Route::get('recordsStudent', 'SchoolrecordController@getStudent');
-    Route::get('records/{id}', 'SchoolrecordController@show');
+    Route::get('allrecords', 'SchoolrecordController@show');
     Route::get('recordstype', 'SchoolrecordController@getRecordType');
 
 });

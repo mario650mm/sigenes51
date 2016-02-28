@@ -12,16 +12,17 @@ angular.module('Enes')
                 return $http.get(HOST + 'api/v1/suspen/' + student_id)
             },
             getAllSuspensions : function(){
-                return $http.get(HOST+'api/v1/suspen')
+                return $http.get(HOST+'api/v1/suspenall')
             },
             save : function(suspen){
                 return $http.post(HOST+'api/v1/suspen', suspen)
             },
             update : function(suspen){
+                
                 return $http.put(HOST+'api/v1/suspen', suspen)
             },
-            delete : function(user){
-                return $http.delete(HOST+'api/v1/suspen/' + user.id)
+            delete : function(suspen){
+                return $http.put(HOST+'api/v1/suspendelete', suspen)
             }
         }
     });
