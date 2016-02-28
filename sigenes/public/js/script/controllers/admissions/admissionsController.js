@@ -7,7 +7,7 @@ angular.module('EnesAuth')
                                     statesFactory, citysFactory,
                                     admissionFactory,
                                     Notification) {
-        $scope.step=1;
+        $scope.step=5;
         $scope.countrys = [];
         $scope.states = [];
         $scope.citys = [];

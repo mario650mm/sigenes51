@@ -15,10 +15,38 @@ class CreateAttachmentTypesTable extends Migration
         Schema::create('attachment_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30);
-            $table->enum('type', ['employee', 'candidate', 'student']);
+            $table->enum('type', ['employee', 'applicant', 'student']);
             $table->timestamps();
             $table->softDeletes();
         });
+        $now = date('Y-m-d H:i:s');
+        \DB::table('users')->insert([
+            [
+                'name' => 'Identificación Oficial',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Acta de Nacimiento',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Certificado de bachillerato',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'CURP',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Pago inscripción',
+                'type' => 'applicant',
+                'created_at' => $now
+            ]
+        ]);
     }
 
     /**
