@@ -22,6 +22,10 @@ class CreateTransactsTable extends Migration
             $table->date('date');
             $table->string('folio', 10);
             $table->binary('evidence');
+            $table->boolean('clinic');
+            $table->boolean('library');
+            $table->boolean('lab');
+            $table->boolean('social_services');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('student_id')->references('id')

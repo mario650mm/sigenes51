@@ -7,10 +7,10 @@
             </div>
             <div class="panel-body" data-ng-show="isCollapsed">
                 <p align="justify" >
-                    En este apartado unicamente podras dar inicio al tramite
-                    que escojas; para darle contimunidad es necesario que acudas
-                    a servicios escolares con el documento que se te generará,
-                    y los debidos sellos de no adeudo de los departamentos.
+                    En este apartado unicamente podras dar inicio al tramite que escojas; 
+                    para darle contimunidad es necesario que acudas a servicios escolares 
+                    con los documentos nesesarios indicados, 
+                    en la pagina de la enes según sea el tramite que hayas escogido.
                 </p>
             </div>
         </div>
