@@ -21,6 +21,6 @@ class Teacher extends Model
      *
      * @var array
      */
-    protected $fillable = ['noCuenta', 'email'];
+    protected $fillable = ['noAccount', 'email'];
 
 }
