@@ -7,7 +7,7 @@ angular.module('EnesAuth')
                                     statesFactory, citysFactory,
                                     admissionFactory,
                                     Notification) {
-        $scope.step=5;
+        $scope.step = 1;
         $scope.countrys = [];
         $scope.states = [];
         $scope.citys = [];
@@ -48,8 +48,7 @@ angular.module('EnesAuth')
         }
 
         $scope.saveApplicant = function(applicant){
-            console.log(applicant);
-            /*admissionFactory.saveApplicant(applicant)
+            admissionFactory.saveApplicant(applicant)
                 .success(function(data){
                     Notification.success({
                         message: 'Registro '+ applicant.name +' creado correctamente.',
@@ -60,7 +59,7 @@ angular.module('EnesAuth')
                         {message: '<b>Error!</b> Problemas de conexión',
                             title: '<b>Error</b>',
                             delay: 5000});
-                });*/
+                });
         }
 
         $scope.next = function(){

@@ -20,7 +20,7 @@ class CreateAttachmentTypesTable extends Migration
             $table->softDeletes();
         });
         $now = date('Y-m-d H:i:s');
-        \DB::table('users')->insert([
+        \DB::table('attachment_types')->insert([
             [
                 'name' => 'Identificación Oficial',
                 'type' => 'applicant',

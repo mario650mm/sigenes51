@@ -14,15 +14,12 @@ class CreateAttachmentApplicants extends Migration
     {
         Schema::create('attachment_applicants', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('applicant_id')->unsigned();
-            $table->integer('attachment_type_id')->unsigned();
+            $table->integer('applicant_id');
+            $table->integer('attachment_type_id');
             $table->binary('document');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('attachment_type_id')->references('id')
-                ->on('attachment_types')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('applicant_id')->references('id')
-                ->on('applicants')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 
