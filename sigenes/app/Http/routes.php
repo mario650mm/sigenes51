@@ -52,6 +52,8 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UserController',
         ['only' => ['index', 'create', 'edit']]);
+    Route::resource('teachers', 'TeacherController',
+        ['only' => ['index', 'create', 'edit']]);
 
 });
 
