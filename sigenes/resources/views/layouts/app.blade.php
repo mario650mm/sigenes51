@@ -193,6 +193,7 @@
 <script src="{{ asset('js/script/services/country/country.factories.js') }}"></script>
 <script src="{{ asset('js/script/services/state/state.factories.js') }}"></script>
 <script src="{{ asset('js/script/services/city/city.factories.js') }}"></script>
+<script src="{{ asset('js/script/services/admission/admission.factories.js') }}"></script>
 <script src="{{ asset('js/script/controllers/admissions/admissionsController.js') }}"></script>
 </body>
 

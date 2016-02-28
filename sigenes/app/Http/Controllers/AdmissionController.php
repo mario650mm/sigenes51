@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Applicant;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -37,7 +38,13 @@ class AdmissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            Applicant::create($request->all());
+            return ['created' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating user: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**

@@ -13,8 +13,10 @@ Route::get('admissions_enes_leon', [
     'as'   => 'register'
 ]);
 
-/*Route::get('auth/register', [
-    'uses' => 'Auth\AuthController@getRegister',
-    'as'   => 'register'
-]);
-Route::post('auth/register', 'Auth\AuthController@postRegister');*/
+// API routes
+
+Route::group(['prefix' => 'api/v1'], function () {
+
+    Route::post('admissions', 'AdmissionController@store');
+
+});
