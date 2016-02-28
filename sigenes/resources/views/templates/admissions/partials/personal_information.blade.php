@@ -81,6 +81,23 @@
             </div>
         </div>
         <div class="col-lg-12">
+            <div class="form-group col-lg-4" ng-class="{ 'has-error' : pinf.email.$invalid && !pinf.email.$pristine , 'has-success':pinf.email.$valid }">
+                <label>{{ trans('admissions.email') }}</label>
+                <input type="text" name="email" class="form-control" ng-model="applicant.email" email-validate required>
+                <p ng-show="pinf.email.$invalid && !pinf.email.$pristine" class="help-block">{{ trans('validation.required', [ 'attribute' => trans('admissions.email') ]) }}</p>
+            </div>
+            <div class="form-group col-lg-4" ng-class="{ 'has-error' : pinf.telephone.$invalid && !pinf.telephone.$pristine , 'has-success':pinf.telephone.$valid }">
+                <label>{{ trans('admissions.telephone') }}</label>
+                <input type="text" name="telephone" class="form-control" ng-model="applicant.telephone" phone-validate required>
+                <p ng-show="pinf.telephone.$invalid && !pinf.telephone.$pristine" class="help-block">{{ trans('validation.digits', [ 'attribute' => trans('admissions.telephone'), 'digits' => 10 ]) }}</p>
+            </div>
+            <div class="form-group col-lg-4" ng-class="{ 'has-error' : pinf.celphone.$invalid && !pinf.celphone.$pristine , 'has-success':pinf.celphone.$valid }">
+                <label>{{ trans('admissions.celphone') }}</label>
+                <input type="text" name="celphone" class="form-control" ng-model="applicant.celphone" phone-validate required>
+                <p ng-show="pinf.celphone.$invalid && !pinf.celphone.$pristine" class="help-block">{{ trans('validation.digits', [ 'attribute' => trans('admissions.celphone'), 'digits' => 10 ]) }}</p>
+            </div>
+        </div>
+        <div class="col-lg-12">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <a class="btn btn-danger pull-right" data-ng-click="back()"> {{ trans('admissions.back') }}</a>
             </div>
