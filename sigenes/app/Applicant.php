@@ -19,6 +19,7 @@ class Applicant extends Model
         'num_ext', 'colony', 'zip', 'country_id', 'state_id',
         'city_id', 'school_name', 'specialty', 'month_start', 'year_start',
         'month_end', 'year_end', 'average', 'career_id', 'observations',
+        'account_number'
     ];
 
 

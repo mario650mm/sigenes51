@@ -26,6 +26,7 @@ class CreateApplicants extends Migration
             $table->string('telephone', 25);
             $table->string('celphone', 25);
             $table->integer('nss');
+            $table->integer('account_number');
             $table->enum('maritalstatus',
                 ['Casado', 'Soltero', 'Divorciado', 'Viudo']);
             $table->string('street', 30);

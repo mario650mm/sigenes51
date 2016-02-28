@@ -12,14 +12,21 @@
         </div>
     </a>
     <a class="step" data-ng-class="{active: step == 3}">
-        <i class="student icon" data-ng-class="{blue: step == 3}"></i>
+        <i class="building icon" data-ng-class="{blue: step == 3}"></i>
+        <div class="content">
+            <div class="title">{{ trans('admissions.address') }}</div>
+            <div class="description">{{ trans('admissions.enter_personal_address') }}</div>
+        </div>
+    </a>
+    <a class="step" data-ng-class="{active: step == 4}">
+        <i class="student icon" data-ng-class="{blue: step == 4}"></i>
         <div class="content">
             <div class="title">{{ trans('admissions.school_graduation') }}</div>
             <div class="description">{{ trans('admissions.enter_school_graduation') }}</div>
         </div>
     </a>
-    <a class="step" data-ng-class="{active: step == 4}">
-        <i class="file pdf outline icon" data-ng-class="{blue: step == 4}"></i>
+    <a class="step" data-ng-class="{active: step == 5}">
+        <i class="file pdf outline icon" data-ng-class="{blue: step == 5}"></i>
         <div class="content">
             <div class="title">{{ trans('admissions.documentation') }}</div>
             <div class="description">{{ trans('admissions.enter_documentation') }}</div>

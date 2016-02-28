@@ -23,9 +23,9 @@ Route::get('home', [
 require __DIR__ . '/routes/auth.php';
 require __DIR__ . '/routes/admissions.php';
 require __DIR__ . '/routes/users.php';
-
-
-
+require __DIR__ . '/routes/countrys.php';
+require __DIR__ . '/routes/states.php';
+require __DIR__ . '/routes/citys.php';
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 

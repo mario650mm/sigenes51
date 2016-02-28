@@ -54,6 +54,25 @@ angular.module('EnesAuth')
             }
         }
     })
+    .directive('curpValidate', function() {
+        return {
+            restrice: 'A',
+            require: 'ngModel',
+            link: function(scope, element, attrs, ngModel) {
+                ngModel.$parsers.unshift(function(viewValue){
+                    var curpregex = /^[A-Z]{1}[AEIOU]{1}[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[HM]{1}(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[B-DF-HJ-NP-TV-Z]{3}[0-9A-Z]{1}[0-9]{1}$/;
+                    if(curpregex.test(viewValue)) {
+                        ngModel.$setValidity('curpcheck', true);
+                        return viewValue;
+                    }
+                    else{
+                        ngModel.$setValidity('curpcheck', false);
+                        return undefined;
+                    }
+                });
+            }
+        }
+    })
     .directive('ladaValidate', function() {
         return {
             restrice: 'A',
@@ -193,6 +212,44 @@ angular.module('EnesAuth')
             require: 'ngModel',
             link: function(scope, element, attrs, ngModel) {
                 var numberregex =  /^(0|[1-9][0-9]*)$/;
+                ngModel.$parsers.unshift(function(viewValue){
+                    if(numberregex.test(viewValue)) {
+                        ngModel.$setValidity('numbercheck', true);
+                        return viewValue;
+                    }
+                    else{
+                        ngModel.$setValidity('numbercheck', false);
+                        return undefined;
+                    }
+                });
+            }
+        }
+    })
+    .directive('accountValidate', function() {
+        return {
+            restrice: 'A',
+            require: 'ngModel',
+            link: function(scope, element, attrs, ngModel) {
+                var numberregex =  /^[0-9]{9}$/;
+                ngModel.$parsers.unshift(function(viewValue){
+                    if(numberregex.test(viewValue)) {
+                        ngModel.$setValidity('numbercheck', true);
+                        return viewValue;
+                    }
+                    else{
+                        ngModel.$setValidity('numbercheck', false);
+                        return undefined;
+                    }
+                });
+            }
+        }
+    })
+    .directive('nssValidate', function() {
+        return {
+            restrice: 'A',
+            require: 'ngModel',
+            link: function(scope, element, attrs, ngModel) {
+                var numberregex =  /^[0-9]{11}$/;
                 ngModel.$parsers.unshift(function(viewValue){
                     if(numberregex.test(viewValue)) {
                         ngModel.$setValidity('numbercheck', true);

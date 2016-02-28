@@ -18,9 +18,12 @@
                             @include('templates.admissions.partials.personal_information')
                         </div>
                         <div data-ng-show="step == 3">
-                            @include('templates.admissions.partials.school_graduation')
+                            @include('templates.admissions.partials.address_information')
                         </div>
                         <div data-ng-show="step == 4">
+                            @include('templates.admissions.partials.school_graduation')
+                        </div>
+                        <div data-ng-show="step == 5">
                             @include('templates.admissions.partials.documentation')
                         </div>
                     </div>
