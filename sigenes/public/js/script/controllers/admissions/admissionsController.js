@@ -7,7 +7,7 @@ angular.module('EnesAuth')
                                     statesFactory, citysFactory,
                                     admissionFactory,
                                     Notification) {
-        $scope.step=1;
+        $scope.step = 1;
         $scope.countrys = [];
         $scope.states = [];
         $scope.citys = [];
@@ -73,6 +73,12 @@ angular.module('EnesAuth')
         $scope.submitForm = function(isValid) {
             if (isValid) {
             }
+        };
+
+        $scope.onLoad = function (e, reader, file, fileList, fileOjects, fileObj) {
+            Notification.success({
+                message: 'Archivo adjuntado correctamente.',
+                delay: 5000});
         };
 
     });

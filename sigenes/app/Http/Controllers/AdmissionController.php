@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
+use App\AttachmentApplicants;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -39,8 +40,30 @@ class AdmissionController extends Controller
     public function store(Request $request)
     {
         try{
-            Applicant::create($request->all());
-            return ['created' => true];
+
+            $applicant = Applicant::create($request->all());
+
+            // Insert official_identification
+            AttachmentApplicants::create(['applicant_id' =>  $applicant->id,
+            'attachment_type_id' => 1,
+            'document' => $request->input('official_identification')['base64']]);
+
+            // Insert birth_certificate
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 2,
+                'document' => $request->input('official_identification')['base64']]);
+
+            // Insert high_school_certificate
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 3,
+                'document' => $request->input('official_identification')['base64']]);
+
+            // Insert curp_file
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 4,
+                'document' => $request->input('official_identification')['base64']]);
+
+            return \Response::json(['created' => true], 200);
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
             return \Response::json(['created' => false], 500);

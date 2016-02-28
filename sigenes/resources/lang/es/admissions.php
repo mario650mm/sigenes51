@@ -106,5 +106,8 @@ return [
     'account_number'=> 'No. de Cuenta',
     'address'=> 'Dirección',
     'enter_personal_address'=> 'Introduce la información de domicilio',
+    'official_identification' => 'Identificación Oficial',
+    'birth_certificate' => 'Acta de Nacimiento',
+    'high_school_certificate' => 'Certificado de bachillerato',
 
 ];

@@ -99,6 +99,21 @@
                 font-size: 1.5em;
             }
         }
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
 
     </style>
     <script>
@@ -165,6 +180,7 @@
 <script src="{{ asset('js/script/lib/angular-route.min.js') }}"></script>
 <script src="{{ asset('js/script/lib/ui-bootstrap-112.min.js') }}"></script>
 <script src="{{ asset('js/script/lib/angular-animate.min.js') }}"></script>
+<script src="{{ asset('bower_components/angular-base64-upload/dist/angular-base64-upload.js') }}"></script>
 <script src="{{ asset('js/script/app_auth.js') }}"></script>
 <script src="{{ asset('bower_components/angular-ui-notification/dist/angular-ui-notification.min.js') }}"></script>
 <script src="{{ asset('js/script/directives/directiveEnesAuth.js') }}"></script>
