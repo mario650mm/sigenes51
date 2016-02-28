@@ -1,16 +1,17 @@
-<div class="ui basic modal" id="delete">
+<div class="ui basic modal" id="cancel">
     
     <div class="header">
-        Cancel of the {{trans('low.title')}}
+        Cancelacion de @{{ entity.transact}}
     </div>
     <div class="image content">
         <div class="image">
-            <i class="user icon"></i>
+            <i class="trash icon"></i>
         </div>
         <div class="description">
             <p>
-                <h3>Se procederá a cancelar el proceso de suspension del alumno @{{ result.fullname }}<br>
-                con el número de cuenta @{{ result.account_number }}, desea continuar con la cancelación?</h3>
+               <h3> Se le informa que esta apunto de dar por cancelado esta
+                solicitud de @{{entity.tramint}}, <br>
+                iniciado el @{{entity.date}}, desea contunuar con la operación?</h3>  
             </p>
         </div>
     </div>
@@ -20,7 +21,7 @@
                 <i class="remove icon"></i>
                 No
             </div>
-            <div class="ui green basic inverted button" data-ng-click="actiondelete(result)"><!-- data-ng-click="deleteUser(user)"-->
+            <div class="ui green basic inverted button" data-ng-click="actiondelete()"><!-- data-ng-click="deleteUser(user)"-->
                 <i class="checkmark icon"></i>
                 Yes
             </div>

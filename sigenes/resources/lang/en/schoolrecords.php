@@ -32,6 +32,11 @@ return [
     'status'    =>  'Status',
     'controller'=>  'Controller',
     'date'      =>  'Date',
-    'tramint'   =>  'Tramint'
+    'tramint'   =>  'Tramint',
+    'header'    =>  'Validations',
+    'library'   =>  'Library',
+    'clinic'    =>  'Clinic',
+    'lab'       =>  'Lab',
+    'social'    =>  'Social services'
 
 ];

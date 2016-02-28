@@ -12,12 +12,15 @@
  */
 
  angular.module('Enes')
- 	.controller('suspensionAdminCtrl', function($scope, suspensionFactory){
+ 	.controller('suspensionAdminCtrl', function($scope, suspensionFactory, Notification){
  		$scope.showResult = [];
         $scope.entity = {};
         $scope.suspend = {};
         $scope.files = [];
         $scope.file = {};
+        $scope.isValidate = true;
+        $scope.isHidden = true;
+
  		// Fileds for search in user model
         $scope.availableSearchParams = [
             { key: "account_number", name: "Account", placeholder: "Account..." },
@@ -39,36 +42,22 @@
         	})
         }
 
+        $scope.changeShow = function(entity){
+            if (entity.estatus == 'Cancelado') {
+                return false;
+            }else{
+                return true;
+            }  
+        }
+
         $scope.showsuspen = function(suspend){
-            console.log("hola llegue al modal");
             $scope.entity = suspend;
-            //$scope.user = user;
             $('#show').modal('show');
         }
 
         $scope.deletesuspen = function(suspend){
-            console.log("hola llegue al modal");
-            //$scope.user = user;
-            
-            console.log($scope.showResult);
+            $scope.entity = suspend;
             $('#delete').modal('show');
-        }
-
-
-        $scope.uploadFiles = function() {
-            var files = angular.copy($scope.files);
-            if ($scope.file) {
-                files.push($scope.file);
-            }
-            if (files.length === 0) {
-                $window.alert('Please select files!');
-                return false;
-            }
-
-            for (var i = files.length - 1; i >= 0; i--) {
-                var file = files[i];
-                
-            }
         }
 
 
@@ -79,21 +68,92 @@
 
         $scope.finishsuspension = function(){
             $scope.suspend.status_id = 3;
-            $scope.suspend.period_id = $scope.entity.period_id
-            $scope.suspend.date_init = $scope.entity.date_init
-            $scope.suspend.id = $scope.entity.id
-            $scope.suspend.reason = $scope.entity.reason
-            $scope.suspend.student_id = $scope.entity.student
+            $scope.suspend.period_id = $scope.entity.period_id;
+            $scope.suspend.date_init = $scope.entity.date_init;
+            $scope.suspend.id = $scope.entity.id;
+            $scope.suspend.reason = $scope.entity.reason;
+            $scope.suspend.student_id = $scope.entity.student;
             $scope.suspend.evidence = $scope.file.base64;
             $scope.suspend.date_end = getDateSus();
-            console.log($scope.suspend);
-            
+            if (typeof($scope.suspend.library) == 'undefined') {
+                Notification.error({
+                    message: 'Seleccione si no tiene adeudos en la libreria',
+                    title: '<b>Error</b>',
+                    delay: 3000
+                });
+                return;
+            };
+            if (typeof($scope.suspend.lab) == 'undefined') {
+                Notification.error({
+                    message: 'Seleccione si no tiene adeudos en los laboratorios',
+                    title: '<b>Error</b>',
+                    delay: 3000
+                });
+                return;
+            };
+            if (typeof($scope.suspend.clinic) == 'undefined') {
+                Notification.error({
+                    message: 'Seleccione si no tiene adeudos en las clinicas',
+                    title: '<b>Error</b>',
+                    delay: 3000
+                });
+                return;
+            };
+            if (typeof($scope.suspend.social_services) == 'undefined') {
+                Notification.error({
+                    message: 'Seleccione si no tiene adeudos en el departamento de servicios sociales',
+                    title: '<b>Error</b>',
+                    delay: 3000
+                });
+                return;
+            };
+            if (typeof($scope.file.base64) == 'undefined') {
+                Notification.error({
+                    message: 'Es necesario que ingrese la evidencía',
+                    title: '<b>Error</b>',
+                    delay: 3000
+                });
+                return;
+            };
+
             suspensionFactory.update($scope.suspend)
             .success(function(data){
-                alert('Suspensión realizada!!');
-                
+                Notification.success({
+                    message: 'Se realizó la suspensión exitosamente!!!',
+                    title: 'Success', 
+                    delay: 5000
+                });
             })
             .error(function(error){
+                console.log(error);
+            })
+        }
+
+        $scope.actiondelete = function(){
+            $scope.suspend.status_id = 4;
+            $scope.suspend.period_id = $scope.entity.period_id;
+            $scope.suspend.date_init = $scope.entity.date_init;
+            $scope.suspend.id = $scope.entity.id;
+            $scope.suspend.reason = $scope.entity.reason;
+            $scope.suspend.student_id = $scope.entity.student;    
+            suspensionFactory.delete($scope.suspend)
+            .success(function(data){
+                console.log(data);
+                Notification.success({
+                    message: 'Se cancelo la suspensión exitosamente, para notar los cambios favor de refrescar la pagina.',
+                    title: 'Success', 
+                    delay: 5000
+                });
+
+                $scope.isValidate = false;
+
+            })
+            .error(function(error){
+                Notification.error({
+                    message: '<b>Error</b> <s>notificación</s>',
+                    title: '<u>Ocurrio un error al cancelar la suspensión!!!</u>',
+                    delay: 3000
+                });
                 console.log(error);
             })
         }

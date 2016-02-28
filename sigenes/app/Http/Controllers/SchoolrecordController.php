@@ -128,7 +128,12 @@ class SchoolrecordController extends Controller
             foreach ($result as $value) {
                 # code...
                 $value->fullname = $value->name . ' ' . $value->firstlastname . ' ' . $value->secondlastname;
-               // $value->name_period = $value->month_init . ' - ' . $value->month_end . ' '. $value->year;
+                if($value->record == 1){
+                    $value->tramint = "Constancía";
+                }else{
+                    if($value->credential == 1)
+                        $value->tramint = "Reposición";
+                }
                 //dd($value);
             }
 
@@ -153,8 +158,9 @@ class SchoolrecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        //dd($request);
         $schoolrecords = Schoolrecord::find($request->input('id'));
         $schoolrecords->update($request->all());
         return ['updated' => true];
@@ -166,9 +172,15 @@ class SchoolrecordController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Schoolrecord::destroy($id);
-        return ['deleted' => true];
+        try{
+            $schoolrecords = Schoolrecord::find($request->input('id'));
+            $schoolrecords->update($request->all());
+            Schoolrecord::destroy($request->input('id'));
+            return ['deleted' => true];
+        }catch(Exception $e){
+            return ['deleted' => false];
+        }
     }
 }

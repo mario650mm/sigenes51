@@ -19,7 +19,7 @@ angular.module('Enes')
                 return $http.put(HOST+'api/v1/records', record)
             },
             delete : function(record){
-                return $http.delete(HOST+'api/v1/records/' + record.id)
+                return $http.put(HOST+'api/v1/recorddelete', record)
             }
         }
     });

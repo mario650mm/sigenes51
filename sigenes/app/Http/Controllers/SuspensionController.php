@@ -184,9 +184,15 @@ class SuspensionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Suspension::destroy($id);
-        return ['deleted' => true];
+        try{
+            $suspension = Suspension::find($request->input('id'));
+            $suspension->update($request->all());
+            Suspension::destroy($request->input('id'));
+            return ['deleted' => true];
+        }catch(Exception $e){
+            return ['deleted' => false];
+        }
     }
 }

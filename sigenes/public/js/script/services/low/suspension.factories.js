@@ -21,8 +21,8 @@ angular.module('Enes')
                 
                 return $http.put(HOST+'api/v1/suspen', suspen)
             },
-            delete : function(user){
-                return $http.delete(HOST+'api/v1/suspen/' + user.id)
+            delete : function(suspen){
+                return $http.put(HOST+'api/v1/suspendelete', suspen)
             }
         }
     });

@@ -33,7 +33,8 @@
             </dir-pagination-controls>
         </div>
     </div>
-
+    @include('templates.admin.school_records.partials.validate')
+    @include('templates.admin.school_records.partials.delete')
     </div> 
 @endsection
 

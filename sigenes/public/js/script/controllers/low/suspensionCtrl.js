@@ -11,7 +11,7 @@
  * Controller of the principalApp
  */
 angular.module('Enes')
-    .controller('SuspensionsController', function ($scope, suspensionFactory) {
+    .controller('SuspensionsController', function ($scope, suspensionFactory, Notification) {
         $scope.periods      = {};
         $scope.period_ids;
         $scope.userSusp     = {};
@@ -134,10 +134,14 @@ angular.module('Enes')
             paramObject.status_id = 2;
             suspensionFactory.update(paramObject)
             .success(function(data){
-                alert("Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas.");
+                Notification.success({
+                    message: 'Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas.', 
+                    delay: 5000
+                });
                 initData(paramObject);
             })
             .error(function(error){
+
                 console.log(error);
             })
             
@@ -150,11 +154,19 @@ angular.module('Enes')
         $scope.save = function(period){
 
             if($scope.period_ids == -1 || typeof($scope.period_ids) == 'undefined'){
-                alert('Seleccione un periodo');
+                Notification.error({
+                    message: '<b>Error</b> <s>notificación</s>',
+                    title: '<u>Seleccione un periodo</u>',
+                    delay: 3000
+                });
                 return;
             }
             if(typeof($scope.reason) == 'undefined'){
-                alert('Es necesario la indicar la razon de la suspensión');
+                Notification.error({
+                    message: '<b>Error</b> <s>notificación</s>',
+                    title: '<u>Es necesario la indicar la razon de la suspensión</u>',
+                    delay: 3000
+                });
                 return;
             }
 
@@ -167,14 +179,21 @@ angular.module('Enes')
             .success(function(data){
                 console.log(data);
                 if(data){
-                    alert('Registro efectuado ');
+                    Notification.success({
+                        message: 'Registro efectuado.', 
+                        delay: 5000
+                    });
                     $scope.btnapply = !$scope.btnapply;
                     $scope.btnprint = !$scope.btnprint;
                     $scope.viewNote = !$scope.viewNote;
                 }
             })
             .error(function(error){
-                alert('un error ocurrio');
+                Notification.error({
+                    message: '<b>Error</b> <s>notificación</s>',
+                    title: '<u>Ocurrio un error al generar la suspensión</u>',
+                    delay: 5000
+                });
             })
         }
         
