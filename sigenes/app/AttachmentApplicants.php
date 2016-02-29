@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Country extends Model
+class AttachmentApplicants extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $table = 'countrys';
-    protected $fillable = ['code', 'name'];
 
+    protected $table='attachment_applicants';
+
+    protected $fillable=['applicant_id', 'attachment_type_id', 'document'];
 }

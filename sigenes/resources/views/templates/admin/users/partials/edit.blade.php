@@ -4,7 +4,7 @@
         @{{ user.name }}
     </div>
     <div class="content">
-        @include('templates.users.partials.inputs')
+        @include('templates.admin.users.partials.inputs')
     </div>
     <div class="actions">
         <div class="row">

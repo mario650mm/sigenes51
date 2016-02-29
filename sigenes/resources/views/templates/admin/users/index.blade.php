@@ -29,7 +29,7 @@
 
 @section('body_page')
         <div class="row">
-            @include('templates.users.partials.table')
+            @include('templates.admin.users.partials.table')
             <div class="text-center">
                 <dir-pagination-controls
                         max-size="15"
@@ -38,9 +38,9 @@
                 </dir-pagination-controls>
             </div>
         </div>
-        @include('templates.users.partials.show')
-        @include('templates.users.partials.edit')
-        @include('templates.users.partials.delete')
+        @include('templates.admin.users.partials.show')
+        @include('templates.admin.users.partials.edit')
+        @include('templates.admin.users.partials.delete')
     </div>
 @endsection
 
