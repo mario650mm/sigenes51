@@ -6,6 +6,7 @@ use App\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class TeacherController extends Controller
 {
@@ -36,7 +37,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.teachers.create');
     }
 
     /**
@@ -47,7 +48,29 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [
+            'email'     => 'required|email',
+        ];
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return [
+                    'created' => false,
+                    'errors'  => $validator->errors()->all()
+                ];
+            }
+
+            Teacher::create($request->all());
+            return ['created' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating user: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**
@@ -58,7 +81,7 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        //
+        return Teacher::findOrFail($id);
     }
 
     /**
@@ -69,7 +92,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('templates.teachers.partials.edit');
     }
 
     /**
@@ -79,9 +102,11 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = Teacher::find($request->input('id'));
+        $user->update($request->all());
+        return ['updated' => true];
     }
 
     /**
@@ -92,6 +117,7 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Teacher::destroy($id);
+        return ['deleted' => true];
     }
 }
