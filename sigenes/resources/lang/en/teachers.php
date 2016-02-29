@@ -1,7 +1,7 @@
 <?php
 return [
     "title" => "Teachers",
-    "number_account" => "Nu.Account",
+    "number_account" => "No.Account",
     "email" => "Email",
     "create_teacher" => "Create Teacher",
     "teacher" => "Teacher",

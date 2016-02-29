@@ -1,6 +1,7 @@
 <?php
 return[
     "controllers" => "Controles",
+    "create" => "Crear",
     "cancel" => "Cancelar",
     "edit" => "Editar",
     "save" => "Guardar",
