@@ -11,7 +11,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <div class="checkbox primary">
-                                <label><input type="checkbox" data-ng-model="record.library" >{{trans('schoolrecords.library')}}</label>
+                                <label><input type="checkbox" data-ng-model="record.library" >{{trans('schoolrecords.library')}} </label>
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox" data-ng-model="record.lab">{{trans('schoolrecords.lab')}}</label>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" data-ng-hide="isHiden">
                 <div class=" col-lg-10 col-lg-offset-1 "> 
                     <input class="form-control" 
                     type="file" 
@@ -37,9 +37,22 @@
                     maxsize="500" accept="image/*">    
                 </div>
             </div>
+            <div class="row" data-ng-show="isHiden">
+                <div class=" col-lg-10 col-lg-offset-1 ">
+                    <button class="btn btn-primary">
+                        <span class="glyphicon glyphicon-download"></span> Download
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="actions" data-ng-hide="showval(result)">
+    <div class="actions" data-ng-hide="isHiden">
         @include('templates.admin.school_records.partials.inputs')
     </div>
 </div>
+
+<?php
+    function hola(){
+        echo '<script > alert("hola");</script>';
+    }
+?>

@@ -16,7 +16,7 @@
  		$scope.showResult = [];
         $scope.entity = {};
         $scope.record = {};
-        //$scope.isVisible;
+        $scope.isHiden;
         $scope.file = {};
         $scope.schoolrecord = {};
 
@@ -33,10 +33,15 @@
         $scope.showData = function(){
         	schoolrecordFactory.getAllData()
         	.success(function(data){
+                console.log(data);
         		$scope.showResult = data;
         	})
         	.error(function(error){
-        		console.log(error);
+        		Notification.error({
+                    message: '<u>Ocurrio un error al realizar la cargar la información!!!</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
         	})
         }
 
@@ -67,12 +72,31 @@
                 $scope.isVisible = false;
             else
                 $scope.isVisible = true;
+
+            if (entity.estatus == 'Terminado') {
+                $scope.isHiden = true;
+                assingData(entity);
+            }else{
+                $scope.isHiden = false;
+            }
             $('#validate').modal('show');
         }
 
         $scope.deletemodal = function(entity){
             $scope.entity = entity;
             $('#cancel').modal('show');
+        }
+
+        var assingData = function(entity){
+            $scope.record.lab = true;
+            $scope.record.library = true;
+            $scope.record.clinic = true;
+            $scope.record.social_services = true;
+            //var image = entity.evidence;
+            //var blob = new Blob([image], {type: 'image/png'});
+            //$scope.record.evidence = new File([blob], 'imageFileName.png');
+            $scope.record.evidence = atob(entity.evidence);
+            console.log($scope.record.evidence);
         }
 
         $scope.actiondelete = function(){
@@ -165,7 +189,11 @@
                 });
             })
             .error(function(error){
-                console.log(error);
+                Notification.error({
+                    message: '<u>Ocurrio un error al finalizar el tramite!!!</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
             })
             
         }

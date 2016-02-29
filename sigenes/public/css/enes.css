@@ -1,3 +1,7 @@
 input:required{
     background-color:#ECE0F8 !important;
 }
+[ng-cloak]
+{
+display: none !important;
+}

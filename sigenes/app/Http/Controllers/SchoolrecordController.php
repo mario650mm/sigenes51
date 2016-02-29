@@ -111,17 +111,23 @@ class SchoolrecordController extends Controller
                 "transact_students.credential",
                 "transact_students.date", 
                 "transact_students.folio", 
+                "transact_students.evidence", 
+                "transact_students.clinic", 
+                "transact_students.library", 
+                "transact_students.lab", 
+                "transact_students.social_services", 
                 "students.account_number", 
                 "transact_types.name as transact",
                 "status.name as estatus", 
+                "status.id as idstatus", 
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname"
                 ])
-            ->leftJoin("students", "transact_students.student_id", "=", "students.id")
-            ->leftJoin("transact_types", "transact_types.id", "=", "transact_students.transact_type_id")
-            ->leftJoin("status", "status.id", "=", "transact_students.status_id")
-            ->leftJoin("partners", "partners.id", "=", "students.partner_id")
+            ->join("students", "transact_students.student_id", "=", "students.id")
+            ->join("transact_types", "transact_types.id", "=", "transact_students.transact_type_id")
+            ->join("status", "status.id", "=", "transact_students.status_id")
+            ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("transact_students.status_id", "<>", 1)
             ->get();
 
@@ -134,7 +140,16 @@ class SchoolrecordController extends Controller
                     if($value->credential == 1)
                         $value->tramint = "Reposición";
                 }
-                //dd($value);
+                if ($value->idstatus == 3) {
+                    $image = 'data:image/png;base64,' . $value->evidence;
+                    list(, $image) = explode(';', $image); 
+                    list(, $image) = explode(',', $image);
+                    $image = base64_decode($image);
+                    //die($image);
+                   // $value->image =  $image;
+                    # code...
+                }
+                
             }
 
         return $result;
@@ -160,7 +175,6 @@ class SchoolrecordController extends Controller
      */
     public function update(Request $request)
     {
-        //dd($request);
         $schoolrecords = Schoolrecord::find($request->input('id'));
         $schoolrecords->update($request->all());
         return ['updated' => true];

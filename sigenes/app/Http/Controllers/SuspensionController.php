@@ -128,12 +128,23 @@ class SuspensionController extends Controller
     public function showAll(){
         $result = \DB::table('suspensions')
             ->select([
-                "suspensions.id", "suspensions.student_id as student", 
-                "students.account_number", "periods.month_init", 
-                "periods.month_end", "periods.year",
-                "status.name as estatus", "suspensions.reason", 
-                "suspensions.date_init", "suspensions.period_id", 
-                "partners.name", "partners.firstlastname", 
+                "suspensions.id", 
+                "suspensions.student_id as student", 
+                "students.account_number", 
+                "periods.month_init", 
+                "periods.month_end", 
+                "periods.year",
+                "status.name as estatus", 
+                "suspensions.reason", 
+                "suspensions.date_init", 
+                "suspensions.period_id",
+                "suspensions.evidence", 
+                "suspensions.clinic", 
+                "suspensions.library", 
+                "suspensions.lab", 
+                "suspensions.social_services",  
+                "partners.name", 
+                "partners.firstlastname", 
                 "partners.secondlastname"
                 ])
             ->leftJoin("students", "suspensions.student_id", "=", "students.id")
