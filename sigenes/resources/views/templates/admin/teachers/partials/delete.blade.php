@@ -19,7 +19,7 @@
             </div>
             <div class="ui green basic inverted button" data-ng-click="deleteTeacher(teacher)">
                 <i class="checkmark icon"></i>
-                Yes
+                @lang('generals.yes')
             </div>
         </div>
     </div>

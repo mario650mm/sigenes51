@@ -16,7 +16,10 @@ angular.module('Enes')
                 $scope.teachers=data;
             })
             .error(function(error){
-                console.log(error);
+                Notification.error(
+                    {message: '<b>Error</b> <s>notificación</s>',
+                        title: '<u>Error de cargar lista de profesores</u>',
+                        delay: 5000});
             });
 
         $scope.save = function(teacher){
