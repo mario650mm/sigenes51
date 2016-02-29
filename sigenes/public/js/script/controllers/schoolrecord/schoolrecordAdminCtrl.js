@@ -92,11 +92,7 @@
             $scope.record.library = true;
             $scope.record.clinic = true;
             $scope.record.social_services = true;
-            //var image = entity.evidence;
-            //var blob = new Blob([image], {type: 'image/png'});
-            //$scope.record.evidence = new File([blob], 'imageFileName.png');
             $scope.record.evidence = atob(entity.evidence);
-            console.log($scope.record.evidence);
         }
 
         $scope.actiondelete = function(){

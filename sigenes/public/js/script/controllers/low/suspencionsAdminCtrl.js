@@ -76,11 +76,8 @@
             $scope.suspend.library = true;
             $scope.suspend.clinic = true;
             $scope.suspend.social_services = true;
-            //var image = entity.evidence;
-            //var blob = new Blob([image], {type: 'image/png'});
-            //$scope.suspend.evidence = new File([blob], 'imageFileName.png');
-            //$scope.suspend.evidence = atob(entity.evidence);
-            //console.log($scope.suspend.evidence);
+            $scope.suspend.evidence = atob(entity.evidence);
+            
         }
 
         $scope.showsuspen = function(suspend){

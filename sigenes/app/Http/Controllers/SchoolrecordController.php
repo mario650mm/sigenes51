@@ -145,8 +145,7 @@ class SchoolrecordController extends Controller
                     list(, $image) = explode(';', $image); 
                     list(, $image) = explode(',', $image);
                     $image = base64_decode($image);
-                    //die($image);
-                   // $value->image =  $image;
+                    
                     # code...
                 }
                 
