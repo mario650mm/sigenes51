@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Teacher;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,17 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return view('templates.teachers.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllData()
+    {
+        return Teacher::all();
     }
 
     /**
