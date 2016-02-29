@@ -18,7 +18,7 @@
 @endsection
 
 @section('body_page')
-    @include('templates.users.partials.inputs')
+    @include('templates.admin.users.partials.inputs')
 @endsection
 
 @section('end_angular_controller')

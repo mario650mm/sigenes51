@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html data-ng-app="EnesAuth">
+<html data-ng-app="EnesAuth" ng-cloak>
 <head>
     <!-- Standard Meta -->
     <meta charset="utf-8" />
@@ -14,7 +14,10 @@
     <script src="{{ asset('css/semantic/dist/semantic.min.js') }}"></script>
 
     <style type="text/css">
-
+        [ng-cloak]
+        {
+            display: none !important;
+        }
         .hidden.menu {
             display: none;
         }

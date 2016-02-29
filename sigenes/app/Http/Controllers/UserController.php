@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('templates.users.index');
+        return view('templates.admin.users.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('templates.users.create');
+        return view('templates.admin.users.create');
     }
 
     /**
@@ -98,7 +98,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('templates.users.edit');
+        return view('templates.admin.users.edit');
     }
 
     /**
