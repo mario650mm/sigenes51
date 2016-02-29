@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Partner;
-use App\Teacher;
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
 
-class TeacherController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +17,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('templates.admin.teachers.index');
+        //
     }
 
     /**
@@ -29,7 +27,7 @@ class TeacherController extends Controller
      */
     public function getAllData()
     {
-        return Teacher::all();
+        return Partner::all();
 
     }
 
@@ -40,7 +38,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('templates.admin.teachers.create');
+        //
     }
 
     /**
@@ -51,30 +49,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-
-        if (!is_array($request->all())) {
-            return ['error' => 'request must be an array'];
-        }
-
-        $rules = [
-            'email'     => 'required|email',
-        ];
-
-        try{
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
-                return [
-                    'created' => false,
-                    'errors'  => $validator->errors()->all()
-                ];
-            }
-            $partner = Partner::all();
-            Teacher::create(['partner_id' =>  $partner->id]);
-            return ['created' => true];
-        }catch (Exception $e){
-            \Log::info('Error creating user: '.$e);
-            return \Response::json(['created' => false], 500);
-        }
+        //
     }
 
     /**
@@ -85,7 +60,7 @@ class TeacherController extends Controller
      */
     public function show($id)
     {
-        return Teacher::findOrFail($id);
+        //
     }
 
     /**
@@ -96,7 +71,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        return view('templates.admin.teachers.partials.edit');
+        //
     }
 
     /**
@@ -106,11 +81,9 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $teacher = Teacher::find($request->input('id'));
-        $teacher->update($request->all());
-        return ['updated' => true];
+        //
     }
 
     /**
@@ -121,7 +94,6 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        Teacher::destroy($id);
-        return ['deleted' => true];
+        //
     }
 }

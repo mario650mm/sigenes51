@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Enes')
-    .controller('TeachersController', function ($scope, teacherFactory, Notification) {
+    .controller('TeachersController', function ($scope, teacherFactory,partnersFactory,Notification) {
         $scope.teacher = {};
         $scope.teachers = [];
 
@@ -21,6 +21,19 @@ angular.module('Enes')
                         title: '<u>Error de cargar lista de profesores</u>',
                         delay: 5000});
             });
+
+
+            partnersFactory.getAllData()
+                .success(function(data){
+                    $scope.partners = data;
+                })
+                .error(function(error){
+                    Notification.error(
+                        {message: '<b>Error!</b> Problemas de conexión',
+                            title: '<b>Error</b>',
+                            delay: 5000});
+                });
+
 
         $scope.save = function(teacher){
             teacherFactory.save(teacher)

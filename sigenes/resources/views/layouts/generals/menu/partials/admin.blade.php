@@ -3,6 +3,10 @@
     <div class="menu">
         <a class="item" href="{{ route('users.index') }}">{{ trans('users.title') }}</a>
     </div>
+	<div class="header"><i class="fa fa-user-secret"></i> @lang('teachers.title')</div>
+	<div class="menu">
+		<a class="item" href="{{ route('teachers.index') }}">   @lang('teachers.title')</a>
+	</div>
 </div>
 <div class="item">
 	<div class="header"> <i class="browser icon"></i> {{ trans('low.header') }}</div>

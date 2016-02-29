@@ -24,6 +24,10 @@ class Partner extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function Teacher(){
+        return $this->hasOne('App\Teacher');
+    }
+
 
 
 }

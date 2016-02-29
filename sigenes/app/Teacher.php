@@ -29,4 +29,9 @@ class Teacher extends Model
      * @var array
      */
     protected $fillable = ['noAccount', 'email'];
+
+
+    public function Partner(){
+        return $this->hasOne('App\Partner');
+    }
 }

@@ -27,6 +27,7 @@ require __DIR__ . '/routes/countrys.php';
 require __DIR__ . '/routes/states.php';
 require __DIR__ . '/routes/citys.php';
 require __DIR__ . '/routes/teachers.php';
+require __DIR__ . '/routes/partners.php';
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
