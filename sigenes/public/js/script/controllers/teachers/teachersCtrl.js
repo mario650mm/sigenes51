@@ -1,34 +1,28 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name EnesAuth.controller:Administrator
- * @description
- * # DeleteTeacherCtrl
- */
 angular.module('Enes')
-    .controller('TeachersController', function ($scope, userFactory, Notification) {
+    .controller('TeachersController', function ($scope, teacherFactory, Notification) {
         $scope.teacher = {};
         $scope.teachers = [];
 
         // Fileds for search in user model
         $scope.availableSearchParams = [
             { key: "noAccount", name: "noAccount", placeholder: "No Account" },
-            { key: "email", name: "email", placeholder: "Email Address" }
+            { key: "email", name: "email", placeholder: "E-Mail..." }
         ];
 
-        userFactory.getAllTeachers()
+        teacherFactory.getAllTeachers()
             .success(function(data){
-                $scope.users=data;
+                $scope.teachers=data;
             })
             .error(function(error){
                 console.log(error);
             });
 
         $scope.save = function(teacher){
-            userFactory.save(teacher)
+            teacherFactory.save(teacher)
                 .success(function(data){
-                    Notification.success({message: 'Profesor '+ teacher.noAccount +' creado correctamente.', delay: 5000});
+                    Notification.success({message: 'Profesor '+ user.noAccount +' creado correctamente.', delay: 5000});
                 })
                 .error(function(error){
                     Notification.error(
@@ -39,24 +33,24 @@ angular.module('Enes')
         }
 
         $scope.editTeacher = function(teacher){
-            userFactory.update(teacher)
+            teacherFactory.update(teacher)
                 .success(function(data){
                     $('#edit').modal('hide');
-                    Notification.success({message: 'Profesor '+ teacher.noAccount+' actualizado correctamente.', delay: 5000});
+                    Notification.success({message: 'Profesor '+ user.noAccount +' actualizado correctamente.', delay: 5000});
                 })
                 .error(function(error){
                     Notification.error(
                         {message: '<b>Error</b> <s>notificación</s>',
-                            title: '<u>Error al actualizar el usuario</u>',
+                            title: '<u>Error al actualizar el Profesor</u>',
                             delay: 5000});
                 })
         }
 
-        $scope.deleteTeacher = function(user){
-            userFactory.delete(user)
+        $scope.deleteTeacher = function(teacher){
+            teacherFactory.delete(teacher)
                 .success(function(data){
                     $('#delete').modal('hide');
-                    Notification.success({message: 'Profesor '+ teacher.noAccount +' eliminado correctamente.', delay: 5000});
+                    Notification.success({message: 'Profesor '+ user.noAccount +' eliminado correctamente.', delay: 5000});
                 })
                 .error(function(error){
                     Notification.error(
@@ -77,7 +71,7 @@ angular.module('Enes')
             $('#show').modal('show');
         }
 
-        $scope.deleteUserModal = function(teacher){
+        $scope.deleteTeacherModal = function(teacher){
             $scope.teacher = teacher;
             $('#delete').modal('show');
         }

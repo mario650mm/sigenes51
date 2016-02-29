@@ -24,11 +24,11 @@
 
         @section('body_page')
             <div class="row">
-                @include('templates.teachers.partials.table')
+                @include('templates.admin.teachers.partials.table')
             </div>
-            @include('templates.teachers.partials.show')
-            @include('templates.teachers.partials.edit')
-            @include('templates.teachers.partials.delete')
+            @include('templates.admin.teachers.partials.show')
+            @include('templates.admin.teachers.partials.edit')
+            @include('templates.admin.teachers.partials.delete')
     </div>
     @endsection
 

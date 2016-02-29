@@ -1,5 +1,9 @@
+/**
+ * Created by taxque on 9/02/16.
+ */
+
 angular.module('Enes')
-    .factory('userFactory', function (HOST, $http) {
+    .factory('teacherFactory', function (HOST, $http) {
         return{
             getAllTeachers : function(){
                 return $http.get(HOST+'api/v1/teachers')

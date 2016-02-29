@@ -17,7 +17,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('templates.teachers.index');
+        return view('templates.admin.teachers.index');
     }
 
     /**
@@ -37,7 +37,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('templates.teachers.create');
+        return view('templates.admin.teachers.create');
     }
 
     /**
@@ -92,7 +92,7 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        return view('templates.teachers.partials.edit');
+        return view('templates.admin.teachers.partials.edit');
     }
 
     /**
@@ -104,8 +104,8 @@ class TeacherController extends Controller
      */
     public function update(Request $request)
     {
-        $user = Teacher::find($request->input('id'));
-        $user->update($request->all());
+        $teacher = Teacher::find($request->input('id'));
+        $teacher->update($request->all());
         return ['updated' => true];
     }
 
