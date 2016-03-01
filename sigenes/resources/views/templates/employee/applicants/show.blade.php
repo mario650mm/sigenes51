@@ -39,7 +39,6 @@
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.celphone') }}: </strong> @{{ applicant.celphone }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.nss') }}: </strong> @{{ applicant.nss }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.maritalstatus') }}: </strong> @{{ applicant.maritalstatus }}</a>
-                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.rfc') }}: </strong> @{{ applicant.rfc }}</a>
                         </div>
                         <div class="list-group">
                             <a href="#" class="list-group-item disabled">
@@ -72,16 +71,16 @@
                 </div>
                 <div class="col-lg-7 col-md-7">
                     <div class="column">
-                        <h1>Documents</h1>
                         <div class="col-lg-9">
-                            <iframe src="{{ asset('resources/ejemplo.pdf')}}" style="min-height: 700px; width: 100%"></iframe>
+                            <iframe src="{{ asset('resources/ejemplo.pdf')}}" style="min-height: 700px; width: 100%" name="documentView"></iframe>
                         </div>
                         <div class="col-lg-3">
-                            <ul>
-                                <li>IFE</li>
-                                <li>Acta de nacimiento</li>
-                                <li>Certificado de bachillerato</li>
-                                <li>Curp</li>
+                            <h1>Documents</h1>
+                            <ul class="list-group">
+                                <a href="{{ asset('resources/ifeejemplo.pdf')}}" class="list-group-item" target="documentView">IFE</a>
+                                <a href="{{ asset('resources/actaejemplo.pdf')}}" class="list-group-item" target="documentView">Acta de nacimiento</a>
+                                <a href="{{ asset('resources/certificadoejemplo.pdf')}}" class="list-group-item" target="documentView">Certificado de bachillerato</a>
+                                <a href="{{ asset('resources/curpejemplo.pdf')}}" class="list-group-item" target="documentView">Curp</a>
                             </ul>
                         </div>
                     </div>

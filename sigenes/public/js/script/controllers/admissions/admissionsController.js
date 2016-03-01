@@ -6,7 +6,7 @@ angular.module('EnesAuth')
                                     $scope, countryFactory,
                                     statesFactory, citysFactory,
                                     admissionFactory,
-                                    Notification) {
+                                    Notification, $window) {
         $scope.step = 1;
         $scope.countrys = [];
         $scope.states = [];
@@ -53,6 +53,7 @@ angular.module('EnesAuth')
                     Notification.success({
                         message: 'Registro '+ applicant.name +' creado correctamente.',
                         delay: 5000});
+                    $window.location.href = 'api/v1/admissions/createPdfAdmission/'+data.applicant_id;
                 })
                 .error(function(error){
                     Notification.error(
