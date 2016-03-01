@@ -49,7 +49,7 @@ class User extends Model implements AuthenticatableContract,
 
 
     public function is($type){
-        return $this->type === $type;
+        return $this->type === $type or $this->type === 'admin';
     }
 
      public function Partner(){

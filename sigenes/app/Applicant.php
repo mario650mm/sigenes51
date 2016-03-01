@@ -22,5 +22,12 @@ class Applicant extends Model
         'account_number'
     ];
 
+    public function attachment(){
+        return $this->hasMany('App\AttachmentApplicants');
+    }
 
+    public function getFullNameAttribute()
+    {
+        return $this->name.' '.$this->firstlastname.' '.$this->secondlastname;
+    }
 }
