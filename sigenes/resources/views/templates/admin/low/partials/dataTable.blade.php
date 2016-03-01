@@ -27,15 +27,20 @@
                 <td>@{{ result.estatus }}</td>
                 <td>@{{ result.name_period }}</td>
                 <td>@{{ result.date_init }}</td>
-                <td>78</td>
+                <td>Odontología</td>
                 <td>
                     <div align="center" data-ng-show="changeShow(result)">
-                        <a data-ng-click="showsuspen(result)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Validar suspensión"></span></a>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <a data-ng-click="deletesuspen(result)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Eliminar tramite"></span></a>
+                        <div data-ng-show="showval(result)">
+                            <a data-ng-click="showsuspen(result)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Validar suspensión"></span></a>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            <a data-ng-click="deletesuspen(result)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Eliminar tramite"></span></a>
+                        </div>
+                    </div>
+                    <div align="center"  data-ng-hide="showval(result)">
+                        <a data-ng-click="showValidate(result)" ><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Ver tramite"></span></a>
                     </div>
                     <div data-ng-hide="changeShow(result)">
                         <p align="justify">

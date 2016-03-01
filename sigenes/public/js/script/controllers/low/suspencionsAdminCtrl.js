@@ -34,11 +34,15 @@
             var con = 0;
         	suspensionFactory.getAllSuspensions()
         	.success(function(data){
-        		console.log(data);
+        		
         		$scope.showResult = data;
         	})
         	.error(function(error){
-        		console.log(error);
+        		Notification.error({
+                    message: '<u>Ocurrio un error al cargar la información</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
         	})
         }
 
@@ -50,8 +54,35 @@
             }  
         }
 
+        $scope.showval = function(entity){
+            if (entity.estatus == 'Terminado') {
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        $scope.showValidate = function(entity){
+            console.log('llego');
+            $scope.entity = entity;
+                $scope.isHiden = true;
+                assingData(entity);
+            
+            $('#show').modal('show');
+        }
+
+        var assingData = function(entity){
+            $scope.suspend.lab = true;
+            $scope.suspend.library = true;
+            $scope.suspend.clinic = true;
+            $scope.suspend.social_services = true;
+            $scope.suspend.evidence = atob(entity.evidence);
+            
+        }
+
         $scope.showsuspen = function(suspend){
             $scope.entity = suspend;
+            $scope.isHiden = false;
             $('#show').modal('show');
         }
 
@@ -125,7 +156,11 @@
                 });
             })
             .error(function(error){
-                console.log(error);
+                Notification.error({
+                    message: '<u>Ocurrio un error al realizar la suspensión!!!</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
             })
         }
 
@@ -138,15 +173,12 @@
             $scope.suspend.student_id = $scope.entity.student;    
             suspensionFactory.delete($scope.suspend)
             .success(function(data){
-                console.log(data);
                 Notification.success({
                     message: 'Se cancelo la suspensión exitosamente, para notar los cambios favor de refrescar la pagina.',
                     title: 'Success', 
                     delay: 5000
                 });
-
                 $scope.isValidate = false;
-
             })
             .error(function(error){
                 Notification.error({
@@ -154,7 +186,6 @@
                     title: '<u>Ocurrio un error al cancelar la suspensión!!!</u>',
                     delay: 3000
                 });
-                console.log(error);
             })
         }
  	});

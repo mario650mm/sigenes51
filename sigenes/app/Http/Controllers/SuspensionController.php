@@ -128,18 +128,29 @@ class SuspensionController extends Controller
     public function showAll(){
         $result = \DB::table('suspensions')
             ->select([
-                "suspensions.id", "suspensions.student_id as student", 
-                "students.account_number", "periods.month_init", 
-                "periods.month_end", "periods.year",
-                "status.name as estatus", "suspensions.reason", 
-                "suspensions.date_init", "suspensions.period_id", 
-                "partners.name", "partners.firstlastname", 
+                "suspensions.id", 
+                "suspensions.student_id as student", 
+                "students.account_number", 
+                "periods.month_init", 
+                "periods.month_end", 
+                "periods.year",
+                "status.name as estatus", 
+                "suspensions.reason", 
+                "suspensions.date_init", 
+                "suspensions.period_id",
+                "suspensions.evidence", 
+                "suspensions.clinic", 
+                "suspensions.library", 
+                "suspensions.lab", 
+                "suspensions.social_services",  
+                "partners.name", 
+                "partners.firstlastname", 
                 "partners.secondlastname"
                 ])
-            ->leftJoin("students", "suspensions.student_id", "=", "students.id")
-            ->leftJoin("periods", "periods.id", "=", "suspensions.period_id")
-            ->leftJoin("status", "status.id", "=", "suspensions.status_id")
-            ->leftJoin("partners", "partners.id", "=", "students.partner_id")
+            ->join("students", "suspensions.student_id", "=", "students.id")
+            ->join("periods", "periods.id", "=", "suspensions.period_id")
+            ->join("status", "status.id", "=", "suspensions.status_id")
+            ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("suspensions.status_id", "<>", 1)
             ->get();
 

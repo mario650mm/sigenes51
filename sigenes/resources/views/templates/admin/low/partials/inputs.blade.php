@@ -3,7 +3,9 @@
     <div class="col-lg-4 col-xs-offset-8">
         <div class="form-group">
             <div class="col-lg-12">
-                <input type="button" class="btn btn-primary" id="suspender" value="Suspender" data-ng-click="finishsuspension()" >
+                <button type="button" class="btn btn-primary" id="suspender" data-ng-click="finishsuspension()" >
+                	<span class="glyphicon glyphicon-ok"></span> Suspender
+                </button>
             </div>
         </div>
     </div>

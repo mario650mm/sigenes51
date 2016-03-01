@@ -41,13 +41,17 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('student/low/pdf', 'PdfSuspensionController@index');
     Route::resource('student/low', 'SuspensionController@create');
     Route::resource('student/records', 'SchoolrecordController@create');
+
     Route::resource('admin/records', 'SchoolrecordController@index');
     Route::resource('admin/low', 'SuspensionController@index');
 
 
 });
+
+
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
