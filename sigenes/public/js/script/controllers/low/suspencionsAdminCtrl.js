@@ -154,6 +154,7 @@
                     title: 'Success', 
                     delay: 5000
                 });
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({
@@ -174,11 +175,13 @@
             suspensionFactory.delete($scope.suspend)
             .success(function(data){
                 Notification.success({
-                    message: 'Se cancelo la suspensión exitosamente, para notar los cambios favor de refrescar la pagina.',
+                    message: 'Se cancelo la suspensión exitosamente.',
                     title: 'Success', 
                     delay: 5000
                 });
+
                 $scope.isValidate = false;
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({

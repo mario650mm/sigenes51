@@ -46,5 +46,6 @@
     <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/low/suspencionsAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/applicants/applicantsController.js') }}"></script>
+    <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordAdminCtrl.js') }}"></script>
 
 @endif
