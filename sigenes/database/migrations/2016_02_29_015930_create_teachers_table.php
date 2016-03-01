@@ -14,8 +14,9 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('noAccount',25);
-            $table->string('email',25);
+            $table->string('noAccount', 25);
+            $table->string('email', 25);
+            $table->enum('type', ['Tiempo completo', 'Medio tiempo', 'Contrato']);
             $table->integer('partner_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();

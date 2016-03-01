@@ -14,6 +14,7 @@ Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function
     Route::post('teachers', 'TeacherController@store');
     Route::put('teachers', 'TeacherController@update');
     Route::delete('teachers/{id}', 'TeacherController@destroy');
-    Route::get('teachers', 'TeacherController@getAllData');
+    Route::get('teachersData', 'TeacherController@getAllData');
+    Route::get('teachers', 'TeacherController@getType');
 
 });

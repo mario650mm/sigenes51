@@ -28,7 +28,7 @@ class Teacher extends Model
      *
      * @var array
      */
-    protected $fillable = ['noAccount', 'email'];
+    protected $fillable = ['noAccount', 'email','type','partner_id'];
 
 
     public function Partner(){

@@ -2,11 +2,13 @@
     <tr>
         <th>@lang('teachers.number_account')</th>
         <th>@lang('teachers.email')</th>
+        <th>@lang('teachers.type')</th>
         <th width="10%">@lang('generals.controllers')</th>
     </tr>
     <tr data-ng-repeat="teacher in teachers">
         <td>@{{ teacher.noAccount }}</td>
         <td>@{{ teacher.email }}</td>
+        <td>@{{ teacher.type }}</td>
         <td>
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">

@@ -5,4 +5,6 @@ return [
     "email" => "Correo",
     "create_teacher" => "Crear Profesor",
     "teacher" => "Profesor",
+    "name" => "Nombre",
+    "type" => "Tipo",
 ];

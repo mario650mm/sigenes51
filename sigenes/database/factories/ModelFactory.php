@@ -55,3 +55,12 @@ $factory->define(App\Applicant::class, function (Faker\Generator $faker) {
         'career_id' => 1,
     ];
 });
+
+$factory->define(App\Teacher::class, function (Faker\Generator $faker) {
+    return [
+        'noAccount' => $faker->numberBetween($min=1200000,$max=1500000),
+        'email' => $faker->unique()->email,
+        'type' => $faker->randomElement(['Tiempo completo', 'Medio tiempo', 'Contrato']),
+        'partner_id' => $faker->numberBetween($min=1,$max=9),
+    ];
+});

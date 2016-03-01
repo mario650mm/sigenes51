@@ -29,7 +29,19 @@ class TeacherController extends Controller
      */
     public function getAllData()
     {
-        return Teacher::all();
+        $teacher = Teacher::all();
+        return $teacher;
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getType()
+    {
+        return Teacher::select('type')->get();
 
     }
 
@@ -68,8 +80,7 @@ class TeacherController extends Controller
                     'errors'  => $validator->errors()->all()
                 ];
             }
-            $partner = Partner::all();
-            Teacher::create(['partner_id' =>  $partner->id]);
+            Teacher::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
