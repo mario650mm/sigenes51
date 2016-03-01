@@ -1,4 +1,11 @@
 @extends('layouts.generals.main_template')
+@section('page_title')
+    {{trans('schoolrecords.title')}}
+@endsection
+
+@section('title')
+    {{trans('schoolrecords.title')}}
+@endsection
 
 @section('body_page')
 

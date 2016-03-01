@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="UTF-8">
-    <title>PDF Suspensions</title>
+    <title>PDF Credentials</title>
     <style>
         body {
             padding-left:  10px;
@@ -29,13 +29,14 @@
         <table style="width=100%">
             <tr>
                 <td style="width=25%">
-                    @include('templates.student.low.pdf.partials.imgEnes')
+                    @include('templates.student.schoolrecords.pdf.partials.imgEnes')
                 </td>       
-                <td style="width=50%">
+                <td style="width=75%">
                     <div  align="center">
-                        <b>Escuela Nacional de Estudios Superiores, Unidad León</b><br>
-                        <b>Departamento de AMINISTRACION ESCOLAR</b>
-                        <p>SOLICITUD DE SUSPENCION DE ESTUDIOS</p>
+                        <b>UNIVERSIDAD NACIONAL  AUTÓNOMA DE MÉXICO</b><br>
+                        <b>ESCUELA NACIONAL DE ESTUDIOS SUPERIORES</b>
+                        <b>DEPARTAMENTO DE ADMINISTRACION ESCOLAR</b>
+                        <p>REPOSICION DE CREDENCIAL</p>
                     </div>
                 </td>
                 
@@ -43,51 +44,104 @@
         </table>
         <br>
         <br>
-        <div align="justify">
+        <div align="right">
             <p>León, Guanajuato a los  {{ $data['actualdate'] }} días del mes de {{ $data['month']}} del año {{ $data['actualyear'] }}</p>
             <br>
             <br>
         </div>
-        <div align="left">
-            <b>H. Consejo Ténico de la Escuela Nacional de Estudios Superiores, Unidad León</b><br>
-            PRESENTE
-        </div>
-        <br>
+        <table width=100%>
+            <tr>
+                <td width=50%>
+                    <div align="left">
+                        Nombre del alumno:<br>
+                        Carrera: <br>
+                        No. cuenta: <br>
+                        Grupo: <br>
+                        Recibo de pago: <br>
+                    </div>
+                </td>
+                <td width=50%>
+                    <div align="center">
+                        {{ $data['fullname'] }}<br>
+                        {{ $data['career']}} <br>
+                        {{ $data['account_number'] }} <br>
+                        odo697 <br>
+                        {{ $data['folio'] }}
+                    </div>
+                </td>
+            </tr>  
+            <tr>
+                <td width=50%>
+                    <div align="center">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <hr size=3 width=70%>
+                        Firma de el estudiante<br>
+                    </div>
+                </td>
+                <td width=50%>
+                    <div align="center">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <hr size=3 width=70%>
+                        Firma del personal de Servicios Escolares<br> y sello
+                    </div>
+                </td>
+            </tr> 
+        </table>
+
+
         <div align="justify">
-            Por medio de la presente me permito solicitar ante ustedes autorización para suspender mis estudios por periodo
-            de <u>  {{ $data['name_period'] }}  </u>, a partir del día <u> {{ $data['date_init'] }} </u> hasta el fin del periodo  <u> {{ $data['name_period'] }} </u>
-            que corresponde al ciclo escolar   2015 - 2016, con base a lo establecido en el articulo 22, 23 y 25 del Reglemento
-            General de Inscripciones (R.G.I) vigente.
             <br>
             <br>
-            La solicitud ante ustedes se fundamenta en las siguientes razones: <br><br>
+            <br>
+            <br>
+            <br>
+            Teléfono:       {{ $data['telephone'] }} <br>
+            Correo electrónico:     {{ $data['email'] }}<br>
+            <br>
             
-            <u>{{ $data['reason'] }}</u><br><br>
-
-
-            Al término del periodo acepto mi reingreso en el año al que corresponde a mi plen de estudios y conforme a lo
-            establecido en el articulo 32 del R.G.I evitando afectaciones en los plazos señalados en el precepto legal mencionado
-            con el tiempo de estar inscrito en la Universidad y en la totalidad de los requisitos del ciclo educativo
-            en el que me encuentro inscrito.
         </div>
-        <br>
-        <br>
-        <br>
-        <div align="center">
-            <b>DATOS DEL ALUMNO</b>
-            <br>
-            <br>
-            <br>
-            Nombre: <u>{{ $data['fullname'] }} </u><br>
-            No. cuenta:  <u>   {{ $data['account_number'] }}     </u>     Carrera:  <u>{{ $data['career']}}</u>    <br>
-            Teléfono:   <u> {{ $data['telephone'] }} </u>    Celular:   <u>{{ $data['celphone'] }}</u>    <br>
-            Correo electrónico:   <u>{{ $data['email'] }}</u>            <br>
-            <br>
-            <br>
-            <br>
-            <hr size=3 width=35%>
-            Firma de el estudiante
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <div align="center">
+                        <br>
+                        <br>
+                        <br>
+                        <hr size=3 width=90%>
+                        Fecha y firma de recibido por el alumno
+                    </div>
+                </td>
+                
+                <td>
+                    <div align="center">
+                        <br>
+                        <br>
+                        <br>
+                        <hr size=3 width=90%>
+                        Fecha de solicitud a SDP
+                    </div>
+                    
+                </td>
+                <td>
+                    <div align="center">
+                        <br>
+                        <br>
+                        <br>
+                        <hr size=3 width=90%>
+                        Fecha de recepción ENES
+                    </div>
+                </td>
+            </tr> 
+        </table>
 
         <div class="page-break"></div>
         <hr>

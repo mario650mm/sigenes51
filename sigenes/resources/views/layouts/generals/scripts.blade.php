@@ -16,6 +16,11 @@
 
 
 @if(Auth::user()->type == 'employee')
+	<script src="{{ asset('js/script/services/schoolrecord/schoolrecord.factories.js') }}"></script>
+	<script src="{{ asset('js/script/services/low/suspension.factories.js') }}"></script>
+	<script src="{{ asset('js/script/controllers/low/suspencionsAdminCtrl.js') }}"></script>
+	<script src="{{ asset('js/script/services/schoolrecord/schoolrecord.factories.js') }}"></script>
+	<script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordAdminCtrl.js') }}"></script>
 @endif
 @if(Auth::user()->type == 'student')
 	<script src="{{ asset('js/script/services/low/suspension.factories.js') }}"></script>

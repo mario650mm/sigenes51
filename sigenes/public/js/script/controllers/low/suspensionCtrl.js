@@ -21,6 +21,8 @@ angular.module('Enes')
         $scope.btnprint     = false;
         $scope.btnapply     = true;
         $scope.validate;
+        $scope.information;
+        $scope.chance       = false;
 
         /**  
         *    funcion main que carga los datos 
@@ -78,6 +80,7 @@ angular.module('Enes')
                 $scope.userSusp.student = data.student.id;
                 $scope.userSusp.telephone = data.telephone;
                 $scope.userSusp.email = data.email1;
+                $scope.userSusp.career = 'Odontología';
                 $scope.validate = data.student.id;
                 getValidator($scope.validate);
                  
@@ -86,18 +89,28 @@ angular.module('Enes')
                 console.log(error);
             })  
         }
+        $scope.verification = function(entity){
+            updateSuspen(entity);
+        }
+
+        $scope.cancelveri = function(entity){
+            initData(entity)
+        }
 
         var getValidator = function(paramint){
+            $scope.notificateTitle = "Estatus de solicitud.";
+            $scope.elementText = "Su solitud actualmente se encuentra en un estado de borrador. \n" 
+            + "Desea cambiar el estatus de esta a tramitado para continuar con su debido" + 
+            " proceso?";
             suspensionFactory.getValidate(paramint)
             .success(function(data){
-                console.log(data);
                 if(data.status_id == 1){
-                    var chance = confirm("Su solitud esta en un estado de borrador. \n" 
-                        + "Desea dar pasar su tramite con una solicitud en su totalidad?");
-                    if (chance)
-                        updateSuspen(data);
-                    else
-                        initData(data);
+                    $scope.btnapply = false;
+                    $scope.information = data;
+                    Notification.info({
+                        message: "Estimado alumno", 
+                        templateUrl: "change_status.html", 
+                        scope: $scope});
                 }else{
                     initData(data);
                 }
@@ -120,10 +133,15 @@ angular.module('Enes')
             $scope.suspen.student_id = paramObject.student;
             $scope.suspen.status_id = paramObject.status_id;
             $scope.suspen.date_init= paramObject.date_init;
-
-            $scope.btnapply = !$scope.btnapply;
-            $scope.btnprint = !$scope.btnprint;
-            $scope.viewNote = !$scope.viewNote;
+            if ($scope.suspen.status_id == 1) {
+                $scope.btnapply = false;
+            }
+            if ($scope.suspen.status_id == 2) {
+                $scope.btnapply = false;
+                $scope.btnprint = !$scope.btnprint;
+                $scope.viewNote = !$scope.viewNote;
+            };
+            
         }
 
         /**
@@ -134,7 +152,8 @@ angular.module('Enes')
             paramObject.status_id = 2;
             suspensionFactory.update(paramObject)
             .success(function(data){
-                Notification.success({
+                Notification({
+                    title: 'Information',
                     message: 'Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas.', 
                     delay: 5000
                 });
@@ -155,16 +174,16 @@ angular.module('Enes')
 
             if($scope.period_ids == -1 || typeof($scope.period_ids) == 'undefined'){
                 Notification.error({
-                    message: '<b>Error</b> <s>notificación</s>',
-                    title: '<u>Seleccione un periodo</u>',
+                    message: '<u>Seleccione un periodo</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
                     delay: 3000
                 });
                 return;
             }
             if(typeof($scope.reason) == 'undefined'){
                 Notification.error({
-                    message: '<b>Error</b> <s>notificación</s>',
-                    title: '<u>Es necesario la indicar la razon de la suspensión</u>',
+                    message: '<u>Es necesario la indicar la razon de la suspensión</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
                     delay: 3000
                 });
                 return;
@@ -180,18 +199,17 @@ angular.module('Enes')
                 console.log(data);
                 if(data){
                     Notification.success({
+                        title: 'Success',
                         message: 'Registro efectuado.', 
                         delay: 5000
                     });
-                    $scope.btnapply = !$scope.btnapply;
-                    $scope.btnprint = !$scope.btnprint;
-                    $scope.viewNote = !$scope.viewNote;
+                    setTimeout('document.location.reload()',3000);
                 }
             })
             .error(function(error){
                 Notification.error({
-                    message: '<b>Error</b> <s>notificación</s>',
-                    title: '<u>Ocurrio un error al generar la suspensión</u>',
+                    message: '<u>Ocurrio un error al generar la suspensión</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
                     delay: 5000
                 });
             })

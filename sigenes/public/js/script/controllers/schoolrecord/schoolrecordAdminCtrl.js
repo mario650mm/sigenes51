@@ -67,6 +67,7 @@
         }
 
         $scope.showValidate = function(entity){
+            clearData();
             $scope.entity = entity;
             if($scope.entity.record == 1)
                 $scope.isVisible = false;
@@ -95,6 +96,14 @@
             $scope.record.evidence = atob(entity.evidence);
         }
 
+        var clearData = function(){
+            $scope.record.lab = false;
+            $scope.record.library = false;
+            $scope.record.clinic = false;
+            $scope.record.social_services = false;
+            
+        }
+
         $scope.actiondelete = function(){
             $scope.schoolrecord.status_id = 4;
             $scope.schoolrecord.transact_type_id = $scope.entity.transact_type_id;
@@ -107,10 +116,11 @@
             schoolrecordFactory.delete($scope.schoolrecord)
             .success(function(data){
                 Notification.success({
-                    message: 'Se cancelo el tramite exitosamente, para notar los cambios favor de refrescar la pagina.',
+                    message: 'Se cancelo el tramite exitosamente.',
                     title: 'Success', 
                     delay: 5000
                 });
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(data){
                 Notification.error({
@@ -179,10 +189,11 @@
             schoolrecordFactory.update($scope.record)
             .success(function(data){
                 Notification.success({
-                    message: 'Se finalizo el proceso del tramite, para notar los cambios favor de refrescar la pagina.',
+                    message: 'Se finalizo el proceso del tramite.',
                     title: 'Success', 
                     delay: 5000
                 });
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({
