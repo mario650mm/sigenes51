@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-ng-app="Enes">
+<html lang="es" data-ng-app="Enes" ng-cloak>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 @section('extra_css')
     <link href="{{ asset('css/enes.css') }}" rel="stylesheet">
