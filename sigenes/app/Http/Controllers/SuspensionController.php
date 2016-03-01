@@ -147,10 +147,10 @@ class SuspensionController extends Controller
                 "partners.firstlastname", 
                 "partners.secondlastname"
                 ])
-            ->leftJoin("students", "suspensions.student_id", "=", "students.id")
-            ->leftJoin("periods", "periods.id", "=", "suspensions.period_id")
-            ->leftJoin("status", "status.id", "=", "suspensions.status_id")
-            ->leftJoin("partners", "partners.id", "=", "students.partner_id")
+            ->join("students", "suspensions.student_id", "=", "students.id")
+            ->join("periods", "periods.id", "=", "suspensions.period_id")
+            ->join("status", "status.id", "=", "suspensions.status_id")
+            ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("suspensions.status_id", "<>", 1)
             ->get();
 

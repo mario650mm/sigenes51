@@ -50,9 +50,3 @@
         @include('templates.admin.school_records.partials.inputs')
     </div>
 </div>
-
-<?php
-    function hola(){
-        echo '<script > alert("hola");</script>';
-    }
-?>

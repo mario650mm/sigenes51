@@ -140,15 +140,6 @@ class SchoolrecordController extends Controller
                     if($value->credential == 1)
                         $value->tramint = "Reposición";
                 }
-                if ($value->idstatus == 3) {
-                    $image = 'data:image/png;base64,' . $value->evidence;
-                    list(, $image) = explode(';', $image); 
-                    list(, $image) = explode(',', $image);
-                    $image = base64_decode($image);
-                    
-                    # code...
-                }
-                
             }
 
         return $result;
