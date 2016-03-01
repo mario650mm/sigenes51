@@ -53,10 +53,18 @@ class AdmissionController extends Controller
                 'attachment_type_id' => 4,
                 'document' => $request->input('official_identification')['base64']]);
 
-            return \Response::json(['created' => true], 200);
+            return \Response::json(['created' => true, 'applicant_id' => $applicant->id], 200);
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
             return \Response::json(['created' => false], 500);
         }
+    }
+
+    public function createPdfAdmission($id){
+        $applicant = Applicant::find($id);
+        $view =  \View::make('templates.admissions.pdf.admission', compact('applicant'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('templates.admissions.pdf.admission');
     }
 }

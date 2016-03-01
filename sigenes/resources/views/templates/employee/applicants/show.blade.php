@@ -39,7 +39,6 @@
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.celphone') }}: </strong> @{{ applicant.celphone }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.nss') }}: </strong> @{{ applicant.nss }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.maritalstatus') }}: </strong> @{{ applicant.maritalstatus }}</a>
-                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.rfc') }}: </strong> @{{ applicant.rfc }}</a>
                         </div>
                         <div class="list-group">
                             <a href="#" class="list-group-item disabled">

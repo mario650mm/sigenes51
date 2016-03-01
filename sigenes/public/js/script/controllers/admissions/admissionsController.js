@@ -53,6 +53,17 @@ angular.module('EnesAuth')
                     Notification.success({
                         message: 'Registro '+ applicant.name +' creado correctamente.',
                         delay: 5000});
+                    admissionFactory.createPdfAdmission(data.applicant_id).success(function(data){
+                        Notification.success({
+                            message: 'PDF creado correctamente.',
+                            delay: 5000});
+                        })
+                        .error(function(error){
+                            Notification.error(
+                                {message: '<b>Error!</b> Problemas de conexión',
+                                    title: '<b>Error</b>',
+                                    delay: 5000});
+                        });
                 })
                 .error(function(error){
                     Notification.error(

@@ -9,6 +9,9 @@ angular.module('EnesAuth')
         return{
             saveApplicant : function(applicant){
                 return $http.post(HOST + 'api/v1/admissions', applicant)
+            },
+            createPdfAdmission : function(applicant_id){
+                return $http.post(HOST + 'api/v1/admissions/createPdfAdmission/'+applicant_id)
             }
         }
     });

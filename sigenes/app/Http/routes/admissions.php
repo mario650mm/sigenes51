@@ -18,5 +18,6 @@ Route::get('admissions_enes_leon', [
 Route::group(['prefix' => 'api/v1'], function () {
 
     Route::post('admissions', 'AdmissionController@store');
+    Route::get('admissions/createPdfAdmission/{id}', 'AdmissionController@createPdfAdmission');
 
 });
