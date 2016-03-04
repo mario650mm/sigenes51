@@ -17,7 +17,10 @@ angular.module('Enes')
         $scope.role;
 
         $scope.availableSearchParams = [
-            {key: "noAccount", name: "noAccount", placeholder: "No Account"}
+            { key: "name", name: "Name", placeholder: "Name..." },
+            { key: "curp", name: "curp", placeholder: "CURP..." },
+            {key: "noAccount", name: "noAccount", placeholder: "No Account"},
+            { key: "type", name: "Type", placeholder: "Type..."}
         ];
 
         teacherFactory.getAllTeachers()
