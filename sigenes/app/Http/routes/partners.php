@@ -1,7 +1,7 @@
 <?php
 
 // Views routes
-Route::group(['middleware' => ['auth', 'admin']], function () {
+Route::group(['middleware' => ['auth', 'employee']], function () {
     Route::resource('partners', 'PartnerController',
         ['only' => ['index', 'create', 'edit']]);
 
@@ -9,7 +9,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
 // API routes
 
-Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'employee']], function () {
 
     Route::post('partners', 'PartnerController@store');
     Route::put('partners', 'PartnerController@update');

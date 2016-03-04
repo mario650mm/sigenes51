@@ -30,6 +30,8 @@ class TeacherController extends Controller
     public function getAllData()
     {
         $teacher = Teacher::join('partners','partners.id','=','teachers.partner_id')
+            ->join('users','users.id','=','partners.user_id')
+            ->where('users.type','employee')
             ->select('partners.name','partners.firstlastname','partners.curp',
                 'partners.email1','partners.email2',
                 'teachers.noAccount','teachers.type')
