@@ -1,13 +1,19 @@
 <table class="table table-hover">
     <tr>
+        <th>@lang('teachers.full_name')</th>
         <th>@lang('teachers.number_account')</th>
-        <th>@lang('teachers.email')</th>
+        <th>@lang('teachers.curp')</th>
+        <th>@lang('teachers.email1')</th>
+        <th>@lang('teachers.email2')</th>
         <th>@lang('teachers.type')</th>
         <th width="10%">@lang('generals.controllers')</th>
     </tr>
-    <tr data-ng-repeat="teacher in teachers">
+    <tr data-dir-paginate="teacher in teachers |itemsPerPage:15">
+        <td>@{{ teacher.name }} @{{ teacher.firstlastname }}</td>
         <td>@{{ teacher.noAccount }}</td>
-        <td>@{{ teacher.email }}</td>
+        <td>@{{ teacher.curp }}</td>
+        <td>@{{ teacher.email1 }}</td>
+        <td>@{{ teacher.email2 }}</td>
         <td>@{{ teacher.type }}</td>
         <td>
             <div class="row">

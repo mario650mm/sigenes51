@@ -32,6 +32,6 @@ class Teacher extends Model
 
 
     public function Partner(){
-        return $this->hasOne('App\Partner');
+        return $this->belongsTo('App\Partner');
     }
 }

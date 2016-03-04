@@ -5,7 +5,12 @@
     </div>
     <div class="content">
         <div class="description">
-            <p><strong> @lang('teachers.number_account')</strong>   @{{teacher.noAccount}}</p>
+            <p><i class="fa fa-building"></i>   <strong> @lang('teachers.full_name'):</strong>  @{{ teacher.name }} @{{ teacher.firstlastname }}</p>
+            <p><i class="fa fa-sort-amount-asc"></i>    <strong> @lang('teachers.number_account'):</strong>   @{{teacher.noAccount}}</p>
+            <p><i class="fa fa-file-text-o"></i>    <strong> @lang('teachers.curp'):</strong>   @{{teacher.curp}}</p>
+            <p><i class="fa fa-envelope"></i>   <strong>@lang('teachers.email1'):</strong>   @{{teacher.email1}}</p>
+            <p><i class="fa fa-envelope-o"></i> <strong>@lang('teachers.email2'):</strong>   @{{teacher.email2}}</p>
+            <p><i class="fa fa-users"></i>  <strong> @lang('teachers.type'):</strong>   @{{teacher.type}}</p>
         </div>
     </div>
     <div class="actions">

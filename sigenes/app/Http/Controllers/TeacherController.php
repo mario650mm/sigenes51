@@ -29,19 +29,12 @@ class TeacherController extends Controller
      */
     public function getAllData()
     {
-        $teacher = Teacher::all();
+        $teacher = Teacher::join('partners','partners.id','=','teachers.partner_id')
+            ->select('partners.name','partners.firstlastname','partners.curp',
+                'partners.email1','partners.email2',
+                'teachers.noAccount','teachers.type')
+            ->get();
         return $teacher;
-
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getType()
-    {
-        return Teacher::select('type')->get();
 
     }
 

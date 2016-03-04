@@ -8,9 +8,6 @@ angular.module('Enes')
             getAllTeachers : function(){
                 return $http.get(HOST+'api/v1/teachersData')
             },
-            getTypeTeachers : function(){
-                return $http.get(HOST+'api/v1/teachers')
-            },
             save : function(teacher){
                 return $http.post(HOST+'api/v1/teachers', teacher)
             },

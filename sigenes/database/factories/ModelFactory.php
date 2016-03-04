@@ -55,12 +55,28 @@ $factory->define(App\Applicant::class, function (Faker\Generator $faker) {
         'career_id' => 1,
     ];
 });
+$factory->define(App\Partner::class, function (Faker\Generator $faker) {
+    $now = date('Y-m-d H:i:s');
+    return [
+        'name' => $faker->name,
+        'firstlastName' => $faker->lastName,
+        'secondlastName' => $faker->lastName,
+        'curp' => 'XAXX0'.$faker->ean13,
+        'birthdate' => $faker->dateTimeInInterval($startDate = '-50 years', $interval = '-20 years'),
+        'sex' => $faker->randomElement($array = array ('Femenino','Masculino')),
+        'email1' => $faker->unique()->email,
+        'email2' => $faker->unique()->email,
+        'nationality' => $faker->randomElement($array = array ('Mexicana','Extranjera')),
+        'maritalstatus' => $faker->randomElement($array = array ('Casado', 'Soltero', 'Divorciado', 'Viudo')),
+        'user_id' => $faker->numberBetween($min=1,$max=50),
+        'created_at' => $now
+    ];
+});
 
 $factory->define(App\Teacher::class, function (Faker\Generator $faker) {
     return [
         'noAccount' => $faker->numberBetween($min=1200000,$max=1500000),
-        'email' => $faker->unique()->email,
-        'type' => $faker->randomElement(['Tiempo completo', 'Medio tiempo', 'Contrato']),
-        'partner_id' => $faker->numberBetween($min=1,$max=9),
+        'type' => $faker->randomElement($array = array('Tiempo completo', 'Medio tiempo', 'Contrato')),
+        'partner_id' => $faker->numberBetween($min=1,$max=50),
     ];
 });

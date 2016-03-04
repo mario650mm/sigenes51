@@ -8,7 +8,7 @@
             <i class="user icon"></i>
         </div>
         <div class="description">
-            <p>@lang('generals.really_remove') @lang('teachers.teacher') @{{ teacher.noAccount }}</p>
+            <p>@lang('generals.really_remove') @lang('teachers.teacher_called') @{{ teacher.name }} @{{ teacher.firstlastname }}</p>
         </div>
     </div>
     <div class="actions">

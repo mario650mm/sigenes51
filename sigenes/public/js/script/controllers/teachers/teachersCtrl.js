@@ -1,4 +1,13 @@
 'use strict';
+/**
+ * @ngdoc controller
+ * @name Enes.controller: TeachersController
+ * @param $scope
+ * @requires
+ * @methodOf ng.controller:Enes
+ * @description
+ * My Description rules
+ */
 
 angular.module('Enes')
     .controller('TeachersController', function ($scope, teacherFactory, partnersFactory, Notification) {
@@ -7,16 +16,13 @@ angular.module('Enes')
         $scope.type = [{'type':'Tiempo completo'},{'type':'Medio tiempo'},{'type':'Contrato'}];
         $scope.role;
 
-        // Fileds for search in user model
         $scope.availableSearchParams = [
-            {key: "noAccount", name: "noAccount", placeholder: "No Account"},
-            {key: "email", name: "email", placeholder: "E-Mail..."}
+            {key: "noAccount", name: "noAccount", placeholder: "No Account"}
         ];
 
         teacherFactory.getAllTeachers()
             .success(function (data) {
                 $scope.teachers = data;
-                //console.log(data);
             })
             .error(function (error) {
                 Notification.error(
@@ -26,20 +32,6 @@ angular.module('Enes')
                         delay: 5000
                     });
             });
-
-        /*teacherFactory.getTypeTeachers()
-            .success(function (data) {
-                //$scope.teachers = data;
-                console.log(data);
-            })
-            .error(function (error) {
-                Notification.error(
-                    {
-                        message: '<b>Error</b> <s>notificación</s>',
-                        title: '<u>Error de cargar lista de tipos de profesores</u>',
-                        delay: 5000
-                    });
-            });*/
 
         partnersFactory.getAllData()
             .success(function (data) {
