@@ -3,14 +3,11 @@
         <div class="panel panel-danger" >
             <div class="panel-heading" >
                 <span class="glyphicon glyphicon-chevron-down" data-ng-click="change()"></span>
-                <b>* Nota</b>
+                <b>* {{trans('schoolrecords.note')}}</b>
             </div>
-            <div class="panel-body" data-ng-show="isCollapsed">
+            <div class="panel-body" data-ng-show="isViewNote">
                 <p align="justify" >
-                    En este apartado unicamente podras dar inicio al tramite que escojas; 
-                    para darle contimunidad es necesario que acudas a servicios escolares 
-                    con los documentos nesesarios indicados, 
-                    en la pagina de la enes según sea el tramite que hayas escogido.
+                    {{trans('schoolrecords.body_note')}}
                 </p>
             </div>
         </div>

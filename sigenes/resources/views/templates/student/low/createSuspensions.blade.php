@@ -19,7 +19,7 @@
         @include('templates.student.low.partials.suspensions')
         <br>
         <br>
-
+        @include('templates.student.low.partials.change_status')
     </div>
     
 

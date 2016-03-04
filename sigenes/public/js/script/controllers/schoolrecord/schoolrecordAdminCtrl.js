@@ -16,7 +16,7 @@
  		$scope.showResult = [];
         $scope.entity = {};
         $scope.record = {};
-        //$scope.isVisible;
+        $scope.isHiden;
         $scope.file = {};
         $scope.schoolrecord = {};
 
@@ -33,10 +33,15 @@
         $scope.showData = function(){
         	schoolrecordFactory.getAllData()
         	.success(function(data){
+                console.log(data);
         		$scope.showResult = data;
         	})
         	.error(function(error){
-        		console.log(error);
+        		Notification.error({
+                    message: '<u>Ocurrio un error al realizar la cargar la información!!!</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
         	})
         }
 
@@ -62,17 +67,41 @@
         }
 
         $scope.showValidate = function(entity){
+            clearData();
             $scope.entity = entity;
             if($scope.entity.record == 1)
                 $scope.isVisible = false;
             else
                 $scope.isVisible = true;
+
+            if (entity.estatus == 'Terminado') {
+                $scope.isHiden = true;
+                assingData(entity);
+            }else{
+                $scope.isHiden = false;
+            }
             $('#validate').modal('show');
         }
 
         $scope.deletemodal = function(entity){
             $scope.entity = entity;
             $('#cancel').modal('show');
+        }
+
+        var assingData = function(entity){
+            $scope.record.lab = true;
+            $scope.record.library = true;
+            $scope.record.clinic = true;
+            $scope.record.social_services = true;
+            $scope.record.evidence = atob(entity.evidence);
+        }
+
+        var clearData = function(){
+            $scope.record.lab = false;
+            $scope.record.library = false;
+            $scope.record.clinic = false;
+            $scope.record.social_services = false;
+            
         }
 
         $scope.actiondelete = function(){
@@ -87,10 +116,11 @@
             schoolrecordFactory.delete($scope.schoolrecord)
             .success(function(data){
                 Notification.success({
-                    message: 'Se cancelo el tramite exitosamente, para notar los cambios favor de refrescar la pagina.',
+                    message: 'Se cancelo el tramite exitosamente.',
                     title: 'Success', 
                     delay: 5000
                 });
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(data){
                 Notification.error({
@@ -159,13 +189,18 @@
             schoolrecordFactory.update($scope.record)
             .success(function(data){
                 Notification.success({
-                    message: 'Se finalizo el proceso del tramite, para notar los cambios favor de refrescar la pagina.',
+                    message: 'Se finalizo el proceso del tramite.',
                     title: 'Success', 
                     delay: 5000
                 });
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
-                console.log(error);
+                Notification.error({
+                    message: '<u>Ocurrio un error al finalizar el tramite!!!</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
             })
             
         }

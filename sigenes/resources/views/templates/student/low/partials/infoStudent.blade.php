@@ -37,7 +37,7 @@
             <div class="form-group">
                 <label for="inputEmail" class="col-lg-2 control-label">{{trans('low.career')}}: </label>
                 <div class="col-lg-10">
-                    <input type="text" class="form-control" id="carrera" data-ng-model="carrera" placeholder="Carrera" readonly>
+                    <input type="text" class="form-control" id="carrera" data-ng-model="userSusp.career" placeholder="Carrera" readonly>
                 </div>
             </div>
         </div>

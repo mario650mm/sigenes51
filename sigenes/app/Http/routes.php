@@ -28,6 +28,7 @@ require __DIR__ . '/routes/states.php';
 require __DIR__ . '/routes/citys.php';
 require __DIR__ . '/routes/teachers.php';
 require __DIR__ . '/routes/partners.php';
+require __DIR__ . '/routes/applicants.php';
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 
@@ -43,13 +44,18 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('student/low/pdf', 'PdfSuspensionController@index');
     Route::resource('student/low', 'SuspensionController@create');
+    Route::resource('student/credential', 'PdfCredentialController@index');
     Route::resource('student/records', 'SchoolrecordController@create');
+
     Route::resource('admin/records', 'SchoolrecordController@index');
     Route::resource('admin/low', 'SuspensionController@index');
 
 
 });
+
+
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 

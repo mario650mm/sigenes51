@@ -9,11 +9,14 @@
  * My Description rules
  */
  angular.module('Enes')
- 	.controller('schoolrecordController', function($scope, schoolrecordFactory){
- 		$scope.recordTypes = {};
- 		$scope.student = {};
- 		$scope.applyRecord = {};
- 		$scope.isRecord = false;
+ 	.controller('schoolrecordController', function($scope, schoolrecordFactory, Notification){
+ 		$scope.recordTypes   = {};
+ 		$scope.student       = {};
+ 		$scope.applyRecord   = {};
+ 		$scope.isRecord      = false;
+        $scope.isViewNote    = false;
+        $scope.btnprint      = false;
+        $scope.btnapply      = true;
 
  		$scope.init = function(){
  			recordTypes();
@@ -23,7 +26,6 @@
  		var recordTypes = function(){
  			schoolrecordFactory.getTransac()
  			.success(function(data){
- 				console.log(data);
  				$scope.recordTypes = data;
  			})
  			.error(function(error){
@@ -34,7 +36,6 @@
  		var dataStudent = function(){
  			schoolrecordFactory.getStudentRecords()
  			.success(function(data){
- 				console.log(data);
  				$scope.student.nombre = data.name + ' ' + data.firstlastname
  				 + ' ' + data.secondlastname;
                         console.log($scope.student.nombre);
@@ -42,6 +43,7 @@
                 $scope.student.celphone = data.celphone;
                 $scope.student.student = data.student.id;
                 $scope.student.telephone = data.telephone;
+                $scope.student.career = 'Odontología';
                 console.log($scope.student.telephone);
                 $scope.student.email = data.email1;
                // $scope.validate = data.student.id;
@@ -53,9 +55,7 @@
 
  		$scope.visible = function(){
  			$scope.applyRecord.credential = 0;
- 			$scope.isRecord = !$scope.isRecord;
- 			console.log('Constancias ' + $scope.applyRecord.record);
- 			console.log('Credenciales ' + $scope.applyRecord.credential);
+ 			$scope.isRecord = true;
 
  		}
 
@@ -64,11 +64,8 @@
  				$scope.applyRecord.record = 0;
 
  			if(typeof($scope.applyRecord.record) != 'undefined' || $scope.applyRecord.record == 0){
- 				$scope.isRecord = !$scope.isRecord;
- 				
+ 				$scope.isRecord = false;	
  			}
- 			console.log('Constancias ' + $scope.applyRecord.record);
- 			console.log('Credenciales ' + $scope.applyRecord.credential);
  		}
 
  		/**
@@ -80,25 +77,37 @@
         }
 
         $scope.save = function(){
+            var msj;
         	if(typeof($scope.applyRecord.record) == 'undefined' && typeof($scope.applyRecord.credential) == 'undefined'){
-        		alert('Es necesario que escoja un tramite a realizar.');
+                Notification.error({
+                    message: '<u>Es necesario que escoja un tramite a realizar.</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
         		return;
         	}
         	if(typeof($scope.applyRecord.folio) == 'undefined'){
-        		alert('Favor de registrar el folio de pago');
+                Notification.error({
+                    message: '<u>Favor de registrar el folio de pago</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
         		return;
         	}
 
         	if($scope.applyRecord.record == 1 ){
         		if(typeof($scope.applyRecord.transact_type_id) == 'undefined' || $scope.applyRecord.transact_type_id == -1){
-        			alert('Favor de escojer un tipo de costancia para el tramite');
+                    Notification.error({
+                        message: '<u>Favor de escojer un tipo de costancia para el tramite.</u>',
+                        title: '<b>Error</b> <s>notificación</s>',
+                        delay: 3000
+                    });
         			return;
         		}
         	}
 
         	$scope.applyRecord.date = getDateRecord();
         	$scope.applyRecord.student_id = $scope.student.student;
-        	console.log($scope.applyRecord);
         	$scope.applyRecord.status_id = 2;
 
 
@@ -118,13 +127,31 @@
         		$scope.applyRecord.record = false;
         	}
 
+            if ($scope.applyRecord.credential == true) {
+                msj = 'Solicitud de reposición de credencial registrado. \nSe recomienda imprimir su pdf para la recolección de sellos de no adeudo.';
+            }else{
+                msj = 'Solicitud de costancía registrado.';
+            }
+
         	schoolrecordFactory.save($scope.applyRecord)
         	.success(function(data){
-        		alert('registro guradado');
-        		console.log(data);
+                Notification.success({
+                    title: 'Success',
+                    message: msj, 
+                    delay: 5000
+                });
+                if ($scope.applyRecord.credential == true){
+                    $scope.btnprint     = true;
+                    $scope.btnapply     = false;
+                }
+                $scope.isViewNote = true;
         	})
         	.error(function(data){
-        		console.log(data);
+                Notification.error({
+                    message: '<u>Ocurrio un error al realizar el tramite</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
         	})
         }
 

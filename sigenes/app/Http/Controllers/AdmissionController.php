@@ -22,16 +22,6 @@ class AdmissionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -63,55 +53,18 @@ class AdmissionController extends Controller
                 'attachment_type_id' => 4,
                 'document' => $request->input('official_identification')['base64']]);
 
-            return \Response::json(['created' => true], 200);
+            return \Response::json(['created' => true, 'applicant_id' => $applicant->id], 200);
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
             return \Response::json(['created' => false], 500);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function createPdfAdmission($id){
+        $applicant = Applicant::find($id);
+        $view =  \View::make('templates.admissions.pdf.admission', compact('applicant'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('templates.admissions.pdf.admission');
     }
 }

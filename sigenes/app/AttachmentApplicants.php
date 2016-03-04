@@ -13,4 +13,8 @@ class AttachmentApplicants extends Model
     protected $table='attachment_applicants';
 
     protected $fillable=['applicant_id', 'attachment_type_id', 'document'];
+
+    public function applicant(){
+        return $this->belongsTo('App\Applicant');
+    }
 }
