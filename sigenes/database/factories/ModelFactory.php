@@ -62,7 +62,7 @@ $factory->define(App\Partner::class, function (Faker\Generator $faker) {
         'firstlastName' => $faker->lastName,
         'secondlastName' => $faker->lastName,
         'curp' => 'XAXX0'.$faker->ean13,
-        'birthdate' => $faker->dateTimeInInterval($startDate = '-50 years', $interval = '-20 years'),
+        'birthdate' => $faker->dateTimeBetween($startDate = '-59 years', $endDate = '-22 years'),
         'sex' => $faker->randomElement($array = array ('Femenino','Masculino')),
         'email1' => $faker->unique()->email,
         'email2' => $faker->unique()->email,
