@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Partner;
+use App\Employee;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class PartnerController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,20 +17,21 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the teachers.
      *
-     * @return \Illuminate\Http\Response
+     * @return getEmployeeTeacher
      */
-    public function getAllData()
+    public function getEmployeeTeacher()
     {
-        return Partner::join('users','users.id','=','partners.user_id')
-            ->where('users.type','employee')
+        return Employee::join('partners','partners.id','=','employees.partner_id')
+            ->join('employee_types','employee_types.employee_id','=','employees.id')
+            ->join('types','types.id','=','employee_types.type_id')
+            ->where('types.name','Profesor')
             ->get();
-
     }
 
     /**

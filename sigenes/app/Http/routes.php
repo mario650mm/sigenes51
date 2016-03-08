@@ -29,6 +29,7 @@ require __DIR__ . '/routes/citys.php';
 require __DIR__ . '/routes/teachers.php';
 require __DIR__ . '/routes/partners.php';
 require __DIR__ . '/routes/applicants.php';
+require __DIR__ . '/routes/employees.php';
 
 Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
 

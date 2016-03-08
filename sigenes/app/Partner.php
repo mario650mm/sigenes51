@@ -28,6 +28,10 @@ class Partner extends Model
         return $this->hasOne('App\Teacher');
     }
 
+    public function Employee(){
+        return $this->hasOne('App\Employee');
+    }
+
 
 
 }
