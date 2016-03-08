@@ -24,8 +24,18 @@ class PartnerController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function getAllData()
+    {
+        return Partner::all();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getAllEmployee()
     {
         return Partner::join('users','users.id','=','partners.user_id')
             ->where('users.type','employee')

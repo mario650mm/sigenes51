@@ -36,7 +36,7 @@ angular.module('Enes')
                     });
             });
 
-        partnersFactory.getAllData()
+        partnersFactory.getAllEmployee()
             .success(function (data) {
                 $scope.partners = data;
             })
