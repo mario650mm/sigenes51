@@ -37,7 +37,7 @@ angular.module('Enes')
 
 
         $scope.save = function (partner) {
-            partnerFactory.save(partner)
+            partnersFactory.save(partner)
                 .success(function (data) {
                     Notification.success({
                         message: 'Socio ' + partner.name + ' creado correctamente.',
@@ -55,7 +55,7 @@ angular.module('Enes')
         }
 
         $scope.editPartner = function (partner) {
-            partnerFactory.update(partner)
+            partnersFactory.update(partner)
                 .success(function (data) {
                     $('#edit').modal('hide');
                     Notification.success({
@@ -74,11 +74,11 @@ angular.module('Enes')
         }
 
         $scope.deletePartner = function (partner) {
-            partnerFactory.delete(partner)
+            partnersFactory.delete(partner)
                 .success(function (data) {
                     $('#delete').modal('hide');
                     Notification.success({
-                        message: 'Profesor ' + partner.name + ' eliminado correctamente.',
+                        message: 'Socio ' + partner.name + ' eliminado correctamente.',
                         delay: 5000
                     });
                 })
@@ -86,13 +86,13 @@ angular.module('Enes')
                     Notification.error(
                         {
                             message: '<b>Error</b> <s>notificación</s>',
-                            title: '<u>Error al eliminar el profesor</u>',
+                            title: '<u>Error al eliminar el socio</u>',
                             delay: 5000
                         });
                 })
         }
 
-        $scope.editPatnerModal = function (partner) {
+        $scope.editPartnerModal = function (partner) {
             $scope.partner = partner;
             $scope.edit = true;
             $('#edit').modal('show');

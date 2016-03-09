@@ -14,7 +14,7 @@ Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'employee']], funct
     Route::post('partners', 'PartnerController@store');
     Route::put('partners', 'PartnerController@update');
     Route::delete('partners/{id}', 'PartnerController@destroy');
-    Route::get('partners', 'PartnerController@getAllEmployee');
+    Route::get('partnersEmployee', 'PartnerController@getAllEmployee');
     Route::get('partners', 'PartnerController@getAllData');
 
 });

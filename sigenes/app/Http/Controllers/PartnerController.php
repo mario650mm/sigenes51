@@ -128,6 +128,7 @@ class PartnerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Partner::destroy($id);
+        return ['deleted' => true];
     }
 }
