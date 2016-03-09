@@ -16,4 +16,5 @@ return[
     "update_error" => "Error al actualizar el",
     "delete_error" => "Error al eliminar el",
     "yes" => "Si",
+    "search" => "Buscar ...",
 ];

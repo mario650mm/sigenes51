@@ -15,7 +15,11 @@ angular.module('Enes')
         $scope.partners = [];
 
         $scope.availableSearchParams = [
-            { key: "name", name: "Name", placeholder: "Name..." },
+            { key: "name", name: "Nombre", placeholder: "Nombre .." },
+            { key: "curp", name: "Curp", placeholder: "Curp .." },
+            { key: "email1", name: "Correo 1", placeholder: "Correo 1 .." },
+            { key: "email2", name: "Correo 2", placeholder: "Correo 2 .." },
+            { key: "sex", name: "Sexo", placeholder: "Sexo .." },
         ];
 
         partnersFactory.getAllData()

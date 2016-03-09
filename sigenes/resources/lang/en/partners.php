@@ -2,6 +2,8 @@
 return [
     "title" => "Partners",
     "partner" => "Partner",
+    "name" => "Name",
+    "full_name" => "Full Name",
     "last_name" => "Last name",
     "s_last_name" => "Second last name",
     "curp" => "CURP",

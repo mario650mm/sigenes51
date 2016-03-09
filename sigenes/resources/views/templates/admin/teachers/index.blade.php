@@ -16,7 +16,7 @@
     <nit-advanced-searchbox
         ng-model="searchInput"
         parameters="availableSearchParams"
-        placeholder="Search...">
+        placeholder="{{trans('generals.search')}}">
     </nit-advanced-searchbox>
 @endsection
 

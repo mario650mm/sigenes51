@@ -37,6 +37,7 @@
 	<script src="{{ asset('js/script/controllers/teachers/teachersCtrl.js') }}"></script>
 	<script src="{{ asset('js/script/services/teachers/teachers.factories.js') }}"></script>
 	<script src="{{ asset('js/script/services/partners/partners.factories.js') }}"></script>
+	<script src="{{ asset('js/script/controllers/partners/partnersCtrl.js') }}"></script>
 	<script src="{{ asset('js/script/services/schoolrecord/schoolrecord.factories.js') }}"></script>
 	<script src="{{ asset('js/script/services/low/suspension.factories.js') }}"></script>
 	<script src="{{ asset('js/script/controllers/low/suspencionsAdminCtrl.js') }}"></script>

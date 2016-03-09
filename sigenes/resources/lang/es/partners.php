@@ -2,6 +2,8 @@
 return[
     "title" => "Socios",
     "partner" => "Socio",
+    "name" => "Nombre",
+    "full_name" => "Nombre Completo",
     "last_name" => "Apellido 1",
     "s_last_name" => "Apellido 2",
     "curp" => "CURP",

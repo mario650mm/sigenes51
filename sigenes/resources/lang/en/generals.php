@@ -16,4 +16,5 @@ return[
     "update_error" => "Error to the updated the",
     "delete_error" => "Error to the deleted the",
     "yes" => "Yes",
+    "search" => "Search ...",
 ];
