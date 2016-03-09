@@ -105,7 +105,7 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('templates.admin.partners.partials.edit');
     }
 
     /**
@@ -117,7 +117,9 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $partner = Partner::find($request->input('id'));
+        $partner->update($request->all());
+        return ['updated' => true];
     }
 
     /**

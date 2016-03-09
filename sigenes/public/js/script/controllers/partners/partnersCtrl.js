@@ -19,7 +19,7 @@ angular.module('Enes')
             {key: "curp", name: "Curp", placeholder: "Curp .."},
             {key: "email1", name: "Correo 1", placeholder: "Correo 1 .."},
             {key: "email2", name: "Correo 2", placeholder: "Correo 2 .."},
-            {key: "sex", name: "Sexo", placeholder: "Sexo .."},
+            {key: "sex", name: "Sexo", placeholder: "Sexo .."}
         ];
 
         partnersFactory.getAllData()
@@ -59,7 +59,7 @@ angular.module('Enes')
                 .success(function (data) {
                     $('#edit').modal('hide');
                     Notification.success({
-                        message: 'Profesor ' + partner.name + ' actualizado correctamente.',
+                        message: 'Socio ' + partner.name + ' actualizado correctamente.',
                         delay: 5000
                     });
                 })
