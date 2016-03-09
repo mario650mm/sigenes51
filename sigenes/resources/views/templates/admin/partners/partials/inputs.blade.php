@@ -30,15 +30,15 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label for="birthdate">@lang('partners.birthdate')</label>
-            <input id="birthdate" placeholder="{{trans('partners.birthdate')}}" type="date" data-ng-model="partner.birthdate" class="form-control">
+            <input id="birthdate" placeholder="{{trans('partners.birthdate')}}" type="text" data-ng-model="partner.birthdate" class="form-control">
         </div>
     </div>
     <div class="form-group col-lg-3">
         <label>@lang('partners.sex')</label>
-        <select name="sex" class="form-control" ng-model="sex" required>
-            <option value="">Seleccione..</option>
-            <option  value="Masculino">Masculino</option>
-            <option  value="Femenino">Femenino</option>
+        <select name="sex" class="form-control" ng-model="partner.sex" required>
+            <option value="">@lang('generals.select')</option>
+            <option value="Masculino">@lang('partners.male')</option>
+            <option value="Femenino">@lang('partners.female')</option>
         </select>
     </div>
     <div class="col-lg-5">
@@ -57,10 +57,10 @@
     </div>
     <div class="form-group col-lg-3">
         <label>@lang('partners.nationality')</label>
-        <select name="nationality" class="form-control" ng-model="nationality" required>
-            <option value="">Seleccione..</option>
-            <option  value="Mexicana">Mexicana</option>
-            <option  value="Extranjera">Extranjera</option>
+        <select name="nationality" class="form-control" ng-model="partner.nationality" required>
+            <option value="">@lang('generals.select')</option>
+            <option value="Mexicana">@lang('partners.mexican')</option>
+            <option value="Extranjero">@lang('partners.foreign')</option>
         </select>
     </div>
     <div class="col-lg-4">
@@ -79,12 +79,12 @@
     </div>
     <div class="form-group col-lg-4">
         <label>@lang('partners.marital_status')</label>
-        <select name="maritalstatus" class="form-control" ng-model="maritalstatus" required>
-            <option value="">Seleccione..</option>
-            <option  value="Casado">Casado</option>
-            <option  value="Soltero">Soltero</option>
-            <option  value="Divorciado">Divorciado</option>
-            <option  value="Viudo">Viudo</option>
+        <select name="maritalstatus" class="form-control" ng-model="partner.maritalstatus" required>
+            <option value="">@lang('generals.select')</option>
+            <option value="Casado">@lang('partners.married')</option>
+            <option value="Soltero">@lang('partners.single')</option>
+            <option value="Divorciado">@lang('partners.divorced')</option>
+            <option value="Viudo">@lang('partners.widower')</option>
         </select>
     </div>
 </div>

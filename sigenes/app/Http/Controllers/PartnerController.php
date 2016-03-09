@@ -67,7 +67,7 @@ class PartnerController extends Controller
         }
 
         $rules = [
-            'name'     => 'required|name',
+            'name'     => 'required',
         ];
 
         try{
@@ -115,7 +115,7 @@ class PartnerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $partner = Partner::find($request->input('id'));
         $partner->update($request->all());

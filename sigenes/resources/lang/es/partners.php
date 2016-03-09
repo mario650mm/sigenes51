@@ -18,4 +18,13 @@ return[
     "create_partner" => "Crear Socio",
     "edit_partner" => "Editar Socio",
     "delete_partner" => "Eliminar Socio",
+    "female" => "Femenino",
+    "male" => "Masculino",
+    "mexican" => "Mexicana",
+    "foreign" => "Extranjera",
+    "married" => "Casado",
+    "single" => "Soltero",
+    "divorced" => "Divorciado",
+    "widower" => "Viudo",
+
 ];

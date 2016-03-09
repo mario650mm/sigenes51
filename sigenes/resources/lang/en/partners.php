@@ -18,5 +18,13 @@ return [
     "create_partner" => "Create partner",
     "edit_partner" => "Edit partner",
     "delete_partner" => "delete partner",
+    "female" => "Female",
+    "male" => "Male",
+    "mexican" => "Mexican",
+    "foreign" => "Foreign",
+    "married" => "Married",
+    "single" => "Single",
+    "divorced" => "Divorced",
+    "widower" => "Widower",
 
 ];

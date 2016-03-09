@@ -37,6 +37,7 @@ angular.module('Enes')
 
 
         $scope.save = function (partner) {
+           // $scope.partner.birthdate = Date(partner.birthdate);
             partnersFactory.save(partner)
                 .success(function (data) {
                     Notification.success({
@@ -55,8 +56,10 @@ angular.module('Enes')
         }
 
         $scope.editPartner = function (partner) {
+            //$scope.partner.birthdate = Date(partner.birthdate);
             partnersFactory.update(partner)
                 .success(function (data) {
+                    console.log(data);
                     $('#edit').modal('hide');
                     Notification.success({
                         message: 'Socio ' + partner.name + ' actualizado correctamente.',

@@ -17,4 +17,5 @@ return[
     "delete_error" => "Error al eliminar el",
     "yes" => "Si",
     "search" => "Buscar ...",
+    "select" => "Seleccione ..",
 ];
