@@ -1,4 +1,13 @@
 <div class="row">
+    <div class="form-group col-lg-6">
+        <label>Usuario</label>
+        <select name="user_id" class="form-control" ng-model="user_id" required>
+            <option value="">@lang('generals.select')</option>
+            <option data-ng-repeat="user in users" value="@{{ user.id }}">@{{ user.name }}</option>
+        </select>
+    </div>
+</div>
+<div class="row">
     <div class="col-lg-6">
         <div class="form-group">
             <label for="name">@lang('partners.name')</label>

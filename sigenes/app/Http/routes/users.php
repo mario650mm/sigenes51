@@ -15,5 +15,6 @@ Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function
     Route::put('users', 'UserController@update');
     Route::delete('users/{id}', 'UserController@destroy');
     Route::get('users', 'UserController@getAllData');
+    Route::get('usersall', 'UserController@getAllData');
 
 });

@@ -10,7 +10,7 @@
  */
 
 angular.module('Enes')
-    .controller('PartnersController', function ($scope, partnersFactory, Notification) {
+    .controller('PartnersController', function ($scope, partnersFactory,userFactory, Notification) {
         $scope.partner = {};
         $scope.partners = [];
 
@@ -35,6 +35,18 @@ angular.module('Enes')
                     });
             });
 
+        userFactory.getUsers
+            .success(function (data) {
+                $scope.users = data;
+            })
+            .error(function (error) {
+                Notification.error(
+                    {
+                        message: '<b>Error!</b> Problemas de conexión',
+                        title: '<b>Error</b>',
+                        delay: 5000
+                    });
+            });
 
         $scope.save = function (partner) {
            // $scope.partner.birthdate = Date(partner.birthdate);

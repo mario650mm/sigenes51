@@ -67,7 +67,7 @@ class PartnerController extends Controller
         }
 
         $rules = [
-            'name'     => 'required',
+            
         ];
 
         try{
