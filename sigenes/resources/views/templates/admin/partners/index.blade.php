@@ -40,9 +40,9 @@
                 </div>
             </div>
     </div>
-    {{--}}}@include('templates.admin.teachers.partials.show')
-    @include('templates.admin.teachers.partials.edit')
-    @include('templates.admin.teachers.partials.delete')--}}
+    @include('templates.admin.partners.partials.show')
+    @include('templates.admin.partners.partials.edit')
+    @include('templates.admin.partners.partials.delete')
     </div>
     @endsection
 

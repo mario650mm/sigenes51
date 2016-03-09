@@ -10,16 +10,16 @@
  */
 
 angular.module('Enes')
-    .controller('PartnersController', function ($scope,partnersFactory, Notification) {
+    .controller('PartnersController', function ($scope, partnersFactory, Notification) {
         $scope.partner = {};
         $scope.partners = [];
 
         $scope.availableSearchParams = [
-            { key: "name", name: "Nombre", placeholder: "Nombre .." },
-            { key: "curp", name: "Curp", placeholder: "Curp .." },
-            { key: "email1", name: "Correo 1", placeholder: "Correo 1 .." },
-            { key: "email2", name: "Correo 2", placeholder: "Correo 2 .." },
-            { key: "sex", name: "Sexo", placeholder: "Sexo .." },
+            {key: "name", name: "Nombre", placeholder: "Nombre .."},
+            {key: "curp", name: "Curp", placeholder: "Curp .."},
+            {key: "email1", name: "Correo 1", placeholder: "Correo 1 .."},
+            {key: "email2", name: "Correo 2", placeholder: "Correo 2 .."},
+            {key: "sex", name: "Sexo", placeholder: "Sexo .."},
         ];
 
         partnersFactory.getAllData()
@@ -40,7 +40,7 @@ angular.module('Enes')
             partnerFactory.save(partner)
                 .success(function (data) {
                     Notification.success({
-                        message: 'Profesor ' + partner.name + ' creado correctamente.',
+                        message: 'Socio ' + partner.name + ' creado correctamente.',
                         delay: 5000
                     });
                 })
@@ -48,7 +48,7 @@ angular.module('Enes')
                     Notification.error(
                         {
                             message: '<b>Error</b> <s>notificación</s>',
-                            title: '<u>Error al crear el profesor</u>',
+                            title: '<u>Error al crear el Socio</u>',
                             delay: 5000
                         });
                 })

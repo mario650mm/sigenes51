@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
 {
@@ -50,7 +51,7 @@ class PartnerController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.admin.partners.create');
     }
 
     /**
@@ -61,7 +62,28 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [
+            'name'     => 'required|name',
+        ];
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return [
+                    'created' => false,
+                    'errors'  => $validator->errors()->all()
+                ];
+            }
+            Partner::create($request->all());
+            return ['created' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating user: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**
@@ -72,7 +94,7 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
-        //
+        return Partner::findOrFail($id);
     }
 
     /**

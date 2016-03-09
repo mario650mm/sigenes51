@@ -12,7 +12,7 @@ class Partner extends Model
 
     protected $table='partners';
 
-    protected $fillable=['name', 'firstlastname', 'secondlastname', 'telephone', 'celphone'];
+    protected $fillable=['name', 'firstlastname', 'secondlastname','curp','birthdate','sex','email1','email2','nationality','telephone', 'celphone','maritalstatus'];
 
 
 
