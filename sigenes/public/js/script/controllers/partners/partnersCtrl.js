@@ -67,7 +67,7 @@ angular.module('Enes')
                     Notification.error(
                         {
                             message: '<b>Error</b> <s>notificación</s>',
-                            title: '<u>Error al actualizar el Profesor</u>',
+                            title: '<u>Error al actualizar el Socio</u>',
                             delay: 5000
                         });
                 })
