@@ -15,16 +15,16 @@ class CreatePartnersTable extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 25);
-            $table->string('firstlastname', 25);
-            $table->string('secondlastname', 25);
+            $table->string('firstlastname', 25)->nullable();
+            $table->string('secondlastname', 25)->nullable();
             $table->string('curp', 18);
-            $table->date('birthdate');
+            $table->date('birthdate')->nullable();
             $table->enum('sex', ['Masculino', 'Femenino']);
             $table->string('email1', 60);
-            $table->string('email2', 45);
+            $table->string('email2', 45)->nullable();
             $table->enum('nationality', ['Mexicana', 'Extranjero']);
-            $table->string('telephone', 25);
-            $table->string('celphone', 25);
+            $table->string('telephone', 25)->nullable();
+            $table->string('celphone', 25)->nullable();
             $table->enum('maritalstatus',
                 ['Casado', 'Soltero', 'Divorciado', 'Viudo']);
             $table->timestamps();
@@ -73,8 +73,22 @@ class CreatePartnersTable extends Migration
                 'email1' => 'coor1200@unam.com',
                 'email2' => 'coor1200@gmail.com',
                 'nationality' => 'Mexicana',
-                'maritalstatus' => 'Soltero',
+                'maritalstatus' => 'Casado',
                 'user_id' => 3,
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Coordinador2',
+                'firstlastName' => 'Apellido 1',
+                'secondlastName' => 'Apellido 2',
+                'curp' => 'COOR900313MCMLNS09',
+                'birthdate' => '1970-03-13',
+                'sex' => 'Masculino',
+                'email1' => 'coor1205@unam.com',
+                'email2' => 'coor1205@gmail.com',
+                'nationality' => 'Mexicana',
+                'maritalstatus' => 'Casado',
+                'user_id' => 4,
                 'created_at' => $now
             ],
             [
@@ -88,7 +102,7 @@ class CreatePartnersTable extends Migration
                 'email2' => 'ctrl1200@gmail.com',
                 'nationality' => 'Mexicana',
                 'maritalstatus' => 'Soltero',
-                'user_id' => 4,
+                'user_id' => 5,
                 'created_at' => $now
             ],
             [
@@ -102,7 +116,7 @@ class CreatePartnersTable extends Migration
                 'email2' => 'adm11200@gmail.com',
                 'nationality' => 'Mexicana',
                 'maritalstatus' => 'Soltero',
-                'user_id' => 5,
+                'user_id' => 6,
                 'created_at' => $now
             ],
             [
@@ -116,7 +130,7 @@ class CreatePartnersTable extends Migration
                 'email2' => 'adm21200@gmail.com',
                 'nationality' => 'Mexicana',
                 'maritalstatus' => 'Soltero',
-                'user_id' => 6,
+                'user_id' => 7,
                 'created_at' => $now
             ],
             [
@@ -130,7 +144,7 @@ class CreatePartnersTable extends Migration
                 'email2' => 'adm31200@gmail.com',
                 'nationality' => 'Mexicana',
                 'maritalstatus' => 'Soltero',
-                'user_id' => 7,
+                'user_id' => 8,
                 'created_at' => $now
             ],
             [
@@ -144,7 +158,7 @@ class CreatePartnersTable extends Migration
                 'email2' => 'alum11200@gmail.com',
                 'nationality' => 'Mexicana',
                 'maritalstatus' => 'Soltero',
-                'user_id' => 8,
+                'user_id' => 9,
                 'created_at' => $now
             ],
             [
@@ -158,7 +172,7 @@ class CreatePartnersTable extends Migration
                 'email2' => 'alum21200@gmail.com',
                 'nationality' => 'Mexicana',
                 'maritalstatus' => 'Soltero',
-                'user_id' => 9,
+                'user_id' => 10,
                 'created_at' => $now
             ],
         ]);

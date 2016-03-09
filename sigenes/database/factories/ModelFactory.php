@@ -76,7 +76,7 @@ $factory->define(App\Partner::class, function (Faker\Generator $faker) {
 $factory->define(App\Teacher::class, function (Faker\Generator $faker) {
     return [
         'noAccount' => $faker->numberBetween($min=1200000,$max=1500000),
-        'type' => $faker->randomElement($array = array('Tiempo completo', 'Medio tiempo', 'Contrato')),
+        'type' => $faker->randomElement($array = array('Carrera','Asignatura')),
         'partner_id' => $faker->numberBetween($min=1,$max=50),
     ];
 });

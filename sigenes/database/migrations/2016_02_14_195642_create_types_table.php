@@ -20,7 +20,7 @@ class CreateTypesTable extends Migration
         });
 
         $now = date('Y-m-d H:i:s');
-        \DB::table('types')->insert([['name' => 'Director', 'created_at' => $now],['name' => 'Administrativo', 'created_at' => $now], ['name' => 'Coordinador', 'created_at' => $now], ['name' => 'Profesor', 'created_at' => $now]]);
+        \DB::table('types')->insert([['name' => 'Director', 'created_at' => $now],['name' => 'Secretario', 'created_at' => $now],['name' => 'Administrativo', 'created_at' => $now], ['name' => 'Coordinador', 'created_at' => $now], ['name' => 'Profesor', 'created_at' => $now],['name' => 'Oficinistas', 'created_at' => $now]]);
 
     }
 

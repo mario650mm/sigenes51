@@ -13,7 +13,11 @@ angular.module('Enes')
     .controller('TeachersController', function ($scope, teacherFactory, partnersFactory, Notification) {
         $scope.teacher = {};
         $scope.teachers = [];
-        $scope.type = [{'type':'Tiempo completo'},{'type':'Medio tiempo'},{'type':'Contrato'}];
+        /**
+         * Profesores de Carrera (Tiempo completo)
+         * Profesores de Asignatura (Horas de trabajo)
+         **/
+        $scope.type = [{'type':'Carrera'},{'type':'Asignatura'}];
         $scope.role;
 
         $scope.availableSearchParams = [
