@@ -1,6 +1,6 @@
 <div class="row">
     <div class="form-group col-lg-6">
-        <label>Usuario</label>
+        <label>@lang('partners.user')</label>
         <select name="user_id" class="form-control" ng-model="partner.user_id" required>
             <option value="">@lang('generals.select')</option>
             <option data-ng-repeat="user in users" value="@{{ user.id }}">@{{ user.name }}</option>
@@ -39,7 +39,7 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label for="birthdate">@lang('partners.birthdate')</label>
-            <input id="birthdate" placeholder="{{trans('partners.birthdate')}}" type="text" data-ng-model="partner.birthdate" class="form-control">
+            <input id="birthdate" placeholder="{{trans('partners.birthdate')}}" type="date" data-ng-model="partner.birthdate" class="form-control">
         </div>
     </div>
     <div class="form-group col-lg-3">

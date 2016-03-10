@@ -26,5 +26,6 @@ return[
     "single" => "Soltero",
     "divorced" => "Divorciado",
     "widower" => "Viudo",
+    "user" => "Usuario",
 
 ];

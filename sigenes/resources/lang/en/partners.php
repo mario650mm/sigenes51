@@ -26,5 +26,6 @@ return [
     "single" => "Single",
     "divorced" => "Divorced",
     "widower" => "Widower",
+    "user" => "User",
 
 ];
