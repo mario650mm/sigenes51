@@ -35,7 +35,7 @@ angular.module('Enes')
                     });
             });
 
-        userFactory.getUsers
+        userFactory.getUsers()
             .success(function (data) {
                 $scope.users = data;
             })

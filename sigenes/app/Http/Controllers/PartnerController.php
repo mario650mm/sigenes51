@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
@@ -67,7 +68,12 @@ class PartnerController extends Controller
         }
 
         $rules = [
-            
+            'name' => 'required',
+            'curp' => 'required',
+            'sex'  => 'required',
+            'email1' => 'required',
+            'nationality' => 'required',
+            'maritalstatus' => 'required',
         ];
 
         try{
@@ -78,7 +84,8 @@ class PartnerController extends Controller
                     'errors'  => $validator->errors()->all()
                 ];
             }
-            Partner::create($request->all());
+            $partner = Partner::create($request->all());
+            $partner->save();
             return ['created' => true];
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);

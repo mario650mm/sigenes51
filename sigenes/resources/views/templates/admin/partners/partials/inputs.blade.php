@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-lg-6">
         <label>Usuario</label>
-        <select name="user_id" class="form-control" ng-model="user_id" required>
+        <select name="user_id" class="form-control" ng-model="partner.user_id" required>
             <option value="">@lang('generals.select')</option>
             <option data-ng-repeat="user in users" value="@{{ user.id }}">@{{ user.name }}</option>
         </select>
@@ -31,7 +31,7 @@
     <div class="col-lg-6">
         <div class="form-group">
             <label for="curp">@lang('partners.curp')</label>
-            <input id="curp" placeholder="{{trans('partners.curp')}}" type="text" data-ng-model="partner.curp" class="form-control">
+            <input id="curp" placeholder="{{trans('partners.curp')}}" type="text" data-ng-model="partner.curp" class="form-control" required>
         </div>
     </div>
 </div>
@@ -53,7 +53,7 @@
     <div class="col-lg-5">
         <div class="form-group">
             <label for="email1">@lang('partners.email1')</label>
-            <input id="email1" placeholder="{{trans('partners.email1')}}" type="email" data-ng-model="partner.email1" class="form-control">
+            <input id="email1" placeholder="{{trans('partners.email1')}}" type="email" data-ng-model="partner.email1" class="form-control" required>
         </div>
     </div>
 </div>
