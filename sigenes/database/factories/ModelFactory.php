@@ -67,6 +67,8 @@ $factory->define(App\Partner::class, function (Faker\Generator $faker) {
         'email1' => $faker->unique()->email,
         'email2' => $faker->unique()->email,
         'nationality' => $faker->randomElement($array = array ('Mexicana','Extranjera')),
+        'telephone' => $faker->phoneNumber,
+        'celphone' => $faker->phoneNumber,
         'maritalstatus' => $faker->randomElement($array = array ('Casado', 'Soltero', 'Divorciado', 'Viudo')),
         'user_id' => $faker->numberBetween($min=1,$max=50),
         'created_at' => $now

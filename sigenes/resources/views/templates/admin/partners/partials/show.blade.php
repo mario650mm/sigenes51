@@ -6,19 +6,19 @@
     <div class="content">
         <div class="description">
             <p><i class="fa fa-building"></i>   <strong> @lang('partners.full_name'):</strong>   @{{ partner.name }} @{{partner.firstlastname}}</p>
-            <span ng-if="@{{ partner.curp }}">
+            <p ng-if="@{{ partner.curp }}">
                 <p><i class="fa fa-file-text-o"></i>    <strong> @lang('partners.curp'):</strong>   @{{ partner.curp }}</p>
-            </span>
+            </p>
             <p><i class="fa fa-envelope"></i>   <strong>@lang('partners.email1'):</strong>   @{{ partner.email1 }}</p>
-            <span ng-if="@{{ partner.email2 }}">
+            <p ng-if="@{{ partner.email2 }}">
                 <p><i class="fa fa-envelope-o"></i> <strong>@lang('partners.email2'):</strong>   @{{ partner.email2 }}</p>
-            </span>
-            <span ng-if="@{{ partner.telephone }}">
+            </p>
+            <p ng-if="@{{ partner.telephone }}">
                 <p><i class="fa fa-phone"></i> <strong>@lang('partners.telephone'):</strong>   @{{ partner.telephone }}</p>
-            </span>
-            <span ng-if="@{{ partner.celphone }}">
+            </p>
+            <p ng-if="@{{ partner.celphone }}">
                 <p><i class="fa fa-mobile"></i> <strong>@lang('partners.cellphone'):</strong>   @{{ partner.celphone }}</p>
-            </span>
+            </p>
             <p><i class="fa fa-venus-mars"></i> <strong>@lang('partners.sex'):</strong>   @{{ partner.sex }}</p>
             <p><i class="fa fa-language"></i> <strong>@lang('partners.nationality'):</strong>   @{{ partner.nationality }}</p>
             <p><i class="fa fa-venus-double"></i> <strong>@lang('partners.marital_status'):</strong>   @{{ partner.maritalstatus }}</p>
