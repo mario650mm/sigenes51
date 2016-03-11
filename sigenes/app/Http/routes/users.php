@@ -7,7 +7,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
 });
 
-// API routes
+// API routes of Admin
 
 Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function () {
 
@@ -15,6 +15,12 @@ Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function
     Route::put('users', 'UserController@update');
     Route::delete('users/{id}', 'UserController@destroy');
     Route::get('users', 'UserController@getAllData');
-    Route::get('usersall', 'UserController@getAllData');
+
+});
+
+// API routes of Employee
+
+Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'employee']], function () {
+    Route::get('users', 'UserController@getAllData');
 
 });

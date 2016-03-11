@@ -5,9 +5,6 @@
 angular.module('Enes')
     .factory('userFactory', function (HOST, $http) {
         return{
-            getUsers : function(){
-                return $http.get(HOST+'api/v1/usersall')
-            },
             getAllUsers : function(){
                 return $http.get(HOST+'api/v1/users')
             },

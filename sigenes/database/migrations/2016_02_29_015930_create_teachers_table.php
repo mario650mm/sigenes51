@@ -14,7 +14,6 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('noAccount', 25);
             $table->enum('type', ['Carrera','Asignatura']);
             $table->integer('partner_id')->unsigned();
             $table->timestamps();
@@ -26,13 +25,11 @@ class CreateTeachersTable extends Migration
         $now = date('Y-m-d H:i:s');
         \DB::table('teachers')->insert([
             [
-                'noAccount' => 'ADMIN1200',
                 'type' => 'Carrera',
                 'partner_id' => 3,
                 'created_at' => $now
             ],
             [
-                'noAccount' => 'DIRE1200',
                 'type' => 'Asignatura',
                 'partner_id' => 4,
                 'created_at' => $now

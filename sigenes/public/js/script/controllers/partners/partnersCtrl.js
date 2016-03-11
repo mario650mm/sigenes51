@@ -11,8 +11,9 @@
 
 angular.module('Enes')
     .controller('PartnersController', function ($scope, partnersFactory,userFactory, Notification) {
-        $scope.partner = {};
+        $scope.partner = [];
         $scope.partners = [];
+        $scope.users = [];
 
         $scope.availableSearchParams = [
             {key: "name", name: "Nombre", placeholder: "Nombre .."},
@@ -35,7 +36,7 @@ angular.module('Enes')
                     });
             });
 
-        userFactory.getUsers()
+        userFactory.getAllUsers()
             .success(function (data) {
                 $scope.users = data;
             })
