@@ -6,7 +6,9 @@
     <div class="content">
         <div class="description">
             <p><i class="fa fa-building"></i>   <strong> @lang('partners.full_name'):</strong>   @{{ partner.name }} @{{partner.firstlastname}}</p>
-            <p><i class="fa fa-file-text-o"></i>    <strong> @lang('partners.curp'):</strong>   @{{ partner.curp }}</p>
+            <span ng-if="@{{ partner.curp }}">
+                <p><i class="fa fa-file-text-o"></i>    <strong> @lang('partners.curp'):</strong>   @{{ partner.curp }}</p>
+            </span>
             <p><i class="fa fa-envelope"></i>   <strong>@lang('partners.email1'):</strong>   @{{ partner.email1 }}</p>
             <span ng-if="@{{ partner.email2 }}">
                 <p><i class="fa fa-envelope-o"></i> <strong>@lang('partners.email2'):</strong>   @{{ partner.email2 }}</p>

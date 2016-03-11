@@ -69,7 +69,6 @@ class PartnerController extends Controller
 
         $rules = [
             'name' => 'required',
-            'curp' => 'required',
             'sex'  => 'required',
             'email1' => 'required',
             'nationality' => 'required',
