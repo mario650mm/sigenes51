@@ -98,7 +98,7 @@ angular.module('Enes')
                 .success(function (data) {
                     $('#delete').modal('hide');
                     Notification.success({
-                        message: 'Profesor ' + user.noAccount + ' eliminado correctamente.',
+                        message: 'Profesor ' + teacher.noAccount + ' eliminado correctamente.',
                         delay: 5000
                     });
                 })
