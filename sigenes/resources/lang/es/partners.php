@@ -11,7 +11,7 @@ return[
     "sex" => "Sexo",
     "email1" => "Correo 1",
     "email2" => "Correo 2",
-    "nationality" => "Nationalidad",
+    "nationality" => "Nacionalidad",
     "telephone" => "Teléfono",
     "cellphone" => "Celular",
     "marital_status" => "Estado civil",
