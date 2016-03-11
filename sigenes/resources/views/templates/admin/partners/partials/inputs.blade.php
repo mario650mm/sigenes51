@@ -82,8 +82,8 @@
 <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
-            <label for="celphone">@lang('partners.cellphone')</label>
-            <input id="celphone" placeholder="{{trans('partners.cellphone')}}" type="text" data-ng-model="partner.celphone" class="form-control">
+            <label for="cellphone">@lang('partners.cellphone')</label>
+            <input id="cellphone" placeholder="{{trans('partners.cellphone')}}" type="text" data-ng-model="partner.cellphone" class="form-control">
         </div>
     </div>
     <div class="form-group col-lg-4">

@@ -15,16 +15,16 @@ class CreatePartnersTable extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 25);
-            $table->string('firstlastname', 25)->nullable();
-            $table->string('secondlastname', 25)->nullable();
+            $table->string('firstlastname', 25);
+            $table->string('secondlastname', 25);
             $table->string('curp', 18);
             $table->date('birthdate')->nullable();
             $table->enum('sex', ['Masculino', 'Femenino']);
             $table->string('email1', 60);
             $table->string('email2', 45)->nullable();
             $table->enum('nationality', ['Mexicana', 'Extranjero']);
-            $table->string('telephone', 25)->nullable();
-            $table->string('celphone', 25)->nullable();
+            $table->string('telephone', 25);
+            $table->string('cellphone', 25);
             $table->enum('maritalstatus',
                 ['Casado', 'Soltero', 'Divorciado', 'Viudo']);
             $table->timestamps();
