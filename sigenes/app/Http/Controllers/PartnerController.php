@@ -83,8 +83,7 @@ class PartnerController extends Controller
                     'errors'  => $validator->errors()->all()
                 ];
             }
-            $partner = Partner::create($request->all());
-            $partner->save();
+            Partner::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
@@ -111,7 +110,7 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
-        return view('templates.admin.partners.partials.edit');
+
     }
 
     /**

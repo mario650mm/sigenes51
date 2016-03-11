@@ -69,7 +69,6 @@ angular.module('Enes')
         $scope.editPartner = function (partner) {
             partnersFactory.update(partner)
                 .success(function (data) {
-                    console.log(data);
                     $('#edit').modal('hide');
                     Notification.success({
                         message: 'Socio ' + partner.name + ' actualizado correctamente.',

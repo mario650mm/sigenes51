@@ -30,8 +30,7 @@ class TeacherController extends Controller
     public function getAllData()
     {
         $teacher = Teacher::join('partners','partners.id','=','teachers.partner_id')
-            ->join('users','users.id','=','partners.user_id')
-            ->where('users.type','employee')
+            ->join('employees','employees.partner_id','=','partners.id')
             ->select('partners.name','partners.firstlastname','partners.curp',
                 'partners.email1','partners.email2',
                 'teachers.noAccount','teachers.type')
@@ -78,7 +77,7 @@ class TeacherController extends Controller
             Teacher::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
-            \Log::info('Error creating user: '.$e);
+            \Log::info('Error creating teacher: '.$e);
             return \Response::json(['created' => false], 500);
         }
     }
