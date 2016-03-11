@@ -70,14 +70,13 @@ $factory->define(App\Partner::class, function (Faker\Generator $faker) {
         'telephone' => $faker->phoneNumber,
         'celphone' => $faker->phoneNumber,
         'maritalstatus' => $faker->randomElement($array = array ('Casado', 'Soltero', 'Divorciado', 'Viudo')),
-        'user_id' => $faker->numberBetween($min=1,$max=50),
+        'user_id' => $faker->unique()->numberBetween($min=1,$max=50),
         'created_at' => $now
     ];
 });
 
 $factory->define(App\Teacher::class, function (Faker\Generator $faker) {
     return [
-        'noAccount' => $faker->numberBetween($min=1200000,$max=1500000),
         'type' => $faker->randomElement($array = array('Carrera','Asignatura')),
         'partner_id' => $faker->numberBetween($min=1,$max=50),
     ];
