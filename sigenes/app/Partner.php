@@ -12,7 +12,7 @@ class Partner extends Model
 
     protected $table='partners';
 
-    protected $fillable=['name', 'firstlastname', 'secondlastname','curp','birthdate','sex','email1','email2','nationality','telephone', 'cellphone','maritalstatus','user_id'];
+    protected $fillable=['name', 'firstlastname', 'secondlastname','rfc','curp','birthdate','sex','email1','email2','nationality','telephone', 'cellphone','maritalstatus','user_id'];
 
     public function Student(){
         return $this->hasOne('App\Student');

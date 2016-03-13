@@ -98,4 +98,10 @@
             <option value="Viudo">@lang('partners.widower')</option>
         </select>
     </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="rfc">RFC</label>
+            <input id="rfc" placeholder="RFC" type="text" data-ng-model="partner.rfc" class="form-control" required>
+        </div>
+    </div>
 </div>
