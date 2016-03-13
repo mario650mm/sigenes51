@@ -32,8 +32,7 @@ class TeacherController extends Controller
         $teacher = Teacher::join('partners','partners.id','=','teachers.partner_id')
             ->join('employees','employees.partner_id','=','partners.id')
             ->select('partners.name','partners.firstlastname','partners.curp',
-                'partners.email1','partners.email2',
-                'teachers.noAccount','teachers.type')
+                'partners.email1','partners.email2','teachers.type')
             ->get();
         return $teacher;
 

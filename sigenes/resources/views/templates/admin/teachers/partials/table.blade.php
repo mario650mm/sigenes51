@@ -1,7 +1,6 @@
 <table class="table table-hover">
     <tr>
         <th>@lang('teachers.full_name')</th>
-        <th>@lang('teachers.number_account')</th>
         <th>@lang('teachers.curp')</th>
         <th>@lang('teachers.email1')</th>
         <th>@lang('teachers.email2')</th>
@@ -10,7 +9,6 @@
     </tr>
     <tr data-dir-paginate="teacher in teachers | orderBy:sortKey:reverse | filter:searchInput|itemsPerPage:15">
         <td>@{{ teacher.name }} @{{ teacher.firstlastname }}</td>
-        <td>@{{ teacher.noAccount }}</td>
         <td>@{{ teacher.curp }}</td>
         <td>@{{ teacher.email1 }}</td>
         <td>@{{ teacher.email2 }}</td>

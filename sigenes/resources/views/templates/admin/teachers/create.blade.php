@@ -18,6 +18,7 @@
         @endsection
 
         @section('body_page')
+            @include('templates.admin.partners.partials.inputs')
             @include('templates.admin.teachers.partials.inputs')
         @endsection
 

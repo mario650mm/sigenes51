@@ -21,20 +21,6 @@ class CreateTeachersTable extends Migration
             $table->foreign('partner_id')->references('id')
                 ->on('partners')->onDelete('cascade')->onUpdate('cascade');
         });
-
-        $now = date('Y-m-d H:i:s');
-        \DB::table('teachers')->insert([
-            [
-                'type' => 'Carrera',
-                'partner_id' => 3,
-                'created_at' => $now
-            ],
-            [
-                'type' => 'Asignatura',
-                'partner_id' => 4,
-                'created_at' => $now
-            ],
-        ]);
     }
 
     /**

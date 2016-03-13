@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             factory('App\User', 50)->create();
             factory('App\Applicant', 20)->create();
             factory('App\Partner', 50)->create();
-            factory('App\Teacher', 50)->create();
+            factory('App\Teacher', 10)->create();
         Model::reguard();
     }
 }

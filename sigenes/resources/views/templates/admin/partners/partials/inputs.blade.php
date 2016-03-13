@@ -1,3 +1,4 @@
+@if(Auth::user()->user_type_id == 1)
 <div class="row">
     <div class="form-group col-lg-6">
         <label>@lang('partners.user')</label>
@@ -7,6 +8,7 @@
         </select>
     </div>
 </div>
+@endif
 <div class="row">
     <div class="col-lg-6">
         <div class="form-group">
@@ -17,7 +19,7 @@
     <div class="col-lg-6">
         <div class="form-group">
             <label for="firstlastname">@lang('partners.last_name')</label>
-            <input id="firstlastname" placeholder="{{trans('partners.last_name')}}" type="text" data-ng-model="partner.firstlastname" class="form-control">
+            <input id="firstlastname" placeholder="{{trans('partners.last_name')}}" type="text" data-ng-model="partner.firstlastname" class="form-control" required>
         </div>
     </div>
 </div>
@@ -25,7 +27,7 @@
     <div class="col-lg-6">
         <div class="form-group">
             <label for="secondlastname">@lang('partners.s_last_name')</label>
-            <input id="secondlastname" placeholder="{{trans('partners.s_last_name')}}" type="text" data-ng-model="partner.secondlastname" class="form-control">
+            <input id="secondlastname" placeholder="{{trans('partners.s_last_name')}}" type="text" data-ng-model="partner.secondlastname" class="form-control" required>
         </div>
     </div>
     <div class="col-lg-6">
@@ -75,7 +77,7 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label for="telephone">@lang('partners.telephone')</label>
-            <input id="telephone" placeholder="{{trans('partners.telephone')}}" type="text" data-ng-model="partner.telephone" class="form-control">
+            <input id="telephone" placeholder="{{trans('partners.telephone')}}" type="text" data-ng-model="partner.telephone" class="form-control" required>
         </div>
     </div>
 </div>
@@ -83,7 +85,7 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label for="cellphone">@lang('partners.cellphone')</label>
-            <input id="cellphone" placeholder="{{trans('partners.cellphone')}}" type="text" data-ng-model="partner.cellphone" class="form-control">
+            <input id="cellphone" placeholder="{{trans('partners.cellphone')}}" type="text" data-ng-model="partner.cellphone" class="form-control" required>
         </div>
     </div>
     <div class="form-group col-lg-4">
