@@ -29,5 +29,5 @@ class Period extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'month_init', 'month_end', 'year'];
+    protected $fillable = ['id', 'month_init', 'month_end', 'year', 'date_init', 'date_end'];
 }

@@ -19,3 +19,12 @@
 		<a class="item" href="{{ route('admin.records.index')}}"> School records</a>
 	</div>
 </div>
+<div class="item">
+    <div class="header"> <i class="browser icon"></i>Management</div>
+    <div class="menu">
+        <a class="item" href="{{ route('schooltype.index')}}"> School records</a>
+    </div>
+    <div class="menu">
+        <a class="item" href="{{ route('period.index')}}"> Periods</a>
+    </div>
+</div>

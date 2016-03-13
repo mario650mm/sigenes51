@@ -23,6 +23,7 @@ angular.module('Enes')
         $scope.validate;
         $scope.information;
         $scope.chance       = false;
+        $scope.valsusp      = false;
 
         /**  
         *    funcion main que carga los datos 
@@ -33,7 +34,37 @@ angular.module('Enes')
             getPeriods();
             getDateSus();
             ver(paramint);
+            
             //getValidator();
+        }
+
+        var suspensionTime = function(){
+            var date = new Date();
+            var date_valinit = $scope.periods[0].date_init.split("-");
+            var date_valend = $scope.periods[0].date_end.split("-");
+            var mes = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
+            if (mes == date_valinit[1]) {
+                var dia = date.getDate();
+                var dia_init = parseInt(date_valinit[2]);
+                var dia_end = parseInt(date_valend[2]);
+                if (dia > dia_init && dia < dia_end) {
+                    $scope.btnapply = true;
+                }else{
+                    $scope.btnapply = false;
+                    Notification.error({
+                        message: '<u>El tiempo en el que se podia realizar la suspensión se ha terminado</u>',
+                        title: '<b>Información</b>',
+                        delay: 5000
+                    });
+                }
+            }else{
+                $scope.btnapply = false;
+                Notification.error({
+                    message: '<u>El tiempo en el que se podia realizar la suspensión se ha terminado</u>',
+                    title: '<b>Información</b>',
+                    delay: 5000
+                });
+            }            
         }
 
         //vuelve visible o no el panel del notas
@@ -59,7 +90,12 @@ angular.module('Enes')
                 angular.forEach(data, function(value, key){
                     $scope.periods[key].title = value.month_init + ' - ' + value.month_end + ' ' + value.year; 
                     $scope.periods[key].period_id = value.id;
+                    $scope.periods[key].month_init = value.month_init;
+                    $scope.periods[key].month_end = value.month_end;
+                    $scope.periods[key].date_init = value.date_init;
+                    $scope.periods[key].date_end = value.date_end;
                 })
+                suspensionTime();
             })
             .error(function(error){
                 console.log(error);
@@ -72,7 +108,6 @@ angular.module('Enes')
         var ver = function(intpa){
             suspensionFactory.getAllSusPartn(intpa)
             .success(function(data){
-                console.log(data);
                 $scope.userSusp.nombre = data.name + ' ' + data.firstlastname 
                         + ' ' + data.secondlastname;
                 $scope.userSusp.account_number = data.student.account_number;
@@ -196,7 +231,6 @@ angular.module('Enes')
             
             suspensionFactory.save($scope.suspen)
             .success(function(data){
-                console.log(data);
                 if(data){
                     Notification.success({
                         title: 'Success',
