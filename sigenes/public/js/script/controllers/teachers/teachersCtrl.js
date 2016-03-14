@@ -10,8 +10,9 @@
  */
 
 angular.module('Enes')
-    .controller('TeachersController', function ($scope, teacherFactory, partnersFactory, Notification) {
+    .controller('TeachersController', function ($scope,teacherFactory, partnersFactory, Notification) {
         $scope.teacher = {};
+        $scope.partner = {};
         $scope.teachers = [];
         /**
          * Profesores de Carrera (Tiempo completo)
@@ -54,24 +55,42 @@ angular.module('Enes')
             });
 
 
-        $scope.save = function (teacher) {
-            teacher.type = $scope.role;
-            teacher.partner_id = $scope.partner_id;
-            teacherFactory.save(teacher)
+        $scope.save = function () {
+
+            partnersFactory.save($scope.partner)
                 .success(function (data) {
-                    Notification.success({
-                        message: 'Profesor ' + teacher.noAccount + ' creado correctamente.',
-                        delay: 5000
-                    });
+                    $scope.teacher.partner_id = data.partner_id;
+                    teacherFactory.save($scope.teacher)
+                        .success(function (data) {
+                            Notification.success({
+                                message: 'Profesor ' + $scope.partner.name + ' creado correctamente.',
+                                delay: 5000
+                            });
+                        })
+                        .error(function (error) {
+                            Notification.error(
+                                {
+                                    message: '<b>Error</b> <s>notificación</s>',
+                                    title: '<u>Error al crear el profesor</u>',
+                                    delay: 5000
+                                });
+                        })
                 })
+
                 .error(function (error) {
+                    $scope.error = "";
+                    angular.forEach(error.errors,function(value){
+                        $scope.error += value + "</br>";
+                    })
                     Notification.error(
                         {
-                            message: '<b>Error</b> <s>notificación</s>',
+                            message: '<b>Error</b> </br>'+$scope.error,
                             title: '<u>Error al crear el profesor</u>',
-                            delay: 5000
+                            delay: 10000
                         });
                 })
+
+
         }
 
         $scope.editTeacher = function (teacher) {

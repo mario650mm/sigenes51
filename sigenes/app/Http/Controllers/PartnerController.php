@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Partner;
 use Illuminate\Http\Request;
 
@@ -75,16 +76,22 @@ class PartnerController extends Controller
             'maritalstatus' => 'required',
         ];
 
+
         try{
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return [
-                    'created' => false,
-                    'errors'  => $validator->errors()->all()
-                ];
+                return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
             }
-            Partner::create($request->all());
-            return ['created' => true];
+            $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email1'),
+                'rfc' => $request->input('rfc'),
+                'password' => str_random(10),
+                'type' => 'employee'
+            ]);
+            $request->request->add(['user_id' => $user->id]);
+           $partner = Partner::create($request->all());
+           return \Response::json(['created' => true, 'partner_id' => $partner->id], 200);
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
             return \Response::json(['created' => false], 500);

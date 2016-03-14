@@ -62,16 +62,13 @@ class TeacherController extends Controller
         }
 
         $rules = [
-            'email'     => 'required|email',
+            'type'     => 'required',
         ];
 
         try{
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return [
-                    'created' => false,
-                    'errors'  => $validator->errors()->all()
-                ];
+                return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
             }
             Teacher::create($request->all());
             return ['created' => true];
