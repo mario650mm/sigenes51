@@ -15,11 +15,13 @@ class CreateTransactTypesTable extends Migration
         Schema::create('transact_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 85);
+            $table->binary('record');
+            $table->longText('description');
             $table->timestamps();
             $table->softDeletes();
         });
 
-        $now = date('Y-m-d H:i:s');
+        /*$now = date('Y-m-d H:i:s');
         \DB::table('transact_types')->insert([
             [
                 'name' => 'Constancia de inscripción',
@@ -49,7 +51,7 @@ class CreateTransactTypesTable extends Migration
                 'name' => 'Reposición Credencial',
                 'created_at' => $now
             ],
-        ]);
+        ]);*/
     }
 
     /**
