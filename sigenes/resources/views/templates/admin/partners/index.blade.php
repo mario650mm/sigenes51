@@ -45,7 +45,6 @@
     @include('templates.admin.partners.partials.delete')
     </div>
     @endsection
-
     @section('end_angular_controller')
     </div>
 @endsection

@@ -42,6 +42,7 @@
     <script src="{{ asset('js/script/services/applicants/applicant.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/partners/partners.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/teachers/teachers.factories.js') }}"></script>
+    <script src="{{ asset('js/script/services/employees/employees.factories.js') }}"></script>
 
     <!-- Angular Controllers -->
     <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>

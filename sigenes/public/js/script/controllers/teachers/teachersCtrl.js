@@ -22,10 +22,9 @@ angular.module('Enes')
         $scope.role;
 
         $scope.availableSearchParams = [
-            { key: "name", name: "Name", placeholder: "Name..." },
-            { key: "curp", name: "curp", placeholder: "CURP..." },
-            {key: "noAccount", name: "noAccount", placeholder: "No Account"},
-            { key: "type", name: "Type", placeholder: "Type..."}
+            { key: "name", name: "Nombre", placeholder: "Nombre.." },
+            { key: "curp", name: "curp", placeholder: "CURP.." },
+            { key: "type", name: "Tipo", placeholder: "Tipo.."}
         ];
 
         teacherFactory.getAllTeachers()
@@ -128,12 +127,12 @@ angular.module('Enes')
                 })
         }
 
-        $scope.deleteTeacher = function (teacher) {
-            teacherFactory.delete(teacher)
+        $scope.deleteTeacher = function (partner) {
+            partnersFactory.delete(partner)
                 .success(function (data) {
                     $('#delete').modal('hide');
                     Notification.success({
-                        message: 'Profesor ' + teacher.noAccount + ' eliminado correctamente.',
+                        message: 'Socio ' + partner.name + ' eliminado correctamente.',
                         delay: 5000
                     });
                 })
@@ -141,7 +140,7 @@ angular.module('Enes')
                     Notification.error(
                         {
                             message: '<b>Error</b> <s>notificación</s>',
-                            title: '<u>Error al eliminar el profesor</u>',
+                            title: '<u>Error al eliminar el socio</u>',
                             delay: 5000
                         });
                 })

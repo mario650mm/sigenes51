@@ -8,7 +8,7 @@
         <th width="10%">@lang('generals.controllers')</th>
     </tr>
     <tr data-dir-paginate="teacher in teachers | orderBy:sortKey:reverse | filter:searchInput|itemsPerPage:15">
-        <td>@{{ teacher.name }} @{{ teacher.firstlastname }}</td>
+        <td>@{{ teacher.name }} @{{ teacher.firstlastname }} @{{ teacher.secondlastname }}</td>
         <td>@{{ teacher.curp }}</td>
         <td>@{{ teacher.email1 }}</td>
         <td>@{{ teacher.email2 }}</td>

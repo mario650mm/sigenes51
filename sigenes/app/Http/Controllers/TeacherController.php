@@ -70,7 +70,7 @@ class TeacherController extends Controller
             if ($validator->fails()) {
                 return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
             }
-            Teacher::create($request->all());
+            $teacher = Teacher::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
             \Log::info('Error creating teacher: '.$e);
@@ -122,7 +122,9 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
+        $user = User::destroy($id);
+        $partner = Partner::destroy($id);
         Teacher::destroy($id);
-        return ['deleted' => true];
+        return \Response::json(['deleted' => true,'user_id' => $user->id,'partner_id',$partner->id],500);
     }
 }

@@ -33,7 +33,7 @@
     <div class="col-lg-6">
         <div class="form-group">
             <label for="curp">@lang('partners.curp')</label>
-            <input id="curp" placeholder="{{trans('partners.curp')}}" type="text" data-ng-model="partner.curp" class="form-control">
+            <input id="curp" placeholder="{{trans('partners.curp')}}" type="text" data-ng-model="partner.curp" class="form-control" required>
         </div>
     </div>
 </div>
