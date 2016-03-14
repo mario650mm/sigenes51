@@ -93,7 +93,23 @@ angular.module('Enes')
 
         }
 
-        $scope.editTeacher = function (teacher) {
+        $scope.editTeacher = function (partner,teacher) {
+            partnersFactory.update(partner)
+                .success(function (data) {
+                    $('#edit').modal('hide');
+                    Notification.success({
+                        message: 'Socio ' + partner.name + ' actualizado correctamente.',
+                        delay: 5000
+                    });
+                })
+                .error(function (error) {
+                    Notification.error(
+                        {
+                            message: '<b>Error</b> <s>notificación</s>',
+                            title: '<u>Error al actualizar el Socio</u>',
+                            delay: 5000
+                        });
+                })
             teacherFactory.update(teacher)
                 .success(function (data) {
                     $('#edit').modal('hide');
@@ -131,7 +147,8 @@ angular.module('Enes')
                 })
         }
 
-        $scope.editTeacherModal = function (teacher) {
+        $scope.editTeacherModal = function (partner,teacher) {
+            $scope.partner = partner;
             $scope.teacher = teacher;
             $scope.edit = true;
             $('#edit').modal('show');

@@ -4,6 +4,7 @@
         @{{ teacher.name }}
     </div>
     <div class="content">
+        @include('templates.admin.partners.partials.inputs')
         @include('templates.admin.teachers.partials.inputs')
     </div>
     <div class="actions">
