@@ -45,27 +45,20 @@
     <script src="{{ asset('js/script/services/schoolrecord/schoolrecord.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/schoolrecord/schoolrecordType.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/applicants/applicant.factories.js') }}"></script>
-<<<<<<< HEAD
     <script src="{{ asset('js/script/services/partners/partners.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/teachers/teachers.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/employees/employees.factories.js') }}"></script>
-=======
     <script src="{{ asset('js/script/services/period/period.factories.js') }}"></script>
->>>>>>> origin/produccion
 
     <!-- Angular Controllers -->
     <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/low/suspencionsAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/applicants/applicantsController.js') }}"></script>
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordAdminCtrl.js') }}"></script>
-<<<<<<< HEAD
     <script src="{{ asset('js/script/controllers/partners/partnersCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/teachers/teachersCtrl.js') }}"></script>
 @endif
-
-
-=======
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordTypeAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/period/periodAdminCtrl.js') }}"></script>
->>>>>>> origin/produccion
+
 
