@@ -107,6 +107,8 @@ class CreateUsersTable extends Migration
                 'created_at' => $now
             ]
         ]);
+
+        
     }
 
     /**

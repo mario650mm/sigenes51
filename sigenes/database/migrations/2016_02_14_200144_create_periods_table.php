@@ -17,11 +17,13 @@ class CreatePeriodsTable extends Migration
             $table->string('month_init', 25);
             $table->string('month_end', 25);
             $table->string('year', 4);
+            $table->string('date_init', 15);
+            $table->string('date_end', 15);
             $table->timestamps();
             $table->softDeletes();
         });
 
-        $now = date('Y-m-d H:i:s');
+        /*$now = date('Y-m-d H:i:s');
         \DB::table('periods')->insert([
             [
                 'month_init' => 'Enero',
@@ -35,7 +37,7 @@ class CreatePeriodsTable extends Migration
                 'year' => '2016',
                 'created_at' => $now
             ],
-        ]);
+        ]);*/
     }
 
     /**

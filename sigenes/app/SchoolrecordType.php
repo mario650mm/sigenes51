@@ -24,5 +24,5 @@ class SchoolrecordType extends Model
     protected $table = 'transact_types';
 
 
-    protected $fillable=[];
+    protected $fillable=['name', 'record', 'description'];
 }

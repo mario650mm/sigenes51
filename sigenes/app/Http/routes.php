@@ -69,3 +69,9 @@ Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
     Route::get('recordstype', 'SchoolrecordController@getRecordType');
 
 });
+
+require __DIR__ . '/routes/suspensions.php';
+require __DIR__ . '/routes/schoolrecords.php';
+require __DIR__ . '/routes/schoolrecordType.php';
+require __DIR__ . '/routes/period.php';
+
