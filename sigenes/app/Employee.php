@@ -12,5 +12,9 @@ class Employee extends Model
 
     protected $table='employees';
 
-    protected $fillable=[];
+    protected $fillable=['no_employee'];
+
+    public function Partner(){
+        return $this->belongsTo('App\Partner');
+    }
 }
