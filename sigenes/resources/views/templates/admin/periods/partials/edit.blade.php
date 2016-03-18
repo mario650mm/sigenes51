@@ -7,6 +7,6 @@
 		@include('templates.admin.periods.partials.periods')
 	</div>
 	<div class="actions">
-		<button type="button" class="btn btn-primary" ng-click="updateperiod()"><i class="fa fa-pencil"></i> Actualiza periodo</button>
+		<button type="button" class="btn btn-primary" ng-click="updateperiod()"><i class="fa fa-refresh"></i> Actualiza periodo</button>
 	</div>
 </div>

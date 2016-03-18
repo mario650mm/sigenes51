@@ -38,47 +38,6 @@ class CreateStudentsTable extends Migration
                 'created_at' => $now,
             ],
         ]);
-
-       /* $faker = Faker::create();
-        for ($i=0; $i < 10; $i++) {
-            $name =  $faker->name;
-            $firstName = $faker->firstName;
-            $lastName = $faker->lastName;
-            $email = $faker->email;
-            $user_id = \DB::table('users')->insertGetId([
-                
-                    'name' => $firstName . ' ' . $lastName . ' ' . $lastName,
-                    'email' => $faker->email,
-                    'rfc' => 'ALUM000000XX'.$i,
-                    'password' => bcrypt('123456'),
-                    'type' => 'student',
-                    'created_at' => $now
-                
-            ]);
-            $partner_id = \DB::table('partners')->insertGetId([
-                'name' => $lastName,
-                'firstlastName' => $lastName,
-                'secondlastName' => $lastName,
-                'curp' => 'AAAA800313HCMLNS09',
-                'birthdate' => $faker->dateTimeThisCentury->format('Y-m-d'),
-                'sex' => 'Masculino',
-                'email1' => 
-                'nationality' => 'Mexicana',
-                'maritalstatus' => 'Soltero',
-                'user_id' => $user_id,
-                'created_at' => $now
-                
-            ]);
-
-            \DB::table('students')->insert([
-                
-                    'account_number' => $faker->swiftBicNumber,
-                    'data_register' => $now,
-                    'partner_id' => $partner_id,
-                    'created_at' => $now,
-                
-            ]);
-        }*/
     }
 
     /**

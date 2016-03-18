@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeriodsTable extends Migration
+class CreateCareersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class CreatePeriodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('periods', function (Blueprint $table) {
+        Schema::create('careers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('month_init', 25);
-            $table->string('month_end', 25);
-            $table->string('year', 4);
-            $table->string('date_init', 15);
-            $table->string('date_end', 15);
+            $table->char('father_campus', 5);
+            $table->char('campus', 5);
+            $table->integer('key');
+            $table->string('name', 50);
+            $table->longText('description');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +31,6 @@ class CreatePeriodsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('periods');
+        Schema::drop('careers');
     }
 }

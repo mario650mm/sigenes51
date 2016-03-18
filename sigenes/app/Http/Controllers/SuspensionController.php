@@ -98,10 +98,7 @@ class SuspensionController extends Controller
         try{
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return [
-                    'created' => false,
-                    'errors'  => $validator->errors()->all()
-                ];
+                return \Response::json(['created' => false,'errors' => $validator->errors()->all()], 500);
             }
 
             Suspension::create($request->all());
@@ -205,5 +202,16 @@ class SuspensionController extends Controller
         }catch(Exception $e){
             return ['deleted' => false];
         }
+    }
+
+    /*
+    * Create pdf of suspension
+    */
+    public function pdf(){
+        $data = Suspension::DataPdf();
+        $view =  \View::make('templates.student.low.pdf.pdfsuspension', compact('data'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('templates.student.low.pdf.pdfsuspension');
     }
 }

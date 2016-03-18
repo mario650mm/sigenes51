@@ -147,10 +147,14 @@
                 $scope.isViewNote = true;
         	})
         	.error(function(data){
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                })
                 Notification.error({
-                    message: '<u>Ocurrio un error al realizar el tramite</u>',
-                    title: '<b>Error</b> <s>notificación</s>',
-                    delay: 3000
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al crear el tramite</u>',
+                    delay: 10000
                 });
         	})
         }

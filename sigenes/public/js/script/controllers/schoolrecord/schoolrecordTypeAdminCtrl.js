@@ -33,35 +33,20 @@
 
         $scope.showView = function(entity){
             $scope.entity = entity;
-           $scope.base = atob(entity.record);
-
-            var file = new Blob([$scope.base], {type: 'application/pdf'});
-            var fileURL = URL.createObjectURL(file);
-            window.open(fileURL);
-
-            //$scope.base = '<embed src="data:application/pdf;base64,' + entity.record + '" type="application/pdf" width="200" height="200"></embed>';
-            //console.log(base);
-            //entity.base = base;
-           // var pdfName = 'data:application/pdf;base64,' + entity.record;
-            //var embeddedPdf = document.getElementById('printablePdf');
-            //embeddedPdf.setAttribute('src', pdfName);
-            //$scope.printDocument(embeddedPdf);
+            $scope.base = atob(entity.record);
             $('#showView').modal('show');
         }
 
 
         $scope.printDocument = function() {
-      var test = document.getElementById('printablePdf');
-      if (typeof document.getElementById('printablePdf').print === 'undefined') {
-
-        setTimeout(function(){$scope.printDocument();}, 1000);
-
-      } else {
-
-        var x = document.getElementById('printablePdf');
-        x.print();
-      }
-    };
+            var test = document.getElementById('printablePdf');
+            if (typeof document.getElementById('printablePdf').print === 'undefined') {
+                setTimeout(function(){$scope.printDocument();}, 1000);
+            } else {
+                var x = document.getElementById('printablePdf');
+                x.print();
+            }
+        };
 
         $scope.deleteAction = function(paramInt){
             schoolrecordTypeFactory.delete(paramInt)
@@ -100,10 +85,15 @@
             		delay: 5000});
             })
             .error(function(error){
-            	Notification.error({
-            		message: '<b>Error!</b> Problemas de conexión',
-            		title: '<b>Error</b>',
-            		delay: 5000});
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                });
+                Notification.error({
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al generar la constancia</u>',
+                    delay: 10000
+                });
             });
         }
  	});
