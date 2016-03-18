@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountrysTable extends Migration
+class CreateTeachersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,14 @@ class CreateCountrysTable extends Migration
      */
     public function up()
     {
-        Schema::create('countrys', function(Blueprint $table){
+        Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code', 3);
-            $table->string('name', 60);
+            $table->enum('type', ['Carrera','Asignatura']);
+            $table->integer('partner_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('partner_id')->references('id')
+                ->on('partners')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -28,6 +30,6 @@ class CreateCountrysTable extends Migration
      */
     public function down()
     {
-        Schema::drop('countrys');
+        Schema::drop('teachers');
     }
 }

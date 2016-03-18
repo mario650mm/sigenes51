@@ -51,6 +51,14 @@ class CreateUsersTable extends Migration
                 'created_at' => $now
             ],
             [
+                'name' => 'Coordinador2',
+                'email' => 'coordinador2@unam.com',
+                'rfc' => 'COOR000000XX1',
+                'password' => bcrypt('123456'),
+                'type' => 'employee',
+                'created_at' => $now
+            ],
+            [
                 'name' => 'ControlEscolar',
                 'email' => 'ctrlescolar@unam.com',
                 'rfc' => 'CTRL000000XX0',

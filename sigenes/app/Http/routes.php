@@ -26,10 +26,14 @@ require __DIR__ . '/routes/users.php';
 require __DIR__ . '/routes/countrys.php';
 require __DIR__ . '/routes/states.php';
 require __DIR__ . '/routes/citys.php';
+require __DIR__ . '/routes/teachers.php';
+require __DIR__ . '/routes/partners.php';
 require __DIR__ . '/routes/applicants.php';
+require __DIR__ . '/routes/employees.php';
 require __DIR__ . '/routes/suspensions.php';
 require __DIR__ . '/routes/schoolrecords.php';
 require __DIR__ . '/routes/schoolrecordType.php';
 require __DIR__ . '/routes/period.php';
 require __DIR__ . '/routes/career.php';
 require __DIR__ . '/routes/area.php';
+
