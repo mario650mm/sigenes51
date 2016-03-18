@@ -42,21 +42,6 @@ angular.module('Enes')
     $scope.saveperiod = function(){
       $scope.period.date_init = $('#date_init').val();
       $scope.period.date_end = $('#date_end').val();
- 			if (typeof($scope.period.month_init) == 'undefined') {
- 				return;
- 			};
- 			if (typeof($scope.period.month_end) == 'undefined') {
- 				return;
- 			};
- 			if (typeof($scope.period.date_init) == 'undefined') {
- 				return;
- 			};
- 			if (typeof($scope.period.date_end) == 'undefined') {
- 				return;
- 			};
- 			if (typeof($scope.period.year) == 'undefined') {
- 				return;
- 			};
  			periodFactory.save($scope.period)
  			.success(function(data){
  				if (data.created) {
@@ -68,13 +53,17 @@ angular.module('Enes')
           setTimeout('document.location.reload()',3000);
  				};
  			})
- 			.error(function(error){
- 				Notification.error({
-          message: '<i class="fa fa-exclamation-triangle"></i> <u>Ocurrio un error al generar el periodo</u>',
-          title: '<b>Error</b> <s>notificación</s>',
-          delay: 5000
+ 			.error(function (error) {
+        $scope.error = "";
+        angular.forEach(error.errors,function(value){
+          $scope.error += value + "</br>";
+        })
+        Notification.error({
+          message: '<b>Error</b> </br>'+$scope.error,
+          title: '<u>Error al crear el periodo</u>',
+          delay: 10000
         });
- 			});
+      });
  		}
 
     $scope.editperiod = function(entity){

@@ -47,6 +47,8 @@
     <script src="{{ asset('js/script/services/schoolrecord/schoolrecordType.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/applicants/applicant.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/period/period.factories.js') }}"></script>
+    <script src="{{ asset('js/script/services/careers/career.factories.js') }}"></script>
+    <script src="{{ asset('js/script/services/studyarea/studyarea.factories.js') }}"></script>
 
     <!-- Angular Controllers -->
     <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
@@ -55,5 +57,6 @@
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordTypeAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/period/periodAdminCtrl.js') }}"></script>
+    <script src="{{ asset('js/script/controllers/careers/careerAdminCtrl.js') }}"></script>
 
 @endif
