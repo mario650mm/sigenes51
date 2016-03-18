@@ -59,9 +59,9 @@
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/partners/partnersCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/teachers/teachersCtrl.js') }}"></script>
-@endif
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordTypeAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/period/periodAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/careers/careerAdminCtrl.js') }}"></script>
+@endif
 
 
