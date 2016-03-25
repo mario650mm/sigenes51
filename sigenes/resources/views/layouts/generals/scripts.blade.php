@@ -10,6 +10,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>        
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js"></script>                
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/js/bootstrap-switch.min.js"></script> 
 <script src="{{ asset('bower_components/angular-advanced-searchbox/dist/angular-advanced-searchbox-tpls.min.js') }}"></script>
 <script src="{{ asset('bower_components/angularUtils-pagination/dirPagination.js') }}"></script>
 <script src="{{ asset('bower_components/angular-ui-notification/dist/angular-ui-notification.min.js') }}"></script>
@@ -19,6 +20,7 @@
 <!-- Angular Base -->
 <script src="{{ asset('js/script/app.js') }}"></script>
 <script src="{{ asset('js/script/controllers/main/mainController.js') }}"></script>
+<script src="{{ asset('js/script/services/main/main.factories.js') }}"></script>
 <script src="{{ asset('js/script/extrasEnes.js') }}"></script>
 
 
@@ -51,6 +53,7 @@
     <script src="{{ asset('js/script/services/period/period.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/careers/career.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/studyarea/studyarea.factories.js') }}"></script>
+    <script src="{{ asset('js/script/services/subjectmatter/subjectmatter.factories.js') }}"></script>
 
     <!-- Angular Controllers -->
     <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>
@@ -62,6 +65,7 @@
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordTypeAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/period/periodAdminCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/careers/careerAdminCtrl.js') }}"></script>
+    <script src="{{ asset('js/script/controllers/subjectmatter/subjectmatterAdminCtrl.js') }}"></script>
 @endif
 
 

@@ -16,7 +16,8 @@ class SubjectMatterController extends Controller
      */
     public function index()
     {
-        //
+        //SubjectMatterController
+        return view('templates.admin.subjectMatter.index');
     }
 
     /**
@@ -26,7 +27,7 @@ class SubjectMatterController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.admin.subjectMatter.create');
     }
 
     /**

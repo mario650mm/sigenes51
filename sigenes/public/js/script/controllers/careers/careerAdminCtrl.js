@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc Controller
- * @name Enes.controller:registerAspirantController
- * @param suspensionFactory
+ * @name Enes.controller:careerAdminCtrl
+ * @param careerFactory, studyareaFactory, Notification
  * @param $scope
- * @requires suspensionFactory
+ * @requires careerFactory, studyareaFactory, Notification
  * @description
  * # DeleteuserCtrl
  * Controller of the principalApp
@@ -32,7 +32,11 @@ angular.module('Enes')
 			{ key: "description", name: "Description", placeholder: "Description..." }
 		];
 
-
+		/*
+		* Agrega el registro de la carrera al sistema,
+		* habilita el area para registro de las áreas de conocimiento
+		* de dicha carrera.
+		*/
 		$scope.agregar = function(){
 			$scope.career.father_campus = 600;
 			careerFactory.save($scope.career)
@@ -63,15 +67,21 @@ angular.module('Enes')
 			});
 		}
 
+		/*
+		* Crea el registro de un área de conocimiento de una 
+		* carrera.
+		*/
 		$scope.registrararea = function(){
 			studyareaFactory.save($scope.area)
 			.success(function(data){
 				$scope.selectArea.push(data);
 				Notification.success({
 					title: '<i class="fa fa-info-circle"></i> Registro efectuado',
-					message: '<div align="justify">La carrera se registro con exito, <br>favor de agregar las áreas de estudio correspondientes.</div>',
+					message: '<div align="justify">La área se ha registro con exito.</div>',
 					delay: 5000
 				});
+				$scope.area.name="";
+				$scope.area.key="";
 			})
 			.error(function(error){
 				$scope.error = "";
@@ -85,7 +95,10 @@ angular.module('Enes')
 				});
 			});
 		}
-
+		
+		/*
+		* Trae la información de todas las carreras existentes 
+		*/
 		$scope.getCareer = function(){
 			careerFactory.getInfo()
 			.success(function(data){
@@ -97,6 +110,10 @@ angular.module('Enes')
 			});
 		}
 
+		/*
+		* Trae la información de las áreas de conocimiento 
+		* registradas en el sistema.
+		*/
 		var getArea = function(){
 			studyareaFactory.getInfo()
 			.success(function(data){
@@ -104,6 +121,11 @@ angular.module('Enes')
 			})
 		}
 
+		/*
+		* Filtra las áreas de conocimeinto
+		* con forme a la carreara que se le pasa.
+		* @param paramInt: carrera para la que se filtra.
+		*/
 		$scope.filtroArea = function(paramInt){
 			$scope.dataarea	= [];
 			angular.forEach($scope.allAreas, function(value, key){
@@ -111,13 +133,22 @@ angular.module('Enes')
 					$scope.dataarea.push(value);
 				};
 			});
+			$('#showarea').modal('show');
 		}
 
+		/*
+		* Muestra el modal para la edicion de la carrera
+		* se le pasa la información completa de la carrera
+		* @param entity
+		*/
 		$scope.editCareer = function(entity){
 			$scope.career = entity;
 			$('#editcareer').modal('show');
 		}
 
+		/* 
+		* Actualiza el registro de la carrera seleccionada 
+		*/
 		$scope.updatecareer = function(){
 			careerFactory.update($scope.career)
 			.success(function(data){
@@ -143,11 +174,19 @@ angular.module('Enes')
 			})
 		}
 
+		/*
+		* Muestra el modal para la eliminación de la carrera
+		* se le pasa la información completa de la carrera
+		* @param entity
+		*/
 		$scope.deleteCareer = function(entity){
 			$scope.career = entity;
 			$('#deletecareer').modal('show');
 		}
 
+		/* 
+		* Elimina el registro de la carrera seleccionada 
+		*/
 		$scope.actiondelete = function(id){
 			careerFactory.delete(id)
 			.success(function(data){
@@ -167,11 +206,19 @@ angular.module('Enes')
 			});
 		}
 
+		/*
+		* Muestra el modal para la actualización del área de conocimiento
+		* se le pasa la información completa del área de conocimiento
+		* @param entity
+		*/
 		$scope.editArea = function(entity){
 			$scope.area = entity;
 			$('#editarea').modal('show');
 		}
 
+		/* 
+		* Actualiza el registro del área de conocimiento seleccionada 
+		*/
 		$scope.updatearea = function(){
 			studyareaFactory.update($scope.area)
 			.success(function(data){
@@ -197,11 +244,56 @@ angular.module('Enes')
 			})
 		}
 
+		/*
+		* Muestra el modal para la eliminación del área de conocimiento
+		* se le pasa la información completa del área de conocimiento
+		* @param entity
+		*/
 		$scope.deleteArea = function(entity){
 			$scope.area = entity;
 			$('#deletearea').modal('show');
 		}
 
+		/*
+		* Muestra el modal para dar de alta una nueva area de profundización
+		* para una carrera 
+		*/
+		$scope.createArea = function(id){
+			$scope.area.career_id = id;
+			$('#createarea').modal('show');
+		}
+
+		/*
+		* Guarda el registro de la nueva área
+		*/
+		$scope.createareaaction = function(){
+			studyareaFactory.save($scope.area)
+			.success(function(data){
+				Notification.success({
+					title: '<i class="fa fa-info-circle"></i> Registro efectuado',
+					message: '<div align="justify">La área se ha registro con exito.</div>',
+					delay: 5000
+				});
+				$scope.area.name="";
+				$scope.area.key="";
+				setTimeout('document.location.reload()',3000);
+			})
+			.error(function(error){
+				$scope.error = "";
+				angular.forEach(error.errors,function(value){
+					$scope.error += value + "</br>";
+				})
+				Notification.error({
+					message: '<b>Error</b> </br>'+$scope.error,
+					title: '<i class="fa fa-exclamation-triangle"></i> <u>Error al crear la carrera</u>',
+					delay: 10000
+				});
+			});
+		}
+
+		/* 
+		* Elimina el registro del área de conocimiento seleccionada 
+		*/
 		$scope.actiondeletearea = function(id){
 			studyareaFactory.delete(id)
 			.success(function(data){

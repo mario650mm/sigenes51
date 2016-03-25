@@ -82,13 +82,16 @@
     <div class="content">
       <div class="subtitle">
         <div class="menu">
-          <a class="item" href="{{ route('schooltype.index')}}"> School records</a>
+          <a class="item" href="{{ route('schooltype.index')}}"> {{trans('schoolrecordTypes.item')}}</a>
         </div>
         <div class="menu">
-          <a class="item" href="{{ route('period.index')}}"> Periods</a>
+          <a class="item" href="{{ route('period.index')}}"> {{trans('period.item')}}</a>
         </div>
         <div class="menu">
-          <a class="item" href="{{ route('career.create')}}"> Careers</a>
+          <a class="item" href="{{ route('career.index')}}"> {{trans('career.item')}}</a>
+        </div>
+        <div class="menu">
+          <a class="item" href="{{ route('subjectMatter.index')}}"> Materias</a>
         </div>
       </div>
     </div>

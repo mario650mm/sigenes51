@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-
+	{{trans('period.titlecreate')}}
 @endsection
 
 @section('title')
-    
+    {{trans('period.titlecreate')}}
 @endsection
 
 @section('angular_controller')

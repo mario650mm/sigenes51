@@ -1,7 +1,7 @@
-<div class="ui modal" id="editarea">
+<div class="ui modal" id="createarea">
 	<i class="close icon"></i>
 	<div class="header">
-		{{trans('career.headeditarea')}} @{{ area.name }} 
+		{{trans('career.createareas')}} @{{ area.name }} 
 	</div>
 	<div class="content">
 		<div class="row">
@@ -26,6 +26,8 @@
 		</div>
 	</div>
 	<div class="actions">
-		<button type="button" class="btn btn-primary" ng-click="updatearea()"><i class="fa fa-refresh"></i> {{trans('career.btneditarea')}}</button>
+		<button type="button" class="btn btn-primary" ng-click="createareaaction()">
+			<i class="fa fa-plus-square"></i>  {{trans('career.addarea')}}
+		</button>
 	</div>
 </div>

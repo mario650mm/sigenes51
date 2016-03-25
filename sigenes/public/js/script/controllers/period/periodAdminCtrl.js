@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc Controller
- * @name Enes.controller:registerAspirantController
- * @param suspensionFactory
+ * @name Enes.controller:periodAdminCtrl
+ * @param periodFactory, Notification
  * @param $scope
- * @requires suspensionFactory
+ * @requires periodFactory, Notification
  * @description
  * # DeleteuserCtrl
  * Controller of the principalApp
@@ -25,6 +25,9 @@ angular.module('Enes')
       { key: "date_end", name: "Date end", placeholder: "Date end..." }
     ];
 
+    /*
+    * Muestra la información de los periodos registrados
+    */
     $scope.showData = function(){
       periodFactory.getInfo()
       .success(function(data){
@@ -39,6 +42,9 @@ angular.module('Enes')
       })
     }
 
+    /*
+    * Registra la información del periodo
+    */
     $scope.saveperiod = function(){
       $scope.period.date_init = $('#date_init').val();
       $scope.period.date_end = $('#date_end').val();
@@ -66,17 +72,33 @@ angular.module('Enes')
       });
  		}
 
+    /*
+    * Muestra el modal con la información del periodo a 
+    * editar, se le pasa la información del periodo a 
+    * editar.
+    * @param entity
+    */
     $scope.editperiod = function(entity){
-      console.log(entity);
       $scope.period = entity;
       $('#editPeriod').modal('show');
     }
 
+    /*
+    * Muestra el modal con la información del periodo a 
+    * eliminar, se le pasa la información del periodo a 
+    * eliminar.
+    * @param: entity
+    */
     $scope.deleteperiod = function(entity){
       $scope.period = entity;
       $('#deleteperiod').modal('show');
     }
 
+    /*
+    * Se encarga de eliminar el periodo seleccionado
+    * recibe el id del periodo a eliminar
+    * @param: id 
+    */
     $scope.actiondelete = function(id){
       periodFactory.delete(id)
       .success(function(data){
@@ -96,7 +118,9 @@ angular.module('Enes')
       })
     }
 
-
+    /*
+    * Se encarga de actualizar el periodo
+    */
     $scope.updateperiod = function(){
       console.log('llego');
       $scope.period.date_init = $('#date_init').val();

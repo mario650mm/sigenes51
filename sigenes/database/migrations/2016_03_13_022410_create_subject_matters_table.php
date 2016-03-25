@@ -17,15 +17,31 @@ class CreateSubjectMattersTable extends Migration
             $table->integer('key');
             $table->string('name', 50);
             $table->integer('half_year_id')->unsigned();
-            $table->boolean('isopctional');
+            $table->integer('career_id')->unsigned();
+            $table->boolean('isasmandatory');//Asignatura oblogatoria
+            $table->boolean('isasopctional');//Asignatura opcional
+            $table->boolean('isasopctionaltrans');//Asignatura opcional transversal
+            $table->boolean('issermandatory');//seriacion obligatoria
+            $table->boolean('isserindicative');//seriacion indicativa
             $table->boolean('isdeepending');
             $table->boolean('iscomun_deep');
+            $table->boolean('istechnique');
             $table->integer('study_area_id');
+            $table->integer('year_id');
+            $table->integer('week_init');
+            $table->integer('week_end');
+            $table->integer('week_total');
+            $table->integer('hours_teoric');
+            $table->integer('hours_practique');
+            $table->integer('hours_clinic')->default(0);
+            $table->integer('hours_total');
             $table->integer('credit');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('half_year_id')->references('id')
-                ->on('half_years')->onDelete('cascade')->onUpdte('cascade');    
+                ->on('half_years')->onDelete('cascade')->onUpdte('cascade');
+            $table->foreign('career_id')->references('id')
+                ->on('careers')->onDelete('cascade')->onUpdte('cascade');    
         });
     }
 
