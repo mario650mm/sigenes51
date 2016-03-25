@@ -13,6 +13,10 @@
             { key: "date", name: "Date", placeholder: "Date..." }//,restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
 
+        /*
+        * Inicializa la aplicación y trae los datos de las constancias 
+        * que se encuentran registradas.
+        */
         $scope.init = function(){
             schoolrecordTypeFactory.getInfo()
             .success(function(data){
@@ -26,6 +30,10 @@
             });
         }
 
+        /*
+        * Muestra el modal que trae la información para eliminar el 
+        * registro de constancias
+        */
         $scope.delete = function(entity){
             $scope.entity = entity;
             $('#cancel').modal('show');
@@ -37,7 +45,6 @@
             $('#showView').modal('show');
         }
 
-
         $scope.printDocument = function() {
             var test = document.getElementById('printablePdf');
             if (typeof document.getElementById('printablePdf').print === 'undefined') {
@@ -48,6 +55,9 @@
             }
         };
 
+        /*
+        * Elimina el registro de la constancia seleccionada
+        */
         $scope.deleteAction = function(paramInt){
             schoolrecordTypeFactory.delete(paramInt)
             .success(function(data){
@@ -73,6 +83,9 @@
             }
         };
 
+        /*
+        * Crea el registro de la constancia
+        */
         $scope.saveRecord = function(){
         	console.log($scope.records);
         	console.log($scope.recordtype);

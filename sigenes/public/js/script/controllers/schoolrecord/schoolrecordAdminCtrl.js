@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc Controller
- * @name Enes.controller:registerAspirantController
- * @param suspensionFactory
- * @param $scope
- * @requires suspensionFactory
+ * @name Enes.controller:schoolrecordAdminCtrl
+ * @param schoolrecordFactory, Notification
+ * @param $scope, schoolrecordFactory, Notification
+ * @requires schoolrecordFactory, Notification
  * @description
  * # DeleteuserCtrl
  * Controller of the principalApp
@@ -30,10 +30,12 @@
             { key: "date", name: "Date", placeholder: "Date... (YYYY-MM-DD)" }
         ];
 
+        /*
+        * Muestra toda la información de las solicitudes
+        */
         $scope.showData = function(){
         	schoolrecordFactory.getAllData()
         	.success(function(data){
-                console.log(data);
         		$scope.showResult = data;
         	})
         	.error(function(error){
@@ -45,6 +47,10 @@
         	})
         }
 
+        /*
+        * Nos permite visualizar diferentes controles
+        * según sean los estatus de las solicitudes
+        */
         $scope.changeShow = function(entity, paramint){
             var isVisible;
             if (paramint == 0) {
@@ -58,6 +64,7 @@
             return isVisible;
         }
 
+        //Valida el estatus de la 
         $scope.showval = function(entity){
             if (entity.estatus == 'Terminado') {
                 return false;
@@ -66,6 +73,9 @@
             }
         }
 
+        /*
+        *
+        */
         $scope.showValidate = function(entity){
             clearData();
             $scope.entity = entity;
@@ -82,6 +92,7 @@
             }
             $('#validate').modal('show');
         }
+        ///////////
 
         $scope.deletemodal = function(entity){
             $scope.entity = entity;
@@ -104,6 +115,9 @@
             
         }
 
+        /*
+        * Elimina la transaccion seleccionada
+        */
         $scope.actiondelete = function(){
             $scope.schoolrecord.status_id = 4;
             $scope.schoolrecord.transact_type_id = $scope.entity.transact_type_id;
@@ -132,6 +146,9 @@
             
         }
 
+        /* 
+        * Guarda las transacciones
+        */
         $scope.savetransact = function(){
             $scope.record.status_id = 3;
             $scope.record.transact_type_id = $scope.entity.transact_type_id;

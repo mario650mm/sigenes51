@@ -21,6 +21,7 @@ Route::get('home', [
 ]);
 
 require __DIR__ . '/routes/auth.php';
+require __DIR__ . '/routes/main.php';
 require __DIR__ . '/routes/admissions.php';
 require __DIR__ . '/routes/users.php';
 require __DIR__ . '/routes/countrys.php';
@@ -36,4 +37,5 @@ require __DIR__ . '/routes/schoolrecordType.php';
 require __DIR__ . '/routes/period.php';
 require __DIR__ . '/routes/career.php';
 require __DIR__ . '/routes/area.php';
+require __DIR__ . '/routes/subjectMatter.php';
 

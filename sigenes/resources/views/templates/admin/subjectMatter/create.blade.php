@@ -9,25 +9,17 @@
 @endsection
 
 @section('angular_controller')
-<div data-ng-controller="careerAdminCtrl">
+<div data-ng-controller="subjectmatterAdminCtrl">
 @endsection
 
-@section('filters')
-
+@section('buttons')
+	@include('templates.admin.subjectMatter.partials.inputs')
 @endsection
 
 @section('body_page')
 	<div class="row">
-		@include('templates.admin.careers.partials.inputs')
-		<br>
-		<div data-ng-show="panelCarrera">
-			@include('templates.admin.careers.partials.careers')
-		</div>
-		<div data-ng-show="panelArea">
-			<br>
-			@include('templates.admin.careers.partials.studyplan')
-		</div>
-
+		<div data-ng-init="init()"></div>
+		@include('templates.admin.subjectMatter.partials.subjectMatter')
 	</div>
 	
 </div>

@@ -1,6 +1,6 @@
 <div class="ui basic modal" id="deletecareer">
     <div class="header">
-        Eliminación de la carrera @{{ career.name }}
+        {{trans('career.headerdelete')}}
     </div>
     <div class="image content">
         <div class="image">
@@ -8,9 +8,7 @@
         </div>
         <div class="description">
             <p>
-                <h3>Se procederá a eliminar la carrera @{{ career.name }} con la clave @{{ career.key }}.<br>
-                    la cual consiste en @{{ career.description }}<br>
-                Desea continuar con la eliminacion?</h3>
+                <h3>{{trans('career.bodydelete')}}</h3>
             </p>
         </div>
     </div>
@@ -22,7 +20,7 @@
             </div>
             <div class="ui green basic inverted button" data-ng-click="actiondelete(career.id)"><!-- data-ng-click="deleteUser(user)"-->
                 <i class="checkmark icon"></i>
-                Yes
+                {{trans('career.btnyes')}}
             </div>
         </div>
     </div>

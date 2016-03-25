@@ -30,6 +30,10 @@
             { key: "career", name: "Career", placeholder: "Career..."}//,restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
 
+        /*
+        * Carga la información de las suspensiones que se encuentran
+        * registradas
+        */
         $scope.showData = function(){
             var con = 0;
         	suspensionFactory.getAllSuspensions()
@@ -46,6 +50,9 @@
         	})
         }
 
+        /*
+        * Cambian los estados
+        */
         $scope.changeShow = function(entity){
             if (entity.estatus == 'Cancelado') {
                 return false;

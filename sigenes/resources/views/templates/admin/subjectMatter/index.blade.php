@@ -9,7 +9,7 @@
 @endsection
 
 @section('angular_controller')
-    <div data-ng-controller="careerAdminCtrl">
+    <div data-ng-controller="subjectmatterAdminCtrl">
 @endsection
 
 @section('filters')
@@ -21,13 +21,13 @@
 @endsection
 
 @section('buttons')
-    <a class="btn btn-primary" href="{{ route('career.create') }}"><i class="fa fa-graduation-cap"></i> {{trans('career.titlecreate')}}</a>
+    <a class="btn btn-primary" href="{{ route('subjectMatter.create') }}"><i class="fa fa-graduation-cap"></i> Crear materia</a>
 @endsection
 
 @section('body_page')
     <div class="row">
         <div ng-init="getCareer()"></div>   
-        @include('templates.admin.careers.partials.dataView')
+        @include('templates.admin.subjectMatter.partials.dataView')
         <div class="text-center">
             <dir-pagination-controls 
             max-size="15" 
@@ -36,12 +36,6 @@
             </dir-pagination-controls>
         </div>
     </div>
-    @include('templates.admin.careers.partials.editcareer')
-    @include('templates.admin.careers.partials.editArea')
-    @include('templates.admin.careers.partials.deletearea')
-    @include('templates.admin.careers.partials.deleteCareer')
-    @include('templates.admin.careers.partials.showareas')
-    @include('templates.admin.careers.partials.createarea')
     </div>  
 
 @endsection
