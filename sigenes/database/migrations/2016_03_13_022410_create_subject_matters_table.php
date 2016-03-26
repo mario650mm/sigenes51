@@ -16,7 +16,7 @@ class CreateSubjectMattersTable extends Migration
             $table->increments('id');
             $table->integer('key');
             $table->string('name', 50);
-            $table->integer('half_year_id')->unsigned();
+            $table->integer('semester_id')->unsigned();
             $table->integer('career_id')->unsigned();
             $table->boolean('isasmandatory');//Asignatura oblogatoria
             $table->boolean('isasopctional');//Asignatura opcional
@@ -38,8 +38,8 @@ class CreateSubjectMattersTable extends Migration
             $table->integer('credit');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('half_year_id')->references('id')
-                ->on('half_years')->onDelete('cascade')->onUpdte('cascade');
+            $table->foreign('semester_id')->references('id')
+                ->on('semesters')->onDelete('cascade')->onUpdte('cascade');
             $table->foreign('career_id')->references('id')
                 ->on('careers')->onDelete('cascade')->onUpdte('cascade');    
         });
