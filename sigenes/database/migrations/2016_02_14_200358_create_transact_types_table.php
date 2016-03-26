@@ -15,12 +15,11 @@ class CreateTransactTypesTable extends Migration
         Schema::create('transact_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 85);
-            $table->binary('record');
             $table->longText('description');
             $table->timestamps();
             $table->softDeletes();
         });
-
+        DB::statement("ALTER TABLE transact_types ADD record LONGBLOB");
     }
 
     /**
