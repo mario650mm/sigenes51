@@ -16,7 +16,6 @@ class CreateAttachmentsTable extends Migration
             $table->increments('id');
             $table->integer('partner_id')->unsigned();
             $table->integer('attachment_type_id')->unsigned();
-            $table->binary('document');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('attachment_type_id')->references('id')
@@ -24,6 +23,8 @@ class CreateAttachmentsTable extends Migration
             $table->foreign('partner_id')->references('id')
                 ->on('partners')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        DB::statement("ALTER TABLE attachments ADD document LONGBLOB");
     }
 
     /**
