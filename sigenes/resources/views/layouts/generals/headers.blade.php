@@ -21,8 +21,6 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.2/css/bootstrap3/bootstrap-switch.min.css">
     <link href="{{ asset('bower_components/angular-ui-notification/dist/angular-ui-notification.min.css') }}" rel="stylesheet">
-
-    @yield('extra_css')
     <style>
         html, body {
             background-image: url("/resources/images/fondologo.png");
@@ -30,3 +28,4 @@
             background-position: center;
         }
     </style>
+    @yield('extra_css')

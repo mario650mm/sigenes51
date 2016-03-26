@@ -5,6 +5,7 @@ Route::get('auth/login', [
     'uses' => 'Auth\AuthController@getLogin',
     'as'   => 'login'
 ]);
+
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 
 

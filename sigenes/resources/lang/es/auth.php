@@ -16,7 +16,7 @@ return [
     'failed' => 'Los datos que fueron ingresados no coinciden con nuestros registros.',
     'throttle' => 'Demasiados intentos de conexión. Por favor, inténtelo de nuevo en :seconds segundos.',
     'login' => 'SIGENES',
-    'signup' => 'Admisiones',
+    'signup' => 'Registro de Admisiones',
     'password' => 'Contraseña',
     'login_form' => 'Ingresa',
     'remember_me' => 'Recordar mi cuenta',
