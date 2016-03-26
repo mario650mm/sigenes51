@@ -20,7 +20,7 @@ class CreateTransactsTable extends Migration
             $table->boolean('record');
             $table->boolean('credential');
             $table->date('date');
-            $table->string('folio', 10);
+            $table->string('folio', 10)->unique();
             $table->binary('evidence');
             $table->boolean('clinic');
             $table->boolean('library');

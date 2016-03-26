@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStudtyPlansTable extends Migration
+class CreateStudtyAreasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class CreateStudtyPlansTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('name', 50);
-            $table->integer('key');
+            $table->integer('key')->unique();
             $table->integer('career_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
