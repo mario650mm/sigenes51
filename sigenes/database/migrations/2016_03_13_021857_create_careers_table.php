@@ -15,13 +15,24 @@ class CreateCareersTable extends Migration
         Schema::create('careers', function (Blueprint $table) {
             $table->increments('id');
             $table->char('father_campus', 5);
-            $table->char('campus', 5);
+            $table->integer('campus');
             $table->integer('key');
             $table->string('name', 50);
             $table->longText('description');
             $table->timestamps();
             $table->softDeletes();
         });
+
+        $now = date('Y-m-d H:i:s');
+        \DB::table('careers')->insert([
+            ['father_campus' => '600','campus' => 606,'key' => 314,'name' => 'Administración Agropecuaria', 'description' => 'campo editable.', 'created_at' => $now],
+            ['father_campus' => '600','campus' => 608,'key' => 313,'name' => 'Economía Industrial', 'description' => 'campo editable', 'created_at' => $now],
+            ['father_campus' => '600','campus' => 610,'key' => 429,'name' => 'Desarrollo y Gestión Interculturales', 'description' => 'campo editable.', 'created_at' => $now],
+            ['father_campus' => '600','campus' => 612,'key' => 221,'name' => 'Fisioterapia', 'description' => 'campo editable.', 'created_at' => $now],
+            ['father_campus' => '600','campus' => 614,'key' => 222,'name' => 'Odontología', 'description' => 'campo editable.', 'created_at' => $now],
+            ['father_campus' => '600','campus' => 666,'key' => 223,'name' => 'Ciencias Agrogenómicas', 'description' => 'campo editable.', 'created_at' => $now],
+            ['father_campus' => '600','campus' => 604,'key' => 320,'name' => 'Desarrollo Territorial', 'description' => 'campo editable.', 'created_at' => $now]
+        ]);
     }
 
     /**
