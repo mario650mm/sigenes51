@@ -3,7 +3,7 @@
 @section('extra_css')
     <style>
         html, body {
-            background-image: url("/resources/images/fondo_login.png");
+            background-image: url("/resources/images/fondologo.gif");
             background-repeat: no-repeat;
             background-size: 100% 100%;
         }
@@ -73,7 +73,7 @@
                                 <a class="btn text-info" href="{{ url('/password/reset') }}"><strong>{{ trans('auth.forgot') }}</strong></a>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <a href="{{ route('register') }}" class="text-warning"><strong><i class="treatment icon"></i> {{ trans('auth.signup') }}</strong></a>
+                                <a href="{{ route('register') }}" class="text-warning"><strong><i class="fa fa-user"></i> {{ trans('auth.signup') }}</strong></a>
                             </div>
                             <div class="col-lg-12 text-center" style="font-size: 0.8em; padding-top: 10px">
                                 <strong>Escuela Nacional de Estudios Superiores Unidad León - UNAM</strong></br>
@@ -81,6 +81,9 @@
                                 Comunidad de los Tepetates, León,Gto. C.P.37684</br>
                                 Tel. 01 (477) 194 08 00</br>
                                 enesleon@unam.mx</br>
+                            </div>
+                            <div class="col-lg-12">
+                                <a href="http://enes.unam.mx/" class="text-warning"><strong>Regresar a sitio</strong></a>
                             </div>
                         </form>
                     </div>
