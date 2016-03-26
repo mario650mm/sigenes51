@@ -23,10 +23,8 @@ class CreateSubjectMattersTable extends Migration
             $table->boolean('isasopctionaltrans');//Asignatura opcional transversal
             $table->boolean('issermandatory');//seriacion obligatoria
             $table->boolean('isserindicative');//seriacion indicativa
-            $table->boolean('isdeepending');
-            $table->boolean('iscomun_deep');
             $table->boolean('istechnique');
-            $table->integer('study_area_id');
+            $table->integer('study_area_id')->nullable();
             $table->integer('year_id');
             $table->integer('week_init');
             $table->integer('week_end');

@@ -21,7 +21,6 @@ class CreateSuspensionsTable extends Migration
             $table->longText('reason');
             $table->date('date_init');
             $table->date('date_end');
-            $table->binary('evidence');
             $table->boolean('clinic');
             $table->boolean('library');
             $table->boolean('lab');
@@ -35,7 +34,10 @@ class CreateSuspensionsTable extends Migration
             $table->foreign('status_id')->references('id')
                 ->on('status')->onDelete('cascade')->onUpdate('cascade');
         });
+        
+        DB::statement("ALTER TABLE suspensions ADD evidence LONGBLOB");
     }
+
 
     /**
      * Reverse the migrations.
