@@ -67,7 +67,7 @@ class Suspension extends Model
                 "partners.secondlastname",
                 "partners.email1",
                 "partners.telephone",
-                "partners.celphone",
+                "partners.cellphone",
                 "partners.secondlastname"
                 ])
             ->join("students", "suspensions.student_id", "=", "students.id")
@@ -86,7 +86,7 @@ class Suspension extends Model
                     $data = ['fullname' => $value->name . ' ' . $value->firstlastname . ' ' . $value->secondlastname,
                     'name_period' => $value->month_init . ' - ' . $value->month_end . ' '. $value->year,
                     'account_number' => $value->account_number,
-                    'celphone' => $value->celphone,
+                    'celphone' => $value->cellphone,
                     'telephone' => $value->telephone,
                     'career' => 'Odontología',
                     'reason' => $value->reason,

@@ -43,10 +43,16 @@ angular.module('Enes')
             var date_valinit = $scope.periods[0].date_init.split("-");
             var date_valend = $scope.periods[0].date_end.split("-");
             var mes = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
+            console.log(mes);
+            console.log(date_valinit[1]);
             if (mes == date_valinit[1]) {
+                console.log('entre')
                 var dia = date.getDate();
                 var dia_init = parseInt(date_valinit[2]);
                 var dia_end = parseInt(date_valend[2]);
+                console.log('Dia tomado ' + dia);
+                console.log('Dia inicio ' + dia_init);
+                console.log('Dia fin ' + dia_end);
                 if (dia > dia_init && dia < dia_end) {
                     $scope.btnapply = true;
                 }else{

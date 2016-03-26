@@ -34,7 +34,7 @@
     </div>
     @include('templates.admin.low.partials.validator')
     @include('templates.admin.low.partials.deletesuspension')
-    </div>  
+      
 
 @endsection
 

@@ -25,6 +25,10 @@
                 </div>
             </div>
         </div>
+        <div>
+
+            <img class="img-responsive" ng-src="@{{imageMIME(suspend.evidence)}}" />
+        </div>
         <div class="row" data-ng-hide="isHiden">
             <div class=" col-lg-10 col-lg-offset-1 ">
                 <input class="form-control btn-success" 
