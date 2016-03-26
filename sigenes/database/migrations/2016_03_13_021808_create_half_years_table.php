@@ -12,7 +12,7 @@ class CreateHalfYearsTable extends Migration
      */
     public function up()
     {
-        Schema::create('half_years', function(Blueprint $table){
+        Schema::create('semesters', function(Blueprint $table){
             $table->increments('id');
             $table->string('name', 30);
             $table->timestamps();
@@ -20,7 +20,7 @@ class CreateHalfYearsTable extends Migration
         });
 
         $now = date('Y-m-d H:i:s');
-        \DB::table('half_years')->insert([
+        \DB::table('semesters')->insert([
             [
                 'name' => 'Primer Semestre',
                 'created_at' => $now
@@ -63,6 +63,6 @@ class CreateHalfYearsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('half_years');
+        Schema::drop('semesters');
     }
 }

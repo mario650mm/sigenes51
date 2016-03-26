@@ -22,7 +22,7 @@ class Half_year extends Model
      *
      * @var string
      */
-    protected $table = 'half_years';
+    protected $table = 'semesters';
 
     /**
      * The attributes that are mass assignable.
