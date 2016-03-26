@@ -100,7 +100,7 @@ class SuspensionController extends Controller
             if ($validator->fails()) {
                 return \Response::json(['created' => false,'errors' => $validator->errors()->all()], 500);
             }
-
+            //dd($request);
             Suspension::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
@@ -180,9 +180,11 @@ class SuspensionController extends Controller
      */
     public function update(Request $request)
     {
-       // dd($request);
+        //dd($request->input('evidence'));
         $suspension = Suspension::find($request->input('id'));
         $suspension->update($request->all());
+        $suspension->evidence = $request->input('evidence');
+        $suspension->save();
         return ['updated' => true];
     }
 
