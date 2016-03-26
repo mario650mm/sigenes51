@@ -16,7 +16,7 @@ class CreateCareersTable extends Migration
             $table->increments('id');
             $table->char('father_campus', 5);
             $table->integer('campus');
-            $table->integer('key');
+            $table->integer('key')->unique();
             $table->string('name', 50);
             $table->longText('description');
             $table->timestamps();

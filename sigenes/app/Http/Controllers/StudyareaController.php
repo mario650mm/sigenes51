@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\StudyPlan;
+use App\StudyArea;
 use Illuminate\Support\Facades\Validator;
 
 class StudyareaController extends Controller
@@ -55,7 +55,7 @@ class StudyareaController extends Controller
                 return \Response::json(['created' => false,'errors' => $validator->errors()->all()], 500);
             }
 
-            $area = StudyPlan::create($request->all());
+            $area = StudyArea::create($request->all());
             return \Response::json(['area_id' => $area->id, 'name' => $area->name], 200);
         }catch (Exception $e){
             \Log::info('Error creating user: '.$e);
@@ -71,7 +71,7 @@ class StudyareaController extends Controller
      */
     public function show()
     {
-        return StudyPlan::all();
+        return StudyArea::all();
     }
 
     /**
@@ -111,7 +111,7 @@ class StudyareaController extends Controller
                 return \Response::json(['updated' => false,'errors' => $validator->errors()->all()], 500);
             }
 
-            $careers = StudyPlan::find($request->input('id'));
+            $careers = StudyArea::find($request->input('id'));
             $careers->update($request->all());
             return ['updated' => true];
         }catch (Exception $e){
@@ -128,7 +128,7 @@ class StudyareaController extends Controller
      */
     public function destroy($id)
     {
-        StudyPlan::destroy($id);
+        StudyArea::destroy($id);
         return ['deleted' => true];
     }
 }
