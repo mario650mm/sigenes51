@@ -22,6 +22,7 @@
 <script src="{{ asset('js/script/controllers/main/mainController.js') }}"></script>
 <script src="{{ asset('js/script/services/main/main.factories.js') }}"></script>
 <script src="{{ asset('js/script/extrasEnes.js') }}"></script>
+<script src="{{ asset('js/script/filters/filters.js') }}"></script>
 
 
 <!-- Angular Only can see students or admins-->

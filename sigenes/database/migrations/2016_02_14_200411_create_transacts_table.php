@@ -21,7 +21,6 @@ class CreateTransactsTable extends Migration
             $table->boolean('credential');
             $table->date('date');
             $table->string('folio', 10)->unique();
-            $table->binary('evidence');
             $table->boolean('clinic');
             $table->boolean('library');
             $table->boolean('lab');
@@ -31,6 +30,7 @@ class CreateTransactsTable extends Migration
             $table->foreign('student_id')->references('id')
                 ->on('students')->onDelete('cascade')->onUpdte('cascade');
         });
+        DB::statement("ALTER TABLE transact_students ADD evidence LONGBLOB");
     }
 
     /**

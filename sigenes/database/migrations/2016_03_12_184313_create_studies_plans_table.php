@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactTypesTable extends Migration
+class CreateStudiesPlansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateTransactTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('transact_types', function (Blueprint $table) {
+        Schema::create('studies_plans', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
-            $table->string('name', 85);
-            $table->longText('description');
+            $table->string('name', 100);
+            $table->integer('key')->unique();
+            $table->boolean('is_deepending'); // Areas de profundización
             $table->timestamps();
             $table->softDeletes();
         });
-
-        DB::statement("ALTER TABLE transact_types ADD record LONGBLOB");
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateTransactTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('transact_types');
+        Schema::drop('studies_plans');
     }
 }

@@ -10,4 +10,12 @@ angular.module('Enes')
         start = +start;
         return input.slice(start);
     };
-});
+})
+.filter('renderHTMLCorrectly', function($sce)
+{
+    return function(stringToParse)
+    {
+        return $sce.trustAsHtml(stringToParse);
+    }
+})
+;

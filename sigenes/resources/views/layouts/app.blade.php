@@ -13,20 +13,11 @@
 </head>
 <body>
 
+
+
 <!-- Page Contents -->
 <div class="pusher">
     <div class="ui vertical masthead center aligned segment">
-        {{--<div class="container">
-            <div class="ui large blue secondary pointing menu">
-                <a href="{{ url('/') }}"><img src="{{ asset(env('LOGO_ENES')) }}" class="img-responsive hidden-xs" style="height: 60px; width: 140px"></a>
-                <div class="right item">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a class="btn btn-warning" href="{{ route('login') }}">SIGENES</a></div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><a class="btn btn-warning" href="{{ route('register') }}">{{ trans('auth.signup') }}</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>--}}
         @yield('main')
         @yield('content')
     </div>
