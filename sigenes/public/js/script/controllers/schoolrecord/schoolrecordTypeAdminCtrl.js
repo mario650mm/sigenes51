@@ -41,17 +41,22 @@
 
         $scope.showView = function(entity){
             $scope.entity = entity;
-            $scope.base = atob(entity.record);
+            $scope.base = 'data:application/pdf;base64,' + $scope.entity.record;
+            //console.log(entity.record);
             $('#showView').modal('show');
         }
 
-        $scope.printDocument = function() {
-            var test = document.getElementById('printablePdf');
-            if (typeof document.getElementById('printablePdf').print === 'undefined') {
-                setTimeout(function(){$scope.printDocument();}, 1000);
-            } else {
-                var x = document.getElementById('printablePdf');
-                x.print();
+        $scope.printDocument = function(pdf) {
+            if(typeof(pdf) != 'undefined'){
+                console.log(pdf);
+                try{
+                    console.log('data:application/pdf;base64,'+$scope.entity.record);
+                    return 'data:application/pdf;base64,'+pdf;
+                }catch(err){
+                    return '';
+                }
+            }else{
+                return '';
             }
         };
 
@@ -89,7 +94,7 @@
         $scope.saveRecord = function(){
         	$scope.recordtype.record = $scope.records.base64;
         	console.log($scope.recordtype);
-            /*schoolrecordTypeFactory.save($scope.recordtype)
+            schoolrecordTypeFactory.save($scope.recordtype)
             .success(function(data){
             	Notification.success({
             		message: 'La constancia se ha creado correctamente.',
@@ -105,6 +110,6 @@
                     title: '<u>Error al generar la constancia</u>',
                     delay: 10000
                 });
-            });*/
+            });
         };
  	});

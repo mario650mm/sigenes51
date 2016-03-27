@@ -4,6 +4,8 @@
         Constancia de @{{ entity.name}}
     </div>
     <div class="content">
+
+    	<iframe type="text/html" width="640" height="385" ng-src="@{{base}}" frameborder="0" ></iframe>
     </div>
     
     <div class="actions">

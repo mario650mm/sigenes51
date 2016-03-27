@@ -39,7 +39,7 @@
         @include('templates.admin.schoolrecordTypes.partials.delete')
         @include('templates.admin.schoolrecordTypes.partials.showView')
 	</div>
-</div>
+
 
 @endsection
 
