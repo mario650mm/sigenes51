@@ -15,7 +15,6 @@ angular.module('Enes')
 {
     return function(stringToParse)
     {
-        console.log('entreeee*****');
         return $sce.trustAsHtml(stringToParse);
     }
 })
