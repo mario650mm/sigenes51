@@ -10,5 +10,6 @@
 Route::group(['prefix' => 'api/v1'], function () {
 
     Route::get('statesbycountry/{id}', 'StateController@statesbycountry');
+    Route::get('getNameState/{id}', 'StateController@getNameState');
 
 });

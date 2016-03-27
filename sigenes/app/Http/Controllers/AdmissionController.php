@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Applicant;
 use App\AttachmentApplicants;
+use App\Career;
+use App\City;
+use App\Country;
+use App\State;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,7 +65,12 @@ class AdmissionController extends Controller
 
     public function createPdfAdmission($id){
         $applicant = Applicant::find($id);
-        $view =  \View::make('templates.admissions.pdf.admission', compact('applicant'))->render();
+        $country = Country::find($applicant->country_id)->name;
+        $state = State::find($applicant->state_id)->name;
+        $city = City::find($applicant->city_id)->name;
+        $career = Career::find($applicant->career_id)->name;
+        $view =  \View::make('templates.admissions.pdf.admission', compact(
+            'applicant', 'country', 'state', 'city', 'career'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('templates.admissions.pdf.admission');
