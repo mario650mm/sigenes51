@@ -30,12 +30,17 @@
             { key: "career", name: "Career", placeholder: "Career..."}//,restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
 
+        /*
+        * Carga la información de las suspensiones que se encuentran
+        * registradas
+        */
         $scope.showData = function(){
             var con = 0;
         	suspensionFactory.getAllSuspensions()
         	.success(function(data){
         		
         		$scope.showResult = data;
+                //console.log(data.evidence);
         	})
         	.error(function(error){
         		Notification.error({
@@ -46,6 +51,9 @@
         	})
         }
 
+        /*
+        * Cambian los estados
+        */
         $scope.changeShow = function(entity){
             if (entity.estatus == 'Cancelado') {
                 return false;
@@ -76,7 +84,11 @@
             $scope.suspend.library = true;
             $scope.suspend.clinic = true;
             $scope.suspend.social_services = true;
-            $scope.suspend.evidence = atob(entity.evidence);
+            //console.log(entity.evidence);
+            $scope.suspend.evidence = entity.evidence;
+            //console.log($scope.suspend.evidence);
+            //var type = imageMIME(entity.evidence);
+            //console.log(type);
             
         }
 
@@ -105,6 +117,7 @@
             $scope.suspend.reason = $scope.entity.reason;
             $scope.suspend.student_id = $scope.entity.student;
             $scope.suspend.evidence = $scope.file.base64;
+            console.log($scope.file);
             $scope.suspend.date_end = getDateSus();
             if (typeof($scope.suspend.library) == 'undefined') {
                 Notification.error({
@@ -154,7 +167,7 @@
                     title: 'Success', 
                     delay: 5000
                 });
-                setTimeout('document.location.reload()',3000);
+                //setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({

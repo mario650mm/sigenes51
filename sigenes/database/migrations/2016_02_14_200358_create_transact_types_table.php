@@ -15,43 +15,11 @@ class CreateTransactTypesTable extends Migration
         Schema::create('transact_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 85);
-            $table->binary('record');
             $table->longText('description');
             $table->timestamps();
             $table->softDeletes();
         });
-
-        /*$now = date('Y-m-d H:i:s');
-        \DB::table('transact_types')->insert([
-            [
-                'name' => 'Constancia de inscripción',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Costancia de creditos y promedio',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Constancia de inscripción con foto',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Constancia de historia academica',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Constancia para beca',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Constancia de terminos de estudios',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Reposición Credencial',
-                'created_at' => $now
-            ],
-        ]);*/
+        DB::statement("ALTER TABLE transact_types ADD record LONGBLOB");
     }
 
     /**

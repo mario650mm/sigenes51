@@ -16,11 +16,11 @@ class CreateAttachmentApplicants extends Migration
             $table->increments('id');
             $table->integer('applicant_id');
             $table->integer('attachment_type_id');
-            $table->binary('document');
             $table->timestamps();
             $table->softDeletes();
 
         });
+        DB::statement("ALTER TABLE attachment_applicants ADD document LONGBLOB");
     }
 
     /**

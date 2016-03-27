@@ -20,6 +20,9 @@ class StateController extends Controller
         return State::where('country_id', $id)->get();
     }
 
+    public function getNameState($id){
+        return State::findOrFail($id)->name;
+    }
 
     /**
      * Display a listing of the resource.

@@ -13,6 +13,10 @@
             { key: "date", name: "Date", placeholder: "Date..." }//,restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
 
+        /*
+        * Inicializa la aplicación y trae los datos de las constancias 
+        * que se encuentran registradas.
+        */
         $scope.init = function(){
             schoolrecordTypeFactory.getInfo()
             .success(function(data){
@@ -26,6 +30,10 @@
             });
         }
 
+        /*
+        * Muestra el modal que trae la información para eliminar el 
+        * registro de constancias
+        */
         $scope.delete = function(entity){
             $scope.entity = entity;
             $('#cancel').modal('show');
@@ -33,36 +41,23 @@
 
         $scope.showView = function(entity){
             $scope.entity = entity;
-           $scope.base = atob(entity.record);
-
-            var file = new Blob([$scope.base], {type: 'application/pdf'});
-            var fileURL = URL.createObjectURL(file);
-            window.open(fileURL);
-
-            //$scope.base = '<embed src="data:application/pdf;base64,' + entity.record + '" type="application/pdf" width="200" height="200"></embed>';
-            //console.log(base);
-            //entity.base = base;
-           // var pdfName = 'data:application/pdf;base64,' + entity.record;
-            //var embeddedPdf = document.getElementById('printablePdf');
-            //embeddedPdf.setAttribute('src', pdfName);
-            //$scope.printDocument(embeddedPdf);
+            $scope.base = atob(entity.record);
             $('#showView').modal('show');
         }
 
-
         $scope.printDocument = function() {
-      var test = document.getElementById('printablePdf');
-      if (typeof document.getElementById('printablePdf').print === 'undefined') {
+            var test = document.getElementById('printablePdf');
+            if (typeof document.getElementById('printablePdf').print === 'undefined') {
+                setTimeout(function(){$scope.printDocument();}, 1000);
+            } else {
+                var x = document.getElementById('printablePdf');
+                x.print();
+            }
+        };
 
-        setTimeout(function(){$scope.printDocument();}, 1000);
-
-      } else {
-
-        var x = document.getElementById('printablePdf');
-        x.print();
-      }
-    };
-
+        /*
+        * Elimina el registro de la constancia seleccionada
+        */
         $scope.deleteAction = function(paramInt){
             schoolrecordTypeFactory.delete(paramInt)
             .success(function(data){
@@ -88,6 +83,9 @@
             }
         };
 
+        /*
+        * Crea el registro de la constancia
+        */
         $scope.saveRecord = function(){
         	console.log($scope.records);
         	console.log($scope.recordtype);
@@ -100,10 +98,15 @@
             		delay: 5000});
             })
             .error(function(error){
-            	Notification.error({
-            		message: '<b>Error!</b> Problemas de conexión',
-            		title: '<b>Error</b>',
-            		delay: 5000});
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                });
+                Notification.error({
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al generar la constancia</u>',
+                    delay: 10000
+                });
             });
         }
  	});

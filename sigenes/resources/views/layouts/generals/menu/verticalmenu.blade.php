@@ -3,7 +3,7 @@
         <div class="ui vertical menu" style="width: 100%; min-height:800px !important; font-size: 15px">
             <div class="item">
                 <a href="/home">
-                    <img src="{{ asset(env('LOGO_ENES')) }}" class="img-responsive">
+                    <img src="{{ asset(env('LOGO_ENESAZULFULL')) }}" class="img-responsive">
                 </a>
             </div>
             @if(Auth::user()->type == 'employee')
@@ -17,6 +17,25 @@
             @endif
         </div>
     </div>
+    <style>
+        .navbar{
+            border: 2px solid #BB8800;
+        }
+        .navbar-default {
+            background-color: #002B7A;
+        }
+        .navbar-default .navbar-brand{
+            color: #FFFFFF;
+        }
+        .navbar-default .navbar-nav>li>a {
+            color: #FFFFFF;
+        }
+        .ui.vertical.menu{
+            display: block;
+            background: #fff;
+            box-shadow: 2px 1px 2px 0 #BB8800;
+        }
+    </style>
     <nav class="navbar navbar-default hidden-sm hidden-md hidden-lg">
         <div class="container">
             <div class="navbar-header">
@@ -35,7 +54,7 @@
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse-izq">
+            <div class="collapse navbar-collapse" id="app-navbar-collapse-izq" style="color: #FFFFF">
                 <!-- Left Side Of Navbar -->
                 <div class="ui secondary menu">
                     <div class="item">

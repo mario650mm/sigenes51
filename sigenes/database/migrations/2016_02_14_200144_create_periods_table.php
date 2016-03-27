@@ -22,22 +22,6 @@ class CreatePeriodsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
-        /*$now = date('Y-m-d H:i:s');
-        \DB::table('periods')->insert([
-            [
-                'month_init' => 'Enero',
-                'month_end' => 'Julio',
-                'year' => '2016',
-                'created_at' => $now
-            ],
-            [
-                'month_init' => 'Agosto',
-                'month_end' => 'Diciembre',
-                'year' => '2016',
-                'created_at' => $now
-            ],
-        ]);*/
     }
 
     /**

@@ -11,7 +11,18 @@ angular.module('EnesAuth')
         $scope.countrys = [];
         $scope.states = [];
         $scope.citys = [];
+        $scope.careers = [];
 
+        admissionFactory.getInfo()
+            .success(function(data){
+                $scope.careers = data;
+            })
+            .error(function(error){
+                Notification.error(
+                    {message: '<b>Error!</b> Problemas de conexión',
+                        title: '<b>Error</b>',
+                        delay: 5000});
+            });
         countryFactory.getAllCountry()
             .success(function(data){
                 $scope.countrys = data;

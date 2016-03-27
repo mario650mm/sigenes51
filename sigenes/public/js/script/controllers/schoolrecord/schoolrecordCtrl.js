@@ -2,8 +2,8 @@
 /**
  * @ngdoc controller
  * @name Enes.controller: schoolrecordController
- * @param $scope
- * @requires
+ * @param $scope, schoolrecordFactory, Notification
+ * @requires schoolrecordFactory, Notification
  * @methodOf ng.controller:booyah
  * @description
  * My Description rules
@@ -33,6 +33,10 @@
  			})
  		}
 
+        /*
+        * Trae y asigna los datos del alumno que solicita la cosctancia
+        * o credencial.
+        */
  		var dataStudent = function(){
  			schoolrecordFactory.getStudentRecords()
  			.success(function(data){
@@ -53,12 +57,17 @@
  			})
  		}
 
+        /*
+        * Nos muestra el combo de las cosntancias 
+        * que estan disponibles para tramitar
+        */
  		$scope.visible = function(){
  			$scope.applyRecord.credential = 0;
  			$scope.isRecord = true;
 
  		}
 
+        // Valida si se escogio un tramite de credencial o constancia
  		$scope.iscredential = function(){
  			if(typeof($scope.applyRecord.record) != 'undefined')
  				$scope.applyRecord.record = 0;
@@ -76,6 +85,7 @@
             return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
         }
 
+        // Guarda la informacion para hacer la solicitud de tramite
         $scope.save = function(){
             var msj;
         	if(typeof($scope.applyRecord.record) == 'undefined' && typeof($scope.applyRecord.credential) == 'undefined'){
@@ -147,10 +157,14 @@
                 $scope.isViewNote = true;
         	})
         	.error(function(data){
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                })
                 Notification.error({
-                    message: '<u>Ocurrio un error al realizar el tramite</u>',
-                    title: '<b>Error</b> <s>notificación</s>',
-                    delay: 3000
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al crear el tramite</u>',
+                    delay: 10000
                 });
         	})
         }

@@ -1,12 +1,35 @@
 @extends('layouts.app')
 
+@section('extra_css')
+    <style>
+        html, body {
+            background-image: url("/resources/images/fondologo.gif");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        .loginform{
+            background-image: url("/resources/images/loginform.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border: 4px solid #BB8800;
+        }
+
+    </style>
+@endsection
+
 @section('content')
-    <div class="container" style="margin-top: 20px">
+    <div class="container" style="margin: auto;">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel loginform">
+                    <div class="panel-header">
+                        <center>
+                            <img src="{{ asset(env('LOGO_ENESAZULFULL')) }}" class="img-responsive"/>
+                        </center>
+                    </div>
                     <div class="panel-body">
-                        <img src="{{ asset(env('LOGO_ENES')) }}"/>
+                        <h3><strong>SIGENES |</strong> Sistema Integral De Gestión Escolar</h3>
+                        <hr style="border: 1px solid #BB8800">
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
@@ -46,20 +69,21 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> {{ trans('auth.remember_me') }}
-                                        </label>
-                                    </div>
-                                </div>
+                            <div class="col-lg-12 text-center">
+                                <a class="btn text-info" href="{{ url('/password/email') }}"><strong>{{ trans('auth.forgot') }}</strong></a>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <a class="btn text-danger" href="{{ url('/password/reset') }}">{{ trans('auth.forgot') }}</a>
-                                </div>
+                            <div class="col-lg-12 text-center">
+                                <a href="{{ route('register') }}" class="text-warning"><strong><i class="fa fa-user"></i> {{ trans('auth.signup') }}</strong></a>
+                            </div>
+                            <div class="col-lg-12 text-center" style="font-size: 0.8em; padding-top: 10px">
+                                <strong>Escuela Nacional de Estudios Superiores Unidad León - UNAM</strong></br>
+                                Blvd.UNAM 2011, Predio El Saucillo y El Potrero</br>
+                                Comunidad de los Tepetates, León,Gto. C.P.37684</br>
+                                Tel. 01 (477) 194 08 00</br>
+                                enesleon@unam.mx</br>
+                            </div>
+                            <div class="col-lg-12">
+                                <a href="http://enes.unam.mx/" class="text-warning"><strong>Regresar a sitio</strong></a>
                             </div>
                         </form>
                     </div>

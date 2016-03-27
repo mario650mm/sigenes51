@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'Auth\AuthController@getLogin',
+    'as'   => 'login'
+]);
 
 Route::get('home', [
     'uses' => 'HomeController@index',
@@ -21,6 +22,7 @@ Route::get('home', [
 ]);
 
 require __DIR__ . '/routes/auth.php';
+require __DIR__ . '/routes/main.php';
 require __DIR__ . '/routes/admissions.php';
 require __DIR__ . '/routes/users.php';
 require __DIR__ . '/routes/countrys.php';
@@ -30,48 +32,11 @@ require __DIR__ . '/routes/teachers.php';
 require __DIR__ . '/routes/partners.php';
 require __DIR__ . '/routes/applicants.php';
 require __DIR__ . '/routes/employees.php';
-
-Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
-
-    Route::post('suspen', 'SuspensionController@store');
-    Route::put('suspen', 'SuspensionController@update');
-    Route::put('suspendelete', 'SuspensionController@destroy');
-    Route::get('suspen', 'SuspensionController@getAllData');
-    Route::get('suspartn/{id}', 'SuspensionController@getStudentData');
-    Route::get('suspen/{id}', 'SuspensionController@show');
-    Route::get('suspenall', 'SuspensionController@showAll');
-    Route::get('susperiod', 'SuspensionController@getAllDataPeriod');
-
-});
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('student/low/pdf', 'PdfSuspensionController@index');
-    Route::resource('student/low', 'SuspensionController@create');
-    Route::resource('student/credential', 'PdfCredentialController@index');
-    Route::resource('student/records', 'SchoolrecordController@create');
-
-    Route::resource('admin/records', 'SchoolrecordController@index');
-    Route::resource('admin/low', 'SuspensionController@index');
-
-
-});
-
-
-
-Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () {
-
-    Route::post('records', 'SchoolrecordController@store');
-    Route::put('records', 'SchoolrecordController@update');
-    Route::put('recorddelete', 'SchoolrecordController@destroy');
-    Route::get('records', 'SchoolrecordController@getAllData');
-    Route::get('recordsStudent', 'SchoolrecordController@getStudent');
-    Route::get('allrecords', 'SchoolrecordController@show');
-    Route::get('recordstype', 'SchoolrecordController@getRecordType');
-
-});
-
 require __DIR__ . '/routes/suspensions.php';
 require __DIR__ . '/routes/schoolrecords.php';
 require __DIR__ . '/routes/schoolrecordType.php';
 require __DIR__ . '/routes/period.php';
+require __DIR__ . '/routes/career.php';
+require __DIR__ . '/routes/area.php';
+require __DIR__ . '/routes/subjectMatter.php';
 

@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-
+    {{trans('period.title')}}
 @endsection
 
 @section('title')
-    
+    {{trans('period.title')}}
 @endsection
 
 @section('angular_controller')
@@ -21,7 +21,7 @@
 @endsection
 
 @section('buttons')
-    <a class="btn btn-primary" href="{{ route('period.create') }}"> <i class="fa fa-calendar"></i> Crear</a>
+    <a class="btn btn-primary" href="{{ route('period.create') }}"> <i class="fa fa-calendar"></i> {{trans('period.titlecreate')}}</a>
 @endsection
 
 @section('body_page')

@@ -43,10 +43,16 @@ angular.module('Enes')
             var date_valinit = $scope.periods[0].date_init.split("-");
             var date_valend = $scope.periods[0].date_end.split("-");
             var mes = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
+            console.log(mes);
+            console.log(date_valinit[1]);
             if (mes == date_valinit[1]) {
+                console.log('entre')
                 var dia = date.getDate();
                 var dia_init = parseInt(date_valinit[2]);
                 var dia_end = parseInt(date_valend[2]);
+                console.log('Dia tomado ' + dia);
+                console.log('Dia inicio ' + dia_init);
+                console.log('Dia fin ' + dia_end);
                 if (dia > dia_init && dia < dia_end) {
                     $scope.btnapply = true;
                 }else{
@@ -206,24 +212,6 @@ angular.module('Enes')
         * la tabla de suspenciones
         */
         $scope.save = function(period){
-
-            if($scope.period_ids == -1 || typeof($scope.period_ids) == 'undefined'){
-                Notification.error({
-                    message: '<u>Seleccione un periodo</u>',
-                    title: '<b>Error</b> <s>notificación</s>',
-                    delay: 3000
-                });
-                return;
-            }
-            if(typeof($scope.reason) == 'undefined'){
-                Notification.error({
-                    message: '<u>Es necesario la indicar la razon de la suspensión</u>',
-                    title: '<b>Error</b> <s>notificación</s>',
-                    delay: 3000
-                });
-                return;
-            }
-
             $scope.suspen.reason = $scope.reason;
             $scope.suspen.period_id = $scope.period_ids;
             $scope.suspen.student_id = $scope.userSusp.student;
@@ -241,10 +229,14 @@ angular.module('Enes')
                 }
             })
             .error(function(error){
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                });
                 Notification.error({
-                    message: '<u>Ocurrio un error al generar la suspensión</u>',
-                    title: '<b>Error</b> <s>notificación</s>',
-                    delay: 5000
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al tramitar la suspensión</u>',
+                    delay: 10000
                 });
             })
         }

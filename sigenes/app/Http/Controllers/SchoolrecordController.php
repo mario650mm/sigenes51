@@ -80,10 +80,7 @@ class SchoolrecordController extends Controller
         try{
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return [
-                    'created' => false,
-                    'errors'  => $validator->errors()->all()
-                ];
+                return \Response::json(['created' => false,'errors' => $validator->errors()->all()], 500);
             }
 
             Schoolrecord::create($request->all());

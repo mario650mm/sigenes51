@@ -9,5 +9,6 @@
 Route::group(['prefix' => 'api/v1'], function () {
 
     Route::get('citysbystate/{id}', 'CityController@getCitysByState');
+    Route::get('getNameCity/{id}', 'CityController@getNameCity');
 
 });
