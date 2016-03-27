@@ -22,6 +22,7 @@ Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'student']], functi
     Route::get('suspartn/{id}', 'SuspensionController@getStudentData');
     Route::get('suspen/{id}', 'SuspensionController@show');
     Route::get('susperiod', 'SuspensionController@getAllDataPeriod');
+    Route::put('suspen', 'SuspensionController@update');
 });
 
 //Views

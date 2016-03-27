@@ -87,11 +87,9 @@
         * Crea el registro de la constancia
         */
         $scope.saveRecord = function(){
-        	console.log($scope.records);
+        	$scope.recordtype.record = $scope.records.base64;
         	console.log($scope.recordtype);
-        	$scope.recordtype.record = $scope.records;
-        	console.log($scope.recordtype);
-            schoolrecordTypeFactory.save($scope.recordtype)
+            /*schoolrecordTypeFactory.save($scope.recordtype)
             .success(function(data){
             	Notification.success({
             		message: 'La constancia se ha creado correctamente.',
@@ -107,6 +105,6 @@
                     title: '<u>Error al generar la constancia</u>',
                     delay: 10000
                 });
-            });
-        }
+            });*/
+        };
  	});

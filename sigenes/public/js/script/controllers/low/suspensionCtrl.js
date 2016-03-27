@@ -20,6 +20,7 @@ angular.module('Enes')
         $scope.viewNote     = false;
         $scope.btnprint     = false;
         $scope.btnapply     = true;
+        $scope.btnfile      = false;
         $scope.validate;
         $scope.information;
         $scope.chance       = false;
@@ -33,36 +34,22 @@ angular.module('Enes')
         $scope.init = function(paramint){
             getPeriods();
             getDateSus();
-            ver(paramint);
+            try{
+                ver(paramint);
+            }catch(err){
+                
+            }
             
             //getValidator();
         }
 
         var suspensionTime = function(){
             var date = new Date();
-            var date_valinit = $scope.periods[0].date_init.split("-");
-            var date_valend = $scope.periods[0].date_end.split("-");
             var mes = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
-            console.log(mes);
-            console.log(date_valinit[1]);
-            if (mes == date_valinit[1]) {
-                console.log('entre')
-                var dia = date.getDate();
-                var dia_init = parseInt(date_valinit[2]);
-                var dia_end = parseInt(date_valend[2]);
-                console.log('Dia tomado ' + dia);
-                console.log('Dia inicio ' + dia_init);
-                console.log('Dia fin ' + dia_end);
-                if (dia > dia_init && dia < dia_end) {
-                    $scope.btnapply = true;
-                }else{
-                    $scope.btnapply = false;
-                    Notification.error({
-                        message: '<u>El tiempo en el que se podia realizar la suspensión se ha terminado</u>',
-                        title: '<b>Información</b>',
-                        delay: 5000
-                    });
-                }
+            var dia = (date.getDate() < 10 ? '0'+ date.getDate() : date.getDate());
+            var fecha_actual = date.getFullYear() + '-' + mes + '-' + dia;
+            if (fecha_actual >= $scope.periods[0].date_init && fecha_actual <= $scope.periods[0].date_end) {
+                $scope.btnapply = true;
             }else{
                 $scope.btnapply = false;
                 Notification.error({
@@ -143,23 +130,24 @@ angular.module('Enes')
             $scope.elementText = "Su solitud actualmente se encuentra en un estado de borrador. \n" 
             + "Desea cambiar el estatus de esta a tramitado para continuar con su debido" + 
             " proceso?";
-            suspensionFactory.getValidate(paramint)
-            .success(function(data){
-                if(data.status_id == 1){
-                    $scope.btnapply = false;
-                    $scope.information = data;
-                    Notification.info({
-                        message: "Estimado alumno", 
-                        templateUrl: "change_status.html", 
-                        scope: $scope});
-                }else{
-                    initData(data);
-                }
-                
-            })
-            .error(function(error){
-                console.log(error);
-            })
+            try{
+                suspensionFactory.getValidate(paramint)
+                .success(function(data){
+                    if(data.status_id == 1){
+                        $scope.btnapply = false;
+                        $scope.information = data;
+                        Notification.info({
+                            message: "Estimado alumno", 
+                            templateUrl: "change_status.html", 
+                            scope: $scope});
+                    }else{
+                        initData(data);
+                    }
+                    
+                })
+            }catch(err){
+                console.log(err + ' error');
+            }
         }
 
         /**
@@ -167,22 +155,37 @@ angular.module('Enes')
         *   la suspencion en caso de que ubiera un registro
         */
         var initData = function(paramObject){
-            $scope.suspen.reason = paramObject.reason;
             $scope.reason = paramObject.reason;
-            $scope.suspen.period_id = paramObject.period_id;
             $scope.period_ids = paramObject.period_id;
-            $scope.suspen.student_id = paramObject.student;
-            $scope.suspen.status_id = paramObject.status_id;
-            $scope.suspen.date_init= paramObject.date_init;
+            $scope.records = paramObject.evidence;
+            $scope.suspen = paramObject;
             if ($scope.suspen.status_id == 1) {
                 $scope.btnapply = false;
             }
             if ($scope.suspen.status_id == 2) {
                 $scope.btnapply = false;
-                $scope.btnprint = !$scope.btnprint;
-                $scope.viewNote = !$scope.viewNote;
+                $scope.btnprint = true;
+                $scope.viewNote = true;
+                $scope.btnfile  = true;
             };
+            if(typeof($scope.suspen.evidence) != 'undefined'){
+                $scope.btnfile = false;
+                $scope.btnprint = false;
+            }
             
+        }
+
+        $scope.onLoad = function (e, reader, file, fileList, fileOjects, fileObj) {
+            Notification.success({
+                message: 'Imagen adjuntada correctamente.',
+                delay: 10000});
+
+        };
+
+        $scope.updateevidence = function(){
+            $scope.suspen.evidence = $scope.records.base64;
+            updateSuspen($scope.suspen);
+
         }
 
         /**
@@ -193,11 +196,19 @@ angular.module('Enes')
             paramObject.status_id = 2;
             suspensionFactory.update(paramObject)
             .success(function(data){
-                Notification({
-                    title: 'Information',
-                    message: 'Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas.', 
-                    delay: 5000
-                });
+                if(typeof(paramObject.evidence) == 'undefined'){
+                    Notification({
+                        title: 'Information',
+                        message: 'Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas.', 
+                        delay: 5000
+                    });
+                }else{
+                    Notification({
+                        title: 'Information',
+                        message: '<div aling="justify">Ahora que se ha subido las firmas de no adeudo, \nel departamento de servisios escolares iniciara con el proceso de validacion para la suspensión.</div>', 
+                        delay: 5000
+                    });
+                }
                 initData(paramObject);
             })
             .error(function(error){

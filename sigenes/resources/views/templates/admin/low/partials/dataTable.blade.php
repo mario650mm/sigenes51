@@ -1,5 +1,5 @@
 
-    <div class="col-lg-10 col-lg-offset-1">
+    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
         <table class="table table-hover">
             <tr>
                 <th>{{trans('low.name')}}

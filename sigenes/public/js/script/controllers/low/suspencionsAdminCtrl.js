@@ -38,9 +38,7 @@
             var con = 0;
         	suspensionFactory.getAllSuspensions()
         	.success(function(data){
-        		
         		$scope.showResult = data;
-                //console.log(data.evidence);
         	})
         	.error(function(error){
         		Notification.error({
@@ -71,11 +69,9 @@
         }
 
         $scope.showValidate = function(entity){
-            console.log('llego');
             $scope.entity = entity;
-                $scope.isHiden = true;
-                assingData(entity);
-            
+            $scope.isHiden = true;
+            assingData(entity);
             $('#show').modal('show');
         }
 
@@ -84,16 +80,13 @@
             $scope.suspend.library = true;
             $scope.suspend.clinic = true;
             $scope.suspend.social_services = true;
-            //console.log(entity.evidence);
             $scope.suspend.evidence = entity.evidence;
-            //console.log($scope.suspend.evidence);
-            //var type = imageMIME(entity.evidence);
-            //console.log(type);
             
         }
 
         $scope.showsuspen = function(suspend){
             $scope.entity = suspend;
+            $scope.suspend.evidence = suspend.evidence;
             $scope.isHiden = false;
             $('#show').modal('show');
         }
@@ -116,50 +109,7 @@
             $scope.suspend.id = $scope.entity.id;
             $scope.suspend.reason = $scope.entity.reason;
             $scope.suspend.student_id = $scope.entity.student;
-            $scope.suspend.evidence = $scope.file.base64;
-            console.log($scope.file);
             $scope.suspend.date_end = getDateSus();
-            if (typeof($scope.suspend.library) == 'undefined') {
-                Notification.error({
-                    message: 'Seleccione si no tiene adeudos en la libreria',
-                    title: '<b>Error</b>',
-                    delay: 3000
-                });
-                return;
-            };
-            if (typeof($scope.suspend.lab) == 'undefined') {
-                Notification.error({
-                    message: 'Seleccione si no tiene adeudos en los laboratorios',
-                    title: '<b>Error</b>',
-                    delay: 3000
-                });
-                return;
-            };
-            if (typeof($scope.suspend.clinic) == 'undefined') {
-                Notification.error({
-                    message: 'Seleccione si no tiene adeudos en las clinicas',
-                    title: '<b>Error</b>',
-                    delay: 3000
-                });
-                return;
-            };
-            if (typeof($scope.suspend.social_services) == 'undefined') {
-                Notification.error({
-                    message: 'Seleccione si no tiene adeudos en el departamento de servicios sociales',
-                    title: '<b>Error</b>',
-                    delay: 3000
-                });
-                return;
-            };
-            if (typeof($scope.file.base64) == 'undefined') {
-                Notification.error({
-                    message: 'Es necesario que ingrese la evidencía',
-                    title: '<b>Error</b>',
-                    delay: 3000
-                });
-                return;
-            };
-
             suspensionFactory.update($scope.suspend)
             .success(function(data){
                 Notification.success({
