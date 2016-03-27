@@ -130,7 +130,7 @@
                 <tr>
                     <td>{{ $applicant['colony'] }} </td>
                     <td>{{ $applicant['zip'] }} </td>
-                    <td>{{ $applicant['country'] }} </td>
+                    <td>{{ $country }} </td>
                 </tr>
                 <tr>
                     <th>Estado</th>
@@ -138,8 +138,8 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <td>{{ $applicant['state'] }} </td>
-                    <td>{{ $applicant['city'] }} </td>
+                    <td>{{ $state }} </td>
+                    <td>{{ $city }} </td>
                 </tr>
             </table>
         </div>
@@ -180,7 +180,7 @@
                     <th>No. Cuenta</th>
                 </tr>
                 <tr>
-                    <td>{{ $applicant['career_id'] }} </td>
+                    <td>{{ $career }} </td>
                     <td>{{ $applicant['account_number'] }} </td>
                 </tr>
             </table>

@@ -48,9 +48,9 @@
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.num_ext') }}: </strong> @{{ applicant.num_ext }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.colony') }}: </strong> @{{ applicant.colony }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.zip') }}: </strong> @{{ applicant.zip }}</a>
-                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.country') }}: </strong> @{{ applicant.country_id }}</a>
-                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.state') }}: </strong> @{{ applicant.state_id }}</a>
-                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.city') }}: </strong> @{{ applicant.city_id }}</a>
+                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.country') }}: </strong> @{{ country }}</a>
+                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.state') }}: </strong> @{{ state }}</a>
+                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.city') }}: </strong> @{{ city }}</a>
                         </div>
                         <div class="list-group">
                             <a href="#" class="list-group-item disabled">
@@ -63,7 +63,7 @@
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.month_end') }}: </strong> @{{ applicant.month_end }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.year_end') }}: </strong> @{{ applicant.year_end }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.average') }}: </strong> @{{ applicant.average }}</a>
-                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.career_id') }}: </strong> @{{ applicant.career_id }}</a>
+                            <a href="#" class="list-group-item"><strong>{{ trans('admissions.career') }}: </strong> @{{ career }}</a>
                             <a href="#" class="list-group-item"><strong>{{ trans('admissions.observations') }}: </strong> @{{ applicant.observations }}</a>
                         </div>
                     </div>

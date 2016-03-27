@@ -1,7 +1,8 @@
 /**
  * Created by taxque on 27/02/16.
  */
-angular.module('EnesAuth')
+
+angular.module('Enes')
     .factory('statesFactory', function (HOST, $http) {
         return{
             getStatesByCountry : function(country_id){

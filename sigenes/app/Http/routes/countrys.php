@@ -11,5 +11,5 @@
 Route::group(['prefix' => 'api/v1'], function () {
 
     Route::get('countrys', 'CountryController@getAllData');
-
+    Route::get('getNameCountry/{id}', 'CountryController@getNameCountry');
 });
