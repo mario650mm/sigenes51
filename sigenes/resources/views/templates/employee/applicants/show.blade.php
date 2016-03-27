@@ -23,7 +23,6 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5" style="height:795px; overflow-y:auto;">
                     <div class="column">
-
                         <div class="list-group">
                             <a href="#" class="list-group-item disabled">
                                 <h1><i class="user icon"></i> {{ trans('admissions.personal_information') }}</h1>
@@ -72,15 +71,15 @@
                 <div class="col-lg-7 col-md-7">
                     <div class="column">
                         <div class="col-lg-9">
-                            <iframe src="{{ asset('resources/ejemplo.pdf')}}" style="min-height: 700px; width: 100%" name="documentView"></iframe>
+                            <span ng-bind-html="document_example | renderHTMLCorrectly"></span>
                         </div>
                         <div class="col-lg-3">
-                            <h1>Documents</h1>
+                            <h1>Documentos</h1>
                             <ul class="list-group">
-                                <a href="{{ asset('resources/ifeejemplo.pdf')}}" class="list-group-item" target="documentView">IFE</a>
-                                <a href="{{ asset('resources/actaejemplo.pdf')}}" class="list-group-item" target="documentView">Acta de nacimiento</a>
-                                <a href="{{ asset('resources/certificadoejemplo.pdf')}}" class="list-group-item" target="documentView">Certificado de bachillerato</a>
-                                <a href="{{ asset('resources/curpejemplo.pdf')}}" class="list-group-item" target="documentView">Curp</a>
+                                <a ng-click="changeDocument(0)" class="list-group-item" target="documentView">IFE</a>
+                                <a ng-click="changeDocument(1)" class="list-group-item" target="documentView">Acta de nacimiento</a>
+                                <a ng-click="changeDocument(2)" class="list-group-item" target="documentView">Certificado de bachillerato</a>
+                                <a ng-click="changeDocument(3)" class="list-group-item" target="documentView">Curp</a>
                             </ul>
                         </div>
                     </div>

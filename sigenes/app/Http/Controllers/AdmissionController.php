@@ -30,7 +30,6 @@ class AdmissionController extends Controller
     public function store(Request $request)
     {
         try{
-
             $applicant = Applicant::create($request->all());
 
             // Insert official_identification
@@ -41,17 +40,17 @@ class AdmissionController extends Controller
             // Insert birth_certificate
             AttachmentApplicants::create(['applicant_id' => $applicant->id,
                 'attachment_type_id' => 2,
-                'document' => $request->input('official_identification')['base64']]);
+                'document' => $request->input('birth_certificate')['base64']]);
 
             // Insert high_school_certificate
             AttachmentApplicants::create(['applicant_id' => $applicant->id,
                 'attachment_type_id' => 3,
-                'document' => $request->input('official_identification')['base64']]);
+                'document' => $request->input('high_school_certificate')['base64']]);
 
             // Insert curp_file
             AttachmentApplicants::create(['applicant_id' => $applicant->id,
                 'attachment_type_id' => 4,
-                'document' => $request->input('official_identification')['base64']]);
+                'document' => $request->input('curp_file')['base64']]);
 
             return \Response::json(['created' => true, 'applicant_id' => $applicant->id], 200);
         }catch (Exception $e){
