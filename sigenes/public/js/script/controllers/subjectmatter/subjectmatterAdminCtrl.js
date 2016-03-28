@@ -168,7 +168,6 @@ angular.module('Enes')
 		$scope.getInfo = function(){
 			subjectmatterFactory.getInfo()
 			.success(function(data){
-				console.log(data);
 				$scope.objects 			= data.subjectMatter;
 				$scope.area 			= data.areas;
 				$scope.career 			= data.career;
@@ -206,7 +205,6 @@ angular.module('Enes')
 					$scope.objectoarr={};
 				});
 				$scope.datatableView.splice(0,1);
-				console.log($scope.datatableView);
 				
 			})
 			.error(function(error){
@@ -231,7 +229,6 @@ angular.module('Enes')
 			$scope.subjectmatter = entity;
 			if(typeof(tronco) != 'undefined'){$scope.iscomun_deep = true;}
 			if(typeof(deep) != 'undefined'){$scope.isdeepending = true;}
-			console.log($scope.subjectmatter);
 			$('#edit').modal('show');
 		};
 
