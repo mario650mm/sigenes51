@@ -217,7 +217,7 @@ angular.module('Enes')
 						message: '<div align="justify">La carrera, ' + $scope.career.name + ', se ha actualizado con exito. <br>Se recargará la pagina para que pueda notar los cambios.</div>',
 						delay: 5000
 					});
-					//setTimeout('document.location.reload()',3000);
+					setTimeout('document.location.reload()',3000);
 				}
 			})
 			.error(function(error){
