@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoordinatorsTable extends Migration
+class CreateCampusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,10 @@ class CreateCoordinatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('coordinators', function (Blueprint $table) {
+        Schema::create('campus', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('key');
+            $table->string('name',100);
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ class CreateCoordinatorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('coordinators');
+        Schema::drop('campus');
     }
 }

@@ -92,9 +92,10 @@ angular.module('Enes')
 
         }
 
-        $scope.editTeacher = function (partner,teacher) {
-            partnersFactory.update(partner)
+        $scope.editTeacher = function () {
+            partnersFactory.update($scope.partner)
                 .success(function (data) {
+                    $scope.teacher.partner_id = data.partner_id;
                     $('#edit').modal('hide');
                     Notification.success({
                         message: 'Socio ' + partner.name + ' actualizado correctamente.',
@@ -109,7 +110,9 @@ angular.module('Enes')
                             delay: 5000
                         });
                 })
-            teacherFactory.update(teacher)
+
+            teacherFactory.update($scope.teacher)
+
                 .success(function (data) {
                     $('#edit').modal('hide');
                     Notification.success({
