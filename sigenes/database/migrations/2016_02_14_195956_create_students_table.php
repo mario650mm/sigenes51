@@ -28,13 +28,13 @@ class CreateStudentsTable extends Migration
             [
                 'account_number' => 'STU12000789',
                 'data_register' => $now,
-                'partner_id' => 8,
+                'partner_id' => 9,
                 'created_at' => $now,
             ],
             [
                 'account_number' => 'STU12000790',
                 'data_register' => $now,
-                'partner_id' => 9,
+                'partner_id' => 10,
                 'created_at' => $now,
             ],
         ]);

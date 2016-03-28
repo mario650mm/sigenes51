@@ -19,6 +19,7 @@ class CreateCareersTable extends Migration
             $table->integer('key')->unique();
             $table->string('name', 50);
             $table->longText('description');
+            $table->integer('study_plan_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

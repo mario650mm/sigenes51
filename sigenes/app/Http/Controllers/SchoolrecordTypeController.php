@@ -78,9 +78,16 @@ class SchoolrecordTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try{
+            $schoolrecordType = SchoolrecordType::find($request->input('id'));
+            $schoolrecordType->update($request->all());
+            return ['updated' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating Period: '.$e);
+            return \Response::json(['updated' => false], 500);
+        }
     }
 
     /**

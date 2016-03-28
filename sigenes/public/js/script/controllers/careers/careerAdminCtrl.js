@@ -12,7 +12,7 @@
  */
 
 angular.module('Enes')
-	.controller('careerAdminCtrl', function($scope, careerFactory, studyareaFactory, Notification){
+	.controller('careerAdminCtrl', function($scope, careerFactory, mainFactory, studyareaFactory, Notification){
 		$scope.btnstudyarea = false;
 		$scope.btncareer 	= true;
 		$scope.panelCarrera = true;
@@ -23,6 +23,9 @@ angular.module('Enes')
 		$scope.datacareer	= [];
 		$scope.dataarea		= [];
 		$scope.allAreas		= [];
+		$scope.studies_plans= [{}];
+		$scope.tonco_comun 	= [{}];
+		$scope.deepending 	= [{}];
 
 		// Fileds for search in user model
 		$scope.availableSearchParams = [
@@ -31,6 +34,12 @@ angular.module('Enes')
 			{ key: "name", name: "Name of Career", placeholder: "Name of Career..." },
 			{ key: "description", name: "Description", placeholder: "Description..." }
 		];
+		
+
+		$scope.initCareer = function(){
+			getplans();
+		}
+
 
 		/*
 		* Agrega el registro de la carrera al sistema,
@@ -64,6 +73,54 @@ angular.module('Enes')
 					title: '<i class="fa fa-exclamation-triangle"></i> <u>Error al crear la carrera</u>',
 					delay: 10000
 				});
+			});
+		}
+
+		/*
+		* Trae los planes de estudios 
+		* y los manda a filtrar por los que sean
+		* de tronco común.
+		*/
+		var getplans = function(){
+			mainFactory.get_stuies_plans()
+			.success(function(data){
+				$scope.studies_plans = data;
+				filterplansCareer();
+			});
+		};
+
+		/*
+		* Filtra por el plan de estudio si es falso
+		*/
+		var filterplansCareer = function(){
+			angular.forEach($scope.studies_plans, function(value, key){
+				if(value.is_deepending == 0){
+					$scope.tonco_comun.push(value);
+				}
+			});
+		}
+
+		/*
+		* Trae los planes de estudios 
+		* y los manda a filtrar por los que sean
+		* de área de profundización.
+		*/
+		$scope.getplansArea = function(){
+			mainFactory.get_stuies_plans()
+			.success(function(data){
+				$scope.studies_plans = data;
+				filterdeepending();
+			});
+		}
+
+		/*
+		* Filtra por el plan de estudio si es verdadero
+		*/
+		var filterdeepending = function(){
+			angular.forEach($scope.studies_plans, function(value, key){
+				if(value.is_deepending == 1){
+					$scope.deepending.push(value);
+				}
 			});
 		}
 
@@ -121,6 +178,8 @@ angular.module('Enes')
 			})
 		}
 
+
+
 		/*
 		* Filtra las áreas de conocimeinto
 		* con forme a la carreara que se le pasa.
@@ -158,7 +217,7 @@ angular.module('Enes')
 						message: '<div align="justify">La carrera, ' + $scope.career.name + ', se ha actualizado con exito. <br>Se recargará la pagina para que pueda notar los cambios.</div>',
 						delay: 5000
 					});
-					setTimeout('document.location.reload()',3000);
+					//setTimeout('document.location.reload()',3000);
 				}
 			})
 			.error(function(error){

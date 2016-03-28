@@ -8,8 +8,8 @@ angular.module('Enes')
                 console.log(record);
                 return $http.post(HOST+'api/v1/recordtype', record)
             },
-            update : function(user){
-                return $http.put(HOST+'api/v1/users', user)
+            update : function(record){
+                return $http.put(HOST+'api/v1/recordtype', record)
             },
             delete : function(id){
                 return $http.delete(HOST+'api/v1/recordtype/'+id)

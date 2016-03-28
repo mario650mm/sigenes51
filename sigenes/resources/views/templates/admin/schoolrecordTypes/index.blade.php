@@ -36,10 +36,11 @@
                     boundary-links="true" >
             </dir-pagination-controls>
         </div>
+        @include('templates.admin.schoolrecordTypes.partials.showpdf')
+    </div>
         @include('templates.admin.schoolrecordTypes.partials.delete')
-        @include('templates.admin.schoolrecordTypes.partials.showView')
-	</div>
-
+        @include('templates.admin.schoolrecordTypes.partials.edit')
+    </div>
 
 @endsection
 

@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-    {{trans('career.title')}}
+    Ver asignaturas
 @endsection
 
 @section('title')
-    {{trans('career.title')}}
+    Ver asignaturas
 @endsection
 
 @section('angular_controller')
@@ -26,7 +26,7 @@
 
 @section('body_page')
     <div class="row">
-        <div ng-init="getCareer()"></div>   
+        <div ng-init="getInfo()"></div>   
         @include('templates.admin.subjectMatter.partials.dataView')
         <div class="text-center">
             <dir-pagination-controls 
@@ -36,6 +36,8 @@
             </dir-pagination-controls>
         </div>
     </div>
+    @include('templates.admin.subjectMatter.partials.edit')
+    @include('templates.admin.subjectMatter.partials.delete')
     </div>  
 
 @endsection

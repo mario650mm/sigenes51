@@ -26,7 +26,7 @@
 
 @section('body_page')
     <div class="row">
-        <div ng-init="getCareer()"></div>   
+        <div ng-init="getCareer()"></div>  
         @include('templates.admin.careers.partials.dataView')
         <div class="text-center">
             <dir-pagination-controls 

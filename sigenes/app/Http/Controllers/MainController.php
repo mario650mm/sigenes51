@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Year;
+use App\StudiesPlan;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -29,6 +30,10 @@ class MainController extends Controller
     public function show_years(){
 
         return Year::all();
+    }
+
+    public function show_studies_plan(){
+        return StudiesPlan::all();
     }
 
 }

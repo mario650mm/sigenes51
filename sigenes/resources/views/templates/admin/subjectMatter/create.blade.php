@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-	{{trans('career.titlecreate')}}
+	Crear asignatura
 @endsection
 
 @section('title')
-    {{trans('career.titlecreate')}}
+    Crear asignatura
 @endsection
 
 @section('angular_controller')

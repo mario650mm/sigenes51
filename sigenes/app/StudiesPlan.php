@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class StudyArea extends Model
+class StudiesPlan extends Model
 {
     use SoftDeletes;
 
@@ -21,12 +21,8 @@ class StudyArea extends Model
      *
      * @var string
      */
-    protected $table = 'study_areas';
+    protected $table = 'studies_plans';
 
 
-    protected $fillable=['name', 'key', 'career_id', 'study_plan_id'];
-
-    public function Career(){
-        return $this->belongsTo('App\Career');
-    }
+    protected $fillable=['name', 'key', 'is_deepending'];
 }
