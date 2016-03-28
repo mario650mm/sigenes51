@@ -24,6 +24,11 @@ class SubjectMatter extends Model
     protected $table = 'subject_matters';
 
 
-    protected $fillable=['key', 'name', 'half_year_id', 'isopctional', 'isdeepending',
-    'study_area_id', 'iscomun_deep'];
+    protected $fillable = [
+        'key', 'name', 'semester_id', 'career_id', 'isasmandatory',
+        'isasopctional', 'isasopctionaltrans', 'issermandatory',
+        'isserindicative', 'istechnique', 'study_area_id', 'year_id', 'week_init',
+        'week_end', 'week_total', 'hours_teoric', 'hours_practique', 'hours_clinic',
+        'hours_total', 'credit'
+    ];
 }

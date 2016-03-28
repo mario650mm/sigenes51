@@ -41,7 +41,7 @@ class SchoolrecordTypeController extends Controller
             //dd($request);  
             SchoolrecordType::create(['name'=> $request->input('name'),
                 'description'=> $request->input('description'),
-                'record'=> $request->input('record')['base64']]);
+                'record'=> $request->input('record')]);
             return \Response::json(['created' => true], 200);
         } catch (Exception $e) {
             \Log::info('Error creating user: '.$e);
@@ -78,9 +78,16 @@ class SchoolrecordTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try{
+            $schoolrecordType = SchoolrecordType::find($request->input('id'));
+            $schoolrecordType->update($request->all());
+            return ['updated' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating Period: '.$e);
+            return \Response::json(['updated' => false], 500);
+        }
     }
 
     /**

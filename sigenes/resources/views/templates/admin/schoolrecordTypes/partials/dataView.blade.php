@@ -1,4 +1,4 @@
-<div class="row">
+
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<table class="table table-hover">
 			<thead>
@@ -26,7 +26,7 @@
 					<td>
 						<div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-								<a ><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="{{trans('schoolrecordTypes.ctrledit')}}"></span></a>
+								<a data-ng-click="editview(entity)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="{{trans('schoolrecordTypes.ctrledit')}}"></span></a>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 								<a data-ng-click="delete(entity)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="{{trans('schoolrecordTypes.ctrldelete')}}"></span></a>
@@ -40,4 +40,3 @@
 			</tbody>
 		</table>
 	</div>
-</div>

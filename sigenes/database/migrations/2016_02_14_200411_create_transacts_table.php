@@ -16,7 +16,7 @@ class CreateTransactsTable extends Migration
             $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->integer('status_id');
-            $table->integer('transact_type_id')->unsigned();
+            $table->integer('transact_type_id')->nullable();
             $table->boolean('record');
             $table->boolean('credential');
             $table->date('date');
@@ -29,8 +29,6 @@ class CreateTransactsTable extends Migration
             $table->softDeletes();
             $table->foreign('student_id')->references('id')
                 ->on('students')->onDelete('cascade')->onUpdte('cascade');
-            $table->foreign('transact_type_id')->references('id')
-                ->on('transact_types')->onDelete('cascade')->onUpdate('cascade');
         });
         DB::statement("ALTER TABLE transact_students ADD evidence LONGBLOB");
     }

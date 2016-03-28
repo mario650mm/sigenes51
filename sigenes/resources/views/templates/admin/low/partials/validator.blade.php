@@ -30,23 +30,6 @@
                 </div> 
             </div>
         </div>
-        
-        <div class="row">
-            
-        </div>
-        
-        <div class="row" data-ng-hide="isHiden">
-            <div class=" col-lg-10 col-lg-offset-1 ">
-                <input class="form-control btn-success" 
-                type="file" 
-                ng-model="file" 
-                name="inputFile"
-                base-sixty-four-input 
-                required 
-                maxsize="500" accept="image/*">
-                </input>
-            </div>
-        </div>
     </div>
     <div class="actions" data-ng-hide="isHiden">
         @include('templates.admin.low.partials.inputs')

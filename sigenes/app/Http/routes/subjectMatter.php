@@ -7,8 +7,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 
 Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function(){
-	Route::post('subjectMatter', 'SubjectMatterController@store');
-	Route::get('subjectMatter', 'SubjectMatterController@show');
-	Route::put('subjectMatter', 'SubjectMatterController@update');
-	Route::delete('subjectMatter/{id}', 'SubjectMatterController@destroy');
+	Route::post('subjectmatter', 'SubjectMatterController@store');
+	Route::get('subjectmatter', 'SubjectMatterController@show');
+	Route::put('subjectmatter', 'SubjectMatterController@update');
+	Route::delete('subjectmatter/{id}', 'SubjectMatterController@destroy');
 });

@@ -5,7 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\SubjectMatter;
+use App\Half_year;
+use App\Career;
+use App\StudyArea;
+use App\StudiesPlan;
+use App\Year;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Mockery\CountValidator\Exception;
 
 class SubjectMatterController extends Controller
 {
@@ -38,7 +46,42 @@ class SubjectMatterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [ 
+            'key'                   =>  'required', 
+            'name'                  =>  'required', 
+            'semester_id'           =>  'required', 
+            'career_id'             =>  'required', 
+            'isasmandatory'         =>  'required',
+            'isasopctional'         =>  'required', 
+            'isasopctionaltrans'    =>  'required',
+            'issermandatory'        =>  'required',
+            'isserindicative'       =>  'required', 
+            'istechnique'           =>  'required',  
+            'year_id'               =>  'required', 
+            'week_init'             =>  'required',
+            'week_end'              =>  'required',
+            'hours_teoric'          =>  'required', 
+            'hours_practique'       =>  'required', 
+            'hours_total'           =>  'required', 
+            'credit'                =>  'required'
+        ];
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return \Response::json(['created' => false,'errors' => $validator->errors()->all()], 500);
+            }
+
+            SubjectMatter::create($request->all());
+            return ['created' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating user: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**
@@ -47,21 +90,17 @@ class SubjectMatterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $subjectMatter= SubjectMatter::all();
+        $career = Career::all();
+        $areas = StudyArea::all();
+        $plan = StudiesPlan::all();
+
+        return \Response::json(['subjectMatter' => $subjectMatter, 'career' => $career,
+            'areas' => $areas, 'plan' => $plan], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -70,9 +109,45 @@ class SubjectMatterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [ 
+            'key'                   =>  'required', 
+            'name'                  =>  'required', 
+            'semester_id'           =>  'required', 
+            'career_id'             =>  'required', 
+            'isasmandatory'         =>  'required',
+            'isasopctional'         =>  'required', 
+            'isasopctionaltrans'    =>  'required',
+            'issermandatory'        =>  'required',
+            'isserindicative'       =>  'required', 
+            'istechnique'           =>  'required',  
+            'year_id'               =>  'required', 
+            'week_init'             =>  'required',
+            'week_end'              =>  'required',
+            'hours_teoric'          =>  'required', 
+            'hours_practique'       =>  'required', 
+            'hours_total'           =>  'required', 
+            'credit'                =>  'required'
+        ];
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return \Response::json(['updated' => false,'errors' => $validator->errors()->all()], 500);
+            }
+
+            $subjectMatter = SubjectMatter::find($request->input('id'));
+            $subjectMatter->update($request->all());
+            return ['updated' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating user: '.$e);
+            return \Response::json(['updated' => false], 500);
+        }
     }
 
     /**
@@ -83,6 +158,7 @@ class SubjectMatterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        SubjectMatter::destroy($id);
+        return ['deleted' => true];
     }
 }

@@ -41,19 +41,36 @@
 
         $scope.showView = function(entity){
             $scope.entity = entity;
-            $scope.base = atob(entity.record);
+            $scope.base = '<iframe src="data:application/pdf;base64,' + $scope.entity.record+'" style="height: 500px; width: 100%" ></iframe>';
             $('#showView').modal('show');
         }
 
-        $scope.printDocument = function() {
-            var test = document.getElementById('printablePdf');
-            if (typeof document.getElementById('printablePdf').print === 'undefined') {
-                setTimeout(function(){$scope.printDocument();}, 1000);
-            } else {
-                var x = document.getElementById('printablePdf');
-                x.print();
-            }
+        $scope.editview = function(entity){
+            $scope.recordtype = entity;
+            $('#showedit').modal('show');
         };
+
+        $scope.editaction = function(){
+            schoolrecordTypeFactory.update($scope.recordtype)
+            .success(function(data){
+                Notification.success({
+                    title: 'Actualización',
+                    message: 'La constancia se ha actualizado sin problema alguno.',
+                    delay: 5000
+                });
+            })
+            .error(function(error){
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                });
+                Notification.error({
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al generar la constancia</u>',
+                    delay: 10000
+                });
+            });
+        }
 
         /*
         * Elimina el registro de la constancia seleccionada
@@ -62,12 +79,20 @@
             schoolrecordTypeFactory.delete(paramInt)
             .success(function(data){
                 Notification.success({
-                message: 'Se ha eliminado la constancia correctamente.',
-                delay: 5000});
+                    message: 'Se ha eliminado la constancia correctamente.',
+                    delay: 5000});
                 setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
-
+                $scope.error = "";
+                angular.forEach(error.errors,function(value){
+                    $scope.error += value + "</br>";
+                });
+                Notification.error({
+                    message: '<b>Error</b> </br>'+$scope.error,
+                    title: '<u>Error al eliminar la constancia</u>',
+                    delay: 10000
+                });
             });
         }
  		
@@ -87,9 +112,7 @@
         * Crea el registro de la constancia
         */
         $scope.saveRecord = function(){
-        	console.log($scope.records);
-        	console.log($scope.recordtype);
-        	$scope.recordtype.record = $scope.records;
+        	$scope.recordtype.record = $scope.records.base64;
         	console.log($scope.recordtype);
             schoolrecordTypeFactory.save($scope.recordtype)
             .success(function(data){
@@ -108,5 +131,5 @@
                     delay: 10000
                 });
             });
-        }
+        };
  	});

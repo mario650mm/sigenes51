@@ -19,6 +19,7 @@ class CreateTransactTypesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
         DB::statement("ALTER TABLE transact_types ADD record LONGBLOB");
     }
 

@@ -24,7 +24,7 @@ class Career extends Model
     protected $table = 'careers';
 
 
-    protected $fillable=['father_campus', 'campus', 'key', 'name', 'description'];
+    protected $fillable=['father_campus', 'campus', 'key', 'name', 'description', 'study_plan_id'];
 
     public function Area(){
         return $this->hasMany('App\StudyArea');
