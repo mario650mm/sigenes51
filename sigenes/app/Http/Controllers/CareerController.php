@@ -21,6 +21,10 @@ class CareerController extends Controller
         return view('templates.admin.careers.index');
     }
 
+    public function getNameCareer($id){
+        return Career::findOrFail($id)->name;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

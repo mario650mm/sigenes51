@@ -23,6 +23,9 @@
 <script src="{{ asset('js/script/services/main/main.factories.js') }}"></script>
 <script src="{{ asset('js/script/extrasEnes.js') }}"></script>
 <script src="{{ asset('js/script/filters/filters.js') }}"></script>
+<script src="{{ asset('js/script/services/country/country.factories.enes.js') }}"></script>
+<script src="{{ asset('js/script/services/state/state.factories.enes.js') }}"></script>
+<script src="{{ asset('js/script/services/city/city.factories.enes.js') }}"></script>
 
 
 <!-- Angular Only can see students or admins-->

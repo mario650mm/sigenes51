@@ -21,6 +21,10 @@ class CountryController extends Controller
         return Country::all();
     }
 
+    public function getNameCountry($id){
+        return Country::findOrFail($id)->name;
+    }
+
     /**
      * Display a listing of the resource.
      *

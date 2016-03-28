@@ -19,6 +19,12 @@ class CityController extends Controller
     public function getCitysByState($id){
         return City::where('state_id', $id)->get();
     }
+
+
+    public function getNameCity($id){
+        return City::findOrFail($id)->name;
+    }
+
     /**
      * Display a listing of the resource.
      *

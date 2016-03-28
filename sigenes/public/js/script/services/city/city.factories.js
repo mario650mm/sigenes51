@@ -6,6 +6,9 @@ angular.module('EnesAuth')
         return{
             getCitysByState : function(state_id){
                 return $http.get(HOST + 'api/v1/citysbystate/'+state_id)
+            },
+            getNameCity : function(id){
+                return $http.get(HOST+'api/v1/getNameCity/'+ id)
             }
         }
     });

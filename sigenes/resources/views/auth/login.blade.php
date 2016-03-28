@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="col-lg-12 text-center">
-                                <a class="btn text-info" href="{{ url('/password/reset') }}"><strong>{{ trans('auth.forgot') }}</strong></a>
+                                <a class="btn text-info" href="{{ url('/password/email') }}"><strong>{{ trans('auth.forgot') }}</strong></a>
                             </div>
                             <div class="col-lg-12 text-center">
                                 <a href="{{ route('register') }}" class="text-warning"><strong><i class="fa fa-user"></i> {{ trans('auth.signup') }}</strong></a>

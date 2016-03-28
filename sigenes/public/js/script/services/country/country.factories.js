@@ -6,6 +6,9 @@ angular.module('EnesAuth')
         return{
             getAllCountry : function(){
                 return $http.get(HOST + 'api/v1/countrys')
+            },
+            getNameCountry : function(id){
+                return $http.get(HOST+'api/v1/getNameCountry/'+ id)
             }
         }
     });

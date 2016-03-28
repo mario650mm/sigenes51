@@ -8,7 +8,8 @@
  * Controller of the principalApp
  */
 angular.module('Enes')
-    .controller('ApplicantsController', function ($scope, applicantFactory, Notification, $window) {
+    .controller('ApplicantsController', function ($scope, applicantFactory,
+                                                  Notification, $window) {
         $scope.applicant = {};
         $scope.applicants = [];
 
@@ -33,12 +34,31 @@ angular.module('Enes')
         }
 
     })
-    .controller('ShowApplicantsController', function ($scope, applicantFactory, Notification) {
+    .controller('ShowApplicantsController', function ($scope, applicantFactory,
+                                                      countryFactory,
+                                                      statesFactory, citysFactory,
+                                                      careerFactory, Notification) {
         $scope.applicant = [];
         $scope.documents = [];
         applicantFactory.show($scope.urlId)
             .success(function(data){
                 $scope.applicant=data;
+                careerFactory.getNameCareer($scope.applicant.career_id)
+                    .success(function(career){
+                        $scope.career = career;
+                    });
+                countryFactory.getNameCountry($scope.applicant.country_id)
+                    .success(function(country){
+                        $scope.country = country;
+                    });
+                statesFactory.getNameState($scope.applicant.state_id)
+                    .success(function(state){
+                        $scope.state = state;
+                    });
+                citysFactory.getNameCity($scope.applicant.city_id)
+                    .success(function(city){
+                        $scope.city = city;
+                    });
             })
             .error(function(error){
                 Notification.error(

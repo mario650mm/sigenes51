@@ -13,6 +13,9 @@ angular.module('Enes')
             },
             delete : function(id){
                 return $http.delete(HOST+'api/v1/career/'+id)
+            },
+            getNameCareer : function(id){
+                return $http.get(HOST+'api/v1/getNameCareer/'+ id)
             }
         }
     });
