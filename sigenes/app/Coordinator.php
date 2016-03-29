@@ -25,7 +25,7 @@ class Coordinator extends Model
      *
      * @var array
      */
-    protected $fillable = ['career_id','campu_id','startDate','endDate'];
+    protected $fillable = ['career_id','school_id','startDate','endDate'];
 
 
 }
