@@ -16,10 +16,13 @@ class CreateTeachersTable extends Migration
             $table->increments('id');
             $table->enum('type', ['Carrera','Asignatura']);
             $table->integer('partner_id')->unsigned();
+            $table->integer('designation_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('partner_id')->references('id')
                 ->on('partners')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('designation_id')->references('id')
+                ->on('designations')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

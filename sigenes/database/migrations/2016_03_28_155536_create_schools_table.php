@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypesTable extends Migration
+class CreateSchoolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,15 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function(Blueprint $table){
+        Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 45);
+            $table->integer('key');
+            $table->string('name',150);
             $table->timestamps();
             $table->softDeletes();
         });
-
         $now = date('Y-m-d H:i:s');
-        \DB::table('types')->insert([['name' => 'Director', 'created_at' => $now],['name' => 'Administrativo', 'created_at' => $now], ['name' => 'Coordinador', 'created_at' => $now], ['name' => 'Profesor', 'created_at' => $now]]);
-
+        \DB::table('schools')->insert([['key' => 600, 'name' => 'Escuela nacional de estudios superiores unidad León', 'created_at' => $now]]);
     }
 
     /**
@@ -31,6 +30,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('types');
+        Schema::drop('schools');
     }
 }
