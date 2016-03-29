@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class SchoolController extends Controller
 {
@@ -37,7 +38,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.admin.schools.create');
     }
 
     /**
@@ -48,7 +49,27 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [
+            'key' => 'required',
+            'name'  => 'required',
+        ];
+
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
+            }
+            School::create($request->all());
+            return \Response::json(['created' => true], 200);
+        }catch (Exception $e){
+            \Log::info('Error creating school: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**
@@ -59,7 +80,7 @@ class SchoolController extends Controller
      */
     public function show($id)
     {
-        //
+        return School::findOrFail($id);
     }
 
     /**
@@ -80,9 +101,11 @@ class SchoolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $school = School::find($request->input('id'));
+        $school->update($request->all());
+        return ['updated' => true];
     }
 
     /**
@@ -93,6 +116,7 @@ class SchoolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        School::destroy($id);
+        return ['deleted' => true];
     }
 }

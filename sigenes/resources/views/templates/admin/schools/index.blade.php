@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-    Escuelas
+    @lang('schools.title')
 @endsection
 
 @section('title')
-    Escuelas
+    @lang('schools.title')
 @endsection
 
 @section('angular_controller')
@@ -40,9 +40,9 @@
                 </div>
             </div>
     </div>
-    {{--@include('templates.admin.partners.partials.show')
-    @include('templates.admin.partners.partials.edit')
-    @include('templates.admin.partners.partials.delete')--}}
+    @include('templates.admin.schools.partials.show')
+    @include('templates.admin.schools.partials.edit')
+    @include('templates.admin.schools.partials.delete')
     </div>
     @endsection
     @section('end_angular_controller')

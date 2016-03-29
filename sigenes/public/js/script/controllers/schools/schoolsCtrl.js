@@ -43,13 +43,18 @@ angular.module('Enes')
                     });
                 })
                 .error(function (error) {
+                    $scope.error = "";
+                    angular.forEach(error.errors,function(value){
+                        $scope.error += value + "</br>";
+                    })
                     Notification.error(
                         {
-                            message: '<b>Error</b> <s>notificación</s>',
-                            title: '<u>Error al crear la Escuela</u>',
-                            delay: 5000
+                            message: '<b>Error</b> </br>'+$scope.error,
+                            title: '<u>Error al crear la escuela</u>',
+                            delay: 10000
                         });
                 })
+
         }
 
         $scope.editSchool = function (school) {
