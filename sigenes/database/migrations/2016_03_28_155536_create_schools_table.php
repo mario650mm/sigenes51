@@ -15,10 +15,12 @@ class CreateSchoolsTable extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('key');
-            $table->string('name',100);
+            $table->string('name',150);
             $table->timestamps();
             $table->softDeletes();
         });
+        $now = date('Y-m-d H:i:s');
+        \DB::table('schools')->insert([['key' => 600, 'name' => 'Escuela nacional de estudios superiores unidad León', 'created_at' => $now]]);
     }
 
     /**
