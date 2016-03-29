@@ -14,7 +14,10 @@ class CreateDesignationsTable extends Migration
     {
         Schema::create('designations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name',25);
+            $table->integer('key');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
