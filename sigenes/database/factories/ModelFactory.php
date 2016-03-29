@@ -80,5 +80,6 @@ $factory->define(App\Teacher::class, function (Faker\Generator $faker) {
     return [
         'type' => $faker->randomElement($array = array('Carrera','Asignatura')),
         'partner_id' => $faker->numberBetween($min=1,$max=50),
+        'designation_id' => $faker->numberBetween($min=2,$max=5),
     ];
 });

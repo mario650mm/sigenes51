@@ -19,6 +19,8 @@ class CreateHeigherEducationsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        $now = date('Y-m-d H:i:s');
+        \DB::table('heigher_educations')->insert([['id' => 1, 'name' => 'postdoctorado', 'created_at' => $now], ['id' => 2, 'name' => 'doctorado', 'created_at' => $now], ['id' => 3, 'name' => 'maestria', 'created_at' => $now],['id' => 4, 'name' => 'diplomado', 'created_at' => $now], ['id' => 5, 'name' => 'licenciatura', 'created_at' => $now],['id' => 6, 'name' => 'técnico', 'created_at' => $now],['id' => 7, 'name' => 'bachillerato', 'created_at' => $now]]);
     }
 
     /**
