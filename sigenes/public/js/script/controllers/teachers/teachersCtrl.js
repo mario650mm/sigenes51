@@ -23,7 +23,9 @@ angular.module('Enes')
 
         $scope.availableSearchParams = [
             { key: "name", name: "Nombre", placeholder: "Nombre.." },
-            { key: "curp", name: "curp", placeholder: "CURP.." },
+            { key: "rfc", name: "RFC", placeholder: "RFC.." },
+            { key: "curp", name: "CURP", placeholder: "CURP.." },
+            { key: "sex", name: "Sexo", placeholder: "Sexo.." },
             { key: "type", name: "Tipo", placeholder: "Tipo.."}
         ];
 
