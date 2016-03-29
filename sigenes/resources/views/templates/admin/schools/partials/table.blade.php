@@ -1,7 +1,7 @@
 <table class="table table-hover">
     <tr>
-        <th>Clave</th>
-        <th>Nombre</th>
+        <th>@lang('schools.key')</th>
+        <th>@lang('schools.name')</th>
         <th width="10%">@lang('generals.controllers')</th>
     </tr>
     <tr data-dir-paginate="school in schools | orderBy:sortKey:reverse | filter:searchInput|itemsPerPage:15">

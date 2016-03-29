@@ -106,6 +106,7 @@
       <div class="subtitle">
         <div class="menu">
           <a class="item" href="{{ route('schools.index') }}">Escuelas</a>
+          <a class="item" href="{{ route('studiesplan.index') }}">Planes de estudios</a>
         </div>
       </div>
     </div>
