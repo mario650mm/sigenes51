@@ -95,5 +95,20 @@
         </div>
       </div>
     </div>
+
+    <div class="title">
+      <div class="header">
+        <i class="fa fa-university"></i> Estudios
+        <i class="dropdown icon"></i>
+      </div>
+    </div>
+    <div class="content">
+      <div class="subtitle">
+        <div class="menu">
+          <a class="item" href="{{ route('schools.index') }}">Escuelas</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
