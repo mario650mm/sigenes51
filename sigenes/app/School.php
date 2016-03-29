@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Coordinator extends Model
+class School extends Model
 {
     use SoftDeletes;
     /**
@@ -19,13 +19,11 @@ class Coordinator extends Model
      *
      * @var string
      */
-    protected $table = 'coordinators';
+    protected $table = 'schools';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['career_id','campu_id','startDate','endDate'];
-
-
+    protected $fillable = ['name','key'];
 }
