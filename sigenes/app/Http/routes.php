@@ -39,4 +39,5 @@ require __DIR__ . '/routes/period.php';
 require __DIR__ . '/routes/career.php';
 require __DIR__ . '/routes/area.php';
 require __DIR__ . '/routes/subjectMatter.php';
+require __DIR__ . '/routes/schools.php';
 
