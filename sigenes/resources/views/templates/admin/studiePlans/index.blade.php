@@ -40,9 +40,9 @@
                 </div>
             </div>
     </div>
-    {{--}}}@include('templates.admin.schools.partials.show')
-    @include('templates.admin.schools.partials.edit')
-    @include('templates.admin.schools.partials.delete')--}}
+    @include('templates.admin.studieplans.partials.show')
+    @include('templates.admin.studieplans.partials.edit')
+    @include('templates.admin.studieplans.partials.delete')
     </div>
     @endsection
     @section('end_angular_controller')

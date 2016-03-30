@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class StudiesPlanController extends Controller
 {
@@ -37,7 +38,7 @@ class StudiesPlanController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.admin.studieplans.create');
     }
 
     /**
@@ -48,7 +49,28 @@ class StudiesPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [
+            'name' => 'required',
+            'key'  => 'required',
+            'is_deepending' => 'required'
+        ];
+
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
+            }
+            School::create($request->all());
+            return \Response::json(['created' => true], 200);
+        }catch (Exception $e){
+            \Log::info('Error creating studie plan: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**
@@ -59,7 +81,7 @@ class StudiesPlanController extends Controller
      */
     public function show($id)
     {
-        //
+        return StudiesPlan::findOrFail($id);
     }
 
     /**
@@ -80,9 +102,11 @@ class StudiesPlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $studie_plan = StudiesPlan::find($request->input('id'));
+        $studie_plan->update($request->all());
+        return ['updated' => true];
     }
 
     /**
@@ -93,6 +117,7 @@ class StudiesPlanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        StudiesPlan::destroy($id);
+        return ['deleted' => true];
     }
 }

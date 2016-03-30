@@ -84,7 +84,7 @@ angular.module('Enes')
                 .success(function (data) {
                     $('#delete').modal('hide');
                     Notification.success({
-                        message: 'Plan de estudios ' + school.name + ' eliminado correctamente.',
+                        message: 'Plan de estudios ' + studiePlan.name + ' eliminado correctamente.',
                         delay: 5000
                     });
                 })
@@ -96,7 +96,7 @@ angular.module('Enes')
                     Notification.error(
                         {
                             message: '<b>Error</b> </br>'+$scope.error,
-                            title: '<u>Error al eliminar la escuela</u>',
+                            title: '<u>Error al eliminar el plan de estudios</u>',
                             delay: 10000
                         });
                 })
@@ -113,8 +113,8 @@ angular.module('Enes')
             $('#show').modal('show');
         }
 
-        $scope.deletePlanModal = function (school) {
-            $scope.school = school;
+        $scope.deletePlanModal = function (studiePlan) {
+            $scope.studiePlan = studiePlan;
             $('#delete').modal('show');
         }
     });

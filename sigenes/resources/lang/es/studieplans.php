@@ -1,7 +1,7 @@
 <?php
 return [
     "title" => "Planes de estudios",
-    "school" => "Plan de estudio",
+    "studie_plan" => "Plan de estudio",
     "key" => "Clave",
     "name" => "Nombre",
     "is_deepending" => "Dependiente",
