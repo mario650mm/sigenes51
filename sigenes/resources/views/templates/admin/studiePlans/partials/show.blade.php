@@ -6,7 +6,8 @@
     <div class="content">
         <div class="description">
             <p><i class="fa fa-key"></i>  <strong> @lang('studieplans.key'):</strong>   @{{ studiePlan.key }}</p>
-            <p><i class="fa fa-university"></i>   <strong> @lang('studieplans.name'):</strong>   @{{ studiePlan.name }}</p>
+            <p><i class="fa fa-folder-open"></i>   <strong> @lang('studieplans.name'):</strong>   @{{ studiePlan.name }}</p>
+            <p><i class="fa fa-external-link"></i>  <strong> @lang('studieplans.is_deepending'):</strong>   @{{ studiePlan.is_deepending }}</p>
         </div>
         <div class="actions">
             <div class="row">
