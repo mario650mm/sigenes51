@@ -25,7 +25,7 @@
 
         @section('buttons')
             <a class="btn btn-success" href="{{ route('schools.create') }}"> <i
-                        class="fa fa-user-plus"></i> @lang('generals.create')</a>
+                        class="fa fa-university"></i> @lang('generals.create')</a>
         @endsection
 
         @section('body_page')
