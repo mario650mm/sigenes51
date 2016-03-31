@@ -43,9 +43,19 @@
                         <a data-ng-click="showValidate(result)" ><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Ver tramite"></span></a>
                     </div>
                     <div data-ng-hide="changeShow(result)">
-                        <p align="justify">
-                            Se ha cancelado la suspensión 
-                        </p>
+                        <div ng-switch on="result.status_id">
+                            <div ng-switch-when="6">
+                                <p align="justify">
+                                    Ha finalizado el proceso de suspensión
+                                </p>
+                            </div>
+                            <div ng-switch-when="4">
+                                <p align="justify">
+                                    Se ha cancelado la suspensión 
+                                </p>
+                            </div>
+                        </div>
+                        
                     </div>
                 </td>
             </tr>

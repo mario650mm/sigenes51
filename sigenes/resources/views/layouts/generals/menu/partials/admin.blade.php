@@ -58,7 +58,7 @@
 
     <div class="title">
       <div class="header">
-        <i class="browser icon"></i> {{ trans('low.header') }}
+        <i class="browser icon"></i> Validaciones
         <i class="dropdown icon"></i>
       </div>
     </div>
@@ -68,14 +68,14 @@
           <a class="item" href="{{ route('admin.low.index') }}">{{ trans('low.title') }}</a>
         </div>
         <div class="menu">
-          <a class="item" href="{{ route('admin.records.index')}}"> School records</a>
+          <a class="item" href="{{ route('admin.records.index')}}"> Documentos escolares</a>
         </div>
       </div>
     </div>
 
     <div class="title">
       <div class="header">
-        <i class="fa fa-cog"></i> Management
+        <i class="fa fa-cog"></i> Gestión
         <i class="dropdown icon"></i>
       </div>
     </div>

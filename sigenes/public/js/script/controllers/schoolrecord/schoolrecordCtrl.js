@@ -17,6 +17,7 @@
         $scope.isViewNote    = false;
         $scope.btnprint      = false;
         $scope.btnapply      = true;
+        $scope.entity        = {};
 
  		$scope.init = function(){
  			recordTypes();
@@ -33,6 +34,14 @@
  			})
  		}
 
+        $scope.selectchange = function(id){
+            angular.forEach($scope.recordTypes, function(value){
+                if (value.id == id) {
+                    $scope.entity = '<iframe src="data:application/pdf;base64,' + value.record + '" style="height: 580px; width: 100%; overflow: hidden;" scrolling="no" ></iframe>';;
+                };
+            });
+        };
+
         /*
         * Trae y asigna los datos del alumno que solicita la cosctancia
         * o credencial.
@@ -42,13 +51,11 @@
  			.success(function(data){
  				$scope.student.nombre = data.name + ' ' + data.firstlastname
  				 + ' ' + data.secondlastname;
-                        console.log($scope.student.nombre);
                 $scope.student.account_number = data.student.account_number;
                 $scope.student.celphone = data.celphone;
                 $scope.student.student = data.student.id;
                 $scope.student.telephone = data.telephone;
                 $scope.student.career = 'Odontología';
-                console.log($scope.student.telephone);
                 $scope.student.email = data.email1;
                // $scope.validate = data.student.id;
  			})
@@ -120,11 +127,6 @@
         	$scope.applyRecord.student_id = $scope.student.student;
         	$scope.applyRecord.status_id = 2;
 
-
-        	if($scope.applyRecord.credential == 2 && ($scope.applyRecord.record == 0 || typeof($scope.applyRecord.record) == 'undefined')){
-        		$scope.applyRecord.transact_type_id = 7;
-        	}
-
         	if($scope.applyRecord.credential == 2){
         		$scope.applyRecord.credential = true;
         	}else{
@@ -156,7 +158,7 @@
                 }
                 $scope.isViewNote = true;
         	})
-        	.error(function(data){
+        	.error(function(error){
                 $scope.error = "";
                 angular.forEach(error.errors,function(value){
                     $scope.error += value + "</br>";

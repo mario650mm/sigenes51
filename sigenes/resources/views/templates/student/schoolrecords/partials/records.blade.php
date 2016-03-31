@@ -32,14 +32,19 @@
             <div class="form-group">
                 <label class="col-lg-4 control-label">{{trans('schoolrecords.typerecord')}}:</label>
                 <div class="col-lg-8">
-                    <select class="form-control" data-ng-model="applyRecord.transact_type_id" >
-                        <!-- <option value="-1">Seleccione el tipo de constancia</option> -->
-                        <option data-ng-repeat="record in recordTypes" value="@{{ record.id }}"> @{{ (record.id != 7 ?  record.name : '')}}  </option>
-                    </select>
+                    <div class="col-lg-10">
+                        <select class="form-control" data-ng-model="applyRecord.transact_type_id" ng-change="selectchange(applyRecord.transact_type_id)">
+                            <option data-ng-repeat="record in recordTypes" value="@{{ record.id }}"> @{{record.name}}  </option>
+                        </select> 
+                    </div>
+                    <div class="col-lg-2"> 
+                        <button type="button" class="btn btn-primary" ng-click="showModelPdf(entity)" data-toggle="tooltip" title="Visualización previa de la constancia a tramitar">
+                            <i class="fa fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
-
-

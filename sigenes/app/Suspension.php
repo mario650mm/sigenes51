@@ -40,8 +40,14 @@ class Suspension extends Model
      */
     protected $hidden = [];
 
+    private static $data;
+
     public function Student(){
         return $this->belongsTo('App\Student');
+    }
+
+    public function Period(){
+        return $this->belongsTo('App\Period');
     }
 
     public function DataPdf(){
@@ -101,4 +107,5 @@ class Suspension extends Model
 
         return $data;
     }
+
 }

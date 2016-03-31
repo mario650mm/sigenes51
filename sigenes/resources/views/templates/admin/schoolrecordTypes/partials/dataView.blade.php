@@ -32,7 +32,7 @@
 								<a data-ng-click="delete(entity)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="{{trans('schoolrecordTypes.ctrldelete')}}"></span></a>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-								<a data-ng-click="showView(entity)"><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="{{trans('schoolrecordTypes.ctrlshow')}}"></span></a>
+								<a data-ng-click="showModelPdf(entity.record)"><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="{{trans('schoolrecordTypes.ctrlshow')}}"></span></a>
 							</div>
 						</div>
 					</td>

@@ -53,7 +53,7 @@
         * Cambian los estados
         */
         $scope.changeShow = function(entity){
-            if (entity.estatus == 'Cancelado') {
+            if (entity.estatus == 'Cancelado' || entity.estatus == 'Autorizado' ) {
                 return false;
             }else{
                 return true;
@@ -61,7 +61,7 @@
         }
 
         $scope.showval = function(entity){
-            if (entity.estatus == 'Terminado') {
+            if (entity.estatus == 'Recibido') {
                 return false;
             }else{
                 return true;
@@ -88,7 +88,12 @@
             $scope.entity = suspend;
             $scope.suspend.evidence = suspend.evidence;
             $scope.isHiden = false;
+            if ($scope.suspend.status_id == 5) {};
             $('#show').modal('show');
+        }
+
+        $scope.showimage = function(suspend){
+            $('#showimg').modal('show');
         }
 
         $scope.deletesuspen = function(suspend){
@@ -103,7 +108,7 @@
         }
 
         $scope.finishsuspension = function(){
-            $scope.suspend.status_id = 3;
+            $scope.suspend.status_id = 5;
             $scope.suspend.period_id = $scope.entity.period_id;
             $scope.suspend.date_init = $scope.entity.date_init;
             $scope.suspend.id = $scope.entity.id;
@@ -113,11 +118,38 @@
             suspensionFactory.update($scope.suspend)
             .success(function(data){
                 Notification.success({
+                    message: 'Se recibido la solicitud de suspensión se inicio el proceso de validación',
+                    title: 'Success', 
+                    delay: 5000
+                });
+                setTimeout('document.location.reload()',3000);
+            })
+            .error(function(error){
+                Notification.error({
+                    message: '<u>Ocurrio un error al realizar la suspensión!!!</u>',
+                    title: '<b>Error</b> <s>notificación</s>',
+                    delay: 3000
+                });
+            })
+        }
+
+        $scope.endsuspen = function(){
+            $scope.suspend.status_id = 6;
+            $scope.suspend.period_id = $scope.entity.period_id;
+            $scope.suspend.date_init = $scope.entity.date_init;
+            $scope.suspend.id = $scope.entity.id;
+            $scope.suspend.reason = $scope.entity.reason;
+            $scope.suspend.student_id = $scope.entity.student;
+            $scope.suspend.date_end = getDateSus();
+            
+            suspensionFactory.update($scope.suspend)
+            .success(function(data){
+                Notification.success({
                     message: 'Se realizó la suspensión exitosamente!!!',
                     title: 'Success', 
                     delay: 5000
                 });
-                //setTimeout('document.location.reload()',3000);
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({

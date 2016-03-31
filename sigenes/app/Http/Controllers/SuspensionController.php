@@ -6,6 +6,7 @@ use App\Suspension;
 use App\Partner;
 use App\Period;
 use App\User;
+use App\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Mockery\CountValidator\Exception;
+use Illuminate\Support\Facades\Mail;
 
 class SuspensionController extends Controller
 {
@@ -143,10 +145,11 @@ class SuspensionController extends Controller
                 "suspensions.library", 
                 "suspensions.lab", 
                 "suspensions.social_services",  
+                "suspensions.status_id",  
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname"
-                ])
+            ])
             ->join("students", "suspensions.student_id", "=", "students.id")
             ->join("periods", "periods.id", "=", "suspensions.period_id")
             ->join("status", "status.id", "=", "suspensions.status_id")
@@ -187,6 +190,7 @@ class SuspensionController extends Controller
         $suspension->update($request->all());
         $suspension->evidence = $request->input('evidence');
         $suspension->save();
+        $this->sendmailsuspension($request->input('id'));
         return ['updated' => true];
     }
 
@@ -217,5 +221,16 @@ class SuspensionController extends Controller
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('templates.student.low.pdf.pdfsuspension');
+    }
+
+    public function sendmailsuspension($id){
+        $suspension = Suspension::find($id);
+        $suspension->Period;
+        $suspension->Student->Partner;
+        $email= $suspension->Student->Partner->email1;
+        Mail::send('templates.admin.low.email.suspension', compact('suspension'), function($message) use ($email){
+            $message->from(getenv('MAIL_USERNAME'), 'ENES Unidad León');
+            $message->to($email)->subject('Suspensión');
+        });
     }
 }

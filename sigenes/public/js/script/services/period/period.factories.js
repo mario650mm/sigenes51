@@ -5,7 +5,6 @@ angular.module('Enes')
                 return $http.get(HOST+'api/v1/period');
             },
             save : function(period){
-                console.log(period);
                 return $http.post(HOST+'api/v1/period', period)
             },
             update : function(period){

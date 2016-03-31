@@ -8,7 +8,6 @@ angular.module('Enes')
                 return $http.get(HOST + 'api/v1/suspartn/' + user_id)
             },
             getValidate : function(student_id){
-                console.log(student_id);
                 return $http.get(HOST + 'api/v1/suspen/' + student_id)
             },
             getAllSuspensions : function(){

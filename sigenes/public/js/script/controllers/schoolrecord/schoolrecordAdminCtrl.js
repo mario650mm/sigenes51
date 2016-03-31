@@ -19,6 +19,7 @@
         $scope.isHiden;
         $scope.file = {};
         $scope.schoolrecord = {};
+        $scope.showima = false;
 
  		// Fileds for search in user model
         $scope.availableSearchParams = [
@@ -90,7 +91,19 @@
             }else{
                 $scope.isHiden = false;
             }
-            $('#validate').modal('show');
+            if ($scope.entity.transact_type_id != null && $scope.entity.evidence != null) {
+                clearData();
+                $scope.record = entity;
+                $scope.showima = 1;
+                $('#showimg').modal('show');
+            }else{
+                clearData();
+                $scope.record = entity;
+                assingData(entity);
+                $scope.showima = 2;
+                $('#validate').modal('show');
+            }
+
         }
         ///////////
 
@@ -99,12 +112,17 @@
             $('#cancel').modal('show');
         }
 
+        $scope.viewimg = function(){
+            //$scope.entity = entity;
+            $('#showimg').modal('show');
+        }
+
         var assingData = function(entity){
             $scope.record.lab = true;
             $scope.record.library = true;
             $scope.record.clinic = true;
             $scope.record.social_services = true;
-            $scope.record.evidence = atob(entity.evidence);
+            $scope.record.evidence = entity.evidence;
         }
 
         var clearData = function(){
@@ -112,6 +130,8 @@
             $scope.record.library = false;
             $scope.record.clinic = false;
             $scope.record.social_services = false;
+            $scope.record = {};
+
             
         }
 

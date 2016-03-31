@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-    Validations
+    Validaciones
 @endsection
 
 @section('title')
-    School records
+    Documentos escolares
 @endsection
 
 @section('angular_controller')
@@ -35,6 +35,7 @@
     </div>
     @include('templates.admin.school_records.partials.validate')
     @include('templates.admin.school_records.partials.delete')
+    @include('templates.admin.school_records.partials.showimg')
     </div> 
 @endsection
 
