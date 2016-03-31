@@ -26,12 +26,12 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4 col-lg-offset-1 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
-                    <a href="@{{imageMIME(suspend.evidence)}}" target="_blanck"><img class="img-responsive" ng-src="@{{imageMIME(suspend.evidence)}}" alt="Imagen de evidencia" data-toggle="tooltip" title="Si quiere ver la imagen mas grande de clic sobreesta" /></a>
+                    <a ng-click="showimage()"><img class="img-responsive" ng-src="@{{imageMIME(suspend.evidence)}}" alt="Imagen de evidencia" data-toggle="tooltip" title="Si quiere ver la imagen mas grande de clic sobreesta" /></a>
                 </div> 
             </div>
         </div>
     </div>
-    <div class="actions" data-ng-hide="isHiden">
+    <div class="actions">
         @include('templates.admin.low.partials.inputs')
     </div>
 </div>

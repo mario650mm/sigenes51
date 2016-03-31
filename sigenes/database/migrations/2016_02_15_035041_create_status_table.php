@@ -37,6 +37,14 @@ class CreateStatusTable extends Migration
                 'name' => 'Cancelado',
                 'created_at' => $now
             ],
+            [
+                'name' => 'Recibido',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Autorizado',
+                'created_at' => $now
+            ],
         ]);
     }
 

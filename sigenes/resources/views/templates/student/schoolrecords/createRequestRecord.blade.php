@@ -17,7 +17,6 @@
         <br>
         @include('templates.student.schoolrecords.partials.infoStudentRecord')
         @include('templates.student.schoolrecords.partials.records')
-
     </div>
 
 @endsection

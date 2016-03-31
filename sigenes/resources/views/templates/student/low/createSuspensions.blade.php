@@ -12,11 +12,12 @@
     	<div ng-init="init({{ Auth::user()->id }})"></div>
 
     	@include('templates.student.low.partials.note')
-		   	
+		<form role="form" name="addrecord">
         @include('templates.student.low.partials.inputs')
         <br>
         @include('templates.student.low.partials.infoStudent')
         @include('templates.student.low.partials.suspensions')
+        </form>
         <br>
         <br>
         @include('templates.student.low.partials.change_status')

@@ -1,7 +1,7 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-    Validations
+    Validaciones
 @endsection
 
 @section('title')
@@ -34,6 +34,7 @@
     </div>
     @include('templates.admin.low.partials.validator')
     @include('templates.admin.low.partials.deletesuspension')
+    @include('templates.admin.low.partials.showimg')
       
 
 @endsection

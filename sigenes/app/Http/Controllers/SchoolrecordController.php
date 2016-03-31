@@ -73,7 +73,6 @@ class SchoolrecordController extends Controller
             'student_id'        =>  'required',
             'folio'             =>  'required',
             'status_id'         =>  'required',
-            'transact_type_id'  =>  'required',
             'date'              =>  'required'
         ];
 
@@ -99,6 +98,7 @@ class SchoolrecordController extends Controller
      */
     public function show()
     {
+        $tramite = SchoolrecordType::all();
         $result = \DB::table('transact_students')
             ->select([
                 "transact_students.id", 
@@ -114,7 +114,6 @@ class SchoolrecordController extends Controller
                 "transact_students.lab", 
                 "transact_students.social_services", 
                 "students.account_number", 
-                "transact_types.name as transact",
                 "status.name as estatus", 
                 "status.id as idstatus", 
                 "partners.name", 
@@ -122,7 +121,6 @@ class SchoolrecordController extends Controller
                 "partners.secondlastname"
                 ])
             ->join("students", "transact_students.student_id", "=", "students.id")
-            ->join("transact_types", "transact_types.id", "=", "transact_students.transact_type_id")
             ->join("status", "status.id", "=", "transact_students.status_id")
             ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("transact_students.status_id", "<>", 1)
@@ -131,6 +129,17 @@ class SchoolrecordController extends Controller
             foreach ($result as $value) {
                 # code...
                 $value->fullname = $value->name . ' ' . $value->firstlastname . ' ' . $value->secondlastname;
+                foreach ($tramite as $k) {
+                    # code...
+                    if ($value->transact_type_id == $k->id) {
+                        # code...
+                        $value->transact = $k->name;
+                    };
+                }
+                if ($value->transact_type_id == null) {
+                        # code...
+                        $value->transact = "Reposición de credencial";
+                    };
                 if($value->record == 1){
                     $value->tramint = "Constancía";
                 }else{

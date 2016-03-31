@@ -13,7 +13,7 @@
                     <a class="item" href="{{ route('admin.low.index') }}">{{ trans('low.title') }}</a>
                 </div>
                 <div class="menu">
-                    <a class="item" href="{{ route('admin.records.index')}}"> School records</a>
+                    <a class="item" href="{{ route('admin.records.index')}}"> Documentos escolares</a>
                 </div>
             </div>
         </div>

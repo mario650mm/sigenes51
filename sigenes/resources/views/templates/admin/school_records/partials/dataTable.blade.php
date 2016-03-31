@@ -3,46 +3,46 @@
         <table class="table table-hover">
             <thead>
             <tr>
-               <th>{{trans('schoolrecords.folio')}}
+               <th class="text-center">{{trans('schoolrecords.folio')}}
                 </th>
-                <th>{{trans('schoolrecords.name')}}</th>
-                <th>
+                <th class="text-center">{{trans('schoolrecords.name')}}</th>
+                <th class="text-center">
                     {{trans('schoolrecords.account')}}
                      <span class="glyphicon sort-icon" ng-show="sortKey=='account_number'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th>
+                <th class="text-center">
                     {{trans('schoolrecords.tramint')}}
                      <span class="glyphicon sort-icon" ng-show="sortKey=='tramint'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th>
+                <th class="text-center">
                     {{trans('schoolrecords.typerecord')}}
                     <span class="glyphicon sort-icon" ng-show="sortKey=='transact'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th>
+                <th class="text-center">
                     {{trans('schoolrecords.status')}}
                     <span class="glyphicon sort-icon" ng-show="sortKey=='estatus'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th>
+                <th class="text-center">
                     {{trans('schoolrecords.date')}}
                      <span class="glyphicon sort-icon" ng-show="sortKey=='date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                 </th>
-                <th>
+                <th class="text-center">
                     {{trans('schoolrecords.career')}}
                 </th>
-                <th>
+                <th class="text-center">
                     {{trans('schoolrecords.controller')}}
                 </th>
             </tr>
             </thead>
             <tbody>
             <tr data-dir-paginate="result in showResult | orderBy:sortKey:reverse | filter:searchInput |itemsPerPage:15">
-                <td>@{{ result.folio }}</td>
-                <td>@{{ result.fullname }}</td>
-                <td>@{{ result.account_number }}</td>
-                <td>@{{ (result.tramint) }}</td>
-                <td>@{{ (result.transact) }}</td>
-                <td>@{{ result.estatus }}</td>
-                <td>@{{ result.date }}</td>
+                <td class="text-center">@{{ result.folio }}</td>
+                <td class="text-center">@{{ result.fullname }}</td>
+                <td class="text-center">@{{ result.account_number }}</td>
+                <td class="text-center">@{{ (result.tramint) }}</td>
+                <td class="text-center">@{{ (result.transact) }}</td>
+                <td class="text-center">@{{ result.estatus }}</td>
+                <td class="text-center">@{{ result.date }}</td>
                 <td>Odontología</td>
                 <td>
                     <div align="center" data-ng-show="changeShow(result, 0)">

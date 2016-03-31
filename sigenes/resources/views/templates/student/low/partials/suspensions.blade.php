@@ -1,6 +1,6 @@
 <!-- registro de suspención y motivos-->
 
-<form role="form" name="addrecord">
+
 <br>
     <div class="row">
         <div class=" col-lg-10 col-lg-offset-1">
@@ -41,16 +41,5 @@
         </div>
     </div>
     <br>
-    <div class="row" data-ng-show="btnfile">
-        <div class="col-lg-3 col-md-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3">
-            <div class="form-group">
-                <span class="file-input btn btn-default btn-file" ng-class="{'btn btn-danger': addrecord.records.$invalid, 'btn btn-success': addrecord.records.$valid}">
-                    <span ng-show="addrecord.records.$invalid"><i class="fa fa-picture-o"></i> Subir imagen</span>
-                    <span ng-show="addrecord.records.$valid"><i class="fa fa-picture-o"></i> Imagen subida</span>
-                    <input type="file" name="records" class="col-lg-6 col-md-6 col-xs-6" onload="onLoad" ng-model="records" accept=".jpeg, .png"  base-sixty-four-input required>          
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</form>
+    
+

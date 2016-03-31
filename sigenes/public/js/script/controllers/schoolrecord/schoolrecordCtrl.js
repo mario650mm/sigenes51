@@ -17,6 +17,7 @@
         $scope.isViewNote    = false;
         $scope.btnprint      = false;
         $scope.btnapply      = true;
+        $scope.entity        = {};
 
  		$scope.init = function(){
  			recordTypes();
@@ -32,6 +33,14 @@
  				console.log(error);
  			})
  		}
+
+        $scope.selectchange = function(id){
+            angular.forEach($scope.recordTypes, function(value){
+                if (value.id == id) {
+                    $scope.entity = '<iframe src="data:application/pdf;base64,' + value.record + '" style="height: 580px; width: 100%; overflow: hidden;" scrolling="no" ></iframe>';;
+                };
+            });
+        };
 
         /*
         * Trae y asigna los datos del alumno que solicita la cosctancia
@@ -120,11 +129,6 @@
         	$scope.applyRecord.student_id = $scope.student.student;
         	$scope.applyRecord.status_id = 2;
 
-
-        	if($scope.applyRecord.credential == 2 && ($scope.applyRecord.record == 0 || typeof($scope.applyRecord.record) == 'undefined')){
-        		$scope.applyRecord.transact_type_id = 7;
-        	}
-
         	if($scope.applyRecord.credential == 2){
         		$scope.applyRecord.credential = true;
         	}else{
@@ -156,7 +160,7 @@
                 }
                 $scope.isViewNote = true;
         	})
-        	.error(function(data){
+        	.error(function(error){
                 $scope.error = "";
                 angular.forEach(error.errors,function(value){
                     $scope.error += value + "</br>";

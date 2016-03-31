@@ -40,7 +40,6 @@ angular.module('Enes')
                 
             }
             
-            //getValidator();
         }
 
         var suspensionTime = function(){
@@ -168,7 +167,7 @@ angular.module('Enes')
                 $scope.viewNote = true;
                 $scope.btnfile  = true;
             };
-            if(typeof($scope.suspen.evidence) != 'undefined'){
+            if($scope.suspen.evidence != null){
                 $scope.btnfile = false;
                 $scope.btnprint = false;
             }

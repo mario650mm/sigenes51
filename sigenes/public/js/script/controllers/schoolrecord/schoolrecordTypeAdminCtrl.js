@@ -39,12 +39,6 @@
             $('#cancel').modal('show');
         }
 
-        $scope.showView = function(entity){
-            $scope.entity = entity;
-            $scope.base = '<iframe src="data:application/pdf;base64,' + $scope.entity.record+'" style="height: 500px; width: 100%" ></iframe>';
-            $('#showView').modal('show');
-        }
-
         $scope.editview = function(entity){
             $scope.recordtype = entity;
             $('#showedit').modal('show');

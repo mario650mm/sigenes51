@@ -45,7 +45,7 @@ class PdfCredentialController extends Controller
                 "partners.secondlastname",
                 "partners.email1",
                 "partners.telephone",
-                "partners.celphone",
+                "partners.cellphone",
                 "partners.secondlastname"
                 ])
             ->join("students", "transact_students.student_id", "=", "students.id")
@@ -60,7 +60,7 @@ class PdfCredentialController extends Controller
                     $data = [
                     'fullname' => $value->name . ' ' . $value->firstlastname . ' ' . $value->secondlastname,
                     'account_number' => $value->account_number,
-                    'celphone' => $value->celphone,
+                    'celphone' => $value->cellphone,
                     'telephone' => $value->telephone,
                     'career' => 'Odontología',
                     'folio' => $value->folio,

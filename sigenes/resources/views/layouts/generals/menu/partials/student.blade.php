@@ -2,7 +2,7 @@
 	<div class="ui fluid styled accordion">
 		<div class="title">
 			<div class="header">
-				<i class="glyphicon glyphicon-edit"></i> Accions
+				<i class="glyphicon glyphicon-edit"></i> Tramites
         		<i class="dropdown icon"></i>
 			</div>
 		</div>
