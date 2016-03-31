@@ -5,7 +5,6 @@ angular.module('Enes')
                 return $http.get(HOST+'api/v1/recordtype');
             },
             save : function(record){
-                console.log(record);
                 return $http.post(HOST+'api/v1/recordtype', record)
             },
             update : function(record){

@@ -51,13 +51,11 @@
  			.success(function(data){
  				$scope.student.nombre = data.name + ' ' + data.firstlastname
  				 + ' ' + data.secondlastname;
-                        console.log($scope.student.nombre);
                 $scope.student.account_number = data.student.account_number;
                 $scope.student.celphone = data.celphone;
                 $scope.student.student = data.student.id;
                 $scope.student.telephone = data.telephone;
                 $scope.student.career = 'Odontología';
-                console.log($scope.student.telephone);
                 $scope.student.email = data.email1;
                // $scope.validate = data.student.id;
  			})

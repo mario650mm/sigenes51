@@ -37,7 +37,6 @@
         $scope.showData = function(){
         	schoolrecordFactory.getAllData()
         	.success(function(data){
-                console.log(data);
         		$scope.showResult = data;
         	})
         	.error(function(error){

@@ -122,7 +122,6 @@ angular.module('Enes')
     * Se encarga de actualizar el periodo
     */
     $scope.updateperiod = function(){
-      console.log('llego');
       $scope.period.date_init = $('#date_init').val();
       $scope.period.date_end = $('#date_end').val();
       if (typeof($scope.period.month_init) == 'undefined' && typeof($scope.period.month_end) == 'undefined' 

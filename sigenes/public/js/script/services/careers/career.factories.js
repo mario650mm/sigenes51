@@ -5,7 +5,6 @@ angular.module('Enes')
                 return $http.get(HOST+'api/v1/career');
             },
             save : function(career){
-                console.log(career);
                 return $http.post(HOST+'api/v1/career', career)
             },
             update : function(career){

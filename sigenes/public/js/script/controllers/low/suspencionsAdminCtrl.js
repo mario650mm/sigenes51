@@ -38,7 +38,6 @@
             var con = 0;
         	suspensionFactory.getAllSuspensions()
         	.success(function(data){
-                console.log(data);
         		$scope.showResult = data;
         	})
         	.error(function(error){
@@ -123,7 +122,7 @@
                     title: 'Success', 
                     delay: 5000
                 });
-                //setTimeout('document.location.reload()',3000);
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({
@@ -150,7 +149,7 @@
                     title: 'Success', 
                     delay: 5000
                 });
-                //setTimeout('document.location.reload()',3000);
+                setTimeout('document.location.reload()',3000);
             })
             .error(function(error){
                 Notification.error({

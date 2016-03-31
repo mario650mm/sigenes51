@@ -5,7 +5,6 @@ angular.module('Enes')
                 return $http.get(HOST+'api/v1/area');
             },
             save : function(area){
-                console.log(area);
                 return $http.post(HOST+'api/v1/area', area)
             },
             update : function(area){
