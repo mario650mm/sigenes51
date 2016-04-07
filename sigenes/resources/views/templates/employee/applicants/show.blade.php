@@ -76,10 +76,14 @@
                         <div class="col-lg-3">
                             <h1>Documentos</h1>
                             <ul class="list-group">
-                                <a ng-click="changeDocument(0)" class="list-group-item" target="documentView">IFE</a>
-                                <a ng-click="changeDocument(1)" class="list-group-item" target="documentView">Acta de nacimiento</a>
+                                <a ng-click="changeDocument(0)" class="list-group-item" target="documentView">Acta de nacimiento</a>
+                                <a ng-click="changeDocument(1)" class="list-group-item" target="documentView">Curp</a>
                                 <a ng-click="changeDocument(2)" class="list-group-item" target="documentView">Certificado de bachillerato</a>
-                                <a ng-click="changeDocument(3)" class="list-group-item" target="documentView">Curp</a>
+                                <a ng-click="changeDocument(3)" class="list-group-item" target="documentView">Orden de pago</a>
+                                <a ng-click="changeDocument(4)" class="list-group-item" target="documentView">Horario de clases</a>
+                                <a ng-click="changeDocument(5)" class="list-group-item" target="documentView">Carta de asignación</a>
+                                <a ng-click="changeDocument(6)" class="list-group-item" target="documentView">Acuse DGAE o Carta compromiso</a>
+                                <a ng-click="changeDocument(7)" class="list-group-item" target="documentView">Formato IMSS</a>
                             </ul>
                         </div>
                     </div>

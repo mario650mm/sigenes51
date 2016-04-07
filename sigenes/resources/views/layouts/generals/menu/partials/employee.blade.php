@@ -1,6 +1,20 @@
 <div class="treemenu boxed">
     <div class="ui fluid styled accordion">
-        
+
+        <div class="title">
+            <div class="header">
+                <i class="treatment icon"></i> {{ trans('applicants.title') }}
+                <i class="dropdown icon"></i>
+            </div>
+        </div>
+        <div class="content">
+            <div class="subtitle">
+                <div class="menu">
+                    <a class="item" href="{{ route('applicants.index') }}">{{ trans('applicants.title') }}</a>
+                </div>
+            </div>
+        </div>
+
         <div class="title">
     	   <div class="header">
                 <i class="browser icon"></i> {{ trans('low.header') }}
