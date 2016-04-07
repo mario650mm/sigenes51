@@ -107,7 +107,7 @@ return [
     'address'=> 'Domicilio',
     'enter_personal_address'=> 'Información de domicilio',
     'official_identification' => 'Identificación Oficial',
-    'birth_certificate' => 'Acta de Nacimiento',
+    'birth_certificate' => 'Acta de nacimiento',
     'high_school_certificate' => 'Certificado de bachillerato',
 
 ];

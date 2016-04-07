@@ -28,10 +28,19 @@
 
 
 @section('content')
-    <div class="row" style="padding-top: 50px">
+    <div class="row" style="padding-top: 20px">
         <div class="col-lg-12">
             <div data-ng-controller="AdmissionController as admissions">
-                <h1>{{ trans('admissions.title') }}</h1>
+                <div class="col-lg-12">
+                    <div class="col-lg-5 col-md-6 col-xs-6 col-sm-6">
+                        <center>
+                            <img src="{{ asset(env('LOGO_ENESAZULFULL')) }}" width="200px" height="100px">
+                        </center>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-xs-6 col-sm-6" style="height: 100px;">
+                        <h1 class="text-left" style="padding-top: 25px">{{ trans('admissions.title') }}</h1>
+                    </div>
+                </div>
                 @include('templates.admissions.partials.menu_steps')
                 <div class="row">
                     <div class="col-lg-12">

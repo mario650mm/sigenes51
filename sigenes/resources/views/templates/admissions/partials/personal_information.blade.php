@@ -68,12 +68,12 @@
         <div class="col-lg-12">
             <div class="form-group col-lg-4" ng-class="{ 'has-error' : pinf.account_number.$invalid && !pinf.account_number.$pristine , 'has-success':pinf.account_number.$valid }">
                 <label>{{ trans('admissions.account_number') }}</label>
-                <input type="text" name="account_number" class="form-control" ng-model="applicant.account_number" account-validate>
+                <input type="text" name="account_number" class="form-control" ng-model="applicant.account_number" account-validate required>
                 <p ng-show="pinf.account_number.$invalid && !pinf.account_number.$pristine" class="help-block">{{ trans('validation.digits', [ 'attribute' => trans('admissions.account_number'), 'digits' => 9 ]) }}</p>
             </div>
             <div class="form-group col-lg-4" ng-class="{ 'has-error' : pinf.nss.$invalid && !pinf.nss.$pristine , 'has-success':pinf.nss.$valid }">
                 <label>{{ trans('admissions.nss') }}</label>
-                <input type="text" name="nss" class="form-control" ng-model="applicant.nss" nss-validate>
+                <input type="text" name="nss" class="form-control" ng-model="applicant.nss" nss-validate required>
                 <p ng-show="pinf.nss.$invalid && !pinf.nss.$pristine" class="help-block">{{ trans('validation.digits', [ 'attribute' => trans('admissions.nss'), 'digits' => 11 ]) }}</p>
             </div>
         </div>

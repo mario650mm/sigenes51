@@ -22,17 +22,7 @@ class CreateAttachmentTypesTable extends Migration
         $now = date('Y-m-d H:i:s');
         \DB::table('attachment_types')->insert([
             [
-                'name' => 'Identificación Oficial',
-                'type' => 'applicant',
-                'created_at' => $now
-            ],
-            [
                 'name' => 'Acta de Nacimiento',
-                'type' => 'applicant',
-                'created_at' => $now
-            ],
-            [
-                'name' => 'Certificado de bachillerato',
                 'type' => 'applicant',
                 'created_at' => $now
             ],
@@ -42,7 +32,32 @@ class CreateAttachmentTypesTable extends Migration
                 'created_at' => $now
             ],
             [
+                'name' => 'Certificado de bachillerato',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
                 'name' => 'Pago inscripción',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Horario de clases',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Carta de asignación',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Acuse DGAE o carta compromiso',
+                'type' => 'applicant',
+                'created_at' => $now
+            ],
+            [
+                'name' => 'Formato de IMSS',
                 'type' => 'applicant',
                 'created_at' => $now
             ]

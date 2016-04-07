@@ -36,25 +36,45 @@ class AdmissionController extends Controller
         try{
             $applicant = Applicant::create($request->all());
 
-            // Insert official_identification
-            AttachmentApplicants::create(['applicant_id' =>  $applicant->id,
-            'attachment_type_id' => 1,
-            'document' => $request->input('official_identification')['base64']]);
-
             // Insert birth_certificate
             AttachmentApplicants::create(['applicant_id' => $applicant->id,
-                'attachment_type_id' => 2,
+                'attachment_type_id' => 1,
                 'document' => $request->input('birth_certificate')['base64']]);
+
+            // Insert curp_file
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 2,
+                'document' => $request->input('curp_file')['base64']]);
 
             // Insert high_school_certificate
             AttachmentApplicants::create(['applicant_id' => $applicant->id,
                 'attachment_type_id' => 3,
                 'document' => $request->input('high_school_certificate')['base64']]);
 
-            // Insert curp_file
-            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+            // Insert orderpayment
+            AttachmentApplicants::create(['applicant_id' =>  $applicant->id,
                 'attachment_type_id' => 4,
-                'document' => $request->input('curp_file')['base64']]);
+                'document' => $request->input('orderpayment')['base64']]);
+
+            // Insert horario
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 5,
+                'document' => $request->input('horario')['base64']]);
+
+            // Insert letter_assignment
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 6,
+                'document' => $request->input('letter_assignment')['base64']]);
+
+            // Insert dgae_document
+            AttachmentApplicants::create(['applicant_id' => $applicant->id,
+                'attachment_type_id' => 7,
+                'document' => $request->input('dgae_document')['base64']]);
+
+            // Insert format_imss
+            AttachmentApplicants::create(['applicant_id' =>  $applicant->id,
+                'attachment_type_id' => 8,
+                'document' => $request->input('format_imss')['base64']]);
 
             return \Response::json(['created' => true, 'applicant_id' => $applicant->id], 200);
         }catch (Exception $e){

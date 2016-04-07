@@ -18,7 +18,7 @@
 @endsection
 
 @section('content')
-    <div class="container" style="margin: auto; margin-top: 50px">
+    <div class="container" style="margin: auto; margin-top: 30px">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel loginform">
