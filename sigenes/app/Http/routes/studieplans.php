@@ -8,9 +8,7 @@ Route::group(['middleware' => ['auth', 'employee']], function () {
 });
 
 // API routes
-
 Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'employee']], function () {
-
     Route::post('studiesplan', 'StudiesPlanController@store');
     Route::put('studiesplan', 'StudiesPlanController@update');
     Route::delete('studiesplan/{id}', 'StudiesPlanController@destroy');

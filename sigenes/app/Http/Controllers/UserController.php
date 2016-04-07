@@ -53,7 +53,7 @@ class UserController extends Controller
         if (!is_array($request->all())) {
             return ['error' => 'request must be an array'];
         }
-
+        dd($request->all());
         $rules = [
             'name'      => 'required',
             'email'     => 'required|email',

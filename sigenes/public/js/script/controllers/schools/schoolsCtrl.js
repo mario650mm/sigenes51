@@ -22,7 +22,6 @@ angular.module('Enes')
         schoolFactory.getAllData()
             .success(function (data) {
                 $scope.schools = data;
-                //console.log(data);
             })
             .error(function (error) {
                 Notification.error(
@@ -37,10 +36,13 @@ angular.module('Enes')
         $scope.save = function (school) {
             schoolFactory.save(school)
                 .success(function (data) {
-                    Notification.success({
+                    if(data.created == true){
+                        Notification.success({
                         message: 'Escuela ' + school.name + ' creada correctamente.',
                         delay: 5000
-                    });
+                        });
+                        setTimeout('document.location.reload()',2000);
+                    } 
                 })
                 .error(function (error) {
                     $scope.error = "";
@@ -65,6 +67,7 @@ angular.module('Enes')
                         message: 'Escuela ' + school.name + ' actualizada correctamente.',
                         delay: 5000
                     });
+                    setTimeout('document.location.reload()',2000);
                 })
                 .error(function (error) {
                     $scope.error = "";
@@ -88,6 +91,7 @@ angular.module('Enes')
                         message: 'Escuela ' + school.name + ' eliminada correctamente.',
                         delay: 5000
                     });
+                    setTimeout('document.location.reload()',2000);
                 })
                 .error(function (error) {
                     $scope.error = "";

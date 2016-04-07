@@ -52,20 +52,16 @@ class StudiesPlanController extends Controller
         if (!is_array($request->all())) {
             return ['error' => 'request must be an array'];
         }
-
         $rules = [
             'name' => 'required',
-            'key'  => 'required',
-            'is_deepending' => 'required'
+            'key'  => 'required'
         ];
-
-
         try{
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
             }
-            School::create($request->all());
+            StudiesPlan::create($request->all());
             return \Response::json(['created' => true], 200);
         }catch (Exception $e){
             \Log::info('Error creating studie plan: '.$e);

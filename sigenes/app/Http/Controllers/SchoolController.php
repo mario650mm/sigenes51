@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Mockery\CountValidator\Exception;
 
 class SchoolController extends Controller
 {
@@ -55,19 +56,18 @@ class SchoolController extends Controller
 
         $rules = [
             'key' => 'required',
-            'name'  => 'required',
+            'name' => 'required',
         ];
 
-
         try{
-            $validator = Validator::make($request->all(), $rules);
+           $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
             }
             School::create($request->all());
-            return \Response::json(['created' => true], 200);
+            return ['created' => true];
         }catch (Exception $e){
-            \Log::info('Error creating school: '.$e);
+            \Log::info('Error creating teacher: '.$e);
             return \Response::json(['created' => false], 500);
         }
     }
