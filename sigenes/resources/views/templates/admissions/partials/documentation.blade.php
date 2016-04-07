@@ -4,7 +4,7 @@
     </div>
     <form name="dinf" ng-submit="submitForm(dinf.$valid)" novalidate>
         {{-- Div 1--}}
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6  col-md-offset-3 col-sm-12 col-xs-12">
             <ul class="list-group">
                 <li class="list-group-item" ng-class="{ 'list-group-item-default' : dinf.birth_certificate.$invalid, 'list-group-item-success':dinf.birth_certificate.$valid }">
                     <h1>{{ trans('admissions.birth_certificate') }}</h1>
@@ -43,11 +43,6 @@
                         <span ng-show="dinf.orderpayment.$error.maxsize">El archivo que intentas subir pesa más de 3000 KB (3 MB)</span>
                     </span>
                 </li>
-            </ul>
-        </div>
-        {{-- Div 2 --}}
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <ul class="list-group">
                 <li class="list-group-item" ng-class="{ 'list-group-item-default' : dinf.horario.$invalid, 'list-group-item-success':dinf.horario.$valid }">
                     <h1>Horario de clases</h1>
                     <span class="btn btn-file" ng-class="{ 'btn-danger' : dinf.horario.$invalid , 'btn-success':dinf.horario.$valid }">
