@@ -34,7 +34,6 @@ angular.module('Enes')
 
 
         $scope.save = function (studiePlan) {
-            console.log($scope.studiePlan);
             studiePlansFactory.save(studiePlan)
                 .success(function (data) {
                     Notification.success({
