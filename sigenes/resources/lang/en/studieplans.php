@@ -7,5 +7,5 @@ return [
     "is_deepending" => "Is deepending",
     "create_plan" => "Create studie plan",
     "edit_plan" => "Edit studie plan",
-    "delete_plan" => "delete studie plan",
+    "delete_plan" => "Delete studie plan",
 ];
