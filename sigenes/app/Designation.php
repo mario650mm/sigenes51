@@ -15,4 +15,8 @@ class Designation extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function Teacher(){
+        return $this->belongsTo('App\Teacher');
+    }
 }
