@@ -11,6 +11,9 @@
         <div class="menu">
           <a class="item" href="{{ route('users.index') }}">{{ trans('users.title') }}</a>
         </div>
+          <div class="menu">
+          <a class="item" href="{{ route('admin.usersReport') }}">Reportes</a>
+        </div>
       </div>
     </div>
 
