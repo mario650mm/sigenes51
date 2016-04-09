@@ -1,7 +1,7 @@
 <div class="ui modal" id="show">
     <i class="close icon"></i>
     <div class="header">
-        {{trans('low.header')}}
+        {{trans('low.validations')}}
     </div>
     <div class="content">
         @include('templates.admin.low.partials.suspensionInfo')

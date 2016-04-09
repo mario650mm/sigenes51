@@ -8,6 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "barryvdh/laravel-dompdf": "0.6.*",
+        "zendframework/zend-validator": "2.5.*",
+        "zendframework/zend-stdlib": "~2.5",
         "laravelcollective/html": "5.1.*"
 
     },

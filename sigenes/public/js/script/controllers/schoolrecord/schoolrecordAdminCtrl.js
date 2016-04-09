@@ -20,6 +20,7 @@
         $scope.file = {};
         $scope.schoolrecord = {};
         $scope.showima = false;
+        $scope.genconst = 0;
 
  		// Fileds for search in user model
         $scope.availableSearchParams = [
@@ -67,11 +68,26 @@
 
         //Valida el estatus de la 
         $scope.showval = function(entity){
+            console.log(entity);
+            if(entity.transact_type_id != null){
+                if(entity.transact_type_id == 6 && entity.estatus == 'Terminado'){
+                    $scope.genconst = 1;
+                }else{
+                    $scope.genconst = 0;
+                }
+            }else{
+                $scope.genconst = 0;
+            }
             if (entity.estatus == 'Terminado') {
                 return false;
             }else{
                 return true;
             }
+
+        }
+
+        $scope.showconstan = function(){
+            window.open('records/recordprint','_blank');
         }
 
         /*
@@ -80,29 +96,7 @@
         $scope.showValidate = function(entity){
             clearData();
             $scope.entity = entity;
-            if($scope.entity.record == 1)
-                $scope.isVisible = false;
-            else
-                $scope.isVisible = true;
-
-            if (entity.estatus == 'Terminado') {
-                $scope.isHiden = true;
-                assingData(entity);
-            }else{
-                $scope.isHiden = false;
-            }
-            if ($scope.entity.transact_type_id != null && $scope.entity.evidence != null) {
-                clearData();
-                $scope.record = entity;
-                $scope.showima = 1;
-                $('#showimg').modal('show');
-            }else{
-                clearData();
-                $scope.record = entity;
-                assingData(entity);
-                $scope.showima = 2;
-                $('#validate').modal('show');
-            }
+            updatetransact();
 
         }
         ///////////
@@ -112,27 +106,8 @@
             $('#cancel').modal('show');
         }
 
-        $scope.viewimg = function(){
-            //$scope.entity = entity;
-            $('#showimg').modal('show');
-        }
-
-        var assingData = function(entity){
-            $scope.record.lab = true;
-            $scope.record.library = true;
-            $scope.record.clinic = true;
-            $scope.record.social_services = true;
-            $scope.record.evidence = entity.evidence;
-        }
-
         var clearData = function(){
-            $scope.record.lab = false;
-            $scope.record.library = false;
-            $scope.record.clinic = false;
-            $scope.record.social_services = false;
             $scope.record = {};
-
-            
         }
 
         /*
@@ -166,10 +141,9 @@
             
         }
 
-        /* 
-        * Guarda las transacciones
-        */
-        $scope.savetransact = function(){
+        
+
+        var updatetransact = function(){
             $scope.record.status_id = 3;
             $scope.record.transact_type_id = $scope.entity.transact_type_id;
             $scope.record.date = $scope.entity.date;
@@ -178,50 +152,6 @@
             $scope.record.credential = $scope.entity.credential;
             $scope.record.record = $scope.entity.record;
             $scope.record.folio = $scope.entity.folio;
-            if ($scope.record.credential==1) {
-                if (typeof($scope.record.library) == 'undefined') {
-                    Notification.error({
-                        message: 'Seleccione si no tiene adeudos en la libreria',
-                        title: '<b>Error</b>',
-                        delay: 3000
-                    });
-                    return;
-                };
-                if (typeof($scope.record.lab) == 'undefined') {
-                    Notification.error({
-                        message: 'Seleccione si no tiene adeudos en los laboratorios',
-                        title: '<b>Error</b>',
-                        delay: 3000
-                    });
-                    return;
-                };
-                if (typeof($scope.record.clinic) == 'undefined') {
-                    Notification.error({
-                        message: 'Seleccione si no tiene adeudos en las clinicas',
-                        title: '<b>Error</b>',
-                        delay: 3000
-                    });
-                    return;
-                };
-                if (typeof($scope.record.social_services) == 'undefined') {
-                    Notification.error({
-                        message: 'Seleccione si no tiene adeudos en el departamento de servicios sociales',
-                        title: '<b>Error</b>',
-                        delay: 3000
-                    });
-                    return;
-                };
-                
-            };
-            $scope.record.evidence = $scope.file.base64;
-            if (typeof($scope.file.base64) == 'undefined') {
-                Notification.error({
-                    message: 'Es necesario que ingrese la evidencía',
-                    title: '<b>Error</b>',
-                    delay: 3000
-                });
-                return;
-            };
             
             schoolrecordFactory.update($scope.record)
             .success(function(data){

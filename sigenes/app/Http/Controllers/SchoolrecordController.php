@@ -193,4 +193,12 @@ class SchoolrecordController extends Controller
             return ['deleted' => false];
         }
     }
+
+    public function constancia_estudio(){
+        $data = array();//Schoolrecord::find($id);
+        $view =  \View::make('templates.admin.school_records.pdf.studentrecord', compact('data'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('templates.admin.school_records.pdf.studentrecord');
+    }
 }

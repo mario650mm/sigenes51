@@ -35,7 +35,7 @@
                     <div  align="center">
                         <b>UNIVERSIDAD NACIONAL  AUTÓNOMA DE MÉXICO</b><br>
                         <b>ESCUELA NACIONAL DE ESTUDIOS SUPERIORES</b>
-                        <b>DEPARTAMENTO DE ADMINISTRACION ESCOLAR</b>
+                        <b>DEPARTAMENTO DE Administración escolar</b>
                         <p>REPOSICION DE CREDENCIAL</p>
                     </div>
                 </td>

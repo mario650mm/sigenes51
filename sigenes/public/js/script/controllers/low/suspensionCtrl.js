@@ -18,6 +18,7 @@ angular.module('Enes')
         $scope.suspen       = {};
         $scope.reason;
         $scope.viewNote     = false;
+        $scope.textNote     = 0;
         $scope.btnprint     = false;
         $scope.btnapply     = true;
         $scope.btnfile      = false;
@@ -51,11 +52,13 @@ angular.module('Enes')
                 $scope.btnapply = true;
             }else{
                 $scope.btnapply = false;
-                Notification.error({
+                $scope.textNote = 1;
+                $scope.viewNote = true;
+                /*Notification.error({
                     message: '<u>El tiempo en el que se podia realizar la suspensión se ha terminado</u>',
                     title: '<b>Información</b>',
                     delay: 5000
-                });
+                });*/
             }            
         }
 
@@ -158,6 +161,7 @@ angular.module('Enes')
             $scope.period_ids = paramObject.period_id;
             $scope.records = paramObject.evidence;
             $scope.suspen = paramObject;
+            $scope.textNote = 0;
             if ($scope.suspen.status_id == 1) {
                 $scope.btnapply = false;
             }

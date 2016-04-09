@@ -23,11 +23,11 @@
 
  		// Fileds for search in user model
         $scope.availableSearchParams = [
-            { key: "account_number", name: "Account", placeholder: "Account..." },
-            { key: "date_init", name: "Date", placeholder: "Date... (YYYY-MM-D)" },
-            { key: "name_period", name: "Period", placeholder: "Period..." },
-            { key: "estatus", name: "Status", placeholder: "Status..." },
-            { key: "career", name: "Career", placeholder: "Career..."}//,restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
+            { key: "account_number", name: "No. cuenta", placeholder: "No. cuenta..." },
+            { key: "date_init", name: "Fecha", placeholder: "Fecha... (YYYY-MM-D)" },
+            { key: "name_period", name: "Periodo", placeholder: "Periodo..." },
+            { key: "estatus", name: "Estatus", placeholder: "Estatus..." },
+            { key: "career", name: "Carrera", placeholder: "Carrera..."}//,restrictToSuggestedValues: true, suggestedValues: ['admin', 'student', 'employee'] }
         ];
 
         /*

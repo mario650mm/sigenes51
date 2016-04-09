@@ -9,6 +9,15 @@ angular.module('Enes')
             },
             get_stuies_plans : function(){
                 return $http.get(HOST+'api/v1/mainstudiesplan');
+            },
+            get_career : function(){
+                return $http.get(HOST+'api/v1/maincareer');
+            },
+            get_student : function(){
+                return $http.get(HOST+'api/v1/mainstudent');
+            },
+            get_suspension : function(){
+                return $http.get(HOST+'api/v1/mainsuspension');
             }
         }
     });

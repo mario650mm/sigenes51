@@ -9,7 +9,7 @@
  * My Description rules
  */
  angular.module('Enes')
- 	.controller('schoolrecordController', function($scope, schoolrecordFactory, Notification){
+ 	.controller('schoolrecordController', function($scope, schoolrecordFactory, Notification, mainFactory){
  		$scope.recordTypes   = {};
  		$scope.student       = {};
  		$scope.applyRecord   = {};
@@ -18,10 +18,12 @@
         $scope.btnprint      = false;
         $scope.btnapply      = true;
         $scope.entity        = {};
+        $scope.rbtncre       = true;
 
  		$scope.init = function(){
  			recordTypes();
  			dataStudent();
+            get_Suspension();
  		}
 
  		var recordTypes = function(){
@@ -33,6 +35,30 @@
  				console.log(error);
  			})
  		}
+
+        var get_Suspension = function(){
+            mainFactory.get_suspension()
+            .success(function(data){
+                if (data.partner.student.suspension.length != 0) {
+                    angular.forEach (data.partner.student.suspension, function(value){
+                        if (data.partner.student.suspension.length <= 3 && value.status_id != 4){
+                            $scope.recordTypes.splice(0,1);
+                            $scope.recordTypes.splice(3,1);
+                            $scope.recordTypes.splice(4,1);
+                            $scope.recordTypes.splice(5,1);
+                            $scope.recordTypes.splice(6,1);
+                            $scope.recordTypes.splice(7,1);
+                            $scope.recordTypes.splice(2,1);
+                            $scope.recordTypes.splice(2,1);
+                            $scope.rbtncre = false;
+                            $scope.isRecord = true;
+                        }
+                    });
+                };
+            }).error(function(error){
+                console.log(error);
+            })
+        }
 
         $scope.selectchange = function(id){
             angular.forEach($scope.recordTypes, function(value){

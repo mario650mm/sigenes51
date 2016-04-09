@@ -21,4 +21,11 @@ class Student extends Model
     public function Partner(){
     	return $this->belongsTo('App\Partner');
     }
+
+    public function ExtraordinaryTest(){
+        return $this->belongsTo('App\ExtraordinaryTest');
+    }
+    public function Schoolrecord(){
+        return $this->hasMany('App\Schoolrecord');
+    }
 }

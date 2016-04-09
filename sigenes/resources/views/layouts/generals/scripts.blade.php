@@ -40,6 +40,7 @@
     <!-- Angular Controllers -->
     <script src="{{ asset('js/script/controllers/low/suspensionCtrl.js') }}"></script>
     <script src="{{ asset('js/script/controllers/schoolrecord/schoolrecordCtrl.js') }}"></script>
+    <script src="{{ asset('js/script/controllers/extraordinary/extraordinaryCtrl.js') }}"></script>
 
 @endif
 
