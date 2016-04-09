@@ -56,4 +56,29 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasOne('App\Partner');
     }
 
+    /*
+     * Section Filters
+     * */
+
+    public function scopeName($query, $name)
+    {
+        if (trim($name) != "") {
+            $query->Where("name", "like", "%$name%");
+        }
+    }
+
+    public function scopeRFC($query, $rfc)
+    {
+        if (trim($rfc) != "") {
+            $query->Where("rfc", "like", "%$rfc%");
+        }
+    }
+
+    public function scopeEmail($query, $email)
+    {
+        if (trim($email) != "") {
+            $query->Where("email", "like", "%$email%");
+        }
+    }
+
 }

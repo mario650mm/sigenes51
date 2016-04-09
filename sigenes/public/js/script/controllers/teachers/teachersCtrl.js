@@ -18,8 +18,7 @@ angular.module('Enes')
          * Profesores de Carrera (Tiempo completo)
          * Profesores de Asignatura (Horas de trabajo)
          **/
-        $scope.type = [{'type':'Carrera'},{'type':'Asignatura'}];
-        $scope.role;
+        $scope.type = [{'type':2},{'type':1}];
 
         $scope.availableSearchParams = [
             { key: "name", name: "Nombre", placeholder: "Nombre.." },

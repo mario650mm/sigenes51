@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use Mockery\CountValidator\Exception;
 
 class UserController extends Controller
@@ -125,5 +126,22 @@ class UserController extends Controller
     {
         User::destroy($id);
         return ['deleted' => true];
+    }
+
+    public function filterView(){
+        return view('templates.admin.users.filterReport');
+    }
+
+    public function filtersReport(Request $request){
+        Excel::create('User Excel', function($excel) use ($request){
+            $excel->sheet('FilterUser', function($sheet) use ($request){
+                $user = User::name($request->get('name'))
+                    ->email($request->get('email'))
+                    ->rfc($request->get('rfc'))
+                    ->select('id as ID','name as Nombre','rfc as RFC','email as Correo')
+                    ->get();
+                $sheet->fromArray($user);
+            });
+        })->export('xlsx');
     }
 }
