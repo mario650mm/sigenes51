@@ -6,5 +6,6 @@
 		<button class="btn btn-primary" data-ng-show="btnstudyarea" id="generaplanstudio" name="generaplanstudio" data-ng-click="registrararea()">
 			<i class="fa fa-plus-square"></i>  {{trans('career.addarea')}}
 		</button>
+		<a class="btn btn-danger" href="{{ route('career.index')}}"><i class="fa fa-times"></i> Cancelar</a>
 	</div>
 </div>

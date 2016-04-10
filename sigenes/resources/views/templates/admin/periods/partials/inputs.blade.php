@@ -4,6 +4,7 @@
 			<button type="button" class="btn btn-primary" data-ng-click="saveperiod()">
 				<i class="fa fa-plus-square"></i>  {{trans('period.btnadd')}}
 			</button>
+			<a class="btn btn-danger" href="{{ route('period.index')}}"><i class="fa fa-times"></i> Cancelar</a>
 		</div>
 	</div>
 </div>

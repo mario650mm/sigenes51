@@ -7,7 +7,7 @@
                 <div class=" radio">
                     <label><input type="radio" name="optradio" data-ng-click="visible()" data-ng-model="applyRecord.record" value="1">{{trans('schoolrecords.record')}}</label>
                 </div>
-                <div class="radio">
+                <div class="radio" ng-if="rbtncre">
                     <label><input type="radio" name="optradio" data-ng-click="iscredential()" data-ng-model="applyRecord.credential" value="2">{{trans('schoolrecords.credential')}}</label>
                 </div>
 

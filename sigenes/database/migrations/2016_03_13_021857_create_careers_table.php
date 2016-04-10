@@ -34,6 +34,9 @@ class CreateCareersTable extends Migration
             ['father_campus' => '600','campus' => 666,'key' => 223,'name' => 'Ciencias Agrogenómicas', 'description' => 'campo editable.', 'created_at' => $now],
             ['father_campus' => '600','campus' => 604,'key' => 320,'name' => 'Desarrollo Territorial', 'description' => 'campo editable.', 'created_at' => $now]
         ]);
+
+        //DB::statement("ALTER TABLE students ADD career_id INTEGER");
+        //DB::statement("ALTER TABLE students ADD CONSTRAINT fk_career_id foreign key (career_id) REFERENCES careers(id)");
     }
 
     /**

@@ -26,4 +26,8 @@ class Schoolrecord extends Model
 
     protected $fillable=['record', 'credential', 'folio', 'transact_type_id', 
     'date', 'student_id','status_id', 'evidence', 'lab', 'clinic', 'social_services', 'library'];
+
+    public function Student(){
+        return $this->belongsTo('App\Student');
+    }
 }

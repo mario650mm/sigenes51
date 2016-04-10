@@ -145,7 +145,7 @@ angular.module('Enes')
 					Notification.success({
 						title: '<i class="fa fa-info-circle"></i> Creación de la asignatura',
 						message: 'Se agrego correctamente la asignatura capturada.', 
-						delay: 5000
+						delay: 10000
 					});
 					setTimeout('document.location.reload()',3000);
 				}
@@ -168,6 +168,7 @@ angular.module('Enes')
 		$scope.getInfo = function(){
 			subjectmatterFactory.getInfo()
 			.success(function(data){
+				console.log(data);
 				$scope.objects 			= data.subjectMatter;
 				$scope.area 			= data.areas;
 				$scope.career 			= data.career;

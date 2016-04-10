@@ -27,31 +27,31 @@
                 <td>@{{ result.estatus }}</td>
                 <td>@{{ result.name_period }}</td>
                 <td>@{{ result.date_init }}</td>
-                <td>Odontología</td>
+                <td>@{{ result.careerN }}</td>
                 <td>
                     <div align="center" data-ng-show="changeShow(result)">
                         <div data-ng-show="showval(result)">
-                            <a data-ng-click="showsuspen(result)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Validar suspensión"></span></a>
+                            <a data-ng-click="showsuspen(result)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="{{trans('low.ctrl_val_susp')}}"></span></a>
                             &nbsp;
                             &nbsp;
                             &nbsp;
                             &nbsp;
-                            <a data-ng-click="deletesuspen(result)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Eliminar tramite"></span></a>
+                            <a data-ng-click="deletesuspen(result)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="{{trans('low.ctrl_del_susp')}}"></span></a>
                         </div>
                     </div>
                     <div align="center"  data-ng-hide="showval(result)">
-                        <a data-ng-click="showValidate(result)" ><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Ver tramite"></span></a>
+                        <a data-ng-click="showValidate(result)" ><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="{{trans('low.ctrl_sho_susp')}}"></span></a>
                     </div>
                     <div data-ng-hide="changeShow(result)">
                         <div ng-switch on="result.status_id">
                             <div ng-switch-when="6">
                                 <p align="justify">
-                                    Ha finalizado el proceso de suspensión
+                                    {{trans('low.textend')}}
                                 </p>
                             </div>
                             <div ng-switch-when="4">
                                 <p align="justify">
-                                    Se ha cancelado la suspensión 
+                                    {{trans('low.textcancel')}} 
                                 </p>
                             </div>
                         </div>

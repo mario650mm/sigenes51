@@ -1,7 +1,7 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-    Validaciones
+    {{trans('low.validations')}}
 @endsection
 
 @section('title')

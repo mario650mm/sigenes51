@@ -1,11 +1,11 @@
 @extends('layouts.generals.main_template')
 
 @section('page_title')
-    Validaciones
+    {{trans('schoolrecords.validations')}}
 @endsection
 
 @section('title')
-    Documentos escolares
+    {{trans('schoolrecords.title')}}
 @endsection
 
 @section('angular_controller')

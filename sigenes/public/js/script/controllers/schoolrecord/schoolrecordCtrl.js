@@ -9,7 +9,7 @@
  * My Description rules
  */
  angular.module('Enes')
- 	.controller('schoolrecordController', function($scope, schoolrecordFactory, Notification){
+ 	.controller('schoolrecordController', function($scope, schoolrecordFactory, Notification, mainFactory){
  		$scope.recordTypes   = {};
  		$scope.student       = {};
  		$scope.applyRecord   = {};
@@ -18,6 +18,7 @@
         $scope.btnprint      = false;
         $scope.btnapply      = true;
         $scope.entity        = {};
+        $scope.rbtncre       = true;
 
  		$scope.init = function(){
  			recordTypes();
@@ -34,6 +35,7 @@
  			})
  		}
 
+
         $scope.selectchange = function(id){
             angular.forEach($scope.recordTypes, function(value){
                 if (value.id == id) {
@@ -49,14 +51,29 @@
  		var dataStudent = function(){
  			schoolrecordFactory.getStudentRecords()
  			.success(function(data){
+
  				$scope.student.nombre = data.name + ' ' + data.firstlastname
  				 + ' ' + data.secondlastname;
                 $scope.student.account_number = data.student.account_number;
                 $scope.student.celphone = data.celphone;
                 $scope.student.student = data.student.id;
                 $scope.student.telephone = data.telephone;
-                $scope.student.career = 'Odontología';
+                $scope.student.career = data.student.career.name;
                 $scope.student.email = data.email1;
+                $scope.student.active = data.student.active;
+                if ($scope.student.active == 0){
+                    $scope.recordTypes.splice(0,1);
+                    $scope.recordTypes.splice(3,1);
+                    $scope.recordTypes.splice(4,1);
+                    $scope.recordTypes.splice(5,1);
+                    $scope.recordTypes.splice(6,1);
+                    $scope.recordTypes.splice(7,1);
+                    $scope.recordTypes.splice(2,1);
+                    $scope.recordTypes.splice(2,1);
+                    $scope.rbtncre = false;
+                    $scope.isRecord = true;
+                }
+                
                // $scope.validate = data.student.id;
  			})
  			.error(function(error){

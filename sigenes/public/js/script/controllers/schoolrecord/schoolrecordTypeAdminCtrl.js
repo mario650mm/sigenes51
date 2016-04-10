@@ -45,6 +45,7 @@
         };
 
         $scope.editaction = function(){
+            $scope.recordtype.record = $scope.records.base64;
             schoolrecordTypeFactory.update($scope.recordtype)
             .success(function(data){
                 Notification.success({

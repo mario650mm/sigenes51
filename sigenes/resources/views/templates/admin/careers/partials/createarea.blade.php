@@ -45,5 +45,8 @@
 		<button type="button" class="btn btn-primary" ng-click="createareaaction()">
 			<i class="fa fa-plus-square"></i>  {{trans('career.addarea')}}
 		</button>
+		<button type="button" class="btn btn-danger deny">
+			<i class="fa fa-times"></i> Cancelar		
+		</button>
 	</div>
 </div>

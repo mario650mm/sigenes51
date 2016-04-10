@@ -39,7 +39,8 @@ class PdfCredentialController extends Controller
         $result = \DB::table('transact_students')
             ->select([
                 "transact_students.folio", 
-                "students.account_number", 
+                "students.account_number",
+                "careers.name as careerN", 
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname",
@@ -50,6 +51,7 @@ class PdfCredentialController extends Controller
                 ])
             ->join("students", "transact_students.student_id", "=", "students.id")
             ->join("partners", "partners.id", "=", "students.partner_id")
+            ->join("careers", "careers.id", "=", "students.career_id")
             ->join("users", "users.id", "=", "partners.user_id")
             ->where("users.id", "=", \Auth::user()->id)
             ->get();
@@ -62,7 +64,7 @@ class PdfCredentialController extends Controller
                     'account_number' => $value->account_number,
                     'celphone' => $value->cellphone,
                     'telephone' => $value->telephone,
-                    'career' => 'Odontología',
+                    'career' => $value->careerN,
                     'folio' => $value->folio,
                     'email' => $value->email1,
                     'actualdate'=> $date['mday'],

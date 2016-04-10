@@ -24,15 +24,12 @@
 	@if($suspension->status_id == 6)
 		<p align="justify" style="font-family: arial; font-size: 12px;">
 			Estimado alumno {{$suspension->Student->Partner->name}} {{$suspension->Student->Partner->firstlastname}} {{$suspension->Student->Partner->secondlastname}} 
-			se le informa que el veredicto de su tramite de suspensión a llegado desde la 
-			<b>Universidad Autónoma de México</b> nos entristece comunicarle que su solicitud de 
-			suspensión a sido <b><u>Autorizada</u></b>.
+			se le informa que su tramite de suspensión ha sido <b><u>Aprovado</u></b>.
 			<br>
 			<br>
-			Se le informa que debe acudir al departamento de servicios escolares para darle el 
-			seguimiento de su suspensión, así como comunicarle la fecha en la que puede pasar 
-			por sus documentos; esperamos que se pueda reincorporar a nuestro sistema educativo 
-			en un futuro no muy lejano.
+			Se le invita a que revice el calendario escolar de la institucion en el ciclo para consultar las 
+			inscripciones y examenes del siguiente ciclo, puede consultar esta informacion de manera mas
+			detallada en la pagina de la <a href="http://enes.unam.mx/?lang=es_MX">Enes Unidad León</a> 
 		</p>
 	@endif
 @endsection

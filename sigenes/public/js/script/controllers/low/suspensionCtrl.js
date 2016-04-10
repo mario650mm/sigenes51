@@ -18,6 +18,7 @@ angular.module('Enes')
         $scope.suspen       = {};
         $scope.reason;
         $scope.viewNote     = false;
+        $scope.textNote     = 0;
         $scope.btnprint     = false;
         $scope.btnapply     = true;
         $scope.btnfile      = false;
@@ -43,19 +44,27 @@ angular.module('Enes')
         }
 
         var suspensionTime = function(){
-            var date = new Date();
-            var mes = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
-            var dia = (date.getDate() < 10 ? '0'+ date.getDate() : date.getDate());
-            var fecha_actual = date.getFullYear() + '-' + mes + '-' + dia;
-            if (fecha_actual >= $scope.periods[0].date_init && fecha_actual <= $scope.periods[0].date_end) {
-                $scope.btnapply = true;
-            }else{
+            try{
+                var date = new Date();
+                var mes = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
+                var dia = (date.getDate() < 10 ? '0'+ date.getDate() : date.getDate());
+                var fecha_actual = date.getFullYear() + '-' + mes + '-' + dia;
+                if (fecha_actual >= $scope.periods[0].date_init && fecha_actual <= $scope.periods[0].date_end) {
+                    $scope.btnapply = true;
+                }else{
+                    $scope.btnapply = false;
+                    $scope.textNote = 1;
+                    $scope.viewNote = true;
+                    /*Notification.error({
+                        message: '<u>El tiempo en el que se podia realizar la suspensión se ha terminado</u>',
+                        title: '<b>Información</b>',
+                        delay: 5000
+                    });*/
+                }
+            }catch(err){
                 $scope.btnapply = false;
-                Notification.error({
-                    message: '<u>El tiempo en el que se podia realizar la suspensión se ha terminado</u>',
-                    title: '<b>Información</b>',
-                    delay: 5000
-                });
+                $scope.textNote = 1;
+                $scope.viewNote = true;
             }            
         }
 
@@ -107,9 +116,16 @@ angular.module('Enes')
                 $scope.userSusp.student = data.student.id;
                 $scope.userSusp.telephone = data.telephone;
                 $scope.userSusp.email = data.email1;
-                $scope.userSusp.career = 'Odontología';
+                $scope.userSusp.career = data.student.career.name;
                 $scope.validate = data.student.id;
                 getValidator($scope.validate);
+                if (data.student.active == 0) {
+                    $scope.viewNote = false;
+                    $scope.textNote = 0;
+                        $scope.btnprint = false;
+                        $scope.btnapply = false;
+                        $scope.btnfile  = false;
+                };
                  
             })
             .error(function(error){
@@ -158,16 +174,17 @@ angular.module('Enes')
             $scope.period_ids = paramObject.period_id;
             $scope.records = paramObject.evidence;
             $scope.suspen = paramObject;
+            $scope.textNote = 0;
             if ($scope.suspen.status_id == 1) {
                 $scope.btnapply = false;
             }
             if ($scope.suspen.status_id == 2) {
                 $scope.btnapply = false;
                 $scope.btnprint = true;
-                $scope.viewNote = true;
                 $scope.btnfile  = true;
             };
             if($scope.suspen.evidence != null){
+                $scope.viewNote = true;
                 $scope.btnfile = false;
                 $scope.btnprint = false;
             }
@@ -195,16 +212,16 @@ angular.module('Enes')
             paramObject.status_id = 2;
             suspensionFactory.update(paramObject)
             .success(function(data){
-                if(typeof(paramObject.evidence) == 'undefined'){
+                if(paramObject.evidence == null){
                     Notification({
-                        title: 'Information',
-                        message: 'Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas.', 
-                        delay: 5000
+                        title: '<i class="fa fa-info-circle"></i> Information',
+                        message: '<div aling="justify">Se a completado el proceso de solicitud, \nfavor de imprimir su pdf para la recoleccion de firmas, para que después pueda subir una imagen de estas y así seguir con el proceso.</div>', 
+                        delay: 10000
                     });
                 }else{
                     Notification({
-                        title: 'Information',
-                        message: '<div aling="justify">Ahora que se ha subido las firmas de no adeudo, \nel departamento de servisios escolares iniciara con el proceso de validacion para la suspensión.</div>', 
+                        title: '<i class="fa fa-info-circle"></i> Information',
+                        message: '<div aling="justify">Se han subido las firmas de no adeudo correctamente</div>', 
                         delay: 5000
                     });
                 }

@@ -4,7 +4,7 @@
         <div class="form-group">
             <div class="col-lg-6" data-ng-hide="isHiden">
                 <button type="button" class="btn btn-primary" id="suspender" data-ng-click="finishsuspension()" >
-                	<span class="glyphicon glyphicon-ok"></span> Enviar solicitud
+                	<span class="glyphicon glyphicon-ok"></span> Suspensión recibida
                 </button>
             </div>
             <div class="col-lg-6" data-ng-show="isHiden">

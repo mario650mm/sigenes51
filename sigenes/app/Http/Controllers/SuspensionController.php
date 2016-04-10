@@ -53,6 +53,7 @@ class SuspensionController extends Controller
        
         $user = User::find(Auth::user()->id);
         $user->Partner->Student;
+        $user->Partner->Student->Career;
         return  $user->Partner;
     }
 
@@ -145,7 +146,8 @@ class SuspensionController extends Controller
                 "suspensions.library", 
                 "suspensions.lab", 
                 "suspensions.social_services",  
-                "suspensions.status_id",  
+                "suspensions.status_id",
+                "careers.name as careerN",  
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname"
@@ -153,6 +155,7 @@ class SuspensionController extends Controller
             ->join("students", "suspensions.student_id", "=", "students.id")
             ->join("periods", "periods.id", "=", "suspensions.period_id")
             ->join("status", "status.id", "=", "suspensions.status_id")
+            ->join("careers", "careers.id", "=", "students.career_id")
             ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("suspensions.status_id", "<>", 1)
             ->get();
@@ -188,9 +191,21 @@ class SuspensionController extends Controller
     {
         $suspension = Suspension::find($request->input('id'));
         $suspension->update($request->all());
-        $suspension->evidence = $request->input('evidence');
-        $suspension->save();
-        $this->sendmailsuspension($request->input('id'));
+        //$suspension->evidence = $request->input('evidence');
+        //$suspension->save();
+        try{
+            if ($suspension->status_id == 5 || $suspension->status_id == 6) {
+                if ($suspension->status_id == 6) {
+                    //dd($request->input('student_id'));
+                    $student = Student::find($request->input('student_id'));
+                    $student->active = false;
+                    $student->save();
+                }
+                $this->sendmailsuspension($request->input('id'));
+            }
+        }catch(Exception $e){
+            dd($e);
+        }
         return ['updated' => true];
     }
 

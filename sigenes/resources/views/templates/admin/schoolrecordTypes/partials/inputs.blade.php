@@ -5,6 +5,7 @@
 				<span class="glyphicon glyphicon-plus-sign"></span> {{trans('schoolrecordTypes.addrecord')}}
 				<!--Agregar constancia-->
 			</button>
+			<a class="btn btn-danger" href="{{ route('schooltype.index')}}"><i class="fa fa-times"></i> Cancelar</a>
 		</div>
 	</div>
 </div>

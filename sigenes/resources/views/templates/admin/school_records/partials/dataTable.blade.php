@@ -43,23 +43,29 @@
                 <td class="text-center">@{{ (result.transact) }}</td>
                 <td class="text-center">@{{ result.estatus }}</td>
                 <td class="text-center">@{{ result.date }}</td>
-                <td>Odontología</td>
+                <td class="text-center">@{{ result.careerN }}</td>
                 <td>
                     <div align="center" data-ng-show="changeShow(result, 0)">
                         <div data-ng-show="showval(result)">
-                            <a data-ng-click="showValidate(result)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Validar tramite"></span></a>
+                            <a data-ng-click="showValidate(result)"><span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="{{trans('schoolrecords.ctrl_val_tra')}}"></span></a>
                             &nbsp;
                             &nbsp;
                             &nbsp;
-                            <a data-ng-click="deletemodal(result)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Cancelar tramite"></span></a>
+                            <a data-ng-click="deletemodal(result)"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="{{trans('schoolrecords.ctrl_del_tra')}}"></span></a>
                         </div>
                     </div>
                     <div align="center"  data-ng-hide="showval(result)">
-                        <a data-ng-click="showValidate(result)" ><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Ver tramite"></span></a>
+                        <div ng-switch="genconst">
+                            <div ng-switch-when="0">{{trans('schoolrecords.processend')}}</div>
+                            <div ng-switch-when="1">
+                                <a ng-click="showconstan(result)"><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Generar constancía"></span></a>
+                            </div>
+                        </div>                        
+                        
                     </div>
                     <div data-ng-hide="changeShow(result, 0)">
                         <p align="justify">
-                            Se ha cancelado el tramite de @{{ (result.tramint) }}
+                            {{trans('schoolrecords.processcancel')}}
                         </p>
                     </div>
                     
