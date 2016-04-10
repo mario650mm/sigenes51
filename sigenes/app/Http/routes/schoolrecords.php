@@ -2,12 +2,14 @@
 
 Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function(){
 	Route::get('allrecords', 'SchoolrecordController@show');
+	Route::get('recordprint/{id}', 'SchoolrecordController@constancia_estudio');
 	Route::put('recorddelete', 'SchoolrecordController@destroy');
 	Route::put('records', 'SchoolrecordController@update');
 });
 
 Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'employee']], function(){
 	Route::get('allrecords', 'SchoolrecordController@show');
+	Route::get('recordprint/{id}', 'SchoolrecordController@constancia_estudio');
 	Route::put('recorddelete', 'SchoolrecordController@destroy');
 	Route::put('records', 'SchoolrecordController@update');
 });

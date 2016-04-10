@@ -14,7 +14,7 @@
 				<div class="menu">
 					<a class="item" href="{{ url('student/records') }}">{{ trans('schoolrecords.item') }}</a>
 				</div>
-				<div class="menu">
+				<div class="menu" style="display: none;">
 					<a class="item" href="{{ route('extraordinary.create') }}">Examenes extraordinarios</a>
 				</div>
 			</div>

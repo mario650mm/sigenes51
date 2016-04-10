@@ -27,7 +27,7 @@
                 <td>@{{ result.estatus }}</td>
                 <td>@{{ result.name_period }}</td>
                 <td>@{{ result.date_init }}</td>
-                <td>Odontología</td>
+                <td>@{{ result.careerN }}</td>
                 <td>
                     <div align="center" data-ng-show="changeShow(result)">
                         <div data-ng-show="showval(result)">

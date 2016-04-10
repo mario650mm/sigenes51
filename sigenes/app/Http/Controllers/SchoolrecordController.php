@@ -7,6 +7,7 @@ use App\Schoolrecord;
 use App\SchoolrecordType;
 use App\Partner;
 use App\User;
+use App\Student;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -117,12 +118,14 @@ class SchoolrecordController extends Controller
                 "students.account_number", 
                 "status.name as estatus", 
                 "status.id as idstatus", 
+                "careers.name as careerN",
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname"
                 ])
             ->join("students", "transact_students.student_id", "=", "students.id")
             ->join("status", "status.id", "=", "transact_students.status_id")
+            ->join("careers", "careers.id", "=", "students.career_id")
             ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("transact_students.status_id", "<>", 1)
             ->get();
@@ -195,12 +198,90 @@ class SchoolrecordController extends Controller
         }
     }
 
-    public function constancia_estudio(){
-        $data = array();//Schoolrecord::find($id);
-        $view =  \View::make('templates.admin.school_records.pdf.studentrecord', compact('data'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        return $pdf->stream('templates.admin.school_records.pdf.studentrecord');
+    public function constancia_estudio($id){
+        $student = Student::find($id);
+        $parner = Partner::find($student->partner_id);
+
+        $user = User::find(Auth::user()->id);
+        $user->Partner;
+        
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $section = $phpWord->addSection();
+        $imageStyle = array(
+            'width' => 240,
+            'height' => 100,
+            'wrappingStyle' => 'square',
+            'positioning' => 'absolute',
+            'posHorizontalRel' => 'margin',
+            'posVerticalRel' => 'line',
+        );
+        $section->addImage('resources/images/logoenes.jpg', $imageStyle);
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $fontStyle = array('name' => 'Arial', 'size' => 12, 'bold' => true);
+        $font = array('name' => 'Arial', 'size' => 12);
+        $paragraphStyle = array('align' => 'right');
+        $paragraph = array('align' => 'justify');
+        $section->addText('');
+        $section->addText('DEPARTAMENTO DE ADMINISTRACIÓN ESCOLAR', $fontStyle, $paragraphStyle);
+        $section->addText('CONSTANCIA DE INSCRIPCIÓN', $fontStyle, $paragraphStyle);
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('A QUIEN CORRESPONDA', $fontStyle, array('align' => 'left'));
+        $section->addText('');
+        $section->addText('Por este conducto se le comunica que el (la) C. '.$parner->name.' '.$parner->firstlastname.' '.$parner->secondlastname.' con número de cuenta '.$student->account_number.' está inscrito (a) en el _______ año de la carrera de '.$student->Career->name.' en la Escuela Nacional de Estudios Superiores Unidad León clave 09FAC0008A.', 
+            $font,
+            $paragraph
+        );
+        $section->addText('');
+        $section->addText('Se hace constar que el ciclo escolar _______________ dio inicio el __ de agosto del _____ y concluye el ___ de julio del _____ y corresponden a este ciclo los periodos vacacionales:', 
+            $font,
+            $paragraph
+        );
+        $section->addText('');
+        $section->addText('         * Del ___ de Diciembre del _____ al ___ de Enero del _____', $font, $paragraph);
+        $section->addText('         * Del ___ al ___ de Marzo del _____', $font, $paragraph);
+        $section->addText('         * Del ___ al ___ de Julio del _____', $font, $paragraph);
+
+        $section->addText('');
+        $section->addText('');
+        $section->addText('Se extiende la presente petición del interesado (a) en la ciudad de León, Guanajuato a los trece días del mes de __________________ del año ____________.', 
+            $font,
+            $paragraph
+        );
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('ATENTAMENTE', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('"POR MI RAZA HABLARÁ MI ESPÍRITU"', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('Jefe del departamento de Administración Escolar', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('L.A Hector Rodríguez Ramos', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('');
+        $section->addText('HRR/'.$user->Partner->name[0].$user->Partner->firstlastname[0].$user->Partner->secondlastname[0], array('name' => 'Arial', 'size' => 9),array('align' => 'left'));
+        
+        $file = $student->account_number.'_constancia.docx';
+        header("Content-Description: File Transfer");
+        header('Content-Disposition: attachment; filename="' . $file . '"');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Expires: 0');
+        $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $xmlWriter->save("php://output");
 
     }
 }

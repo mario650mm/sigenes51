@@ -68,7 +68,6 @@
 
         //Valida el estatus de la 
         $scope.showval = function(entity){
-            console.log(entity);
             if(entity.transact_type_id != null){
                 if(entity.transact_type_id == 6 && entity.estatus == 'Terminado'){
                     $scope.genconst = 1;
@@ -86,8 +85,8 @@
 
         }
 
-        $scope.showconstan = function(){
-            window.open('records/recordprint','_blank');
+        $scope.showconstan = function(entity){
+            window.location.href='/api/v1/recordprint/'+entity.student;
         }
 
         /*

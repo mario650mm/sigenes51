@@ -38,7 +38,7 @@
 	<br>
 	<div align="justify">
 		<p style="font-family: sans-serif; font-size: 12;">
-			Por este conducto se le comunica que el (la) <b>C. Medina Marquez Josué</b> con número de cuenta <b>1232242424</b> está inscrito (a) en el ejemplo año de la carrera de <b>Fisioterapia</b> en la <b>Escuela Nacional de Estudios Superiores Unidad León</b> clave <b>09FAC0008A. smtp 587 puerto de correo</b>
+			Por este conducto se le comunica que el (la) <b>C. Medina Marquez Josué</b> con número de cuenta <b>1232242424</b> está inscrito (a) en el ejemplo año de la carrera de <b>Fisioterapia</b> en la <b>Escuela Nacional de Estudios Superiores Unidad León</b> clave <b>09FAC0008A.</b>
 			<br>
 			<br>
 			Se hace constar que el ciclo escolar _______________ dio inicio el __ de agosto del _____ y concluye el ___ de julio del _____ y corresponden a este ciclo los periodos vacacionales:

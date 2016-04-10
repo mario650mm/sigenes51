@@ -146,7 +146,8 @@ class SuspensionController extends Controller
                 "suspensions.library", 
                 "suspensions.lab", 
                 "suspensions.social_services",  
-                "suspensions.status_id",  
+                "suspensions.status_id",
+                "careers.name as careerN",  
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname"
@@ -154,6 +155,7 @@ class SuspensionController extends Controller
             ->join("students", "suspensions.student_id", "=", "students.id")
             ->join("periods", "periods.id", "=", "suspensions.period_id")
             ->join("status", "status.id", "=", "suspensions.status_id")
+            ->join("careers", "careers.id", "=", "students.career_id")
             ->join("partners", "partners.id", "=", "students.partner_id")
             ->where("suspensions.status_id", "<>", 1)
             ->get();

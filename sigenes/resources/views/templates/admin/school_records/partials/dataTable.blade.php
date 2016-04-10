@@ -43,7 +43,7 @@
                 <td class="text-center">@{{ (result.transact) }}</td>
                 <td class="text-center">@{{ result.estatus }}</td>
                 <td class="text-center">@{{ result.date }}</td>
-                <td>Odontología</td>
+                <td class="text-center">@{{ result.careerN }}</td>
                 <td>
                     <div align="center" data-ng-show="changeShow(result, 0)">
                         <div data-ng-show="showval(result)">
@@ -58,7 +58,7 @@
                         <div ng-switch="genconst">
                             <div ng-switch-when="0">{{trans('schoolrecords.processend')}}</div>
                             <div ng-switch-when="1">
-                                <a ng-click="showconstan()"><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="{{trans('schoolrecords.ctrl_sho_tra')}}"></span></a>
+                                <a ng-click="showconstan(result)"><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Generar constancía"></span></a>
                             </div>
                         </div>                        
                         
