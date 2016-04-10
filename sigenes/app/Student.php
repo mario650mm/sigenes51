@@ -28,4 +28,7 @@ class Student extends Model
     public function Schoolrecord(){
         return $this->hasMany('App\Schoolrecord');
     }
+    public function Career(){
+        return $this->belongsTo('App\Career');   
+    }
 }

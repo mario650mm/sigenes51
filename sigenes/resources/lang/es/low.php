@@ -26,7 +26,7 @@ return [
     'note'          =>  'Notas',
     'apply'         =>  'Solicitar',
     'print'         =>  'Imprimir',
-    'body_note'     =>  'En este apartado únicamente podrás dar inicio al tramite de suspensión; para darle continuidad es necesario que acudas a servicios escolares con el documento que se te generará, y los debidos sellos de no adeudo de los departamentos, después de realizar esto se te pide esperar un lapso de 15 a 20 días para la resolución de tu solicitud.',
+    'body_note'     =>  'En este apartado únicamente podrás dar inicio al tramite de suspensión; se te pide esperar un lapso de 15 a 20 días para la resolución de tu solicitud.',
     'body_note_err' =>  'El tiempo en el que se podía realizar la suspensión se ha terminado.',
     'validations'   =>  'Validaciones',
     'control'       =>  'Controles',

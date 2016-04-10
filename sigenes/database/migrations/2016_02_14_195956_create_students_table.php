@@ -14,10 +14,13 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->increments('id');
             $table->string('account_number', 45);
             $table->dateTime('data_register');
             $table->integer('partner_id')->unsigned();
+            $table->boolean('active')->default(true);
+            $table->integer('career_id');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('partner_id')->references('id')

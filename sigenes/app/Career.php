@@ -29,4 +29,8 @@ class Career extends Model
     public function Area(){
         return $this->hasMany('App\StudyArea');
     }
+
+    public function Student(){
+        return $this->hasMany('App\Student');
+    }
 }

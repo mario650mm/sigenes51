@@ -20,7 +20,6 @@ class CreateTransactTypesTable extends Migration
             $table->softDeletes();
         });
 
-        DB::statement("ALTER TABLE transact_types ADD record LONGBLOB NULL");
         $now = date('Y-m-d H:i:s');
         \DB::table('transact_types')->insert([
             ['name' => 'Constancia de beca', 'description' => 'campo editable.', 'created_at' => $now],
@@ -33,6 +32,8 @@ class CreateTransactTypesTable extends Migration
             ['name' => 'Constancia de Termino de Estudios','description' => 'campo editable.', 'created_at' => $now],
             ['name' => 'Termino de Estudios con expedicion de titulo y cedula','description' => 'campo editable.', 'created_at' => $now]
         ]);
+
+        DB::statement("ALTER TABLE transact_types ADD record LONGBLOB");
     }
 
     /**

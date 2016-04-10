@@ -23,7 +23,6 @@
  		$scope.init = function(){
  			recordTypes();
  			dataStudent();
-            get_Suspension();
  		}
 
  		var recordTypes = function(){
@@ -36,29 +35,6 @@
  			})
  		}
 
-        var get_Suspension = function(){
-            mainFactory.get_suspension()
-            .success(function(data){
-                if (data.partner.student.suspension.length != 0) {
-                    angular.forEach (data.partner.student.suspension, function(value){
-                        if (data.partner.student.suspension.length <= 3 && value.status_id != 4){
-                            $scope.recordTypes.splice(0,1);
-                            $scope.recordTypes.splice(3,1);
-                            $scope.recordTypes.splice(4,1);
-                            $scope.recordTypes.splice(5,1);
-                            $scope.recordTypes.splice(6,1);
-                            $scope.recordTypes.splice(7,1);
-                            $scope.recordTypes.splice(2,1);
-                            $scope.recordTypes.splice(2,1);
-                            $scope.rbtncre = false;
-                            $scope.isRecord = true;
-                        }
-                    });
-                };
-            }).error(function(error){
-                console.log(error);
-            })
-        }
 
         $scope.selectchange = function(id){
             angular.forEach($scope.recordTypes, function(value){
@@ -75,14 +51,29 @@
  		var dataStudent = function(){
  			schoolrecordFactory.getStudentRecords()
  			.success(function(data){
+
  				$scope.student.nombre = data.name + ' ' + data.firstlastname
  				 + ' ' + data.secondlastname;
                 $scope.student.account_number = data.student.account_number;
                 $scope.student.celphone = data.celphone;
                 $scope.student.student = data.student.id;
                 $scope.student.telephone = data.telephone;
-                $scope.student.career = 'Odontología';
+                $scope.student.career = data.student.career.name;
                 $scope.student.email = data.email1;
+                $scope.student.active = data.student.active;
+                if ($scope.student.active == 0){
+                    $scope.recordTypes.splice(0,1);
+                    $scope.recordTypes.splice(3,1);
+                    $scope.recordTypes.splice(4,1);
+                    $scope.recordTypes.splice(5,1);
+                    $scope.recordTypes.splice(6,1);
+                    $scope.recordTypes.splice(7,1);
+                    $scope.recordTypes.splice(2,1);
+                    $scope.recordTypes.splice(2,1);
+                    $scope.rbtncre = false;
+                    $scope.isRecord = true;
+                }
+                
                // $scope.validate = data.student.id;
  			})
  			.error(function(error){

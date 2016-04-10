@@ -61,6 +61,7 @@ class PdfSuspensionController extends Controller
                 "suspensions.reason", 
                 "suspensions.date_init", 
                 "suspensions.period_id", 
+                "careers.name as careerN",
                 "partners.name", 
                 "partners.firstlastname", 
                 "partners.secondlastname",
@@ -73,6 +74,7 @@ class PdfSuspensionController extends Controller
             ->join("periods", "periods.id", "=", "suspensions.period_id")
             ->join("status", "status.id", "=", "suspensions.status_id")
             ->join("partners", "partners.id", "=", "students.partner_id")
+            ->join("careers", "careers.id", "=", "students.career_id")
             ->join("users", "users.id", "=", "partners.user_id")
             ->where("users.id", "=", \Auth::user()->id)
             ->get();
@@ -87,7 +89,7 @@ class PdfSuspensionController extends Controller
                     'account_number' => $value->account_number,
                     'celphone' => $value->cellphone,
                     'telephone' => $value->telephone,
-                    'career' => 'Odontología',
+                    'career' => $value->careerN,
                     'reason' => $value->reason,
                     'email' => $value->email1,
                     'actualdate'=> $date['mday'],

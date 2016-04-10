@@ -9,8 +9,11 @@
 		</form>
 	</div>
 	<div class="actions">
-		<button type="button" class="btn btn-primary" ng-click="updateperiod()">
-			<i class="fa fa-refresh"></i> {{trans('period.btnedit')}}
+		<button type="button" class="btn btn-primary" ng-click="editaction()">
+			<i class="fa fa-refresh"></i> Actualizar constancia
+		</button>
+		<button type="button" class="btn btn-danger deny">
+			<i class="fa fa-times"></i> Cancelar		
 		</button>
 	</div>
 </div>

@@ -44,6 +44,7 @@ class SchoolrecordController extends Controller
 
         $user = User::find(Auth::user()->id);
         $user->Partner->Student;
+        $user->Partner->Student->Career;
         return  $user->Partner;
     }    
 
@@ -200,5 +201,6 @@ class SchoolrecordController extends Controller
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('templates.admin.school_records.pdf.studentrecord');
+
     }
 }
