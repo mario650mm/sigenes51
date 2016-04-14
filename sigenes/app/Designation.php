@@ -15,6 +15,8 @@ class Designation extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+    protected $table = 'designations';
+    protected $fillable = ['name', 'key'];
 
     public function Teacher(){
         return $this->belongsTo('App\Teacher');
