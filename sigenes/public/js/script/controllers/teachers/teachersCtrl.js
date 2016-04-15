@@ -10,10 +10,12 @@
  */
 
 angular.module('Enes')
-    .controller('TeachersController', function ($scope,teacherFactory, partnersFactory, Notification) {
+    .controller('TeachersController', function ($scope,teacherFactory, partnersFactory,designationFactory, Notification) {
         $scope.teacher = {};
         $scope.partner = {};
         $scope.teachers = [];
+        $scope.designations= [{}];
+
         /**
          * Profesores de Carrera (Tiempo completo)
          * Profesores de Asignatura (Horas de trabajo)
@@ -54,12 +56,20 @@ angular.module('Enes')
                     });
             });
 
+        var getDesignations = function(){
+            designationFactory.getAllData()
+                .success(function(data){
+                    $scope.designations = data;
+                });
+        };
+
 
         $scope.save = function () {
 
             partnersFactory.save($scope.partner)
                 .success(function (data) {
                     $scope.teacher.partner_id = data.partner_id;
+                    console.log(getDesignations());
                     teacherFactory.save($scope.teacher)
                         .success(function (data) {
                             Notification.success({
