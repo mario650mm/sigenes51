@@ -56,7 +56,7 @@ angular.module('Enes')
                     });
             });
 
-        var getDesignations = function(){
+         $scope.getDesignations = function(){
             designationFactory.getAllData()
                 .success(function(data){
                     $scope.designations = data;
@@ -65,11 +65,10 @@ angular.module('Enes')
 
 
         $scope.save = function () {
-
             partnersFactory.save($scope.partner)
                 .success(function (data) {
                     $scope.teacher.partner_id = data.partner_id;
-                    console.log(getDesignations());
+
                     teacherFactory.save($scope.teacher)
                         .success(function (data) {
                             Notification.success({
