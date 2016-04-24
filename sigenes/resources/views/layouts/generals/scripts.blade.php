@@ -63,6 +63,7 @@
     <script src="{{ asset('js/script/services/subjectmatter/subjectmatter.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/schools/schools.factories.js') }}"></script>
     <script src="{{ asset('js/script/services/studieplans/studieplans.factories.js') }}"></script>
+    <script src="{{ asset('js/script/services/designations/designations.factories.js') }}"></script>
 
     <!-- Angular Controllers -->
     <script src="{{ asset('js/script/controllers/users/usersCtrl.js') }}"></script>

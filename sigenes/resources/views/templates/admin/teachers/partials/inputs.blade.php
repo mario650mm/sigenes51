@@ -3,7 +3,7 @@
         <label>@lang('teachers.type')</label>
         <select name="designation_id" class="form-control" ng-model="teacher.designation_id" required>
             <option value="">@lang('generals.select')</option>
-            <option data-ng-repeat="teacher in type" value="@{{ teacher.type }}">@{{ teacher.type }}</option>
+            <option data-ng-repeat="designation in designations" value="@{{ designation.id }}"> @{{ designation.name }}</option>
         </select>
     </div>
 </div>

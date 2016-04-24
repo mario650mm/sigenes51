@@ -18,6 +18,7 @@
         @endsection
 
         @section('body_page')
+            <div data-ng-init="getDesignations()"></div>
             @include('templates.admin.partners.partials.inputs')
             @include('templates.admin.teachers.partials.inputs')
         @endsection
