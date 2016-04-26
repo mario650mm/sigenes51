@@ -22,7 +22,6 @@ class CreateTransactTypesTable extends Migration
 
         $now = date('Y-m-d H:i:s');
         \DB::table('transact_types')->insert([
-            ['name' => 'Constancia de beca', 'description' => 'campo editable.', 'created_at' => $now],
             ['name' => 'Constancia de creditos y promedio','description' => 'campo editable', 'created_at' => $now],
             ['name' => 'Constancia de Histroria Academica','description' => 'campo editable.', 'created_at' => $now],
             ['name' => 'Constancia de Inscripcion con foto','description' => 'campo editable.', 'created_at' => $now],

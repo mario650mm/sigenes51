@@ -48,8 +48,7 @@ class CareerController extends Controller
             return ['error' => 'request must be an array'];
         }
 
-        $rules = [  
-            'campus'       =>  'required',
+        $rules = [
             'key'          =>  'required',
             'name'         =>  'required',
             'description'  =>  'required'

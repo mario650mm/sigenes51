@@ -58,7 +58,7 @@
                         <div ng-switch="genconst">
                             <div ng-switch-when="0">{{trans('schoolrecords.processend')}}</div>
                             <div ng-switch-when="1">
-                                <a ng-click="showconstan(result)"><span class="glyphicon glyphicon-check" data-toggle="tooltip" title="Generar constancía"></span></a>
+                                <a ng-click="showconstan(result)"><span class="fa fa-file-word-o" data-toggle="tooltip" title="Generar constancía"></span></a>
                             </div>
                         </div>                        
                         

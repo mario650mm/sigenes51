@@ -191,8 +191,8 @@ class SuspensionController extends Controller
     {
         $suspension = Suspension::find($request->input('id'));
         $suspension->update($request->all());
-        //$suspension->evidence = $request->input('evidence');
-        //$suspension->save();
+        $suspension->evidence = $request->input('evidence');
+        $suspension->save();
         try{
             if ($suspension->status_id == 5 || $suspension->status_id == 6) {
                 if ($suspension->status_id == 6) {

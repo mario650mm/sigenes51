@@ -2,7 +2,7 @@
 
 Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'admin']], function(){
 	Route::get('allrecords', 'SchoolrecordController@show');
-	Route::get('recordprint/{id}', 'SchoolrecordController@constancia_estudio');
+	Route::get('recordprint/{student}/{transact_type_id}', 'SchoolrecordController@switch_record');
 	Route::put('recorddelete', 'SchoolrecordController@destroy');
 	Route::put('records', 'SchoolrecordController@update');
 });
