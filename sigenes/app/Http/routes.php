@@ -42,3 +42,4 @@ require __DIR__ . '/routes/subjectMatter.php';
 require __DIR__ . '/routes/extraordinaryTest.php';
 require __DIR__ . '/routes/studiesPlan.php';
 require __DIR__ . '/routes/schools.php';
+require __DIR__ . '/routes/designations.php';
