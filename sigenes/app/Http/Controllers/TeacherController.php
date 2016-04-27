@@ -70,7 +70,7 @@ class TeacherController extends Controller
             if ($validator->fails()) {
                 return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
             }
-            $teacher = Teacher::create($request->all());
+            Teacher::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
             \Log::info('Error creating teacher: '.$e);
