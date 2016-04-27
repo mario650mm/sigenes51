@@ -15,5 +15,6 @@ Route::group(['prefix' => 'api/v1', 'middleware' => ['auth', 'employee']], funct
     Route::put('schools', 'SchoolController@update');
     Route::delete('schools/{id}', 'SchoolController@destroy');
     Route::get('schools', 'SchoolController@getAllData');
+    Route::get('schoolsParent', 'SchoolController@getParents');
 
 });

@@ -33,6 +33,17 @@ class SchoolController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getParents()
+    {
+        return School::where('parent_id',null)
+            ->get();
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

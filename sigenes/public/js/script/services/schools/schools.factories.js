@@ -6,6 +6,9 @@ angular.module('Enes')
     .factory('schoolFactory', function (HOST, $http) {
         return{
             getAllData : function(){
+                return $http.get(HOST+'api/v1/schoolsParent')
+            },
+            getParents : function(){
                 return $http.get(HOST+'api/v1/schools')
             },
             save : function(school){

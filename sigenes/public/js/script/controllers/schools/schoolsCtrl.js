@@ -32,6 +32,12 @@ angular.module('Enes')
                     });
             });
 
+        $scope.getParents = function(){
+            schoolFactory.getParents()
+                .success(function(data){
+                    $scope.designations = data;
+                });
+        };
 
         $scope.save = function (school) {
             schoolFactory.save(school)

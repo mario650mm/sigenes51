@@ -18,6 +18,7 @@
         @endsection
 
         @section('body_page')
+            <div data-ng-init="getParents()"></div>
             @include('templates.admin.schools.partials.inputs')
         @endsection
 
