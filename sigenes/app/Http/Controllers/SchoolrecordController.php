@@ -198,6 +198,30 @@ class SchoolrecordController extends Controller
         }
     }
 
+    /**
+    * Puente que enlaza y direcciona a las constancias segun sea el caso
+    * requerido
+    * 
+    * @param Request $request
+    */
+    public function switch_record($student, $transact_type_id){
+        
+        switch ($transact_type_id) {
+            case 5:
+                //dd($transact_type_id,$student);
+                # llama a la constancia de inscripción
+                $this->constancia_estudio($student);           
+                break;
+            case 1:
+                # llama a la constancia creditos y promedio
+                $this->constancia_credito_promedio($student);
+                break;
+            default:
+                # code...
+                break;
+        };
+    }
+
     public function constancia_estudio($id){
         $student = Student::find($id);
         $parner = Partner::find($student->partner_id);
@@ -207,7 +231,7 @@ class SchoolrecordController extends Controller
         
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
-        $imageStyle = array(
+        /*$imageStyle = array(
             'width' => 240,
             'height' => 100,
             'wrappingStyle' => 'square',
@@ -215,7 +239,7 @@ class SchoolrecordController extends Controller
             'posHorizontalRel' => 'margin',
             'posVerticalRel' => 'line',
         );
-        $section->addImage('resources/images/logoenes.jpg', $imageStyle);
+        $section->addImage('resources/images/logoenes.jpg', $imageStyle);*/
         $section->addText('');
         $section->addText('');
         $section->addText('');
@@ -238,18 +262,18 @@ class SchoolrecordController extends Controller
             $paragraph
         );
         $section->addText('');
-        $section->addText('Se hace constar que el ciclo escolar _______________ dio inicio el __ de agosto del _____ y concluye el ___ de julio del _____ y corresponden a este ciclo los periodos vacacionales:', 
+        $section->addText('Se hace constar que el ciclo escolar 2015-2016 dio inicio el 10 de agosto del 2015 y concluye el 01 de julio del 2016 y corresponden a este ciclo los periodos vacacionales:', 
             $font,
             $paragraph
         );
         $section->addText('');
-        $section->addText('         * Del ___ de Diciembre del _____ al ___ de Enero del _____', $font, $paragraph);
-        $section->addText('         * Del ___ al ___ de Marzo del _____', $font, $paragraph);
-        $section->addText('         * Del ___ al ___ de Julio del _____', $font, $paragraph);
+        $section->addText('         * Del 14 de Diciembre del 2015 al  01 de Enero del 2016', $font, $paragraph);
+        $section->addText('         * Del 21 al 25 de Marzo  del 2016', $font, $paragraph);
+        $section->addText('         * Del 04 al 22 de Julio del 2016', $font, $paragraph);
 
         $section->addText('');
         $section->addText('');
-        $section->addText('Se extiende la presente petición del interesado (a) en la ciudad de León, Guanajuato a los trece días del mes de __________________ del año ____________.', 
+        $section->addText('Se extiende la presente petición del interesado (a) en la ciudad de León, Guanajuato a los _____ días del mes de __________________ del año ____________.', 
             $font,
             $paragraph
         );
@@ -268,7 +292,7 @@ class SchoolrecordController extends Controller
         $section->addText('');
         $section->addText('');
         $section->addText('');
-        $section->addText('L.A Hector Rodríguez Ramos', $fontStyle,array('align' => 'center'));
+        $section->addText('Lic. Héctor Rodríguez Ramos', $fontStyle,array('align' => 'center'));
         $section->addText('');
         $section->addText('');
         $section->addText('HRR/'.$user->Partner->name[0].$user->Partner->firstlastname[0].$user->Partner->secondlastname[0], array('name' => 'Arial', 'size' => 9),array('align' => 'left'));
@@ -283,5 +307,75 @@ class SchoolrecordController extends Controller
         $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $xmlWriter->save("php://output");
 
+    }
+
+
+    public function constancia_credito_promedio($id){
+        $student = Student::find($id);
+        $parner = Partner::find($student->partner_id);
+
+        $user = User::find(Auth::user()->id);
+        $user->Partner;
+        
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $section = $phpWord->addSection();
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $fontStyle = array('name' => 'Arial', 'size' => 12, 'bold' => true);
+        $font = array('name' => 'Arial', 'size' => 12);
+        $paragraphStyle = array('align' => 'right');
+        $paragraph = array('align' => 'justify');
+        $section->addText('');
+        $section->addText('DEPARTAMENTO DE ADMINISTRACIÓN ESCOLAR', $fontStyle, $paragraphStyle);
+        $section->addText('CONSTANCIA DE CRÉDITOS Y PROMEDIO', $fontStyle, $paragraphStyle);
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('A QUIEN CORRESPONDA', $fontStyle, array('align' => 'left'));
+        $section->addText('');
+
+        $section->addText('Se hace constar que el (la) alumno(a)'.$parner->name.' '.$parner->firstlastname.' '.$parner->secondlastname.' con número de cuenta '.$student->account_number.' estuvo inscrito (a) en la carrera de '.$student->Career->name.' y le corresponde la siguiente situación escolar:',$font, $paragraph);
+        $section->addText('');
+        $section->addText('Asignaturas acreditadas:', $fontStyle);
+        $section->addText('Créditos acumulados:', $fontStyle );
+        $section->addText('Equivalencia en porcentaje:', $fontStyle);
+        $section->addText('Promedio:', $fontStyle);
+        $section->addText('');
+        $section->addText('');
+        $section->addText('De acuerdo con el plan de estudios vigente, el alumno puede iniciar los trámites de servicio social y/o práctica profesional supervisada.', $font, $paragraph);
+        $section->addText('');
+        $section->addText('Se extiende la presente a petición del interesado (a) en la ciudad  de León, Guanajuato a los _____ días del mes de _______ del año ________________.',$font, $paragraph);
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('ATENTAMENTE', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('"POR MI RAZA HABLARÁ MI ESPÍRITU"', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('Jefe del departamento de Administración Escolar', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('');
+        $section->addText('Lic. Héctor Rodríguez Ramos', $fontStyle,array('align' => 'center'));
+        $section->addText('');
+        $section->addText('');
+        $section->addText('HRR/'.$user->Partner->name[0].$user->Partner->firstlastname[0].$user->Partner->secondlastname[0], array('name' => 'Arial', 'size' => 9),array('align' => 'left'));
+        
+        $file = $student->account_number.'_constancia_creditos_promedio.docx';
+        header("Content-Description: File Transfer");
+        header('Content-Disposition: attachment; filename="' . $file . '"');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Expires: 0');
+        $xmlWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+        $xmlWriter->save("php://output");
     }
 }

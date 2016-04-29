@@ -17,7 +17,6 @@ angular.module('Enes')
                 return $http.post(HOST+'api/v1/suspen', suspen)
             },
             update : function(suspen){
-                
                 return $http.put(HOST+'api/v1/suspen', suspen)
             },
             delete : function(suspen){
