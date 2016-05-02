@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Mockery\CountValidator\Exception;
 
 class CountryController extends Controller
 {
@@ -58,19 +60,23 @@ class CountryController extends Controller
         }
 
         $rules = [
-            'code'     => 'required',
-            'name'     => 'required',
+            'code'      => 'required',
+            'name'      => 'required',
         ];
 
         try{
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
-                return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
+                return [
+                    'created' => false,
+                    'errors'  => $validator->errors()->all()
+                ];
             }
+
             Country::create($request->all());
             return ['created' => true];
         }catch (Exception $e){
-            \Log::info('Error creating country: '.$e);
+            \Log::info('Error creating user: '.$e);
             return \Response::json(['created' => false], 500);
         }
     }

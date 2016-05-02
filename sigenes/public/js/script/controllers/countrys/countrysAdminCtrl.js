@@ -32,21 +32,16 @@ angular.module('Enes')
                     });
             });
 
-        $scope.save = function (country) {
+        $scope.save = function(country){
             countryFactory.save(country)
-                .success(function (data) {
-                    Notification.success({
-                        message: 'País ' + country.name + ' creado correctamente.',
-                        delay: 5000
-                    });
+                .success(function(data){
+                    Notification.success({message: 'País '+ country.name +' creado correctamente.', delay: 5000});
                 })
-                .error(function (error) {
+                .error(function(error){
                     Notification.error(
-                        {
-                            message: '<b>Error</b> <s>notificación</s>',
+                        {message: '<b>Error</b> <s>notificación</s>',
                             title: '<u>Error al crear el País</u>',
-                            delay: 5000
-                        });
+                            delay: 5000});
                 })
         }
 
