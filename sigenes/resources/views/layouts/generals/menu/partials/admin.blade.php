@@ -114,5 +114,12 @@
       </div>
     </div>
 
+    <div class="title">
+      <div class="header">
+        <i class="fa fa-cog"></i> Ajustes
+        <i class="dropdown icon"></i>
+      </div>
+    </div>
+
   </div>
 </div>
