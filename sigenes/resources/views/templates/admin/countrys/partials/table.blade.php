@@ -1,7 +1,7 @@
 <table class="table table-hover">
     <tr>
-        <th>código</th>
-        <th>Nombre</th>
+        <th>@lang('countrys.code')</th>
+        <th>@lang('countrys.name')</th>
         <th width="10%">@lang('generals.controllers')</th>
     </tr>
     <tr data-dir-paginate="country in countrys | orderBy:sortKey:reverse | filter:searchInput|itemsPerPage:15">

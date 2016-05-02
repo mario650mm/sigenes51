@@ -32,8 +32,6 @@ angular.module('Enes')
                     });
             });
 
-
-
         $scope.save = function (country) {
             countryFactory.save(country)
                 .success(function (data) {

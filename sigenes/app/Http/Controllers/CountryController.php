@@ -42,7 +42,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        return view('templates.admin.countrys.create');
     }
 
     /**
@@ -53,7 +53,26 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!is_array($request->all())) {
+            return ['error' => 'request must be an array'];
+        }
+
+        $rules = [
+            'code'     => 'required',
+            'name'     => 'required',
+        ];
+
+        try{
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return \Response::json(['created' => false,'errors'  => $validator->errors()->all()], 500);
+            }
+            Country::create($request->all());
+            return ['created' => true];
+        }catch (Exception $e){
+            \Log::info('Error creating country: '.$e);
+            return \Response::json(['created' => false], 500);
+        }
     }
 
     /**
@@ -64,7 +83,7 @@ class CountryController extends Controller
      */
     public function show($id)
     {
-        //
+        return Country::findOrFail($id);
     }
 
     /**
@@ -73,9 +92,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('templates.admin.countrys.edit');
     }
 
     /**
@@ -85,9 +104,11 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $country = Country::find($request->input('id'));
+        $country->update($request->all());
+        return ['updated' => true];
     }
 
     /**
@@ -98,6 +119,7 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Country::destroy($id);
+        return ['deleted' => true];
     }
 }
