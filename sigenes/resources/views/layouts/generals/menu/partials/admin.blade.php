@@ -121,5 +121,13 @@
       </div>
     </div>
 
+    <div class="content">
+      <div class="subtitle">
+        <div class="menu">
+          <a class="item" href="{{ route('countrys.index') }}">Países</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

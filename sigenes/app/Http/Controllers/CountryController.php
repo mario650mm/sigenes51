@@ -32,7 +32,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-
+        return view('templates.admin.countrys.index');
     }
 
     /**
